@@ -2,7 +2,14 @@ use std::ffi::c_int;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::raw::{sockaddr, WSAStartup};
+use crate::raw::{sockaddr, WSACleanup, WSAStartup};
+
+/// Most Windows Sockets 2 functions do not return the specific cause of an
+/// error when the function returns. Some Winsock functions return a value of
+/// zero if successful. Otherwise, the value [`SOCKET_ERROR`] (-1) is returned
+/// and a specific error number can be retrieved by calling the
+/// [`WSAGetLastError`] function.
+pub const SOCKET_ERROR: c_int = -1;
 
 /// Bad address.
 ///
@@ -20,6 +27,14 @@ pub const WSAEFAULT: c_int = 10014;
 /// other function call is made (whether or not it references that or any other
 /// socket) the function fails with the [`WSAEINPROGRESS`] error.
 pub const WSAEINPROGRESS: c_int = 10036;
+
+/// Network is down.
+///
+/// A socket operation encountered a dead network. This could indicate a
+/// serious failure of the network system (that is, the protocol stack that the
+/// Windows Sockets DLL runs over), the network interface, or the local network
+/// itself.
+pub const WSAENETDOWN: c_int = 10050;
 
 /// Too many processes.
 ///
@@ -49,3 +64,18 @@ pub const WSASYSNOTREADY: c_int = 10091;
 /// Sockets specification version requested by the application. Check that no
 /// old Windows Sockets DLL files are being accessed.
 pub const WSAVERNOTSUPPORTED: c_int = 10092;
+
+/// Successful [`WSAStartup`] not yet performed.
+///
+/// Either the application has not called [`WSAStartup`] or [`WSAStartup`]
+/// failed. The application may be accessing a socket that the current active
+/// task does not own (that is, trying to share a socket between tasks), or
+/// [`WSACleanup`] has been called too many times.
+pub const WSANOTINITIALISED: c_int = 10093;
+
+/// Most Windows Sockets 2 functions do not return the specific cause of an
+/// error when the function returns. For Winsock functions that return a
+/// handle, a return value of [`INVALID_SOCKET`] (0xFFFF) indicates an error
+/// and a specific error number can be retrieved by calling
+/// [`WSAGetLastError`].
+pub const INVALID_SOCKET: c_int = 0xFFFF;
