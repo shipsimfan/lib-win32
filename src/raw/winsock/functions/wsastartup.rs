@@ -4,7 +4,7 @@ use std::ffi::c_int;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::raw::{
-    WSADATA, WSAEFAULT, WSAEINPROGRESS, WSAEPROCLIM, WSASYSNOTREADY, WSAVERNOTSUPPORTED,
+    WSACleanup, WSADATA, WSAEFAULT, WSAEINPROGRESS, WSAEPROCLIM, WSASYSNOTREADY, WSAVERNOTSUPPORTED,
 };
 
 #[link(name = "Ws2_32")]

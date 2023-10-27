@@ -2,7 +2,7 @@ use std::ffi::c_int;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::raw::{sockaddr, WSACleanup, WSAStartup};
+use crate::raw::{sockaddr, WSACleanup, WSAGetLastError, WSAStartup};
 
 /// Most Windows Sockets 2 functions do not return the specific cause of an
 /// error when the function returns. Some Winsock functions return a value of
@@ -10,6 +10,12 @@ use crate::raw::{sockaddr, WSACleanup, WSAStartup};
 /// and a specific error number can be retrieved by calling the
 /// [`WSAGetLastError`] function.
 pub const SOCKET_ERROR: c_int = -1;
+
+/// Overlapped operation aborted.
+///
+/// An overlapped operation was canceled due to the closure of the socket, or
+/// the execution of the `SIO_FLUSH`` command in [`WSAIoctl`].
+pub const WSA_OPERATION_ABORTED: c_int = 995;
 
 /// Bad address.
 ///

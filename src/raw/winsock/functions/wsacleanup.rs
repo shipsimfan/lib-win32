@@ -2,7 +2,10 @@ use std::ffi::c_int;
 
 //rustdoc imports
 #[allow(unused_imports)]
-use crate::raw::{WSAStartup, SOCKET_ERROR, WSAEINPROGRESS, WSAENETDOWN, WSANOTINITIALISED};
+use crate::raw::{
+    WSAGetLastError, WSAStartup, SOCKET_ERROR, WSAEINPROGRESS, WSAENETDOWN, WSANOTINITIALISED,
+    WSA_OPERATION_ABORTED,
+};
 
 #[link(name = "Ws2_32")]
 extern "C" {
