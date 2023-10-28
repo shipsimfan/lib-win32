@@ -1,3 +1,3 @@
-mod getlasterror;
+mod get_last_error;
 
-pub use getlasterror::*;
+pub use get_last_error::*;

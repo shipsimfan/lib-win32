@@ -1,3 +1,3 @@
-mod formatmessagew;
+mod format_message_w;
 
-pub use formatmessagew::*;
+pub use format_message_w::*;

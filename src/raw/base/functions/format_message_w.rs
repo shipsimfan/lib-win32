@@ -3,7 +3,7 @@ use std::ffi::c_void;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::raw::{DWordPtr, LocalAlloc, LocalFree, WChar};
+use crate::raw::{DWordPtr, GetLastError, LocalAlloc, LocalFree, WChar};
 
 #[link(name = "Kernel32")]
 extern "C" {

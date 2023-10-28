@@ -1,7 +1,7 @@
-mod wsacleanup;
-mod wsagetlasterror;
-mod wsastartup;
+mod wsa_cleanup;
+mod wsa_get_last_error;
+mod wsa_startup;
 
-pub use wsacleanup::*;
-pub use wsagetlasterror::*;
-pub use wsastartup::*;
+pub use wsa_cleanup::*;
+pub use wsa_get_last_error::*;
+pub use wsa_startup::*;

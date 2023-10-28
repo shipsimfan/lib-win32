@@ -1,15 +1,15 @@
 use crate::raw::Word;
 use std::ffi::{c_char, c_ushort};
 
-pub type LPWSADATA = *mut WSADATA;
+pub type LPWSAData = *mut WSAData;
 
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::raw::WSAStartup;
 
-/// # WSADATA structure (winsock.h)
+/// # WSAData structure (winsock.h)
 ///
-/// The [`WSADATA`] structure contains information about the Windows Sockets
+/// The [`WSAData`] structure contains information about the Windows Sockets
 /// implementation.
 ///
 /// ## Members
@@ -40,7 +40,7 @@ use crate::raw::WSAStartup;
 /// specification 1.1, but should not be used when developing new applications.
 /// No single value can be appropriate for all underlying service providers.
 /// The architecture of Windows Sockets changed in version 2 to support
-/// multiple providers, and the [`WSADATA`] structure no longer applies to a
+/// multiple providers, and the [`WSAData`] structure no longer applies to a
 /// single vendor's stack.
 ///
 /// `max_udp_dg`
@@ -51,7 +51,7 @@ use crate::raw::WSAStartup;
 /// The `max_udp_dg` member is retained for compatibility with Windows Sockets
 /// specification 1.1, but should not be used when developing new applications.
 /// The architecture of Windows Sockets changed in version 2 to support
-/// multiple providers, and the [`WSADATA`] structure no longer applies to a
+/// multiple providers, and the [`WSAData`] structure no longer applies to a
 /// single vendor's stack. For the actual maximum message size specific to a
 /// particular Windows Sockets service provider and socket type, applications
 /// should use getsockopt to retrieve the value of option SO_MAX_MSG_SIZE after
@@ -64,7 +64,7 @@ use crate::raw::WSAStartup;
 ///
 /// The `vendor_info` member is retained for compatibility with Windows Sockets
 /// specification 1.1. The architecture of Windows Sockets changed in version 2
-/// to support multiple providers, and the [`WSADATA`] structure no longer
+/// to support multiple providers, and the [`WSAData`] structure no longer
 /// applies to a single vendor's stack. Applications needing to access
 /// vendor-specific configuration information should use getsockopt to retrieve
 /// the value of option PVD_CONFIG for vendor-specific information.
@@ -87,11 +87,11 @@ use crate::raw::WSAStartup;
 ///
 /// ## Remarks
 /// The [`WSAStartup`] function initiates the use of the Windows Sockets DLL by
-/// a process. The [`WSAStartup`] function returns a pointer to the [`WSADATA`]
+/// a process. The [`WSAStartup`] function returns a pointer to the [`WSAData`]
 /// structure in the `wsa_data` parameter.
 ///
 /// The current version of the Windows Sockets specification returned in the
-/// `high_version` member of the [`WSADATA`] structure is version 2.2 encoded
+/// `high_version` member of the [`WSAData`] structure is version 2.2 encoded
 /// with the major version number in the low-byte and the minor version number
 /// in the high-byte. This version of the current Winsock DLL, Ws2_32.dll,
 /// supports applications that request any of the following versions of the
@@ -105,10 +105,10 @@ use crate::raw::WSAStartup;
 /// Depending on the version requested by the application, one of the above
 /// version numbers is the value encoded as the major version number in the
 /// low-byte and the minor version number in the high-byte that is returned
-/// in the `version` member of the [`WSADATA`] structure.
+/// in the `version` member of the [`WSAData`] structure.
 #[repr(C)]
 #[derive(Clone)]
-pub struct WSADATA {
+pub struct WSAData {
     pub version: Word,
     pub high_version: Word,
     pub max_sockets: c_ushort,
@@ -121,7 +121,7 @@ pub struct WSADATA {
 pub const WSADESCRIPTION_LEN: usize = 256;
 pub const WSASYS_STATUS_LEN: usize = 128;
 
-impl WSADATA {
+impl WSAData {
     pub fn new() -> Self {
         unsafe { std::mem::zeroed() }
     }

@@ -1,10 +1,11 @@
-use crate::raw::{Word, LPWSADATA};
+use crate::raw::{LPWSAData, Word};
 use std::ffi::c_int;
 
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::raw::{
-    WSACleanup, WSADATA, WSAEFAULT, WSAEINPROGRESS, WSAEPROCLIM, WSASYSNOTREADY, WSAVERNOTSUPPORTED,
+    WSACleanup, WSAData, WSAGetLastError, WSAEFAULT, WSAEINPROGRESS, WSAEPROCLIM, WSASYSNOTREADY,
+    WSAVERNOTSUPPORTED,
 };
 
 #[link(name = "Ws2_32")]
@@ -19,7 +20,7 @@ extern "C" {
     /// TBD
     ///
     /// `wsa_data`\
-    /// A pointer to the [`WSADATA`] data structure that is to receive details
+    /// A pointer to the [`WSAData`] data structure that is to receive details
     /// of the Windows Sockets implementation.
     ///
     /// ## Return Value
@@ -27,7 +28,7 @@ extern "C" {
     /// returns one of the error codes listed below.
     ///
     /// The [`WSAStartup`] function directly returns the extended error code in
-    /// the return value for this function. A call to the WSAGetLastError
+    /// the return value for this function. A call to the [`WSAGetLastError`]
     /// function is not needed and should not be used.
     ///
     /// | Error Code             | Meaning                                                                                                             |
@@ -62,14 +63,14 @@ extern "C" {
     /// parameter. If the version requested by the application is equal to or
     /// higher than the lowest version supported by the Winsock DLL, the call
     /// succeeds and the Winsock DLL returns detailed information in the
-    /// [`WSADATA`] structure pointed to by the `wsa_data` parameter. The
-    /// `high_version` member of the [`WSADATA`] structure indicates the
+    /// [`WSAData`] structure pointed to by the `wsa_data` parameter. The
+    /// `high_version` member of the [`WSAData`] structure indicates the
     /// highest version of the Windows Sockets specification that the Winsock
-    /// DLL supports. The `version` member of the [`WSADATA`] structure
+    /// DLL supports. The `version` member of the [`WSAData`] structure
     /// indicates the version of the Windows Sockets specification that the
     /// Winsock DLL expects the caller to use.
     ///
-    /// If the `version` member of the [`WSADATA`]` structure is unacceptable
+    /// If the `version` member of the [`WSAData`]` structure is unacceptable
     /// to the caller, the application or DLL should call [`WSACleanup`] to
     /// release the Winsock DLL resources and fail to initialize the Winsock
     /// application. In order to support this application or DLL, it will be
@@ -126,7 +127,7 @@ extern "C" {
     /// support a range of Windows Sockets versions. An application or DLL can
     /// use the Winsock DLL if there is any overlap in the version ranges.
     /// Detailed information on the Windows Sockets implementation is provided
-    /// in the [`WSADATA`] structure returned by the [`WSAStartup`] function.
+    /// in the [`WSAData`] structure returned by the [`WSAStartup`] function.
     ///
     /// Once an application or DLL has made a successful [`WSAStartup`] call,
     /// it can proceed to make other Windows Sockets calls as needed. When it
@@ -135,7 +136,7 @@ extern "C" {
     /// Winsock resources used by the application.
     ///
     /// An application can call [`WSAStartup`] more than once if it needs to
-    /// obtain the [`WSADATA`] structure information more than once. On each
+    /// obtain the [`WSAData`] structure information more than once. On each
     /// such call, the application can specify any version number supported by
     /// the Winsock DLL.
     ///
@@ -152,5 +153,5 @@ extern "C" {
     /// [`WSACleanup`] do nothing except decrement an internal counter; the
     /// final [`WSACleanup`] call for the task does all necessary resource
     /// deallocation for the task.
-    pub fn WSAStartup(version_required: Word, wsa_data: LPWSADATA) -> c_int;
+    pub fn WSAStartup(version_required: Word, wsa_data: LPWSAData) -> c_int;
 }
