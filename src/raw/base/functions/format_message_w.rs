@@ -137,7 +137,7 @@ extern "C" {
         language_id: DWord,
         buffer: LPWStr,
         size: DWord,
-        arguments: *mut c_void,
+        arguments: *const c_void,
     ) -> DWord;
 }
 

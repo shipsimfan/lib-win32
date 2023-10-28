@@ -1,9 +1,9 @@
-use crate::raw::WSACleanup;
+use crate::{raw::WSACleanup, Error};
 
 pub struct WinSock {}
 
 impl WinSock {
-    pub fn startup() -> Result<Self, Win32Error> {
+    pub fn startup() -> Result<Self, Error> {
         todo!()
     }
 }

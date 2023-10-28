@@ -12,6 +12,10 @@ pub type DWordPtr = ULongPtr;
 /// decimal.
 pub type Int = c_int;
 
+/// A 32-bit signed integer. The range is -2147483648 through 2147483647
+/// decimal.
+pub type Long = c_long;
+
 /// A signed long type for pointer precision. Use when casting a pointer to a
 /// long to perform pointer arithmetic.
 pub type LongPtr = i64;
