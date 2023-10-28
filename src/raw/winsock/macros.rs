@@ -16,6 +16,7 @@ use crate::raw::Word;
 #[macro_export]
 macro_rules! MAKEWORD {
     ($low: expr, $high: expr) => {
-        ((($low as u32) & 0xFF) as Word) | (((($high as u32) & 0xFF) << 8) as Word)
+        ((($low as u32) & 0xFF) as $crate::raw::Word)
+            | (((($high as u32) & 0xFF) << 8) as $crate::raw::Word)
     };
 }
