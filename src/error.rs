@@ -1,5 +1,5 @@
 use crate::{
-    raw::{DWord, GetLastError, HResult},
+    raw::{DWord, GetLastError, HResult, WSAGetLastError},
     String, HRESULT_FROM_WIN32,
 };
 use std::ptr::{null, null_mut};
@@ -63,6 +63,11 @@ impl Error {
     /// Create an error using [`GetLastError`]
     pub fn last_error() -> Self {
         Error::win32(unsafe { GetLastError() })
+    }
+
+    /// Create an error using [`WSAGetLastError`]
+    pub fn wsa_last_error() -> Self {
+        Error::new(unsafe { WSAGetLastError() })
     }
 }
 
