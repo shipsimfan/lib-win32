@@ -1,4 +1,7 @@
-use crate::raw::{GetLastError, LPWStr, LocalAlloc, LocalFree, SizeT, WChar};
+use crate::{
+    raw::{GetLastError, LPWStr, LocalAlloc, LocalFree, SizeT, WChar},
+    Str,
+};
 use std::{
     borrow::Cow,
     ptr::{null_mut, NonNull},
@@ -91,6 +94,10 @@ impl String {
     /// Gets the string as words with the null-terminator
     pub fn as_words_with_null(&self) -> &[u16] {
         unsafe { std::slice::from_raw_parts(self.ptr.as_ptr(), self.length) }
+    }
+
+    pub fn as_str(&self) -> Str {
+        unsafe { Str::from_slice_unchecked(self.as_words_with_null()) }
     }
 
     /// Pushes the passed word into the string maintaining the null-terminator
