@@ -24,15 +24,15 @@ impl AddrInfoList {
 }
 
 impl Deref for AddrInfoList {
-    type Target = AddrInfoW;
+    type Target = AddrInfo;
 
     fn deref(&self) -> &Self::Target {
-        unsafe { self.0.as_ref() }
+        unsafe { self.0.as_ref().into() }
     }
 }
 
 impl Index<usize> for AddrInfoList {
-    type Output = AddrInfoW;
+    type Output = AddrInfo;
 
     fn index(&self, index: usize) -> &Self::Output {
         self.get(index).unwrap()
