@@ -37,6 +37,9 @@ pub type UInt = c_uint;
 /// An unsigned [`IntPtr`].
 pub type UIntPtr = u64;
 
+/// An unsigned [`Long`]. The range is 0 through 4294967295 decimal.
+pub type ULong = c_ulong;
+
 /// An unsigned [`LongPtr`].
 pub type ULongPtr = u64;
 

@@ -2,7 +2,7 @@ use std::ffi::c_int;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::raw::GetAddrInfoW;
+use crate::raw::{bind, GetAddrInfoW};
 
 /// The socket address will be used in a call to the [`bind`] function.
 pub const AI_PASSIVE: c_int = 0x01;
