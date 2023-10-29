@@ -68,7 +68,7 @@ impl AddrInfo {
             None => return None,
         };
 
-        if family == S::FAMILY && self.addr_len >= S::LENGTH {
+        if family == S::FAMILY && self.addr_len >= std::mem::size_of::<S::Inner>() {
             Some(unsafe { &*self.addr.cast() })
         } else {
             None
@@ -113,7 +113,7 @@ impl AddrInfo {
             None => return None,
         };
 
-        if family == S::FAMILY && self.addr_len >= S::LENGTH {
+        if family == S::FAMILY && self.addr_len >= std::mem::size_of::<S::Inner>() {
             Some(unsafe { &mut *self.addr.cast() })
         } else {
             None
@@ -145,7 +145,7 @@ impl AddrInfo {
     }
 
     pub fn set_addr<S: SockAddr>(&mut self, addr: &mut S) {
-        self.addr_len = S::LENGTH;
+        self.addr_len = std::mem::size_of::<S::Inner>();
         self.addr = addr as *mut _ as _;
     }
 

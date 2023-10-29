@@ -1,3 +1,5 @@
+use std::ops::{Deref, DerefMut};
+
 use crate::{
     raw::{sockaddr_in, AF_INET},
     SockAddr,
@@ -8,7 +10,8 @@ pub struct SockAddrIn(sockaddr_in);
 
 impl SockAddr for SockAddrIn {
     const FAMILY: u16 = AF_INET as u16;
-    const LENGTH: usize = std::mem::size_of::<sockaddr_in>();
+
+    type Inner = sockaddr_in;
 }
 
 impl Into<sockaddr_in> for SockAddrIn {
@@ -44,5 +47,19 @@ impl<'a> From<&'a sockaddr_in> for &'a SockAddrIn {
 impl<'a> From<&'a mut sockaddr_in> for &'a mut SockAddrIn {
     fn from(value: &'a mut sockaddr_in) -> Self {
         unsafe { std::mem::transmute(value) }
+    }
+}
+
+impl Deref for SockAddrIn {
+    type Target = sockaddr_in;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl DerefMut for SockAddrIn {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
