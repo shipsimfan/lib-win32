@@ -62,6 +62,7 @@ pub type PAddrInfoW = *mut AddrInfoW;
 ///
 /// The following table lists common values for the address family although
 /// many other values are possible.
+///
 /// | Value          | Meaning                                                                                                                                               |
 /// |----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 /// | [`AF_UNSPEC`]  | The address family is unspecified.                                                                                                                    |
@@ -77,6 +78,7 @@ pub type PAddrInfoW = *mut AddrInfoW;
 ///
 /// The following table lists the possible values for the socket type supported
 /// for Windows Sockets 2.
+///
 /// | Value              | Meaning                                                                                                                                                                                                                                                                                                                  |
 /// |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 /// | [`SOCK_STREAM`]    | Provides sequenced, reliable, two-way, connection-based byte streams with an OOB data transmission mechanism. Uses the Transmission Control Protocol (TCP) for the Internet address family ([`AF_INET`] or [`AF_INET6`]). If the `family` member is [`AF_IRDA`], then [`SOCK_STREAM`] is the only supported socket type. |
@@ -113,6 +115,7 @@ pub type PAddrInfoW = *mut AddrInfoW;
 ///
 /// The following table lists common values for the `protocol` member although
 /// many other values are possible.
+///
 /// | Value           | Meaning                                                                                                                                                                                                                                                  |
 /// |-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 /// | [`IPPROTO_TCP`] | The Transmission Control Protocol (TCP). This is a possible value when the `family` member is [`AF_INET`] or [`AF_INET6`] and the `socktype` member is [`SOCK_STREAM`].                                                                                  |

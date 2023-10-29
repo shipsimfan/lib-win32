@@ -1,3 +1,4 @@
+use crate::raw::Socket;
 use std::ffi::c_int;
 
 // rustdoc imports
@@ -81,7 +82,7 @@ pub const WSANOTINITIALISED: c_int = 10093;
 
 /// Most Windows Sockets 2 functions do not return the specific cause of an
 /// error when the function returns. For Winsock functions that return a
-/// handle, a return value of [`INVALID_SOCKET`] (0xFFFF) indicates an error
+/// handle, a return value of [`INVALID_SOCKET`] indicates an error
 /// and a specific error number can be retrieved by calling
 /// [`WSAGetLastError`].
-pub const INVALID_SOCKET: c_int = 0xFFFF;
+pub const INVALID_SOCKET: Socket = !0;

@@ -15,6 +15,10 @@ pub type DWordPtr = ULongPtr;
 /// decimal.
 pub type Int = c_int;
 
+/// A signed integer type for pointer precision. Use when casting a pointer to
+/// an integer to perform pointer arithmetic.
+pub type IntPtr = i64;
+
 /// A 32-bit signed integer. The range is -2147483648 through 2147483647
 /// decimal.
 pub type Long = c_long;
@@ -29,6 +33,9 @@ pub type SizeT = ULongPtr;
 
 /// An unsigned [`Int`]. The range is 0 through 4294967295 decimal.
 pub type UInt = c_uint;
+
+/// An unsigned [`IntPtr`].
+pub type UIntPtr = u64;
 
 /// An unsigned [`LongPtr`].
 pub type ULongPtr = u64;
