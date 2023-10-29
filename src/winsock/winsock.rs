@@ -50,7 +50,7 @@ impl WinSock {
         Ok(AddrInfoList::new(unsafe { NonNull::new_unchecked(ret) }))
     }
 
-    pub fn socket(family: i32, sock_type: i32, protocol: i32) -> Result<Socket, Error> {
+    pub fn socket(&self, family: i32, sock_type: i32, protocol: i32) -> Result<Socket, Error> {
         let socket = unsafe { WSASocketW(family, sock_type, protocol, null_mut(), 0, 0) };
         if socket == INVALID_SOCKET {
             return Err(Error::wsa_last_error());
