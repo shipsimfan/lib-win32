@@ -78,6 +78,11 @@ impl String {
         self.ptr.as_ptr()
     }
 
+    /// Gets the underlying pointer as a [`NonNull`]
+    pub fn as_non_null(&self) -> NonNull<WChar> {
+        self.ptr
+    }
+
     /// Gets the string as words without the null-terminator
     pub fn as_words(&self) -> &[u16] {
         unsafe { std::slice::from_raw_parts(self.ptr.as_ptr(), self.length - 1) }
