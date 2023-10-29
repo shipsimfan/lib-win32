@@ -1,6 +1,6 @@
 use crate::{
     raw::{AddrInfoW, GetAddrInfoW, WSACleanup, WSAData, WSASocketW, WSAStartup, INVALID_SOCKET},
-    AddrInfoList, Error, Socket, MAKEWORD,
+    AddrInfoList, Error, Socket, Str, MAKEWORD,
 };
 use std::ptr::{null_mut, NonNull};
 
@@ -20,8 +20,8 @@ impl WinSock {
 
     pub fn get_addr_info(
         &self,
-        node_name: Option<NonNull<u16>>,
-        service_name: Option<NonNull<u16>>,
+        node_name: Option<&Str>,
+        service_name: Option<&Str>,
         flags: i32,
         family: i32,
         sock_type: i32,

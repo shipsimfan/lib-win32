@@ -1,9 +1,9 @@
 use crate::{
-    raw::{GetLastError, LPWStr, LocalAlloc, LocalFree, SizeT, WChar},
+    raw::{GetLastError, LPCWStr, LPWStr, LocalAlloc, LocalFree, SizeT, WChar},
     Str,
 };
 use std::{
-    borrow::Cow,
+    borrow::{Borrow, Cow},
     ptr::{null_mut, NonNull},
 };
 
@@ -77,13 +77,8 @@ impl String {
     }
 
     /// Gets the underlying pointer
-    pub fn as_ptr(&self) -> LPWStr {
+    pub fn as_ptr(&self) -> LPCWStr {
         self.ptr.as_ptr()
-    }
-
-    /// Gets the underlying pointer as a [`NonNull`]
-    pub fn as_non_null(&self) -> NonNull<WChar> {
-        self.ptr
     }
 
     /// Gets the string as words without the null-terminator
@@ -96,8 +91,16 @@ impl String {
         unsafe { std::slice::from_raw_parts(self.ptr.as_ptr(), self.length) }
     }
 
-    pub fn as_str(&self) -> Str {
+    pub fn as_str(&self) -> &Str {
         unsafe { Str::from_slice_unchecked(self.as_words_with_null()) }
+    }
+
+    pub fn as_ptr_mut(&mut self) -> LPWStr {
+        self.ptr.as_ptr()
+    }
+
+    pub fn as_str_mut(&mut self) -> &mut Str {
+        unsafe { Str::from_slice_unchecked_mut(self.as_words_with_null_mut()) }
     }
 
     /// Pushes the passed word into the string maintaining the null-terminator
@@ -126,6 +129,12 @@ impl String {
 
     unsafe fn as_words_with_null_mut(&mut self) -> &mut [u16] {
         std::slice::from_raw_parts_mut(self.ptr.as_ptr(), self.length)
+    }
+}
+
+impl Borrow<Str> for String {
+    fn borrow(&self) -> &Str {
+        self.as_str()
     }
 }
 
