@@ -1,3 +1,5 @@
+#![feature(c_size_t)]
+
 pub mod raw;
 
 mod error;

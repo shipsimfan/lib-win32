@@ -1,5 +1,8 @@
 use core::ffi::*;
 
+/// An 8-bit Windows (ANSI) character.
+pub type Char = c_char;
+
 /// A 32-bit unsigned integer. The range is 0 through 4294967295 decimal.
 pub type DWord = c_ulong;
 
@@ -29,6 +32,9 @@ pub type UInt = c_uint;
 
 /// An unsigned [`LongPtr`].
 pub type ULongPtr = u64;
+
+/// Any type.
+pub type Void = c_void;
 
 /// A 16-bit Unicode character.
 pub type WChar = u16;
