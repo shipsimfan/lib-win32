@@ -26,7 +26,7 @@ use std::ffi::{c_uchar, c_ulong, c_ushort};
 /// The **in_addr** structure is used with IPv4 addresses.
 #[allow(non_camel_case_types)]
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub struct in_addr {
     pub un: in_addr_union,
 }
@@ -56,4 +56,39 @@ pub struct in_addr_b {
 pub struct in_addr_w {
     pub w1: c_ushort,
     pub w2: c_ushort,
+}
+
+impl in_addr {
+    pub fn new() -> Self {
+        in_addr {
+            un: in_addr_union {
+                un_b: in_addr_b {
+                    b1: 0,
+                    b2: 0,
+                    b3: 0,
+                    b4: 0,
+                },
+            },
+        }
+    }
+}
+
+impl PartialEq for in_addr_union {
+    fn eq(&self, other: &Self) -> bool {
+        unsafe { self.addr.eq(&other.addr) }
+    }
+}
+
+impl Eq for in_addr_union {}
+
+impl PartialOrd for in_addr_union {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        unsafe { self.addr.partial_cmp(&other.addr) }
+    }
+}
+
+impl Ord for in_addr_union {
+    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+        unsafe { self.addr.cmp(&other.addr) }
+    }
 }

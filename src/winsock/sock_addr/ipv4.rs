@@ -1,12 +1,37 @@
-use std::ops::{Deref, DerefMut};
-
 use crate::{
     raw::{sockaddr_in, AF_INET},
-    SockAddr,
+    InAddr, SockAddr,
+};
+use std::{
+    fmt::{Debug, Display},
+    ops::{Deref, DerefMut},
 };
 
 #[repr(transparent)]
+#[derive(Clone)]
 pub struct SockAddrIn(sockaddr_in);
+
+impl SockAddrIn {
+    pub fn family(&self) -> i16 {
+        self.family
+    }
+
+    pub fn port(&self) -> u16 {
+        self.port
+    }
+
+    pub fn addr(&self) -> InAddr {
+        self.addr.into()
+    }
+
+    pub fn set_port(&mut self, port: u16) {
+        self.port = port;
+    }
+
+    pub fn set_addr(&mut self, addr: InAddr) {
+        self.addr = addr.into();
+    }
+}
 
 impl SockAddr for SockAddrIn {
     const FAMILY: u16 = AF_INET as u16;
@@ -61,5 +86,17 @@ impl Deref for SockAddrIn {
 impl DerefMut for SockAddrIn {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.0
+    }
+}
+
+impl Display for SockAddrIn {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}:{}", self.addr(), self.port)
+    }
+}
+
+impl Debug for SockAddrIn {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        Display::fmt(self, f)
     }
 }

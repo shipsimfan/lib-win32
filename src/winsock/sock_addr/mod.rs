@@ -1,6 +1,6 @@
-mod ipv4;
-
 use std::ops::{Deref, DerefMut};
+
+mod ipv4;
 
 pub use ipv4::*;
 
