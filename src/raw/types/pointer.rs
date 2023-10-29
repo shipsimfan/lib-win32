@@ -11,6 +11,10 @@ pub type LPWStr = *mut WChar;
 /// characters.
 pub type PCStr = *const Char;
 
+/// A pointer to a constant null-terminated string of 16-bit Unicode
+/// characters.
+pub type PCWStr = *const WChar;
+
 /// A pointer to any type.
 pub type PVoid = *mut c_void;
 

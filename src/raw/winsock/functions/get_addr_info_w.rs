@@ -1,4 +1,4 @@
-use crate::raw::{AddrInfoW, Int, PAddrInfoW, PCStr};
+use crate::raw::{AddrInfoW, Int, PAddrInfoW, PCWStr};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -56,6 +56,7 @@ extern "C" {
     /// WSA equivalents. It is recommended that the WSA error codes be used, as
     /// they offer familiar and comprehensive error information for Winsock
     /// programmers.
+    ///
     /// | Error Value      | WSA Equivalent            | Description                                                                                                               |
     /// |------------------|---------------------------|---------------------------------------------------------------------------------------------------------------------------|
     /// | [`EAI_AGAIN`]    | [`WSATRY_AGAIN`]          | A temporary failure in name resolution occurred.                                                                          |
@@ -206,9 +207,9 @@ extern "C" {
     /// by a successful call to this function must be released with a
     /// subsequent call to [`FreeAddrInfoW`].
     pub fn GetAddrInfoW(
-        node_name: PCStr,
-        service_name: PCStr,
+        node_name: PCWStr,
+        service_name: PCWStr,
         hints: *const AddrInfoW,
-        result: *mut *mut PAddrInfoW,
+        result: *mut PAddrInfoW,
     ) -> Int;
 }
