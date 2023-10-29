@@ -1,5 +1,5 @@
 use crate::{
-    raw::{self, bind, closesocket},
+    raw::{self, bind, closesocket, listen, SOMAXCONN},
     Error, SockAddr,
 };
 use std::ffi::c_int;
@@ -22,6 +22,15 @@ impl Socket {
             )
         };
 
+        if result != 0 {
+            Err(Error::wsa_last_error())
+        } else {
+            Ok(())
+        }
+    }
+
+    pub fn listen(&self, back_log: Option<i32>) -> Result<(), Error> {
+        let result = unsafe { listen(self.socket, back_log.unwrap_or(SOMAXCONN)) };
         if result != 0 {
             Err(Error::wsa_last_error())
         } else {
