@@ -3,7 +3,7 @@ use std::ffi::c_int;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::raw::{sockaddr_in, WSAGetLastError, SOCKET_ERROR, SOCK_RAW, WSAEFAULT};
+use crate::raw::{listen, sockaddr_in, WSAGetLastError, SOCKET_ERROR, SOCK_RAW, WSAEFAULT};
 
 #[link(name = "Ws2_32")]
 extern "C" {
