@@ -6,3 +6,4 @@ edition = "2021"
 description = "Win32 wrapper library"
 repository = "https://github.com/shipsimfan/lib-win32"
 license = "GPL-3.0-or-later"
+publish = false
