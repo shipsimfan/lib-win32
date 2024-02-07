@@ -1,3 +1,5 @@
+//! Windows NT Definitions
+//!
 //! This header is used by multiple technologies such as:
 //!  - Application Installation and Servicing
 //!  - Backup

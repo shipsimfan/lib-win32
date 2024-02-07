@@ -12,7 +12,9 @@ use crate::{
 
 #[link(name = "Kernel32")]
 extern "system" {
-    /// Formats a message string. The function requires a message definition as input. The message
+    /// Formats a message string.
+    ///
+    /// The function requires a message definition as input. The message
     /// definition can come from a buffer passed into the function. It can come from a message
     /// table resource in an already-loaded module. Or the caller can ask the function to search
     /// the system's message table resource(s) for the message definition. The function finds the

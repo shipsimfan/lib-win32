@@ -1,3 +1,5 @@
+//! Windows Errors
+//!
 //! This header is used by multiple technologies such as:
 //!  - Component Object Model (COM)
 //!  - Direct2D
