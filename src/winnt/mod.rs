@@ -16,4 +16,4 @@
 
 mod types;
 
-pub use types::{HRESULT, LANGID, LONG, LPTSTR, LPWSTR, TCHAR, WCHAR};
+pub use types::{HANDLE, HRESULT, LANGID, LONG, LPTSTR, LPWSTR, PVOID, TCHAR, WCHAR};

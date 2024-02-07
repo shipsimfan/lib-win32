@@ -7,4 +7,4 @@
 
 mod types;
 
-pub use types::{LPCVOID, WORD};
+pub use types::{HLOCAL, LPCVOID, UINT, WORD};

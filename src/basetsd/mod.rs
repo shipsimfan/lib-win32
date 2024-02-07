@@ -3,4 +3,4 @@
 
 mod types;
 
-pub use types::{DWORD_PTR, LONG_PTR, ULONG_PTR};
+pub use types::{DWORD_PTR, LONG_PTR, SIZE_T, ULONG_PTR};

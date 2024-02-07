@@ -16,6 +16,11 @@ pub type LONG_PTR = i64;
 #[allow(non_camel_case_types)]
 pub type LONG_PTR = std::ffi::c_long;
 
+/// The maximum number of bytes to which a pointer can point. Use for a count that must span the
+/// full range of a pointer.
+#[allow(non_camel_case_types)]
+pub type SIZE_T = ULONG_PTR;
+
 /// An unsigned [`LONG_PTR`]
 #[cfg(target_pointer_width = "64")]
 #[allow(non_camel_case_types)]

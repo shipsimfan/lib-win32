@@ -1,5 +1,8 @@
 use crate::WORD;
-use std::ffi::c_long;
+use std::ffi::{c_long, c_void};
+
+/// A handle to an object
+pub type HANDLE = PVOID;
 
 /// The return codes used by COM interfaces
 pub type HRESULT = LONG;
@@ -15,6 +18,9 @@ pub type LPTSTR = LPWSTR;
 
 /// A pointer to a null-terminated string of 16-bit Unicode characters
 pub type LPWSTR = *mut WCHAR;
+
+/// A pointer to any type
+pub type PVOID = *mut c_void;
 
 /// A [`WCHAR`]
 pub type TCHAR = WCHAR;
