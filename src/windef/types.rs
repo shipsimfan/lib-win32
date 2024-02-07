@@ -7,6 +7,9 @@ pub type HLOCAL = HANDLE;
 /// A pointer to a constant of any type
 pub type LPCVOID = *const c_void;
 
+/// A pointer to any type
+pub type LPVOID = *mut c_void;
+
 /// An unsigned INT. The range is 0 through 4294967295 decimal.
 pub type UINT = c_uint;
 

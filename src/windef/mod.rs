@@ -9,4 +9,4 @@
 
 mod types;
 
-pub use types::{HLOCAL, LPCVOID, UINT, WORD};
+pub use types::{HLOCAL, LPCVOID, LPVOID, UINT, WORD};
