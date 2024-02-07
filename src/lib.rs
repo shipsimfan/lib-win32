@@ -1,11 +1,7 @@
-#![feature(c_size_t)]
+//! Raw Win32 bindings
 
-pub mod raw;
-
-mod error;
-mod string;
-mod winsock;
-
-pub use error::*;
-pub use string::*;
-pub use winsock::*;
+#![deny(missing_docs)]
+#![deny(rustdoc::private_intra_doc_links)]
+#![deny(rustdoc::unescaped_backticks)]
+#![deny(rustdoc::redundant_explicit_links)]
+#![warn(rustdoc::broken_intra_doc_links)]
