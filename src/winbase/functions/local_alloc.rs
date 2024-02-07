@@ -2,7 +2,9 @@ use crate::{HLOCAL, SIZE_T, UINT};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{LHND, LMEM_FIXED, LMEM_MOVEABLE, LMEM_ZEROINIT, LPTR, NONZEROLHND, NONZEROLPTR};
+use crate::{
+    LocalFree, LHND, LMEM_FIXED, LMEM_MOVEABLE, LMEM_ZEROINIT, LPTR, NONZEROLHND, NONZEROLPTR,
+};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
@@ -36,5 +38,29 @@ extern "system" {
     ///
     /// If the function fails, the return value is [`null_mut`]. To get extended error information,
     /// call [`GetLastError`].
+    ///
+    /// # Remarks
+    /// Windows memory management does not provide a separate local heap and global heap.
+    /// Therefore, the [`LocalAlloc`] and [`GlobalAlloc`] functions are essentially the same.
+    ///
+    /// The movable-memory flags [`LHND`], [`LMEM_MOVEABLE`], and [NONZEROLHND] add unnecessary
+    /// overhead and require locking to be used safely. They should be avoided unless documentation
+    /// specifically states that they should be used.
+    ///
+    /// New applications should use the heap functions unless the documentation specifically states
+    /// that a local function should be used. For example, some Windows functions allocate memory
+    /// that must be freed with [`LocalFree`].
+    ///
+    /// If the heap does not contain sufficient free space to satisfy the request, [`LocalAlloc`]
+    /// returns [`null_mut`]. Because [`null_mut`] is used to indicate an error, virtual address
+    /// zero is never allocated. It is, therefore, easy to detect the use of a [`null_mut`]
+    /// pointer.
+    ///
+    /// If the [`LocalAlloc`] function succeeds, it allocates at least the amount requested. If the
+    /// amount allocated is greater than the amount requested, the process can use the entire
+    /// amount. To determine the actual number of bytes allocated, use the [`LocalSize`] function.
+    ///
+    /// To free the memory, use the [`LocalFree`] function. It is not safe to free memory allocated
+    /// with [`LocalAlloc`] using [`GlobalFree`].
     pub fn LocalAlloc(flags: UINT, bytes: SIZE_T) -> HLOCAL;
 }

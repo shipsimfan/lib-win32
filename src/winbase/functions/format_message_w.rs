@@ -93,6 +93,77 @@ extern "system" {
     ///
     /// If the function fails, the return value is zero. To get extended error information, call
     /// [`GetLastError`].
+    ///
+    /// # Remarks
+    /// Within the message text, several escape sequences are supported for dynamically formatting
+    /// the message. These escape sequences and their meanings are shown in the following lists.
+    /// All escape sequences start with the percent character (%).
+    ///  * `%0` - Terminates a message text line without a trailing new line character. This escape
+    ///           sequence can be used to build up long lines or to terminate the message itself
+    ///           without a trailing new line character. It is useful for prompt messages.
+    ///  * `%n!format string!` - Identifies an insert sequence. The value of n can be in the range
+    ///                          from 1 through 99. The format string (which must be surrounded by
+    ///                          exclamation marks) is optional and defaults to `!s!` if not
+    ///                          specified. For more information, see Format Specification Fields.
+    ///                          The format string can include a width and precision specifier for
+    ///                          strings and a width specifier for integers. Use an asterisk `*` to
+    ///                          specify the width and precision. For example, `%1!.*s!` or
+    ///                          `%1!*u!`. If you do not use the width and precision specifiers,
+    ///                          the insert numbers correspond directly to the input arguments. For
+    ///                          example, if the source string is "%1 %2 %1" and the input
+    ///                          arguments are "Bill" and "Bob", the formatted output string is
+    ///                          "Bill Bob Bill". However, if you use a width and precision
+    ///                          specifier, the insert numbers do not correspond directly to the
+    ///                          input arguments. For example, the insert numbers for the previous
+    ///                          example could change to "%1!*.*s! %4 %5!*s!". The insert numbers
+    ///                          depend on whether you use an arguments array
+    ///                          ([`FORMAT_MESSAGE_ARGUMENT_ARRAY`]) or a [`VaList`]. For an
+    ///                          arguments array, the next insert number is `n+2` if the previous
+    ///                          format string contained one asterisk and is `n+3` if two asterisks
+    ///                          were specified. For a [`VaList`], the next insert number is `n+1`
+    ///                          if the previous format string contained one asterisk and is `n+2`
+    ///                          if two asterisks were specified. If you want to repeat "Bill", as
+    ///                          in the previous example, the arguments must include "Bill" twice.
+    ///                          For example, if the source string is "%1!*.*s! %4 %5!*s!", the
+    ///                          arguments could be, 4, 2, Bill, Bob, 6, Bill (if using the
+    ///                          [`FORMAT_MESSAGE_ARGUMENT_ARRAY`] flag). The formatted string
+    ///                          would then be "  Bi Bob   Bill". Repeating insert numbers when the
+    ///                          source string contains width and precision specifiers may not
+    ///                          yield the intended results. If you replaced `%5` with `%1`, the
+    ///                          function would try to print a string at address 6 (likely
+    ///                          resulting in an access violation). Floating-point format
+    ///                          specifiers—e, E, f, and g—are not supported. The workaround is to
+    ///                          use the [`StringCchPrintf`] function to format the floating-point
+    ///                          number into a temporary buffer, then use that buffer as the insert
+    ///                          string. Inserts that use the `I64` prefix are treated as two
+    ///                          32-bit arguments. They must be used before subsequent arguments
+    ///                          are used. Note that it may be easier for you to use
+    ///                          [`StringCchPrintf`] instead of this prefix.
+    ///
+    /// Any other nondigit character following a percent character is formatted in the output
+    /// message without the percent character. Following are some examples:
+    ///  * `%%` - A single percent sign.
+    ///  * `%space` - A single space. This format string can be used to ensure the appropriate
+    ///               number of trailing spaces in a message text line.
+    ///  * `%.` - A single period. This format string can be used to include a single period at the
+    ///           beginning of a line without terminating the message text definition.
+    ///  * `%!` - A single exclamation point. This format string can be used to include an
+    ///           exclamation point immediately after an insert without its being mistaken for the
+    ///           beginning of a format string.
+    ///  * `%n` - A hard line break when the format string occurs at the end of a line. This format
+    ///           string is useful when [`FormatMessage`] is supplying regular line breaks so the
+    ///           message fits in a certain width.
+    ///  * `%r` - A hard carriage return without a trailing newline character.
+    ///  * `%t` - A single tab.
+    ///
+    /// # Security Remarks
+    /// If this function is called without [`FORMAT_MESSAGE_IGNORE_INSERTS`], the `arguments`
+    /// parameter must contain enough parameters to satisfy all insertion sequences in the message
+    /// string, and they must be of the correct type. Therefore, do not use untrusted or unknown
+    /// message strings with inserts enabled because they can contain more insertion sequences than
+    /// `arguments` provides, or those that may be of the wrong type. In particular, it is unsafe
+    /// to take an arbitrary system error code returned from an API and use
+    /// [`FORMAT_MESSAGE_FROM_SYSTEM`] without [`FORMAT_MESSAGE_IGNORE_INSERTS`].
     pub fn FormatMessageW(
         flags: DWORD,
         source: LPCVOID,
