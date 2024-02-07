@@ -7,6 +7,8 @@
 //!  - Windows and Messages
 //!  - Windows GDI
 
+mod constants;
 mod types;
 
-pub use types::{HLOCAL, LPCVOID, LPVOID, UINT, WORD};
+pub use constants::*;
+pub use types::{BOOL, HLOCAL, LPCVOID, LPVOID, UINT, WORD};

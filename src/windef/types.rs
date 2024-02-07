@@ -1,5 +1,8 @@
 use crate::HANDLE;
-use std::ffi::{c_uint, c_ushort, c_void};
+use std::ffi::{c_int, c_uint, c_ushort, c_void};
+
+/// A Boolean variable (should be [`TRUE`] or [`FALSE`]).
+pub type BOOL = c_int;
 
 /// A handle to a local memory block
 pub type HLOCAL = HANDLE;
