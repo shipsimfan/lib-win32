@@ -2,7 +2,7 @@ use crate::UINT;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{LocalLock, LocalReAlloc};
+use crate::{LocalFlags, LocalLock, LocalReAlloc};
 
 /// Allocates fixed memory. The return value is a pointer to the memory object.
 pub const LMEM_FIXED: UINT = 0x0000;
@@ -29,5 +29,14 @@ pub const LPTR: UINT = 0x0040;
 pub const LHND: UINT = 0x0042;
 
 /// If [`LMEM_MODIFY`] is specified, [`LocalReAlloc`] modifies the attributes of the memory object
-/// only.
+/// only
 pub const LMEM_MODIFY: UINT = 0x0080;
+
+/// Mask for the lock count from [`LocalFlags`]
+pub const LMEM_LOCKCOUNT: UINT = 0x00FF;
+
+/// The memory region is marked as discarded
+pub const LMEM_DISCARDABLE: UINT = 0x0F00;
+
+/// The local handle is not valid
+pub const LMEM_INVALID_HANDLE: UINT = 0x8000;
