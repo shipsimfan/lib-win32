@@ -8,6 +8,9 @@ use crate::{FALSE, TRUE};
 /// A Boolean variable (should be [`TRUE`] or [`FALSE`]).
 pub type BOOL = c_int;
 
+/// A handle to a global memory block
+pub type HGLOBAL = HANDLE;
+
 /// A handle to a local memory block
 pub type HLOCAL = HANDLE;
 
