@@ -1,6 +1,7 @@
 mod format_message_w;
 mod global_alloc;
 mod global_flags;
+mod global_free;
 mod local_alloc;
 mod local_flags;
 mod local_free;
@@ -13,6 +14,7 @@ mod local_unlock;
 pub use format_message_w::{FormatMessageW, FormatMessageW as FormatMessage};
 pub use global_alloc::GlobalAlloc;
 pub use global_flags::GlobalFlags;
+pub use global_free::GlobalFree;
 pub use local_alloc::LocalAlloc;
 pub use local_flags::LocalFlags;
 pub use local_free::LocalFree;
