@@ -2,7 +2,9 @@ use crate::HGLOBAL;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, GlobalAlloc, GlobalFlags, GlobalLock, GlobalReAlloc, LocalAlloc};
+use crate::{
+    GetLastError, GlobalAlloc, GlobalFlags, GlobalLock, GlobalReAlloc, GlobalUnlock, LocalAlloc,
+};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
