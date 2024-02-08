@@ -3,7 +3,8 @@ use crate::{HGLOBAL, UINT};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, GlobalAlloc, GMEM_DISCARDED, GMEM_FIXED, GMEM_INVALID_HANDLE, GMEM_LOCKCOUNT,
+    GetLastError, GlobalAlloc, GlobalReAlloc, GMEM_DISCARDED, GMEM_FIXED, GMEM_INVALID_HANDLE,
+    GMEM_LOCKCOUNT,
 };
 
 #[link(name = "Kernel32")]

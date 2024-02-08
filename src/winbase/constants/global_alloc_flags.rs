@@ -2,7 +2,7 @@ use crate::UINT;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GlobalFlags, GlobalLock};
+use crate::{GlobalFlags, GlobalLock, GlobalReAlloc};
 
 /// Allocates fixed memory. The return value is a pointer.
 pub const GMEM_FIXED: UINT = 0x0000;
@@ -21,6 +21,10 @@ pub const GPTR: UINT = 0x0040;
 
 /// Combines [`GMEM_MOVEABLE`] and [`GMEM_ZEROINIT`]
 pub const GHND: UINT = 0x0042;
+
+/// If [`GMEM_MODIFY`] is specified, [`GlobalReAlloc`] modifies the attributes of the memory object
+/// only
+pub const GMEM_MODIFY: UINT = 0x0080;
 
 /// Mask for the lock count from [`GlobalFlags`]
 pub const GMEM_LOCKCOUNT: UINT = 0x00FF;
