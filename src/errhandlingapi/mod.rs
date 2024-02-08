@@ -4,4 +4,4 @@
 
 mod functions;
 
-pub use functions::GetLastError;
+pub use functions::{GetLastError, SetLastError};

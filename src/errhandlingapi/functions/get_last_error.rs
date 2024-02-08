@@ -2,8 +2,9 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{FormatMessage, HRESULT, HRESULT_FROM_WIN32};
+use crate::{FormatMessage, SetLastError, HRESULT, HRESULT_FROM_WIN32};
 
+#[link(name = "Kernel32")]
 extern "system" {
     /// Retrieves the calling thread's last-error code value. The last-error code is maintained on
     /// a per-thread basis. Multiple threads do not overwrite each other's last-error code.
