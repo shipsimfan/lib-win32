@@ -14,7 +14,9 @@ pub mod strsafe;
 // Headers automatically included with `Windows.h`
 pub mod basetsd;
 pub mod errhandlingapi;
+pub mod handleapi;
 pub mod intsafe;
+pub mod memoryapi;
 pub mod winbase;
 pub mod windef;
 pub mod winerror;
@@ -23,7 +25,9 @@ pub mod winuser;
 
 pub use basetsd::*;
 pub use errhandlingapi::*;
+pub use handleapi::*;
 pub use intsafe::*;
+pub use memoryapi::*;
 pub use winbase::*;
 pub use windef::*;
 pub use winerror::*;

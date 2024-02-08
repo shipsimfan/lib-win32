@@ -16,6 +16,8 @@
 //!  - Windows Management Instrumentation
 //!  - Windows Runtime C++ reference
 
+mod constants;
 mod types;
 
+pub use constants::*;
 pub use types::{HANDLE, HRESULT, LANGID, LONG, LPTSTR, LPWSTR, PVOID, TCHAR, WCHAR};
