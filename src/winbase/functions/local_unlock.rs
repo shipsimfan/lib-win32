@@ -3,8 +3,8 @@ use crate::{BOOL, HLOCAL};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, LocalAlloc, LocalLock, ERROR_NOT_LOCKED, FALSE, LMEM_FIXED, LMEM_MOVEABLE,
-    NO_ERROR,
+    GetLastError, LocalAlloc, LocalLock, LocalReAlloc, ERROR_NOT_LOCKED, FALSE, LMEM_FIXED,
+    LMEM_MOVEABLE, NO_ERROR,
 };
 
 #[link(name = "Kernel32")]

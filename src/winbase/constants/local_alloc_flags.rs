@@ -2,7 +2,7 @@ use crate::UINT;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::LocalLock;
+use crate::{LocalLock, LocalReAlloc};
 
 /// Allocates fixed memory. The return value is a pointer to the memory object.
 pub const LMEM_FIXED: UINT = 0x0000;
@@ -27,3 +27,7 @@ pub const LPTR: UINT = 0x0040;
 
 /// Combines [`LMEM_MOVEABLE`] and [`LMEM_ZEROINIT`]
 pub const LHND: UINT = 0x0042;
+
+/// If [`LMEM_MODIFY`] is specified, [`LocalReAlloc`] modifies the attributes of the memory object
+/// only.
+pub const LMEM_MODIFY: UINT = 0x0080;

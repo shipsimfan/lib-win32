@@ -2,7 +2,7 @@ use crate::HLOCAL;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, LocalAlloc, LocalLock, LocalUnlock};
+use crate::{GetLastError, LocalAlloc, LocalLock, LocalReAlloc, LocalUnlock};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 

@@ -20,4 +20,6 @@ mod constants;
 mod functions;
 
 pub use constants::*;
-pub use functions::{FormatMessage, FormatMessageW, LocalAlloc, LocalFree, LocalLock, LocalUnlock};
+pub use functions::{
+    FormatMessage, FormatMessageW, LocalAlloc, LocalFree, LocalLock, LocalReAlloc, LocalUnlock,
+};

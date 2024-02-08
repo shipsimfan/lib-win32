@@ -2,7 +2,7 @@ use crate::{HLOCAL, LPVOID};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, LocalAlloc, LocalUnlock, LMEM_FIXED};
+use crate::{GetLastError, LocalAlloc, LocalReAlloc, LocalUnlock, LMEM_FIXED};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
