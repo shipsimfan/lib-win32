@@ -8,6 +8,7 @@
 #![feature(c_variadic)]
 
 pub mod basetsd;
+pub mod errhandlingapi;
 pub mod intsafe;
 pub mod winbase;
 pub mod windef;
@@ -15,6 +16,7 @@ pub mod winerror;
 pub mod winnt;
 
 pub use basetsd::*;
+pub use errhandlingapi::*;
 pub use intsafe::*;
 pub use winbase::*;
 pub use windef::*;

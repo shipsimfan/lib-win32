@@ -3,7 +3,8 @@ use crate::DWORD;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, LocalFree, ERROR_MORE_DATA, ERROR_RESOURCE_TYPE_NOT_FOUND, LPTSTR, TCHAR,
+    FormatMessage, GetLastError, LocalFree, ERROR_MORE_DATA, ERROR_RESOURCE_TYPE_NOT_FOUND, LPTSTR,
+    TCHAR,
 };
 #[allow(unused_imports)]
 use std::{ffi::VaList, ptr::null};
