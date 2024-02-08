@@ -3,8 +3,8 @@ use crate::{HGLOBAL, SIZE_T, UINT};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, GlobalFree, GlobalLock, LocalAlloc, LocalFree, GHND, GMEM_FIXED, GMEM_MOVEABLE,
-    GMEM_ZEROINIT, GPTR,
+    GetLastError, GlobalFree, GlobalLock, GlobalSize, LocalAlloc, LocalFree, GHND, GMEM_FIXED,
+    GMEM_MOVEABLE, GMEM_ZEROINIT, GPTR,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
