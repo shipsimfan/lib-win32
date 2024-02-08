@@ -21,6 +21,7 @@ mod functions;
 
 pub use constants::*;
 pub use functions::{
-    FormatMessage, FormatMessageW, GlobalAlloc, GlobalFlags, GlobalFree, GlobalHandle, LocalAlloc,
-    LocalFlags, LocalFree, LocalHandle, LocalLock, LocalReAlloc, LocalSize, LocalUnlock,
+    FormatMessage, FormatMessageW, GlobalAlloc, GlobalFlags, GlobalFree, GlobalHandle, GlobalLock,
+    LocalAlloc, LocalFlags, LocalFree, LocalHandle, LocalLock, LocalReAlloc, LocalSize,
+    LocalUnlock,
 };

@@ -2,7 +2,7 @@ use crate::UINT;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::GlobalFlags;
+use crate::{GlobalFlags, GlobalLock};
 
 /// Allocates fixed memory. The return value is a pointer.
 pub const GMEM_FIXED: UINT = 0x0000;
