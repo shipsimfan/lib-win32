@@ -2,14 +2,18 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, SetLastErrorEx};
+use crate::{GetLastError, SetLastError};
 
-#[link(name = "Kernel32")]
+#[link(name = "User32")]
 extern "system" {
-    /// Sets the last-error code for the calling thread.
+    /// Sets the last-error code.
+    ///
+    /// Currently, this function is identical to the [`SetLastError`] function. The second
+    /// parameter is ignored.
     ///
     /// # Parameters
     ///  * `err_code` - The last-error code for the thread.
+    ///  * `type` - This parameter is ignored.
     ///
     /// # Remarks
     /// The last-error code is kept in thread local storage so that multiple threads do not
@@ -25,7 +29,7 @@ extern "system" {
     /// Error codes are 32-bit values (bit 31 is the most significant bit). Bit 29 is reserved for
     /// application-defined error codes; no system error code has this bit set. If you are defining
     /// an error code for your application, set this bit to indicate that the error code has been
-    /// defined by your application and to ensure that your error code does not conflict with any
+    /// defined by the application and to ensure that your error code does not conflict with any
     /// system-defined error codes.
-    pub fn SetLastError(err_code: DWORD);
+    pub fn SetLastErrorEx(err_code: DWORD, r#type: DWORD);
 }

@@ -14,6 +14,7 @@ pub mod winbase;
 pub mod windef;
 pub mod winerror;
 pub mod winnt;
+pub mod winuser;
 
 pub use basetsd::*;
 pub use errhandlingapi::*;
@@ -22,3 +23,4 @@ pub use winbase::*;
 pub use windef::*;
 pub use winerror::*;
 pub use winnt::*;
+pub use winuser::*;
