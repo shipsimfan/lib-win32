@@ -6,10 +6,13 @@ use core::ffi::c_size_t;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{strsafe::{
-    StringCchPrintf, STRSAFE_E_INSUFFICIENT_BUFFER, STRSAFE_E_INVALID_PARAMETER, STRSAFE_MAX_CCH,
-    S_OK,
-}, SUCCEEDED, FAILED};
+use crate::{
+    strsafe::{
+        StringCchPrintf, StringCchPrintfEx, STRSAFE_E_INSUFFICIENT_BUFFER,
+        STRSAFE_E_INVALID_PARAMETER, STRSAFE_MAX_CCH, S_OK,
+    },
+    FAILED, SUCCEEDED,
+};
 #[allow(unused_imports)]
 use std::ptr::null;
 
