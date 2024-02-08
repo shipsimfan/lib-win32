@@ -2,7 +2,7 @@ use crate::{HLOCAL, SIZE_T};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, LocalAlloc, LocalFlags, LocalReAlloc};
+use crate::{GetLastError, LocalAlloc, LocalFlags, LocalHandle, LocalReAlloc};
 
 #[link(name = "Kernel32")]
 extern "system" {
