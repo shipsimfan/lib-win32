@@ -4,7 +4,7 @@ use crate::{HGLOBAL, SIZE_T, UINT};
 #[allow(unused_imports)]
 use crate::{
     GetLastError, GlobalFree, GlobalLock, GlobalSize, LocalAlloc, LocalFree, GHND, GMEM_FIXED,
-    GMEM_MOVEABLE, GMEM_ZEROINIT, GPTR, PAGE_EXECUTE,
+    GMEM_MOVEABLE, GMEM_ZEROINIT, GPTR, PAGE_EXECUTE, VirtualAlloc, VirtualProtect
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;

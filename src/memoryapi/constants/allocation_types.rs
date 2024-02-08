@@ -2,7 +2,7 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{LocalAlloc, ERROR_INVALID_ADDRESS, PAGE_NOACCESS};
+use crate::{LocalAlloc, ERROR_INVALID_ADDRESS, PAGE_NOACCESS, VirtualAlloc};
 #[allow(unused_imports)]
 use std::ptr::null;
 

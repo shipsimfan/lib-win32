@@ -2,7 +2,7 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{VirtualProtect, SEC_NOCACHE, SEC_WRITECOMBINE};
+use crate::{VirtualProtect, SEC_NOCACHE, SEC_WRITECOMBINE, VirtualAlloc};
 
 /// Disables all access to the committed region of pages. An attempt to read from, write to, or
 /// execute the committed region results in an access violation.

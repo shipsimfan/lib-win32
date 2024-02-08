@@ -2,7 +2,7 @@ use crate::{BOOL, DWORD, LPVOID, PDWORD, SIZE_T};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, GlobalAlloc, LocalAlloc, MEM_RESERVE, PAGE_GUARD};
+use crate::{GetLastError, GlobalAlloc, LocalAlloc, VirtualAlloc, MEM_RESERVE, PAGE_GUARD};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
