@@ -1,5 +1,9 @@
 use crate::UINT;
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::LocalLock;
+
 /// Allocates fixed memory. The return value is a pointer to the memory object.
 pub const LMEM_FIXED: UINT = 0x0000;
 

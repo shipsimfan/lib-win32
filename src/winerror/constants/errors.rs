@@ -3,6 +3,9 @@ use crate::HRESULT;
 /// The operation completed successfully.
 pub const ERROR_SUCCESS: HRESULT = 0;
 
+/// There was no error
+pub const NO_ERROR: HRESULT = 0;
+
 /// Incorrect function.
 pub const ERROR_INVALID_FUNCTION: HRESULT = 1;
 

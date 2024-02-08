@@ -1,6 +1,10 @@
 use crate::HANDLE;
 use std::ffi::{c_int, c_uint, c_ushort, c_void};
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::{FALSE, TRUE};
+
 /// A Boolean variable (should be [`TRUE`] or [`FALSE`]).
 pub type BOOL = c_int;
 
