@@ -4,4 +4,4 @@ mod constants;
 mod functions;
 
 pub use constants::*;
-pub use functions::{VirtualAlloc, VirtualProtect};
+pub use functions::{VirtualAlloc, VirtualAllocEx, VirtualProtect};
