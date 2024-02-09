@@ -2,7 +2,7 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{INVALID_HANDLE_VALUE, PAGE_READONLY};
+use crate::{VirtualAllocExNuma, INVALID_HANDLE_VALUE, PAGE_READONLY};
 
 /// Sets the file that is specified to be an executable image file.
 ///
