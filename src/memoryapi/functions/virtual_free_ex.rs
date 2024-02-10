@@ -3,7 +3,7 @@ use crate::{BOOL, DWORD, HANDLE, LPVOID, SIZE_T};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, VirtualAlloc, VirtualAlloc2, VirtualAllocEx, VirtualFree,
+    GetLastError, VirtualAlloc, VirtualAlloc2, VirtualAlloc2FromApp, VirtualAllocEx, VirtualFree,
     MEM_COALESCE_PLACEHOLDERS, MEM_DECOMMIT, MEM_PRESERVE_PLACEHOLDER, MEM_RELEASE,
 };
 
@@ -60,7 +60,7 @@ extern "system" {
     ///                                      be merged.
     ///    * [`MEM_PRESERVE_PLACEHOLDER`] - Frees an allocation back to a placeholder (after you've
     ///                                     replaced a placeholder with a private allocation using
-    ///                                     [`VirtualAlloc2`] or [`Virtual2AllocFromApp`]). To
+    ///                                     [`VirtualAlloc2`] or [`VirtualAlloc2FromApp`]). To
     ///                                     split a placeholder into two placeholders, specify
     ///                                     `MEM_RELEASE | MEM_PRESERVE_PLACEHOLDER`.
     ///
