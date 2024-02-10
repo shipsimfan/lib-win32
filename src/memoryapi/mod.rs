@@ -5,5 +5,6 @@ mod functions;
 
 pub use constants::*;
 pub use functions::{
-    VirtualAlloc, VirtualAllocEx, VirtualAllocExNuma, VirtualFree, VirtualProtect, VirtualProtectEx,
+    VirtualAlloc, VirtualAllocEx, VirtualAllocExNuma, VirtualFree, VirtualFreeEx, VirtualProtect,
+    VirtualProtectEx,
 };

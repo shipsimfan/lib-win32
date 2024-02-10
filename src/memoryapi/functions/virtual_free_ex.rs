@@ -1,36 +1,35 @@
-use crate::{BOOL, DWORD, LPVOID, SIZE_T};
+use crate::{BOOL, DWORD, HANDLE, LPVOID, SIZE_T};
 
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, VirtualAlloc, VirtualAllocEx, VirtualFreeEx, MEM_COALESCE_PLACEHOLDERS,
+    GetLastError, VirtualAlloc, VirtualAllocEx, VirtualFree, MEM_COALESCE_PLACEHOLDERS,
     MEM_DECOMMIT, MEM_PRESERVE_PLACEHOLDER, MEM_RELEASE,
 };
 
 #[link(name = "Kernel32")]
 extern "system" {
-    /// Releases, decommits, or releases and decommits a region of pages within the virtual address
-    /// space of the calling process.
-    ///
-    /// To free memory allocated in another process by the [`VirtualAllocEx`] function, use the
-    /// [`VirtualFreeEx`] function.
+    /// Releases, decommits, or releases and decommits a region of memory within the virtual
+    /// address space of a specified process.
     ///
     /// # Parameters
-    ///  * `address` - A pointer to the base address of the region of pages to be freed. If the
-    ///                `free_type` parameter is [`MEM_RELEASE`], this parameter must be the base
-    ///                address returned by the [`VirtualAlloc`] function when the region of pages
-    ///                is reserved.
-    ///  * `size` - The size of the region of memory to be freed, in bytes. If the `free_type`
-    ///             parameter is [`MEM_RELEASE`], this parameter must be 0 (zero). The function
-    ///             frees the entire region that is reserved in the initial allocation call to
-    ///             [`VirtualAlloc`]. If the `free_type` parameter is [`MEM_DECOMMIT`], the
-    ///             function decommits all memory pages that contain one or more bytes in the range
-    ///             from the `address` parameter to `address + size`. This means, for example, that
-    ///             a 2-byte region of memory that straddles a page boundary causes both pages to
-    ///             be decommitted. If `address` is the base address returned by [`VirtualAlloc`]
-    ///             and `size` is 0 (zero), the function decommits the entire region that is
-    ///             allocated by [`VirtualAlloc`]. After that, the entire region is in the reserved
-    ///             state.
+    ///  * `process` - A handle to a process. The function frees memory within the virtual address
+    ///                space of the process. The handle must have the `PROCESS_VM_OPERATION` access
+    ///                right.
+    ///  * `address` - A pointer to the starting address of the region of memory to be freed. If
+    ///                the `free_type` parameter is [`MEM_RELEASE`], `address` must be the base
+    ///                address returned by the [`VirtualAllocEx`] function when the region is
+    ///                reserved.
+    ///  * `size` - The size of the region of memory to free, in bytes. If the `free_type`
+    ///             parameter is [`MEM_RELEASE`], `size` must be 0 (zero). The function frees the
+    ///             entire region that is reserved in the initial allocation call to
+    ///             [`VirtualAllocEx`]. If `free_type` is [`MEM_DECOMMIT`], the function decommits
+    ///             all memory pages that contain one or more bytes in the range from the `address`
+    ///             parameter to `address + size`. This means, for example, that a 2-byte region of
+    ///             memory that straddles a page boundary causes both pages to be decommitted. If
+    ///             `address` is the base address returned by [`VirtualAllocEx`] and `size` is 0
+    ///             (zero), the function decommits the entire region that is allocated by
+    ///             [`VirtualAllocEx`]. After that, the entire region is in the reserved state.
     ///  * `free_type` - The type of free operation. This parameter can contain the following
     ///                  values:
     ///   * [`MEM_DECOMMIT`] - Decommits the specified region of committed pages. After the
@@ -110,5 +109,5 @@ extern "system" {
     ///  - The base address of the enclave for the `address` parameter.
     ///  - 0 for the `size` parameter.
     ///  - [`MEM_RELEASE`] for the `free_type` parameter.
-    pub fn VirtualFree(address: LPVOID, size: SIZE_T, free_type: DWORD) -> BOOL;
+    pub fn VirtualFreeEx(process: HANDLE, address: LPVOID, size: SIZE_T, free_type: DWORD) -> BOOL;
 }
