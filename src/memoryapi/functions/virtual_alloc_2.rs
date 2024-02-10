@@ -3,8 +3,8 @@ use crate::{HANDLE, MEM_EXTENDED_PARAMETER, PVOID, SIZE_T, ULONG};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, GetSystemInfo, LocalAlloc, VirtualAlloc, VirtualFree, VirtualFreeEx,
-    VirtualProtectEx, ERROR_INVALID_ADDRESS, MEM_ADDRESS_REQUIREMENTS, MEM_COMMIT,
+    GetLargePageMinimum, GetLastError, GetSystemInfo, LocalAlloc, VirtualAlloc, VirtualFree,
+    VirtualFreeEx, VirtualProtectEx, ERROR_INVALID_ADDRESS, MEM_ADDRESS_REQUIREMENTS, MEM_COMMIT,
     MEM_EXTENDED_PARAMETER_TYPE, MEM_LARGE_PAGES, MEM_PHYSICAL, MEM_REPLACE_PLACEHOLDER,
     MEM_RESERVE, MEM_RESERVE_PLACEHOLDER, MEM_RESET, MEM_RESET_UNDO, MEM_TOP_DOWN, PAGE_EXECUTE,
     PAGE_EXECUTE_READWRITE, PAGE_GUARD, PAGE_NOACCESS, PAGE_NOCACHE, PAGE_READWRITE,

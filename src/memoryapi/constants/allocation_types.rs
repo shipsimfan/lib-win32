@@ -3,8 +3,8 @@ use crate::DWORD;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    LocalAlloc, VirtualAlloc, VirtualAlloc2, VirtualFree, VirtualFreeEx, ERROR_INVALID_ADDRESS,
-    MEM_ADDRESS_REQUIREMENTS, PAGE_NOACCESS,
+    GetLargePageMinimum, LocalAlloc, VirtualAlloc, VirtualAlloc2, VirtualFree, VirtualFreeEx,
+    ERROR_INVALID_ADDRESS, MEM_ADDRESS_REQUIREMENTS, PAGE_NOACCESS,
 };
 #[allow(unused_imports)]
 use std::ptr::null;

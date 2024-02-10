@@ -2,7 +2,7 @@ use crate::{PVOID, SIZE_T};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::GetSystemInfo;
+use crate::{GetLargePageMinimum, GetSystemInfo};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 

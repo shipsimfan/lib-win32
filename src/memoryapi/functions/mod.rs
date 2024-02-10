@@ -1,3 +1,4 @@
+mod get_large_page_minimum;
 mod virtual_alloc;
 mod virtual_alloc_2;
 mod virtual_alloc_2_from_app;
@@ -8,6 +9,7 @@ mod virtual_free_ex;
 mod virtual_protect;
 mod virtual_protect_ex;
 
+pub use get_large_page_minimum::GetLargePageMinimum;
 pub use virtual_alloc::VirtualAlloc;
 pub use virtual_alloc_2::VirtualAlloc2;
 pub use virtual_alloc_2_from_app::VirtualAlloc2FromApp;

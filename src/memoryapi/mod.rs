@@ -5,6 +5,6 @@ mod functions;
 
 pub use constants::*;
 pub use functions::{
-    VirtualAlloc, VirtualAlloc2, VirtualAlloc2FromApp, VirtualAllocEx, VirtualAllocExNuma,
-    VirtualFree, VirtualFreeEx, VirtualProtect, VirtualProtectEx,
+    GetLargePageMinimum, VirtualAlloc, VirtualAlloc2, VirtualAlloc2FromApp, VirtualAllocEx,
+    VirtualAllocExNuma, VirtualFree, VirtualFreeEx, VirtualProtect, VirtualProtectEx,
 };
