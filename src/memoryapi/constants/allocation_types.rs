@@ -2,7 +2,10 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{LocalAlloc, ERROR_INVALID_ADDRESS, PAGE_NOACCESS, VirtualAlloc};
+use crate::{
+    LocalAlloc, VirtualAlloc, VirtualAlloc2, VirtualFree, VirtualFreeEx, ERROR_INVALID_ADDRESS,
+    MEM_ADDRESS_REQUIREMENTS, PAGE_NOACCESS,
+};
 #[allow(unused_imports)]
 use std::ptr::null;
 
@@ -33,6 +36,24 @@ pub const MEM_COMMIT: DWORD = 0x00001000;
 /// Other memory allocation functions, such as [`LocalAlloc`], cannot use a reserved range of
 /// memory until it is released.
 pub const MEM_RESERVE: DWORD = 0x00002000;
+
+/// Replaces a placeholder with a normal private allocation. Only data/pf-backed section views are
+/// supported (no images, physical memory, etc.). When you replace a placeholder, `base_address`
+/// and `size` must exactly match those of the placeholder, and any provided
+/// [`MEM_ADDRESS_REQUIREMENTS`] structure must consist of all zeroes.
+///
+/// After you replace a placeholder with a private allocation, to free that allocation back to a
+/// placeholder, see the `free_type` parameter of [`VirtualFree`] and [`VirtualFreeEx`].
+///
+/// A placeholder is a type of reserved memory region
+pub const MEM_REPLACE_PLACEHOLDER: DWORD = 0x00004000;
+
+/// To create a placeholder, call [`VirtualAlloc2`] with `MEM_RESERVE | MEM_RESERVE_PLACEHOLDER`
+/// and `page_protection` set to [`PAGE_NOACCESS`]. To free/split/coalesce a placeholder, see the
+/// `free_type` parameter of [`VirtualFree`] and [`VirtualFreeEx`].
+///
+/// A placeholder is a type of reserved memory region.
+pub const MEM_RESERVE_PLACEHOLDER: DWORD = 0x00040000;
 
 /// Indicates that data in the memory range specified by `address` and `size` is no longer of
 /// interest. The pages should not be read from or written to the paging file. However, the memory

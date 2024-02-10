@@ -1,9 +1,9 @@
 use crate::{DWORD, HANDLE};
-use std::ffi::{c_int, c_uint, c_ushort, c_void};
+use std::ffi::{c_int, c_uint, c_ulong, c_ushort, c_void};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{FALSE, TRUE};
+use crate::{FALSE, LONG, TRUE};
 
 /// A Boolean variable (should be [`TRUE`] or [`FALSE`])
 pub type BOOL = c_int;
@@ -28,6 +28,9 @@ pub type PDWORD = *mut DWORD;
 
 /// An unsigned [`INT`]. The range is 0 through 4294967295 decimal.
 pub type UINT = c_uint;
+
+/// An unsigned [`LONG`]. The range is 0 through 4294967295 decimal.
+pub type ULONG = c_ulong;
 
 /// A 16-bit unsigned integer. The range is 0 through 65535 decimal.
 pub type WORD = c_ushort;

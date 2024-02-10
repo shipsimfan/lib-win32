@@ -3,8 +3,8 @@ use crate::{BOOL, DWORD, LPVOID, SIZE_T};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, VirtualAlloc, VirtualAllocEx, VirtualFreeEx, MEM_COALESCE_PLACEHOLDERS,
-    MEM_DECOMMIT, MEM_PRESERVE_PLACEHOLDER, MEM_RELEASE,
+    GetLastError, VirtualAlloc, VirtualAlloc2, VirtualAllocEx, VirtualFreeEx,
+    MEM_COALESCE_PLACEHOLDERS, MEM_DECOMMIT, MEM_PRESERVE_PLACEHOLDER, MEM_RELEASE,
 };
 
 #[link(name = "Kernel32")]

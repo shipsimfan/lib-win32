@@ -1,3 +1,6 @@
+/// A 64-bit unsigned integer.
+pub type DWORD64 = u64;
+
 /// An unsigned long type for pointer precision. Use when casting a pointer to a long type to
 /// perform pointer arithmetic. (Also commonly used for general 32-bit parameters that have been
 /// extended to 64 bits in 64-bit Windows.)

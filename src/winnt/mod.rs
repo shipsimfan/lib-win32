@@ -17,7 +17,13 @@
 //!  - Windows Runtime C++ reference
 
 mod constants;
+mod enumerations;
+mod structures;
 mod types;
 
 pub use constants::*;
+pub use enumerations::MEM_EXTENDED_PARAMETER_TYPE;
+pub use structures::{
+    MEM_ADDRESS_REQUIREMENTS, MEM_EXTENDED_PARAMETER, MEM_EXTENDED_PARAMETER_UNION,
+};
 pub use types::{HANDLE, HRESULT, LANGID, LONG, LPTSTR, LPWSTR, PVOID, TCHAR, WCHAR};
