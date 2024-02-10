@@ -18,6 +18,8 @@
 
 mod constants;
 mod functions;
+mod structures;
+mod types;
 
 pub use constants::*;
 pub use functions::{
@@ -25,3 +27,5 @@ pub use functions::{
     GlobalReAlloc, GlobalSize, GlobalUnlock, LocalAlloc, LocalFlags, LocalFree, LocalHandle,
     LocalLock, LocalReAlloc, LocalSize, LocalUnlock,
 };
+pub use structures::SECURITY_ATTRIBUTES;
+pub use types::LPSECURITY_ATTRIBUTES;

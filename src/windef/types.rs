@@ -1,5 +1,5 @@
 use crate::{DWORD, HANDLE};
-use std::ffi::{c_int, c_uint, c_ulong, c_ushort, c_void};
+use std::ffi::{c_int, c_uchar, c_uint, c_ulong, c_ushort, c_void};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -7,6 +7,9 @@ use crate::{FALSE, LONG, TRUE};
 
 /// A Boolean variable (should be [`TRUE`] or [`FALSE`])
 pub type BOOL = c_int;
+
+/// A byte (8 bits)
+pub type BYTE = c_uchar;
 
 /// A handle to a global memory block
 pub type HGLOBAL = HANDLE;
