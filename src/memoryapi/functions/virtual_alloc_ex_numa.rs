@@ -3,13 +3,14 @@ use crate::{DWORD, HANDLE, LPVOID, SIZE_T};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, LocalAlloc, ERROR_INVALID_ADDRESS, MEM_COMMIT, MEM_LARGE_PAGES, MEM_PHYSICAL,
-    MEM_RESERVE, MEM_RESET, MEM_RESET_UNDO, MEM_TOP_DOWN, PAGE_EXECUTE, PAGE_GUARD, PAGE_NOACCESS,
-    PAGE_NOCACHE, PAGE_READWRITE, PAGE_WRITECOMBINE,
+    GetLastError, LocalAlloc, VirtualProtectEx, ERROR_INVALID_ADDRESS, MEM_COMMIT, MEM_LARGE_PAGES,
+    MEM_PHYSICAL, MEM_RESERVE, MEM_RESET, MEM_RESET_UNDO, MEM_TOP_DOWN, PAGE_EXECUTE, PAGE_GUARD,
+    PAGE_NOACCESS, PAGE_NOCACHE, PAGE_READWRITE, PAGE_WRITECOMBINE,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
+#[link(name = "Kernel32")]
 extern "system" {
     /// Reserves, commits, or changes the state of a region of memory within the virtual address
     /// space of the specified process, and specifies the NUMA node for the physical memory.
