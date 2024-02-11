@@ -11,5 +11,5 @@ mod functions;
 mod types;
 
 pub use constants::*;
-pub use functions::{RegSaveKeyEx, RegSaveKeyExW};
-pub use types::LSTATUS;
+pub use functions::{RegOpenCurrentUser, RegSaveKeyEx, RegSaveKeyExW};
+pub use types::{LSTATUS, REGSAM};

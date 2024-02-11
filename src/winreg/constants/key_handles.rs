@@ -1,5 +1,9 @@
 use crate::HKEY;
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::RegOpenCurrentUser;
+
 /// Registry entries subordinate to this key define types (or classes) of documents and the
 /// properties associated with those types. Shell and COM applications use the information stored
 /// under this key.

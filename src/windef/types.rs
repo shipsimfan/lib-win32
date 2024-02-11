@@ -29,8 +29,11 @@ pub type LPCVOID = *const c_void;
 /// A pointer to any type
 pub type LPVOID = *mut c_void;
 
-/// A pointer to a DWORD
+/// A pointer to a [`DWORD`]
 pub type PDWORD = *mut DWORD;
+
+/// A pointer to an [`HKEY`]
+pub type PHKEY = *mut HKEY;
 
 /// An unsigned [`INT`]. The range is 0 through 4294967295 decimal.
 pub type UINT = c_uint;

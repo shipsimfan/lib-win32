@@ -1,5 +1,11 @@
-use crate::{ACL, SID, WORD};
+use crate::{ACL, DWORD, SID, WORD};
 use std::ffi::{c_long, c_void};
+
+/// The [`ACCESS_MASK`] data type is a [`DWORD`] value that defines standard, specific, and generic
+/// rights. These rights are used in access control entries (ACEs) and are the primary means of
+/// specifying the requested or granted access to an object.
+#[allow(non_camel_case_types)]
+pub type ACCESS_MASK = DWORD;
 
 /// A handle to an object
 pub type HANDLE = PVOID;
