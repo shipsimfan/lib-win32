@@ -9,6 +9,7 @@
 #![feature(c_size_t)]
 
 // Header not automatically included with `Windows.h`
+pub mod shlwapi;
 pub mod strsafe;
 
 // Headers automatically included with `Windows.h`
@@ -30,6 +31,7 @@ pub use errhandlingapi::*;
 pub use handleapi::*;
 pub use intsafe::*;
 pub use memoryapi::*;
+pub use shlwapi::*;
 pub use sysinfoapi::*;
 pub use winbase::*;
 pub use windef::*;
