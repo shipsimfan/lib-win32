@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::VirtualAlloc2;
+use crate::{MapViewOfFile3, VirtualAlloc2};
 
 /// Defines values for extended parameters used for file mapping into an address space.
 #[repr(C)]
