@@ -11,4 +11,6 @@ mod constants;
 mod types;
 
 pub use constants::*;
-pub use types::{BOOL, BYTE, HGLOBAL, HLOCAL, INT, LPCVOID, LPVOID, PDWORD, UINT, ULONG, WORD};
+pub use types::{
+    BOOL, BYTE, HGLOBAL, HKEY, HLOCAL, INT, LPCVOID, LPVOID, PDWORD, UINT, ULONG, WORD,
+};

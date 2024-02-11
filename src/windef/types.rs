@@ -14,6 +14,9 @@ pub type BYTE = c_uchar;
 /// A handle to a global memory block
 pub type HGLOBAL = HANDLE;
 
+/// A handle to a registry key
+pub type HKEY = HANDLE;
+
 /// A handle to a local memory block
 pub type HLOCAL = HANDLE;
 

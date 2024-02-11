@@ -22,6 +22,7 @@ pub mod winbase;
 pub mod windef;
 pub mod winerror;
 pub mod winnt;
+pub mod winreg;
 pub mod winuser;
 
 pub use basetsd::*;
@@ -34,4 +35,5 @@ pub use winbase::*;
 pub use windef::*;
 pub use winerror::*;
 pub use winnt::*;
+pub use winreg::*;
 pub use winuser::*;
