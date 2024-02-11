@@ -11,5 +11,8 @@ mod functions;
 mod types;
 
 pub use constants::*;
-pub use functions::{RegCopyTree, RegCopyTreeW, RegOpenCurrentUser, RegSaveKeyEx, RegSaveKeyExW};
+pub use functions::{
+    RegCopyTree, RegCopyTreeW, RegOpenCurrentUser, RegRestoreKey, RegRestoreKeyW, RegSaveKeyEx,
+    RegSaveKeyExW,
+};
 pub use types::{LSTATUS, REGSAM};
