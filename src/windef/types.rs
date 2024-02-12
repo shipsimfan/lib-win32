@@ -26,6 +26,9 @@ pub type INT = c_int;
 /// A pointer to a constant of any type
 pub type LPCVOID = *const c_void;
 
+/// A pointer to a [`DWORD`]
+pub type LPDWORD = *mut DWORD;
+
 /// A pointer to any type
 pub type LPVOID = *mut c_void;
 
