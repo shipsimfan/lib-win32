@@ -2,6 +2,10 @@ use crate::{
     REGSAM, STANDARD_RIGHTS_ALL, STANDARD_RIGHTS_READ, STANDARD_RIGHTS_WRITE, SYNCHRONIZE,
 };
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::STANDARD_RIGHTS_REQUIRED;
+
 /// Required to query the values of a registry key.
 pub const KEY_QUERY_VALUE: REGSAM = 0x0001;
 

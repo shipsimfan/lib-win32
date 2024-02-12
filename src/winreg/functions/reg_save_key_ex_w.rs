@@ -3,9 +3,10 @@ use crate::{DWORD, HKEY, LPCWSTR, LSTATUS, SECURITY_ATTRIBUTES};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, RegCopyTree, RegLoadKey, RegReplaceKey, RegRestoreKey, RegSaveKeyEx, SHCopyKey,
-    ERROR_INVALID_PARAMETER, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT,
-    HKEY_LOCAL_MACHINE, REG_LATEST_FORMAT, REG_NO_COMPRESSION, REG_STANDARD_FORMAT,
+    FormatMessage, RegCopyTree, RegCreateKeyEx, RegLoadKey, RegReplaceKey, RegRestoreKey,
+    RegSaveKeyEx, SHCopyKey, ERROR_INVALID_PARAMETER, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM,
+    HKEY_CLASSES_ROOT, HKEY_LOCAL_MACHINE, REG_LATEST_FORMAT, REG_NO_COMPRESSION,
+    REG_STANDARD_FORMAT,
 };
 #[allow(unused_imports)]
 use std::ptr::null;
@@ -76,7 +77,7 @@ extern "system" {
     /// by other applications. Instead, use the [`SHCopyKey`] function or the [`RegCopyTree`]
     /// function.
     ///
-    /// The calling process must have the `SE_BACKUP_NAME` privilege enabled.
+    /// The calling process must have the "SE_BACKUP_NAME" privilege enabled.
     pub fn RegSaveKeyExW(
         key: HKEY,
         file: LPCWSTR,

@@ -63,5 +63,5 @@ pub const SEC_WRITECOMBINE: DWORD = 0x40000000;
 /// Enables large pages to be used when mapping images or backing from the pagefile, but not when
 /// mapping data for regular files. Be sure to specify the maximum size of the file mapping object
 /// as the minimum size of a large page reported by the [`GetLargePageMinimum`] function and to
-/// enable the `SeLockMemoryPrivilege` privilege.
+/// enable the "SeLockMemoryPrivilege" privilege.
 pub const SEC_LARGE_PAGES: DWORD = 0x80000000;

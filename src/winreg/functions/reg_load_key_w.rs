@@ -44,7 +44,7 @@ extern "system" {
     /// If `key` is a handle returned by [`RegConnectRegistry`], then the path specified in `file`
     /// is relative to the remote computer.
     ///
-    /// The calling process must have the `SE_RESTORE_NAME` and `SE_BACKUP_NAME` privileges on the
+    /// The calling process must have the "SE_RESTORE_NAME` and `SE_BACKUP_NAME" privileges on the
     /// computer in which the registry resides. To load a hive without requiring these special
     /// privileges, use the [`RegLoadAppKey`] function.
     pub fn RegLoadKeyW(key: HKEY, sub_key: LPCWSTR, file: LPCWSTR) -> LSTATUS;

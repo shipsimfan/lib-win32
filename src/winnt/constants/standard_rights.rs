@@ -33,3 +33,7 @@ pub const STANDARD_RIGHTS_EXECUTE: REGSAM = READ_CONTROL;
 /// Combines [`DELETE`], [`READ_CONTROL`], [`WRITE_DAC`], [`WRITE_OWNER`], and [`SYNCHRONIZE`]
 /// access
 pub const STANDARD_RIGHTS_ALL: REGSAM = 0x001F0000;
+
+/// The [`ACCESS_SYSTEM_SECURITY`] access right controls the ability to get or set the SACL in an
+/// object's security descriptor.
+pub const ACCESS_SYSTEM_SECURITY: REGSAM = 0x01000000;

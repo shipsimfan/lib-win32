@@ -1,6 +1,8 @@
 mod acl_revision;
+mod create_key_options;
 mod generic_rights;
 mod hive_formats;
+mod key_creation_disposition;
 mod key_restore_flags;
 mod mem_extended_parameter_flags;
 mod protections;
@@ -8,8 +10,10 @@ mod registry_access_rights;
 mod standard_rights;
 
 pub use acl_revision::*;
+pub use create_key_options::*;
 pub use generic_rights::*;
 pub use hive_formats::*;
+pub use key_creation_disposition::*;
 pub use key_restore_flags::*;
 pub use mem_extended_parameter_flags::*;
 pub use protections::*;

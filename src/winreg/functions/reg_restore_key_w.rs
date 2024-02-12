@@ -3,9 +3,9 @@ use crate::{DWORD, HKEY, LPCWSTR, LSTATUS};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, RegRestoreKey, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT,
-    HKEY_CURRENT_CONFIG, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS, REG_FORCE_RESTORE,
-    REG_WHOLE_HIVE_VOLATILE,
+    FormatMessage, RegCreateKeyEx, RegRestoreKey, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM,
+    HKEY_CLASSES_ROOT, HKEY_CURRENT_CONFIG, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS,
+    REG_FORCE_RESTORE, REG_WHOLE_HIVE_VOLATILE,
 };
 
 #[link(name = "Advapi32")]
@@ -48,7 +48,7 @@ extern "system" {
     ///
     /// If any subkeys of the `key` parameter are open, [`RegRestoreKey`] fails.
     ///
-    /// The calling process must have the `SE_RESTORE_NAME` and `SE_BACKUP_NAME` privileges on the
+    /// The calling process must have the "SE_RESTORE_NAME` and `SE_BACKUP_NAME" privileges on the
     /// computer in which the registry resides.
     ///
     /// This function replaces the keys and values below the specified key with the keys and values

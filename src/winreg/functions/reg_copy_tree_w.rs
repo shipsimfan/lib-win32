@@ -3,7 +3,8 @@ use crate::{HKEY, LPCWSTR, LSTATUS};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, KEY_CREATE_SUB_KEY, KEY_READ,
+    FormatMessage, RegCreateKeyEx, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, KEY_CREATE_SUB_KEY,
+    KEY_READ,
 };
 #[allow(unused_imports)]
 use std::ptr::null;
