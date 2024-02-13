@@ -3,9 +3,10 @@ use crate::{DWORD, HKEY, LPCWSTR, LSTATUS, PHKEY, REGSAM};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, RegCreateKeyEx, RegOpenCurrentUser, RegOpenKeyEx, RegSetValueEx, ERROR_SUCCESS,
-    FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT, HKEY_CURRENT_CONFIG, HKEY_CURRENT_USER,
-    HKEY_LOCAL_MACHINE, HKEY_USERS, KEY_READ, KEY_SET_VALUE, REG_OPTION_OPEN_LINK,
+    FormatMessage, RegCreateKeyEx, RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyTransacted,
+    RegSetValueEx, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT,
+    HKEY_CURRENT_CONFIG, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS, KEY_READ,
+    KEY_SET_VALUE, REG_OPTION_OPEN_LINK,
 };
 #[allow(unused_imports)]
 use std::ptr::null;
