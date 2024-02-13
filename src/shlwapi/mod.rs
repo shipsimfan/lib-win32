@@ -2,4 +2,4 @@
 
 mod functions;
 
-pub use functions::{SHCopyKey, SHCopyKeyW};
+pub use functions::{SHCopyKey, SHCopyKeyW, SHDeleteKey, SHDeleteKeyW};
