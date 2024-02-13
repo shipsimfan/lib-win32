@@ -13,9 +13,10 @@ mod types;
 pub use constants::*;
 pub use functions::{
     RegConnectRegistry, RegConnectRegistryW, RegCopyTree, RegCopyTreeW, RegCreateKeyEx,
-    RegCreateKeyExW, RegCreateKeyTransacted, RegCreateKeyTransactedW, RegLoadKey, RegLoadKeyW,
-    RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyExW, RegOpenKeyTransacted, RegOpenKeyTransactedW,
-    RegReplaceKey, RegReplaceKeyW, RegRestoreKey, RegRestoreKeyW, RegSaveKey, RegSaveKeyEx,
-    RegSaveKeyExW, RegSaveKeyW, RegSetKeyValue, RegSetKeyValueW, RegSetValueEx, RegSetValueExW,
+    RegCreateKeyExW, RegCreateKeyTransacted, RegCreateKeyTransactedW, RegDeleteKeyTransacted,
+    RegDeleteKeyTransactedW, RegLoadKey, RegLoadKeyW, RegOpenCurrentUser, RegOpenKeyEx,
+    RegOpenKeyExW, RegOpenKeyTransacted, RegOpenKeyTransactedW, RegReplaceKey, RegReplaceKeyW,
+    RegRestoreKey, RegRestoreKeyW, RegSaveKey, RegSaveKeyEx, RegSaveKeyExW, RegSaveKeyW,
+    RegSetKeyValue, RegSetKeyValueW, RegSetValueEx, RegSetValueExW,
 };
 pub use types::{LSTATUS, REGSAM};
