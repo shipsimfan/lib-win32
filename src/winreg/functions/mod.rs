@@ -6,6 +6,7 @@ mod reg_create_key_transacted_w;
 mod reg_delete_key_ex_w;
 mod reg_delete_key_transacted_w;
 mod reg_delete_tree_w;
+mod reg_flush_key;
 mod reg_load_app_key_w;
 mod reg_load_key_w;
 mod reg_open_current_user;
@@ -32,6 +33,7 @@ pub use reg_delete_key_transacted_w::{
     RegDeleteKeyTransactedW, RegDeleteKeyTransactedW as RegDeleteKeyTransacted,
 };
 pub use reg_delete_tree_w::{RegDeleteTreeW, RegDeleteTreeW as RegDeleteTree};
+pub use reg_flush_key::RegFlushKey;
 pub use reg_load_app_key_w::{RegLoadAppKeyW, RegLoadAppKeyW as RegLoadAppKey};
 pub use reg_load_key_w::{RegLoadKeyW, RegLoadKeyW as RegLoadKey};
 pub use reg_open_current_user::RegOpenCurrentUser;
