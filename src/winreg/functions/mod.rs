@@ -5,6 +5,7 @@ mod reg_create_key_ex_w;
 mod reg_create_key_transacted_w;
 mod reg_delete_key_ex_w;
 mod reg_delete_key_transacted_w;
+mod reg_load_app_key_w;
 mod reg_load_key_w;
 mod reg_open_current_user;
 mod reg_open_key_ex_w;
@@ -27,6 +28,7 @@ pub use reg_delete_key_ex_w::{RegDeleteKeyExW, RegDeleteKeyExW as RegDeleteKeyEx
 pub use reg_delete_key_transacted_w::{
     RegDeleteKeyTransactedW, RegDeleteKeyTransactedW as RegDeleteKeyTransacted,
 };
+pub use reg_load_app_key_w::{RegLoadAppKeyW, RegLoadAppKeyW as RegLoadAppKey};
 pub use reg_load_key_w::{RegLoadKeyW, RegLoadKeyW as RegLoadKey};
 pub use reg_open_current_user::RegOpenCurrentUser;
 pub use reg_open_key_ex_w::{RegOpenKeyExW, RegOpenKeyExW as RegOpenKeyEx};
