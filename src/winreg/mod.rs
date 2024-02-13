@@ -18,6 +18,6 @@ pub use functions::{
     RegLoadAppKey, RegLoadAppKeyW, RegLoadKey, RegLoadKeyW, RegOpenCurrentUser, RegOpenKeyEx,
     RegOpenKeyExW, RegOpenKeyTransacted, RegOpenKeyTransactedW, RegReplaceKey, RegReplaceKeyW,
     RegRestoreKey, RegRestoreKeyW, RegSaveKey, RegSaveKeyEx, RegSaveKeyExW, RegSaveKeyW,
-    RegSetKeyValue, RegSetKeyValueW, RegSetValueEx, RegSetValueExW,
+    RegSetKeySecurity, RegSetKeyValue, RegSetKeyValueW, RegSetValueEx, RegSetValueExW,
 };
 pub use types::{LSTATUS, REGSAM};

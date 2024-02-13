@@ -3,8 +3,9 @@ use crate::{DWORD, LPCWSTR, LSTATUS, PHKEY, REGSAM};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, RegCloseKey, RegLoadAppKey, RegLoadKey, RegSaveKey, RegSaveKeyEx, ERROR_SUCCESS,
-    FORMAT_MESSAGE_FROM_SYSTEM, HKEY_LOCAL_MACHINE, HKEY_USERS, REG_PROCESS_APPKEY,
+    FormatMessage, RegCloseKey, RegLoadAppKey, RegLoadKey, RegSaveKey, RegSaveKeyEx,
+    RegSetKeySecurity, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, HKEY_LOCAL_MACHINE, HKEY_USERS,
+    REG_PROCESS_APPKEY,
 };
 
 #[link(name = "Advapi32")]

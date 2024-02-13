@@ -1,4 +1,4 @@
-use crate::{ACL, DWORD, SID, WORD};
+use crate::{ACL, DWORD, SECURITY_DESCRIPTOR, SID, WORD};
 use std::ffi::{c_long, c_void};
 
 /// The [`ACCESS_MASK`] data type is a [`DWORD`] value that defines standard, specific, and generic
@@ -31,6 +31,10 @@ pub type LPWSTR = *mut WCHAR;
 /// A pointer to an [`ACL`]
 pub type PACL = *mut ACL;
 
+/// A pointer to a [`SECURITY_DESCRIPTOR`] structure
+#[allow(non_camel_case_types)]
+pub type PSECURITY_DESCRIPTOR = *mut SECURITY_DESCRIPTOR;
+
 /// A pointer to a [`SID`] structure
 pub type PSID = *mut SID;
 
@@ -42,6 +46,15 @@ pub type PVOID = *mut c_void;
 /// stores the [`SECURITY_DESCRIPTOR_CONTROL`] bits.
 #[allow(non_camel_case_types)]
 pub type SECURITY_DESCRIPTOR_CONTROL = WORD;
+
+/// The [`SECURITY_INFORMATION`] data type identifies the object-related security information being
+/// set or queried. This security information includes:
+///  - The owner of an object
+///  - The primary group of an object
+///  - The discretionary access control list (DACL) of an object
+///  - The system access control list (SACL) of an object
+#[allow(non_camel_case_types)]
+pub type SECURITY_INFORMATION = DWORD;
 
 /// A [`WCHAR`]
 pub type TCHAR = WCHAR;
