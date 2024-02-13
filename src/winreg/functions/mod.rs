@@ -1,3 +1,4 @@
+mod reg_close_key;
 mod reg_connect_registry_w;
 mod reg_copy_tree_w;
 mod reg_create_key_ex_w;
@@ -15,6 +16,7 @@ mod reg_save_key_w;
 mod reg_set_key_value_w;
 mod reg_set_value_ex_w;
 
+pub use reg_close_key::RegCloseKey;
 pub use reg_connect_registry_w::{RegConnectRegistryW, RegConnectRegistryW as RegConnectRegistry};
 pub use reg_copy_tree_w::{RegCopyTreeW, RegCopyTreeW as RegCopyTree};
 pub use reg_create_key_ex_w::{RegCreateKeyExW, RegCreateKeyExW as RegCreateKeyEx};

@@ -3,7 +3,8 @@ use crate::{LSTATUS, PHKEY, REGSAM};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CURRENT_USER, HKEY_USERS,
+    FormatMessage, RegCloseKey, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CURRENT_USER,
+    HKEY_USERS,
 };
 
 #[link(name = "Advapi32")]
