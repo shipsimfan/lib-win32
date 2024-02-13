@@ -19,6 +19,6 @@ pub use functions::{
     RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyExW, RegOpenKeyTransacted, RegOpenKeyTransactedW,
     RegReplaceKey, RegReplaceKeyW, RegRestoreKey, RegRestoreKeyW, RegSaveKey, RegSaveKeyEx,
     RegSaveKeyExW, RegSaveKeyW, RegSetKeySecurity, RegSetKeyValue, RegSetKeyValueW, RegSetValueEx,
-    RegSetValueExW,
+    RegSetValueExW, RegUnLoadKey, RegUnLoadKeyW,
 };
 pub use types::{LSTATUS, REGSAM};

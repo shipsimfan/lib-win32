@@ -18,6 +18,7 @@ mod reg_save_key_w;
 mod reg_set_key_security;
 mod reg_set_key_value_w;
 mod reg_set_value_ex_w;
+mod reg_unload_key_w;
 
 pub use reg_close_key::RegCloseKey;
 pub use reg_connect_registry_w::{RegConnectRegistryW, RegConnectRegistryW as RegConnectRegistry};
@@ -45,3 +46,4 @@ pub use reg_save_key_w::{RegSaveKeyW, RegSaveKeyW as RegSaveKey};
 pub use reg_set_key_security::RegSetKeySecurity;
 pub use reg_set_key_value_w::{RegSetKeyValueW, RegSetKeyValueW as RegSetKeyValue};
 pub use reg_set_value_ex_w::{RegSetValueExW, RegSetValueExW as RegSetValueEx};
+pub use reg_unload_key_w::{RegUnLoadKeyW, RegUnLoadKeyW as RegUnLoadKey};
