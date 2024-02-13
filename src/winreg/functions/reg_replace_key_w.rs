@@ -3,7 +3,7 @@ use crate::{HKEY, LPCWSTR, LSTATUS};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, RegCreateKeyEx, RegReplaceKey, RegSaveKey, ERROR_SUCCESS,
+    FormatMessage, RegConnectRegistry, RegCreateKeyEx, RegReplaceKey, RegSaveKey, ERROR_SUCCESS,
     FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT, HKEY_CURRENT_CONFIG, HKEY_CURRENT_USER,
     HKEY_LOCAL_MACHINE, HKEY_USERS,
 };
