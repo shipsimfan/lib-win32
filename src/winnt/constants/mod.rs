@@ -1,6 +1,8 @@
 mod acl_revision;
+mod allocation_alignment;
 mod create_key_options;
 mod generic_rights;
+mod heap_flags;
 mod hive_formats;
 mod key_creation_disposition;
 mod key_restore_flags;
@@ -11,8 +13,10 @@ mod standard_rights;
 mod value_types;
 
 pub use acl_revision::*;
+pub use allocation_alignment::*;
 pub use create_key_options::*;
 pub use generic_rights::*;
+pub use heap_flags::*;
 pub use hive_formats::*;
 pub use key_creation_disposition::*;
 pub use key_restore_flags::*;
