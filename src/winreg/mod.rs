@@ -13,10 +13,10 @@ mod types;
 pub use constants::*;
 pub use functions::{
     RegCloseKey, RegConnectRegistry, RegConnectRegistryW, RegCopyTree, RegCopyTreeW,
-    RegCreateKeyEx, RegCreateKeyExW, RegCreateKeyTransacted, RegCreateKeyTransactedW,
+    RegCreateKeyEx, RegCreateKeyExW, RegCreateKeyTransacted, RegCreateKeyTransactedW, RegDeleteKey,
     RegDeleteKeyEx, RegDeleteKeyExW, RegDeleteKeyTransacted, RegDeleteKeyTransactedW,
-    RegDeleteTree, RegDeleteTreeW, RegFlushKey, RegLoadAppKey, RegLoadAppKeyW, RegLoadKey,
-    RegLoadKeyW, RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyExW, RegOpenKeyTransacted,
+    RegDeleteKeyW, RegDeleteTree, RegDeleteTreeW, RegFlushKey, RegLoadAppKey, RegLoadAppKeyW,
+    RegLoadKey, RegLoadKeyW, RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyExW, RegOpenKeyTransacted,
     RegOpenKeyTransactedW, RegReplaceKey, RegReplaceKeyW, RegRestoreKey, RegRestoreKeyW,
     RegSaveKey, RegSaveKeyEx, RegSaveKeyExW, RegSaveKeyW, RegSetKeySecurity, RegSetKeyValue,
     RegSetKeyValueW, RegSetValueEx, RegSetValueExW, RegUnLoadKey, RegUnLoadKeyW,
