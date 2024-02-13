@@ -9,12 +9,14 @@
 #![feature(c_size_t)]
 
 // Header not automatically included with `Windows.h`
+pub mod ktmw32;
 pub mod shlwapi;
 pub mod strsafe;
 
 // Headers automatically included with `Windows.h`
 pub mod basetsd;
 pub mod errhandlingapi;
+pub mod guiddef;
 pub mod handleapi;
 pub mod intsafe;
 pub mod memoryapi;
@@ -28,6 +30,7 @@ pub mod winuser;
 
 pub use basetsd::*;
 pub use errhandlingapi::*;
+pub use guiddef::*;
 pub use handleapi::*;
 pub use intsafe::*;
 pub use memoryapi::*;

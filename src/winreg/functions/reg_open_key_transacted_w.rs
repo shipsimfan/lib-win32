@@ -3,10 +3,10 @@ use crate::{DWORD, HANDLE, HKEY, LPCWSTR, LSTATUS, PHKEY, PVOID, REGSAM};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, RegCreateKeyEx, RegCreateKeyTransacted, RegDeleteKeyEx, RegDeleteKeyTransacted,
-    RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyTransacted, ERROR_NO_SYSTEM_RESOURCES,
-    ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT, HKEY_CURRENT_USER,
-    HKEY_LOCAL_MACHINE, HKEY_USERS,
+    ktmw32::CreateTransaction, FormatMessage, RegCreateKeyEx, RegCreateKeyTransacted,
+    RegDeleteKeyEx, RegDeleteKeyTransacted, RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyTransacted,
+    ERROR_NO_SYSTEM_RESOURCES, ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT,
+    HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS,
 };
 #[allow(unused_imports)]
 use std::ptr::null;
