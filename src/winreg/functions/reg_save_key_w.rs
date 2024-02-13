@@ -3,8 +3,8 @@ use crate::{HKEY, LPCWSTR, LSTATUS, SECURITY_ATTRIBUTES};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, RegCopyTree, RegCreateKeyEx, RegLoadKey, RegReplaceKey, RegRestoreKey,
-    RegSaveKey, RegSaveKeyEx, SHCopyKey, ERROR_ALREADY_EXISTS, ERROR_SUCCESS,
+    FormatMessage, RegCopyTree, RegCreateKeyEx, RegLoadKey, RegOpenKeyEx, RegReplaceKey,
+    RegRestoreKey, RegSaveKey, RegSaveKeyEx, SHCopyKey, ERROR_ALREADY_EXISTS, ERROR_SUCCESS,
     FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT, HKEY_CURRENT_USER,
 };
 #[allow(unused_imports)]
