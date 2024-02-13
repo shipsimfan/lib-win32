@@ -15,9 +15,10 @@ pub use functions::{
     RegCloseKey, RegConnectRegistry, RegConnectRegistryW, RegCopyTree, RegCopyTreeW,
     RegCreateKeyEx, RegCreateKeyExW, RegCreateKeyTransacted, RegCreateKeyTransactedW,
     RegDeleteKeyEx, RegDeleteKeyExW, RegDeleteKeyTransacted, RegDeleteKeyTransactedW,
-    RegLoadAppKey, RegLoadAppKeyW, RegLoadKey, RegLoadKeyW, RegOpenCurrentUser, RegOpenKeyEx,
-    RegOpenKeyExW, RegOpenKeyTransacted, RegOpenKeyTransactedW, RegReplaceKey, RegReplaceKeyW,
-    RegRestoreKey, RegRestoreKeyW, RegSaveKey, RegSaveKeyEx, RegSaveKeyExW, RegSaveKeyW,
-    RegSetKeySecurity, RegSetKeyValue, RegSetKeyValueW, RegSetValueEx, RegSetValueExW,
+    RegDeleteTree, RegDeleteTreeW, RegLoadAppKey, RegLoadAppKeyW, RegLoadKey, RegLoadKeyW,
+    RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyExW, RegOpenKeyTransacted, RegOpenKeyTransactedW,
+    RegReplaceKey, RegReplaceKeyW, RegRestoreKey, RegRestoreKeyW, RegSaveKey, RegSaveKeyEx,
+    RegSaveKeyExW, RegSaveKeyW, RegSetKeySecurity, RegSetKeyValue, RegSetKeyValueW, RegSetValueEx,
+    RegSetValueExW,
 };
 pub use types::{LSTATUS, REGSAM};

@@ -4,9 +4,9 @@ use crate::{DWORD, HANDLE, HKEY, LPCWSTR, LSTATUS, PVOID, REGSAM};
 #[allow(unused_imports)]
 use crate::{
     ktmw32::CreateTransaction, FormatMessage, RegCreateKeyEx, RegCreateKeyTransacted,
-    RegDeleteKeyTransacted, RegOpenKeyEx, RegOpenKeyTransacted, DELETE, ERROR_SUCCESS,
-    FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT, HKEY_CURRENT_CONFIG, HKEY_CURRENT_USER,
-    HKEY_LOCAL_MACHINE, HKEY_USERS,
+    RegDeleteKeyTransacted, RegDeleteTree, RegOpenKeyEx, RegOpenKeyTransacted, DELETE,
+    ERROR_SUCCESS, FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT, HKEY_CURRENT_CONFIG,
+    HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS,
 };
 #[allow(unused_imports)]
 use std::ptr::null;
