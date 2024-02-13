@@ -6,7 +6,7 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    FormatMessage, RegCreateKeyTransacted, RegDeleteKeyTransacted, RegLoadKey,
+    FormatMessage, RegCreateKeyTransacted, RegDeleteKeyEx, RegDeleteKeyTransacted, RegLoadKey,
     RegOpenKeyTransacted, RegSaveKey, RegSetValueEx, ACCESS_SYSTEM_SECURITY, ERROR_SUCCESS,
     FORMAT_MESSAGE_FROM_SYSTEM, HKEY_CLASSES_ROOT, HKEY_CURRENT_CONFIG, HKEY_CURRENT_USER,
     HKEY_LOCAL_MACHINE, HKEY_USERS, KEY_CREATE_SUB_KEY, KEY_READ, KEY_WRITE, REG_CREATED_NEW_KEY,

@@ -2,6 +2,7 @@ mod reg_connect_registry_w;
 mod reg_copy_tree_w;
 mod reg_create_key_ex_w;
 mod reg_create_key_transacted_w;
+mod reg_delete_key_ex_w;
 mod reg_delete_key_transacted_w;
 mod reg_load_key_w;
 mod reg_open_current_user;
@@ -20,6 +21,7 @@ pub use reg_create_key_ex_w::{RegCreateKeyExW, RegCreateKeyExW as RegCreateKeyEx
 pub use reg_create_key_transacted_w::{
     RegCreateKeyTransactedW, RegCreateKeyTransactedW as RegCreateKeyTransacted,
 };
+pub use reg_delete_key_ex_w::{RegDeleteKeyExW, RegDeleteKeyExW as RegDeleteKeyEx};
 pub use reg_delete_key_transacted_w::{
     RegDeleteKeyTransactedW, RegDeleteKeyTransactedW as RegDeleteKeyTransacted,
 };
