@@ -2,7 +2,7 @@ use crate::{DWORD, HANDLE, LPGUID, LPSECURITY_ATTRIBUTES, LPWSTR};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, INFINITE, INVALID_HANDLE_VALUE, SECURITY_ATTRIBUTES};
+use crate::{CloseHandle, GetLastError, INFINITE, INVALID_HANDLE_VALUE, SECURITY_ATTRIBUTES};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
