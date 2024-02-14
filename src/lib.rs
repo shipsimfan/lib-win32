@@ -11,6 +11,7 @@
 // Header not automatically included with `Windows.h`
 pub mod ktmw32;
 pub mod shlwapi;
+pub mod string;
 pub mod strsafe;
 
 // Headers automatically included with `Windows.h`
@@ -46,3 +47,8 @@ pub use winerror::*;
 pub use winnt::*;
 pub use winreg::*;
 pub use winuser::*;
+
+// Utilities for easier working with the raw bindings
+mod utility;
+
+pub use utility::*;
