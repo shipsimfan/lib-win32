@@ -27,5 +27,5 @@ pub use functions::{
     GlobalReAlloc, GlobalSize, GlobalUnlock, LocalAlloc, LocalFlags, LocalFree, LocalHandle,
     LocalLock, LocalReAlloc, LocalSize, LocalUnlock,
 };
-pub use structures::SECURITY_ATTRIBUTES;
+pub use structures::{FILETIME, SECURITY_ATTRIBUTES};
 pub use types::LPSECURITY_ATTRIBUTES;

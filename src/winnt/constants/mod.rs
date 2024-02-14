@@ -10,6 +10,7 @@ mod mem_extended_parameter_flags;
 mod protections;
 mod registry_access_rights;
 mod standard_rights;
+mod timer_access_rights;
 mod value_types;
 
 pub use acl_revision::*;
@@ -24,4 +25,5 @@ pub use mem_extended_parameter_flags::*;
 pub use protections::*;
 pub use registry_access_rights::*;
 pub use standard_rights::*;
+pub use timer_access_rights::*;
 pub use value_types::*;

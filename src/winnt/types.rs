@@ -19,6 +19,9 @@ pub type LANGID = WORD;
 /// A 64-bit signed integer. The range is -9223372036854775808 through 9223372036854775807 decimal.
 pub type LONG = c_long;
 
+/// A 64-bit signed integer. The range is -9223372036854775808 through 9223372036854775807 decimal.
+pub type LONGLONG = i64;
+
 /// A pointer to a constant null-terminated string of 16-bit Unicode characters
 pub type LPCWSTR = *const WCHAR;
 
