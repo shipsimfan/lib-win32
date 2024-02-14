@@ -2,7 +2,9 @@ use crate::{BOOL, HANDLE, LARGE_INTEGER, LONG, LPVOID, PTIMERAPCROUTINE};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, ERROR_NOT_SUPPORTED, FILETIME, TIMER_MODIFY_STATE, TRUE};
+use crate::{
+    CreateWaitableTimer, GetLastError, ERROR_NOT_SUPPORTED, FILETIME, TIMER_MODIFY_STATE, TRUE,
+};
 
 #[link(name = "Kernel32")]
 extern "system" {
