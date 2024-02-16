@@ -18,14 +18,14 @@ pub struct Error(HRESULT);
 /// Convert a Windows call result (0/[`null`] on error) into a [`Result<T>`]
 #[macro_export]
 macro_rules! try_get_last_error {
-    ($expr: expr) => {
-        let result = $expr;
+    ($expr: expr) => {{
+        let result = unsafe { $expr };
         if result as usize == 0 {
             Err($crate::Error::get_last_error())
         } else {
             Ok(result)
         }
-    };
+    }};
 }
 
 impl Error {
