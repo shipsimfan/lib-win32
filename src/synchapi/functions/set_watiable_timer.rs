@@ -3,7 +3,8 @@ use crate::{BOOL, HANDLE, LARGE_INTEGER, LONG, LPVOID, PTIMERAPCROUTINE};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    CreateWaitableTimer, GetLastError, ERROR_NOT_SUPPORTED, FILETIME, TIMER_MODIFY_STATE, TRUE,
+    CancelWaitableTimer, CreateWaitableTimer, GetLastError, ERROR_NOT_SUPPORTED, FILETIME,
+    TIMER_MODIFY_STATE, TRUE,
 };
 
 #[link(name = "Kernel32")]

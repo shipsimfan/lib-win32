@@ -2,7 +2,7 @@ use crate::{DWORD, STANDARD_RIGHTS_REQUIRED, SYNCHRONIZE};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::SetWaitableTimer;
+use crate::{CancelWaitableTimer, SetWaitableTimer};
 
 /// Reserved for future use.
 pub const TIMER_QUERY_STATE: DWORD = 0x0001;
