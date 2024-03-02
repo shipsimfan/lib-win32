@@ -5,5 +5,5 @@ mod functions;
 mod types;
 
 pub use constants::*;
-pub use functions::socket;
+pub use functions::{closesocket, socket};
 pub use types::SOCKET;
