@@ -13,6 +13,7 @@ pub mod ktmw32;
 pub mod shlwapi;
 pub mod string;
 pub mod strsafe;
+pub mod winsock2;
 
 // Headers automatically included with `Windows.h`
 pub mod basetsd;
