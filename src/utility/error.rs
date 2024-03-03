@@ -1,7 +1,7 @@
 use crate::{
-    string::wcslen, FormatMessage, GetLastError, LocalFree, DWORD, FORMAT_MESSAGE_ALLOCATE_BUFFER,
-    FORMAT_MESSAGE_FROM_SYSTEM, FORMAT_MESSAGE_IGNORE_INSERTS, HRESULT, HRESULT_FROM_WIN32,
-    LANG_NEUTRAL, LPWSTR, MAKELANGID, SUBLANG_DEFAULT,
+    string::wcslen, winsock2::WSAGetLastError, FormatMessage, GetLastError, LocalFree, DWORD,
+    FORMAT_MESSAGE_ALLOCATE_BUFFER, FORMAT_MESSAGE_FROM_SYSTEM, FORMAT_MESSAGE_IGNORE_INSERTS,
+    HRESULT, HRESULT_FROM_WIN32, LANG_NEUTRAL, LPWSTR, MAKELANGID, SUBLANG_DEFAULT,
 };
 use std::{
     fmt::Write,
@@ -28,6 +28,19 @@ macro_rules! try_get_last_error {
     }};
 }
 
+/// Convert a Windows call result (0/[`null`] on error) into a [`Result<T>`]
+#[macro_export]
+macro_rules! try_wsa_get_last_error {
+    ($expr: expr) => {{
+        let result = unsafe { $expr };
+        if result as usize == 0 {
+            Err($crate::Error::wsa_get_last_error())
+        } else {
+            Ok(result)
+        }
+    }};
+}
+
 impl Error {
     /// Creates a new [`Error`] from an [`HRESULT`]
     pub const fn new(error: HRESULT) -> Self {
@@ -43,6 +56,12 @@ impl Error {
     pub fn get_last_error() -> Self {
         let error = unsafe { GetLastError() };
         Error::new_win32(error)
+    }
+
+    /// Creates a new [`Error`] from the value of [`WSAGetLastError`]
+    pub fn wsa_get_last_error() -> Self {
+        let error = unsafe { WSAGetLastError() };
+        Error::new_win32(error as _)
     }
 
     /// Gets the underlying error value
