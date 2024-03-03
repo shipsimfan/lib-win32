@@ -28,12 +28,12 @@ macro_rules! try_get_last_error {
     }};
 }
 
-/// Convert a Windows call result (0/[`null`] on error) into a [`Result<T>`]
+/// Convert a Windows Socket call result ([`SOCKET_ERROR`] on error) into a [`Result<T>`]
 #[macro_export]
 macro_rules! try_wsa_get_last_error {
     ($expr: expr) => {{
         let result = unsafe { $expr };
-        if result as usize == 0 {
+        if result == $crate::winsock2::SOCKET_ERROR {
             Err($crate::Error::wsa_get_last_error())
         } else {
             Ok(result)
