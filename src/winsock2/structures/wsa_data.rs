@@ -2,7 +2,10 @@ use crate::{
     winsock2::{WSADESCRIPTION_LEN, WSASYS_STATUS_LEN},
     WORD,
 };
-use std::ffi::{c_char, c_ushort};
+use std::{
+    ffi::{c_char, c_ushort},
+    ptr::null_mut,
+};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -138,4 +141,18 @@ pub struct WSADATA {
     /// [`getsockopt`] to retrieve the value of option [`PVD_CONFIG`] for vendor-specific
     /// information.
     pub vendor_info: *mut c_char,
+}
+
+impl Default for WSADATA {
+    fn default() -> Self {
+        WSADATA {
+            version: 0,
+            high_version: 0,
+            max_sockets: 0,
+            max_udp_dg: 0,
+            vendor_info: null_mut(),
+            description: [0; WSADESCRIPTION_LEN + 1],
+            system_status: [0; WSASYS_STATUS_LEN + 1],
+        }
+    }
 }
