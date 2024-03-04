@@ -3,7 +3,7 @@ use std::ffi::c_int;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::winsock2::WSAGetLastError;
+use crate::winsock2::{WSAGetLastError, WSADATA};
 
 #[link(name = "Ws2_32")]
 extern "system" {
