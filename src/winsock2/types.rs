@@ -1,4 +1,4 @@
-use crate::{winsock2::WSADATA, UINT_PTR};
+use crate::{winsock2::WSADATA, HANDLE, UINT_PTR};
 use std::ffi::{c_uint, c_ulong, c_void};
 
 /// A socket group
@@ -21,3 +21,6 @@ pub type LPWSAPROTOCOL_INFOW = *mut c_void;
 
 /// A network socket
 pub type SOCKET = UINT_PTR;
+
+/// A Windows Socket event
+pub type WSAEVENT = HANDLE;

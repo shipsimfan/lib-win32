@@ -29,6 +29,9 @@ pub type LPCVOID = *const c_void;
 /// A pointer to a [`DWORD`]
 pub type LPDWORD = *mut DWORD;
 
+/// A pointer to an [`INT`]
+pub type LPINT = *mut c_int;
+
 /// A pointer to any type
 pub type LPVOID = *mut c_void;
 
