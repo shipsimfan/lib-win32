@@ -4,6 +4,7 @@ mod functions;
 mod types;
 
 pub use functions::{
-    CancelWaitableTimer, CreateWaitableTimer, CreateWaitableTimerW, SetWaitableTimer, SleepEx,
+    CancelWaitableTimer, CreateEvent, CreateEventW, CreateWaitableTimer, CreateWaitableTimerW,
+    SetWaitableTimer, SleepEx,
 };
 pub use types::PTIMERAPCROUTINE;
