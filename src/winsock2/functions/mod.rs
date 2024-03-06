@@ -1,6 +1,7 @@
 mod accept;
 mod bind;
 mod closesocket;
+mod listen;
 mod socket;
 mod wsa_cleanup;
 mod wsa_close_event;
@@ -13,6 +14,7 @@ mod wsa_startup;
 pub use accept::accept;
 pub use bind::bind;
 pub use closesocket::closesocket;
+pub use listen::listen;
 pub use socket::socket;
 pub use wsa_cleanup::WSACleanup;
 pub use wsa_close_event::WSACloseEvent;
