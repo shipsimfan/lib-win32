@@ -1,6 +1,7 @@
 mod accept;
 mod bind;
 mod closesocket;
+mod ioctlsocket;
 mod listen;
 mod socket;
 mod wsa_cleanup;
@@ -14,6 +15,7 @@ mod wsa_startup;
 pub use accept::accept;
 pub use bind::bind;
 pub use closesocket::closesocket;
+pub use ioctlsocket::ioctlsocket;
 pub use listen::listen;
 pub use socket::socket;
 pub use wsa_cleanup::WSACleanup;
