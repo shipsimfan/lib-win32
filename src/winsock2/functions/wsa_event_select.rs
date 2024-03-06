@@ -4,7 +4,7 @@ use std::ffi::{c_int, c_long};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    winsock2::{WSAGetLastError, SOCKET_ERROR},
+    winsock2::{accept, WSAGetLastError, SOCKET_ERROR},
     WSAEWOULDBLOCK,
 };
 #[allow(unused_imports)]

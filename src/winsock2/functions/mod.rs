@@ -1,3 +1,4 @@
+mod accept;
 mod bind;
 mod closesocket;
 mod socket;
@@ -9,6 +10,7 @@ mod wsa_get_last_error;
 mod wsa_socket_w;
 mod wsa_startup;
 
+pub use accept::accept;
 pub use bind::bind;
 pub use closesocket::closesocket;
 pub use socket::socket;
