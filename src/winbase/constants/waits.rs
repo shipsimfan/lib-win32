@@ -27,10 +27,6 @@ pub const WAIT_ABANDONED_0: DWORD = 0x80;
 /// thread.
 pub const WAIT_IO_COMPLETION: DWORD = 0x000000C0;
 
-/// The time-out interval elapsed, the conditions specified by the `wait_all` parameter were not
-/// satisfied, and no completion routines are queued.
-pub const WAIT_TIMEOUT: DWORD = 0x00000102;
-
 /// The function has failed.
 pub const WAIT_FAILED: DWORD = 0xFFFFFFFF;
 
