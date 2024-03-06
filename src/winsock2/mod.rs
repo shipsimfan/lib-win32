@@ -7,8 +7,8 @@ mod types;
 
 pub use constants::*;
 pub use functions::{
-    bind, closesocket, socket, WSACleanup, WSACloseEvent, WSACreateEvent, WSAGetLastError,
-    WSASocket, WSASocketW, WSAStartup,
+    bind, closesocket, socket, WSACleanup, WSACloseEvent, WSACreateEvent, WSAEventSelect,
+    WSAGetLastError, WSASocket, WSASocketW, WSAStartup,
 };
 pub use structures::{sockaddr, sockaddr_in, sockaddr_in6, WSADATA};
 pub use types::{in6_addr, in_addr, GROUP, LPWSADATA, LPWSAPROTOCOL_INFOW, SOCKET, WSAEVENT};
