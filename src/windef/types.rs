@@ -23,6 +23,9 @@ pub type HLOCAL = HANDLE;
 /// A 32-bit signed integer. The range is -2147483648 through 2147483647 decimal.
 pub type INT = c_int;
 
+/// A pointer to a [`BYTE`]
+pub type LPBYTE = *mut BYTE;
+
 /// A pointer to a constant of any type
 pub type LPCVOID = *const c_void;
 

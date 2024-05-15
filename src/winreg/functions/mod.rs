@@ -8,6 +8,7 @@ mod reg_delete_key_transacted_w;
 mod reg_delete_key_w;
 mod reg_delete_tree_w;
 mod reg_enum_key_ex_w;
+mod reg_enum_value_w;
 mod reg_flush_key;
 mod reg_get_value_w;
 mod reg_load_app_key_w;
@@ -38,6 +39,7 @@ pub use reg_delete_key_transacted_w::{
 pub use reg_delete_key_w::{RegDeleteKeyW, RegDeleteKeyW as RegDeleteKey};
 pub use reg_delete_tree_w::{RegDeleteTreeW, RegDeleteTreeW as RegDeleteTree};
 pub use reg_enum_key_ex_w::{RegEnumKeyExW, RegEnumKeyExW as RegEnumKeyEx};
+pub use reg_enum_value_w::{RegEnumValueW, RegEnumValueW as RegEnumValue};
 pub use reg_flush_key::RegFlushKey;
 pub use reg_get_value_w::{RegGetValueW, RegGetValueW as RegGetValue};
 pub use reg_load_app_key_w::{RegLoadAppKeyW, RegLoadAppKeyW as RegLoadAppKey};

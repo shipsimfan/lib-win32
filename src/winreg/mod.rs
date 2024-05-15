@@ -15,11 +15,11 @@ pub use functions::{
     RegCloseKey, RegConnectRegistry, RegConnectRegistryW, RegCopyTree, RegCopyTreeW,
     RegCreateKeyEx, RegCreateKeyExW, RegCreateKeyTransacted, RegCreateKeyTransactedW, RegDeleteKey,
     RegDeleteKeyEx, RegDeleteKeyExW, RegDeleteKeyTransacted, RegDeleteKeyTransactedW,
-    RegDeleteKeyW, RegDeleteTree, RegDeleteTreeW, RegEnumKeyEx, RegEnumKeyExW, RegFlushKey,
-    RegGetValue, RegGetValueW, RegLoadAppKey, RegLoadAppKeyW, RegLoadKey, RegLoadKeyW,
-    RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyExW, RegOpenKeyTransacted, RegOpenKeyTransactedW,
-    RegReplaceKey, RegReplaceKeyW, RegRestoreKey, RegRestoreKeyW, RegSaveKey, RegSaveKeyEx,
-    RegSaveKeyExW, RegSaveKeyW, RegSetKeySecurity, RegSetKeyValue, RegSetKeyValueW, RegSetValueEx,
-    RegSetValueExW, RegUnLoadKey, RegUnLoadKeyW,
+    RegDeleteKeyW, RegDeleteTree, RegDeleteTreeW, RegEnumKeyEx, RegEnumKeyExW, RegEnumValue,
+    RegEnumValueW, RegFlushKey, RegGetValue, RegGetValueW, RegLoadAppKey, RegLoadAppKeyW,
+    RegLoadKey, RegLoadKeyW, RegOpenCurrentUser, RegOpenKeyEx, RegOpenKeyExW, RegOpenKeyTransacted,
+    RegOpenKeyTransactedW, RegReplaceKey, RegReplaceKeyW, RegRestoreKey, RegRestoreKeyW,
+    RegSaveKey, RegSaveKeyEx, RegSaveKeyExW, RegSaveKeyW, RegSetKeySecurity, RegSetKeyValue,
+    RegSetKeyValueW, RegSetValueEx, RegSetValueExW, RegUnLoadKey, RegUnLoadKeyW,
 };
 pub use types::{LSTATUS, REGSAM};
