@@ -20,6 +20,9 @@ pub type HKEY = HANDLE;
 /// A handle to a local memory block
 pub type HLOCAL = HANDLE;
 
+/// A handle to a module. This is the base address of the module in memory.
+pub type HMODULE = HANDLE;
+
 /// A 32-bit signed integer. The range is -2147483648 through 2147483647 decimal.
 pub type INT = c_int;
 
