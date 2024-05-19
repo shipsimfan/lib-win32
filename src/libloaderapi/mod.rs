@@ -2,4 +2,4 @@
 
 mod functions;
 
-pub use functions::{LoadLibrary, LoadLibraryW};
+pub use functions::{FreeLibrary, LoadLibrary, LoadLibraryW};
