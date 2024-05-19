@@ -1,11 +1,14 @@
 use crate::{ACL, DWORD, SECURITY_DESCRIPTOR, SID, WORD};
-use std::ffi::{c_long, c_void};
+use std::ffi::{c_char, c_long, c_void};
 
 /// The [`ACCESS_MASK`] data type is a [`DWORD`] value that defines standard, specific, and generic
 /// rights. These rights are used in access control entries (ACEs) and are the primary means of
 /// specifying the requested or granted access to an object.
 #[allow(non_camel_case_types)]
 pub type ACCESS_MASK = DWORD;
+
+/// 	An 8-bit Windows (ANSI) character.
+pub type CHAR = c_char;
 
 /// A handle to an object
 pub type HANDLE = PVOID;
@@ -21,6 +24,9 @@ pub type LONG = c_long;
 
 /// A 64-bit signed integer. The range is -9223372036854775808 through 9223372036854775807 decimal.
 pub type LONGLONG = i64;
+
+/// A pointer to a constant null-terminated string of 8-bit Windows (ANSI) characters.
+pub type LPCSTR = *const CHAR;
 
 /// A pointer to a constant null-terminated string of 16-bit Unicode characters
 pub type LPCWSTR = *const WCHAR;

@@ -2,4 +2,4 @@
 
 mod functions;
 
-pub use functions::{FreeLibrary, LoadLibrary, LoadLibraryW};
+pub use functions::{FreeLibrary, GetProcAddress, LoadLibrary, LoadLibraryW};
