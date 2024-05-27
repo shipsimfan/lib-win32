@@ -29,5 +29,9 @@
 //!  - Windows GDI
 
 mod functions;
+mod structures;
+mod types;
 
-pub use functions::SetLastErrorEx;
+pub use functions::{RegisterClassEx, RegisterClassExW, SetLastErrorEx};
+pub use structures::{WNDCLASSEX, WNDCLASSEXW};
+pub use types::WNDPROC;
