@@ -28,10 +28,12 @@
 //!  - Windows Controls
 //!  - Windows GDI
 
+mod constants;
 mod functions;
 mod structures;
 mod types;
 
+pub use constants::*;
 pub use functions::{RegisterClassEx, RegisterClassExW, SetLastErrorEx};
 pub use structures::{WNDCLASSEX, WNDCLASSEXW};
 pub use types::WNDPROC;
