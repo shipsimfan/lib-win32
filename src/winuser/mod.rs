@@ -34,6 +34,8 @@ mod structures;
 mod types;
 
 pub use constants::*;
-pub use functions::{RegisterClassEx, RegisterClassExW, SetLastErrorEx};
+pub use functions::{
+    RegisterClassEx, RegisterClassExW, SetLastErrorEx, UnregisterClass, UnregisterClassW,
+};
 pub use structures::{WNDCLASSEX, WNDCLASSEXW};
 pub use types::WNDPROC;
