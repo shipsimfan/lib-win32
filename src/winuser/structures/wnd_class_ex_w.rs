@@ -1,4 +1,4 @@
-use crate::{HBRUSH, HCURSOR, HICON, HINSTANCE, LPCWSTR, UINT, WNDPROC};
+use crate::{DefWindowProc, HBRUSH, HCURSOR, HICON, HINSTANCE, LPCWSTR, UINT, WNDPROC};
 use std::ffi::c_int;
 
 // rustdoc imports
@@ -85,4 +85,23 @@ pub struct WNDCLASSEXW {
     /// [`null_mut`], the system searches the icon resource specified by the `icon` member for an
     /// icon of the appropriate size to use as the small icon.
     pub icon_sm: HICON,
+}
+
+impl Default for WNDCLASSEXW {
+    fn default() -> Self {
+        WNDCLASSEXW {
+            size: std::mem::size_of::<WNDCLASSEXW>() as u32,
+            style: 0,
+            wnd_proc: DefWindowProc,
+            cls_extra: 0,
+            wnd_extra: 0,
+            instance: null_mut(),
+            icon: null_mut(),
+            cursor: null_mut(),
+            background: null_mut(),
+            menu_name: null(),
+            class_name: null(),
+            icon_sm: null_mut(),
+        }
+    }
 }
