@@ -4,8 +4,8 @@ use std::ffi::c_int;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, MessageBoxEx, IDABORT, IDCANCEL, IDCLOSE, IDCONTINUE, IDHELP, IDIGNORE, IDNO,
-    IDOK, IDRETRY, IDTRYAGAIN, IDYES, MAKELANGID,
+    GetLastError, MessageBox, MessageBoxEx, IDABORT, IDCANCEL, IDCLOSE, IDCONTINUE, IDHELP,
+    IDIGNORE, IDNO, IDOK, IDRETRY, IDTRYAGAIN, IDYES, MAKELANGID,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;

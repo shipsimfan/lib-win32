@@ -35,8 +35,8 @@ mod types;
 
 pub use constants::*;
 pub use functions::{
-    DefWindowProc, DefWindowProcW, MessageBoxEx, MessageBoxExW, RegisterClassEx, RegisterClassExW,
-    SetLastErrorEx, UnregisterClass, UnregisterClassW,
+    DefWindowProc, DefWindowProcW, MessageBox, MessageBoxEx, MessageBoxExW, MessageBoxW,
+    RegisterClassEx, RegisterClassExW, SetLastErrorEx, UnregisterClass, UnregisterClassW,
 };
 pub use structures::{WNDCLASSEX, WNDCLASSEXW};
 pub use types::WNDPROC;
