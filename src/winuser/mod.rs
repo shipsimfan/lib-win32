@@ -35,10 +35,10 @@ mod types;
 
 pub use constants::*;
 pub use functions::{
-    CreateWindowEx, CreateWindowExW, DefWindowProc, DefWindowProcW, DestroyWindow, MessageBox,
-    MessageBoxEx, MessageBoxExW, MessageBoxW, PeekMessage, PeekMessageW, RegisterClassEx,
-    RegisterClassExW, SetLastErrorEx, ShowWindow, TranslateMessage, UnregisterClass,
-    UnregisterClassW,
+    CreateWindowEx, CreateWindowExW, DefWindowProc, DefWindowProcW, DestroyWindow, DispatchMessage,
+    DispatchMessageW, MessageBox, MessageBoxEx, MessageBoxExW, MessageBoxW, PeekMessage,
+    PeekMessageW, RegisterClassEx, RegisterClassExW, SetLastErrorEx, ShowWindow, TranslateMessage,
+    UnregisterClass, UnregisterClassW,
 };
 pub use structures::{MSG, WNDCLASSEX, WNDCLASSEXW};
 pub use types::{LPMSG, WNDPROC};
