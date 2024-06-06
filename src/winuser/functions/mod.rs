@@ -6,6 +6,7 @@ mod get_window_long_ptr_w;
 mod message_box_ex_w;
 mod message_box_w;
 mod peek_message_w;
+mod post_quit_message;
 mod register_class_ex_w;
 mod set_last_error_ex;
 mod set_window_long_ptr_w;
@@ -21,6 +22,7 @@ pub use get_window_long_ptr_w::{GetWindowLongPtrW, GetWindowLongPtrW as GetWindo
 pub use message_box_ex_w::{MessageBoxExW, MessageBoxExW as MessageBoxEx};
 pub use message_box_w::{MessageBoxW, MessageBoxW as MessageBox};
 pub use peek_message_w::{PeekMessageW, PeekMessageW as PeekMessage};
+pub use post_quit_message::PostQuitMessage;
 pub use register_class_ex_w::{RegisterClassExW, RegisterClassExW as RegisterClassEx};
 pub use set_last_error_ex::SetLastErrorEx;
 pub use set_window_long_ptr_w::{SetWindowLongPtrW, SetWindowLongPtrW as SetWindowLongPtr};
