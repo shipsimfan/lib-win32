@@ -41,5 +41,5 @@ pub use functions::{
     SetWindowLongPtr, SetWindowLongPtrW, ShowWindow, TranslateMessage, UnregisterClass,
     UnregisterClassW,
 };
-pub use structures::{MSG, WNDCLASSEX, WNDCLASSEXW};
+pub use structures::{CREATESTRUCT, CREATESTRUCTW, MSG, WNDCLASSEX, WNDCLASSEXW};
 pub use types::{LPMSG, WNDPROC};
