@@ -1,3 +1,4 @@
+mod create_window_ex_w;
 mod def_window_proc_w;
 mod destroy_window;
 mod message_box_ex_w;
@@ -8,6 +9,7 @@ mod set_last_error_ex;
 mod show_window;
 mod unregister_class_w;
 
+pub use create_window_ex_w::{CreateWindowExW, CreateWindowExW as CreateWindowEx};
 pub use def_window_proc_w::{DefWindowProcW, DefWindowProcW as DefWindowProc};
 pub use destroy_window::DestroyWindow;
 pub use message_box_ex_w::{MessageBoxExW, MessageBoxExW as MessageBoxEx};

@@ -35,6 +35,9 @@ pub type HKEY = HANDLE;
 /// A handle to a local memory block
 pub type HLOCAL = HANDLE;
 
+/// A handle to a menu.
+pub type HMENU = HANDLE;
+
 /// A handle to a module. This is the base address of the module in memory.
 pub type HMODULE = HANDLE;
 
