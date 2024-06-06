@@ -37,7 +37,8 @@ pub use constants::*;
 pub use functions::{
     CreateWindowEx, CreateWindowExW, DefWindowProc, DefWindowProcW, DestroyWindow, MessageBox,
     MessageBoxEx, MessageBoxExW, MessageBoxW, PeekMessage, PeekMessageW, RegisterClassEx,
-    RegisterClassExW, SetLastErrorEx, ShowWindow, UnregisterClass, UnregisterClassW,
+    RegisterClassExW, SetLastErrorEx, ShowWindow, TranslateMessage, UnregisterClass,
+    UnregisterClassW,
 };
 pub use structures::{MSG, WNDCLASSEX, WNDCLASSEXW};
 pub use types::{LPMSG, WNDPROC};
