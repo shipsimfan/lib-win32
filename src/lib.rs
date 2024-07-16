@@ -26,6 +26,7 @@ pub mod libloaderapi;
 pub mod memoryapi;
 pub mod synchapi;
 pub mod sysinfoapi;
+pub mod timezoneapi;
 pub mod winbase;
 pub mod windef;
 pub mod winerror;
@@ -33,6 +34,7 @@ pub mod winnt;
 pub mod winreg;
 pub mod winuser;
 
+pub use timezoneapi::*;
 pub use basetsd::*;
 pub use errhandlingapi::*;
 pub use guiddef::*;
