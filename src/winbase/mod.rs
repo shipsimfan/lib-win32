@@ -28,4 +28,4 @@ pub use functions::{
     LocalLock, LocalReAlloc, LocalSize, LocalUnlock,
 };
 pub use structures::{FILETIME, SECURITY_ATTRIBUTES, SYSTEMTIME};
-pub use types::{LPSECURITY_ATTRIBUTES, LPSYSTEMTIME, PFILETIME};
+pub use types::{LPFILETIME, LPSECURITY_ATTRIBUTES, LPSYSTEMTIME, PFILETIME};

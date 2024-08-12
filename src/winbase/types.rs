@@ -1,5 +1,8 @@
 use crate::{FILETIME, SECURITY_ATTRIBUTES, SYSTEMTIME};
 
+/// A pointer to a [`FILETIME`] structure
+pub type LPFILETIME = *mut FILETIME;
+
 /// A pointer to a [`SECURITY_ATTRIBUTES`] structure
 #[allow(non_camel_case_types)]
 pub type LPSECURITY_ATTRIBUTES = *mut SECURITY_ATTRIBUTES;
