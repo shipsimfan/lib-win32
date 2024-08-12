@@ -10,6 +10,6 @@ mod structures;
 mod types;
 
 pub use constants::*;
-pub use functions::GetSystemInfo;
+pub use functions::{GetLocalTime, GetSystemInfo, GetSystemTime};
 pub use structures::{SYSTEM_INFO, SYSTEM_INFO_PROCESSOR_ARCHITECTURE, SYSTEM_INFO_UNION};
 pub use types::LPSYSTEM_INFO;
