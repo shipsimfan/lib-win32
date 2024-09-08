@@ -1,4 +1,4 @@
-use crate::{DWORD, HANDLE, LONG_PTR, UINT_PTR};
+use crate::{DWORD, HANDLE, LONG_PTR, RECT, UINT_PTR};
 use std::ffi::{c_int, c_uchar, c_uint, c_ulong, c_ushort, c_void};
 
 // rustdoc imports
@@ -61,6 +61,9 @@ pub type LPDWORD = *mut DWORD;
 
 /// A pointer to an [`INT`]
 pub type LPINT = *mut c_int;
+
+/// A pointer to a [`RECT`]
+pub type LPRECT = *mut RECT;
 
 /// A pointer to any type
 pub type LPVOID = *mut c_void;
