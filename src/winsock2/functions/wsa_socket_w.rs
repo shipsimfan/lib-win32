@@ -187,7 +187,7 @@ extern "system" {
     ///                                       the [`WSAPROTOCOL_INFO`] structure for the transport
     ///                                       provider is pointed to by the `protocol_info`
     ///                                       parameter. When the `protocol_info` parameter is
-    ///                                       [`null_mut], the [`WSAPROTOCOL_INFO`] structure is
+    ///                                       [`null_mut`], the [`WSAPROTOCOL_INFO`] structure is
     ///                                       based on the transport provider selected by the
     ///                                       values specified for the `af`, `type`, and `protocol`
     ///                                       parameters.

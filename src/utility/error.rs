@@ -8,6 +8,10 @@ use std::{
     ptr::{null, null_mut},
 };
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::winsock2::SOCKET_ERROR;
+
 /// A specialized result for Windows errors
 pub type Result<T> = core::result::Result<T, Error>;
 
