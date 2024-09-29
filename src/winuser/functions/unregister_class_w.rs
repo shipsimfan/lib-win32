@@ -2,7 +2,7 @@ use crate::{BOOL, HINSTANCE, LPCWSTR};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, RegisterClassEx};
+use crate::{GetLastError, RegisterClass, RegisterClassEx};
 
 #[link(name = "User32")]
 extern "system" {

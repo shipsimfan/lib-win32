@@ -1,26 +1,20 @@
-use crate::{DefWindowProc, HBRUSH, HCURSOR, HICON, HINSTANCE, LPCWSTR, UINT, WNDPROC};
-use std::ffi::c_int;
+use crate::{DefWindowProcW, HBRUSH, HCURSOR, HICON, HINSTANCE, LPCWSTR, UINT, WNDPROC};
+use std::{
+    ffi::c_int,
+    ptr::{null, null_mut},
+};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{RegisterClass, RegisterClassEx};
-#[allow(unused_imports)]
-use std::ptr::{null, null_mut};
+use crate::{RegisterClass, RegisterClassEx, UnregisterClass, WNDCLASS, WNDCLASSEX};
 
-/// Contains window class information. It is used with the [`RegisterClassEx`] and
-/// [`GetClassInfoEx`] functions.
+/// Contains the window class attributes that are registered by the [`RegisterClass`] function.
 ///
-/// The [`WNDCLASSEX`] structure is similar to the [`WNDCLASS`] structure. There are two
-/// differences. [`WNDCLASSEX`] includes the size member, which specifies the size of the
-/// structure, and the `icon_sm` member, which contains a handle to a small icon associated with
-/// the window class.
+/// This structure has been superseded by the [`WNDCLASSEX`] structure used with the
+/// [`RegisterClassEx`] function. You can still use [`WNDCLASS`] and [`RegisterClass`] if you do
+/// not need to set the small icon associated with the window class.
 #[repr(C)]
-pub struct WNDCLASSEXW {
-    /// The size, in bytes, of this structure. Set this member to
-    /// `std::mem::size_of::<WNDCLASSEXW>()`. Be sure to set this member before calling the
-    /// [`GetClassInfoEx`] function.
-    pub size: UINT,
-
+pub struct WNDCLASSW {
     /// The class style(s). This member can be any combination of the Class Styles.
     pub style: UINT,
 
@@ -33,8 +27,8 @@ pub struct WNDCLASSEXW {
     pub cls_extra: c_int,
 
     /// The number of extra bytes to allocate following the window instance. The system initializes
-    /// the bytes to zero. If an application uses [`WNDCLASSEX`] to register a dialog box created
-    /// by using the `CLASS` directive in the resource file, it must set this member to
+    /// the bytes to zero. If an application uses [`WNDCLASS`] to register a dialog box created by
+    /// using the CLASS directive in the resource file, it must set this member to
     /// [`DLGWINDOWEXTRA`].
     pub wnd_extra: c_int,
 
@@ -45,13 +39,35 @@ pub struct WNDCLASSEXW {
     /// member is [`null_mut`], the system provides a default icon.
     pub icon: HICON,
 
-    /// A handle to the class cursor. This member must be a handle to a cursor resource. If this
-    /// member is [`null_mut`], an application must explicitly set the cursor shape whenever the
-    /// mouse moves into the application's window.
+    /// The resource name of the class menu, as the name appears in the resource file. If you use
+    /// an integer to identify the menu, use the [`MAKEINTRESOURCE`] macro. If this member is
+    /// [`null_mut`], windows belonging to this class have no default menu.
     pub cursor: HCURSOR,
 
-    /// A handle to the class background brush. This member can be a handle to the brush to be used
-    /// for painting the background, or it can be a color value.
+    /// A handle to the class background brush. This member can be a handle to the physical brush
+    /// to be used for painting the background, or it can be a color value. A color value must be
+    /// one of the following standard system colors (the value 1 must be added to the chosen
+    /// color). If a color value is given, you must convert it to one of the following [`HBRUSH`]
+    /// types:
+    /// - [`COLOR_ACTIVEBORDER`]
+    /// - [`COLOR_ACTIVECAPTION`]
+    /// - [`COLOR_APPWORKSPACE`]
+    /// - [`COLOR_BACKGROUND`]
+    /// - [`COLOR_BTNFACE`]
+    /// - [`COLOR_BTNSHADOW`]
+    /// - [`COLOR_BTNTEXT`]
+    /// - [`COLOR_CAPTIONTEXT`]
+    /// - [`COLOR_GRAYTEXT`]
+    /// - [`COLOR_HIGHLIGHT`]
+    /// - [`COLOR_HIGHLIGHTTEXT`]
+    /// - [`COLOR_INACTIVEBORDER`]
+    /// - [`COLOR_INACTIVECAPTION`]
+    /// - [`COLOR_MENU`]
+    /// - [`COLOR_MENUTEXT`]
+    /// - [`COLOR_SCROLLBAR`]
+    /// - [`COLOR_WINDOW`]
+    /// - [`COLOR_WINDOWFRAME`]
+    /// - [`COLOR_WINDOWTEXT`]
     ///
     /// The system automatically deletes class background brushes when the class is unregistered by
     /// using [`UnregisterClass`]. An application should not delete these brushes.
@@ -62,10 +78,9 @@ pub struct WNDCLASSEXW {
     /// `erase` member of the [`PAINTSTRUCT`] structure filled by the [`BeginPaint`] function.
     pub background: HBRUSH,
 
-    /// Pointer to a null-terminated character string that specifies the resource name of the class
-    /// menu, as the name appears in the resource file. If you use an integer to identify the menu,
-    /// use the [`MAKEINTRESOURCE`] macro. If this member is [`null`], windows belonging to this
-    /// class have no default menu.
+    /// The resource name of the class menu, as the name appears in the resource file. If you use
+    /// an integer to identify the menu, use the [`MAKEINTRESOURCE`] macro. If this member is
+    /// [`null`], windows belonging to this class have no default menu.
     pub menu_name: LPCWSTR,
 
     /// A pointer to a null-terminated string or is an atom. If this parameter is an atom, it must
@@ -78,21 +93,15 @@ pub struct WNDCLASSEXW {
     /// control-class names.
     ///
     /// The maximum length for `class_name` is 256. If `class_name` is greater than the maximum
-    /// length, the [`RegisterClassEx`] function will fail.
+    /// length, the [`RegisterClass`] function will fail.
     pub class_name: LPCWSTR,
-
-    /// A handle to a small icon that is associated with the window class. If this member is
-    /// [`null_mut`], the system searches the icon resource specified by the `icon` member for an
-    /// icon of the appropriate size to use as the small icon.
-    pub icon_sm: HICON,
 }
 
-impl Default for WNDCLASSEXW {
+impl Default for WNDCLASSW {
     fn default() -> Self {
-        WNDCLASSEXW {
-            size: std::mem::size_of::<WNDCLASSEXW>() as u32,
+        WNDCLASSW {
             style: 0,
-            wnd_proc: DefWindowProc,
+            wnd_proc: DefWindowProcW,
             cls_extra: 0,
             wnd_extra: 0,
             instance: null_mut(),
@@ -101,7 +110,6 @@ impl Default for WNDCLASSEXW {
             background: null_mut(),
             menu_name: null(),
             class_name: null(),
-            icon_sm: null_mut(),
         }
     }
 }

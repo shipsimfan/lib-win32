@@ -37,9 +37,11 @@ pub use constants::*;
 pub use functions::{
     CreateWindowEx, CreateWindowExW, DefWindowProc, DefWindowProcW, DestroyWindow, DispatchMessage,
     DispatchMessageW, GetClientRect, GetWindowLongPtr, GetWindowLongPtrW, MessageBox, MessageBoxEx,
-    MessageBoxExW, MessageBoxW, PeekMessage, PeekMessageW, PostQuitMessage, RegisterClassEx,
-    RegisterClassExW, SetLastErrorEx, SetWindowLongPtr, SetWindowLongPtrW, ShowWindow,
-    TranslateMessage, UnregisterClass, UnregisterClassW,
+    MessageBoxExW, MessageBoxW, PeekMessage, PeekMessageW, PostQuitMessage, RegisterClass,
+    RegisterClassEx, RegisterClassExW, RegisterClassW, SetLastErrorEx, SetWindowLongPtr,
+    SetWindowLongPtrW, ShowWindow, TranslateMessage, UnregisterClass, UnregisterClassW,
 };
-pub use structures::{CREATESTRUCT, CREATESTRUCTW, MSG, WNDCLASSEX, WNDCLASSEXW};
+pub use structures::{
+    CREATESTRUCT, CREATESTRUCTW, MSG, WNDCLASS, WNDCLASSEX, WNDCLASSEXW, WNDCLASSW,
+};
 pub use types::{LPMSG, WNDPROC};
