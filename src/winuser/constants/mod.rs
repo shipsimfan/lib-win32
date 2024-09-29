@@ -1,4 +1,5 @@
 mod class_styles;
+mod colors;
 mod command_ids;
 mod cw_use_default;
 mod extended_window_styles;
@@ -10,6 +11,7 @@ mod window_properties;
 mod window_styles;
 
 pub use class_styles::*;
+pub use colors::*;
 pub use command_ids::*;
 pub use cw_use_default::*;
 pub use extended_window_styles::*;
