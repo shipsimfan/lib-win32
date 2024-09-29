@@ -2,7 +2,7 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{WS_CAPTION, WS_MAXIMIZEBOX, WS_MINIMIZEBOX};
+use crate::{WM_HELP, WM_PARENTNOTIFY, WS_CAPTION, WS_MAXIMIZEBOX, WS_MINIMIZEBOX};
 
 /// The window accepts drag-drop files.
 pub const WS_EX_ACCEPTFILES: DWORD = 0x00000010;

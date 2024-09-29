@@ -4,9 +4,9 @@ use std::ffi::c_int;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, RegisterClassEx, SetLastError, SetWindowLongPtr, GWLP_HINSTANCE, GWLP_ID,
-    GWLP_USERDATA, GWLP_WNDPROC, GWL_EXSTYLE, GWL_STYLE, TRUE, WNDCLASSEX, WS_EX_COMPOSITED,
-    WS_EX_LAYERED,
+    CallWindowProc, GetLastError, RegisterClassEx, SetLastError, SetWindowLongPtr, CS_CLASSDC,
+    CS_PARENTDC, GWLP_HINSTANCE, GWLP_ID, GWLP_USERDATA, GWLP_WNDPROC, GWL_EXSTYLE, GWL_STYLE,
+    TRUE, WNDCLASSEX, WS_EX_COMPOSITED, WS_EX_LAYERED,
 };
 
 #[link(name = "User32")]

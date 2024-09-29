@@ -10,7 +10,7 @@ use crate::{
     MB_ICONASTERISK, MB_ICONERROR, MB_ICONEXCLAMATION, MB_ICONHAND, MB_ICONINFORMATION,
     MB_ICONQUESTION, MB_ICONSTOP, MB_ICONWARNING, MB_OK, MB_OKCANCEL, MB_RETRYCANCEL, MB_RIGHT,
     MB_RTLREADING, MB_SERVICE_NOTIFICATION, MB_SETFOREGROUND, MB_SYSTEMMODAL, MB_TASKMODAL,
-    MB_TOPMOST, MB_YESNO, MB_YESNOCANCEL,
+    MB_TOPMOST, MB_YESNO, MB_YESNOCANCEL, WM_HELP, WS_EX_TOPMOST,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
@@ -137,8 +137,8 @@ extern "system" {
     /// strings pointed to by the `text` and `caption` parameters should not be taken from a
     /// resource file because an attempt to load the resource may fail.
     ///
-    /// If you create a message box while a dialog box is present, use a handle to the dialog box 
-    /// as the `wnd` parameter. The `wnd` parameter should not identify a child window, such as a 
+    /// If you create a message box while a dialog box is present, use a handle to the dialog box
+    /// as the `wnd` parameter. The `wnd` parameter should not identify a child window, such as a
     /// control in a dialog box.
     pub fn MessageBoxW(wnd: HWND, text: LPCWSTR, caption: LPCWSTR, r#type: UINT) -> c_int;
 }

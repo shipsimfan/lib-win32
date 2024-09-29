@@ -2,7 +2,7 @@ use crate::{ATOM, WNDCLASSW};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{CreateWindowEx, GetLastError, WNDCLASS};
+use crate::{CreateWindowEx, GetLastError, UnregisterClass, WNDCLASS};
 
 #[link(name = "User32")]
 extern "system" {

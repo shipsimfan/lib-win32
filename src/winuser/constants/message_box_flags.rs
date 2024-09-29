@@ -2,6 +2,8 @@ use crate::UINT;
 
 // rustdoc imports
 #[allow(unused_imports)]
+use crate::{MessageBox, WM_HELP, WS_EX_TOPMOST};
+#[allow(unused_imports)]
 use std::ptr::null_mut;
 
 /// The message box contains one push button: "OK". This is the default.
@@ -122,6 +124,6 @@ pub const MB_RTLREADING: UINT = 0x00100000;
 /// Terminal Services: If the calling thread has an impersonation token, the function directs the
 /// message box to the session specified in the impersonation token.
 ///
-/// If this flag is set, the `wnd` parameter must be [`null_mut`]. This is so that the message box 
+/// If this flag is set, the `wnd` parameter must be [`null_mut`]. This is so that the message box
 /// can appear on a desktop other than the desktop corresponding to the `wnd`.
 pub const MB_SERVICE_NOTIFICATION: UINT = 0x00200000;

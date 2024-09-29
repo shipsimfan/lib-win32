@@ -3,8 +3,8 @@ use crate::{BOOL, HWND, LPMSG, UINT};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    PeekMessage, MSG, PM_NOREMOVE, PM_NOYIELD, PM_REMOVE, WM_KEYFIRST, WM_MOUSEFIRST, WM_PAINT,
-    WM_QUIT, WM_TIMER,
+    DispatchMessage, PeekMessage, MSG, PM_NOREMOVE, PM_NOYIELD, PM_REMOVE, WM_KEYFIRST,
+    WM_MOUSEFIRST, WM_PAINT, WM_QUIT, WM_TIMER,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
