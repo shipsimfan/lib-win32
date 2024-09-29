@@ -3,7 +3,7 @@ use std::ffi::c_int;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{RegisterClass, RegisterClassEx};
+use crate::{RegisterClass, RegisterClassEx, MAKEINTRESOURCE};
 #[allow(unused_imports)]
 use std::ptr::{null, null_mut};
 

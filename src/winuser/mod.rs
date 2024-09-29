@@ -30,6 +30,7 @@
 
 mod constants;
 mod functions;
+mod macros;
 mod structures;
 mod types;
 
@@ -41,6 +42,7 @@ pub use functions::{
     RegisterClassEx, RegisterClassExW, RegisterClassW, SetLastErrorEx, SetWindowLongPtr,
     SetWindowLongPtrW, ShowWindow, TranslateMessage, UnregisterClass, UnregisterClassW,
 };
+pub use macros::MAKEINTRESOURCE;
 pub use structures::{
     CREATESTRUCT, CREATESTRUCTW, MSG, WNDCLASS, WNDCLASSEX, WNDCLASSEXW, WNDCLASSW,
 };
