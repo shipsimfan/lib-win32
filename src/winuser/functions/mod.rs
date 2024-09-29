@@ -3,6 +3,7 @@ mod create_window_ex_w;
 mod def_window_proc_w;
 mod destroy_window;
 mod dispatch_message_w;
+mod end_paint;
 mod get_client_rect;
 mod get_window_long_ptr_w;
 mod message_box_ex_w;
@@ -22,6 +23,7 @@ pub use create_window_ex_w::{CreateWindowExW, CreateWindowExW as CreateWindowEx}
 pub use def_window_proc_w::{DefWindowProcW, DefWindowProcW as DefWindowProc};
 pub use destroy_window::DestroyWindow;
 pub use dispatch_message_w::{DispatchMessageW, DispatchMessageW as DispatchMessage};
+pub use end_paint::EndPaint;
 pub use get_client_rect::GetClientRect;
 pub use get_window_long_ptr_w::{GetWindowLongPtrW, GetWindowLongPtrW as GetWindowLongPtr};
 pub use message_box_ex_w::{MessageBoxExW, MessageBoxExW as MessageBoxEx};

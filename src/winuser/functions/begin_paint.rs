@@ -2,7 +2,7 @@ use crate::{HDC, HWND, LPPAINTSTRUCT};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{PAINTSTRUCT, WM_ERASEBKGND, WM_PAINT};
+use crate::{EndPaint, PAINTSTRUCT, WM_ERASEBKGND, WM_PAINT};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
