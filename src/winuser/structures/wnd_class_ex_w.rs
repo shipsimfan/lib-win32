@@ -4,8 +4,8 @@ use std::ffi::c_int;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    RegisterClass, RegisterClassEx, UnregisterClass, MAKEINTRESOURCE, PAINTSTRUCT, WM_ERASEBKGND,
-    WNDCLASSEX,
+    BeginPaint, RegisterClass, RegisterClassEx, UnregisterClass, MAKEINTRESOURCE, PAINTSTRUCT,
+    WM_ERASEBKGND, WNDCLASSEX,
 };
 #[allow(unused_imports)]
 use std::ptr::{null, null_mut};

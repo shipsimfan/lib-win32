@@ -1,3 +1,4 @@
+mod begin_paint;
 mod create_window_ex_w;
 mod def_window_proc_w;
 mod destroy_window;
@@ -16,6 +17,7 @@ mod show_window;
 mod translate_message;
 mod unregister_class_w;
 
+pub use begin_paint::BeginPaint;
 pub use create_window_ex_w::{CreateWindowExW, CreateWindowExW as CreateWindowEx};
 pub use def_window_proc_w::{DefWindowProcW, DefWindowProcW as DefWindowProc};
 pub use destroy_window::DestroyWindow;
