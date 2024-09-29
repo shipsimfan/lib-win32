@@ -3,7 +3,7 @@ use std::ffi::c_int;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::CreateWindowEx;
+use crate::{CreateWindowEx, SHORT};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 

@@ -1,5 +1,5 @@
 use crate::{ACL, DWORD, SECURITY_DESCRIPTOR, SID, WORD};
-use std::ffi::{c_char, c_long, c_void};
+use std::ffi::{c_char, c_long, c_short, c_void};
 
 /// The [`ACCESS_MASK`] data type is a [`DWORD`] value that defines standard, specific, and generic
 /// rights. These rights are used in access control entries (ACEs) and are the primary means of
@@ -64,6 +64,9 @@ pub type SECURITY_DESCRIPTOR_CONTROL = WORD;
 ///  - The system access control list (SACL) of an object
 #[allow(non_camel_case_types)]
 pub type SECURITY_INFORMATION = DWORD;
+
+/// A 16-bit integer. The range is -32768 through 32767 decimal.
+pub type SHORT = c_short;
 
 /// A [`WCHAR`]
 pub type TCHAR = WCHAR;

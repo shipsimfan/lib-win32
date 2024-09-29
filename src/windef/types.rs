@@ -20,6 +20,9 @@ pub type HBRUSH = HANDLE;
 /// A handle to a cursor.
 pub type HCURSOR = HANDLE;
 
+/// A handle to a device context (DC).
+pub type HDC = HANDLE;
+
 /// A handle to a global memory block
 pub type HGLOBAL = HANDLE;
 

@@ -7,7 +7,8 @@ use std::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    RegisterClass, RegisterClassEx, UnregisterClass, MAKEINTRESOURCE, WNDCLASS, WNDCLASSEX,
+    RegisterClass, RegisterClassEx, UnregisterClass, MAKEINTRESOURCE, PAINTSTRUCT, WM_ERASEBKGND,
+    WNDCLASS, WNDCLASSEX,
 };
 
 /// Contains the window class attributes that are registered by the [`RegisterClass`] function.
