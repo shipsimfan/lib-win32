@@ -44,7 +44,7 @@ pub use functions::{
     RegisterClassW, SetLastErrorEx, SetWindowLongPtr, SetWindowLongPtrW, ShowWindow,
     TranslateMessage, UnregisterClass, UnregisterClassW,
 };
-pub use macros::MAKEINTRESOURCE;
+pub use macros::{CreateWindow, MAKEINTRESOURCE};
 pub use structures::{
     CLIENTCREATESTRUCT, CREATESTRUCT, CREATESTRUCTW, MDICREATESTRUCT, MDICREATESTRUCTW, MSG,
     PAINTSTRUCT, WNDCLASS, WNDCLASSEX, WNDCLASSEXW, WNDCLASSW,

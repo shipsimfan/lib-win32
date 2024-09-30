@@ -3,7 +3,8 @@ use crate::{ATOM, WNDCLASSW};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    CreateWindowEx, GetClassInfo, GetClassInfoEx, GetLastError, UnregisterClass, WNDCLASS,
+    CreateWindow, CreateWindowEx, GetClassInfo, GetClassInfoEx, GetLastError, UnregisterClass,
+    WNDCLASS,
 };
 
 #[link(name = "User32")]

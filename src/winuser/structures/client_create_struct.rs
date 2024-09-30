@@ -3,7 +3,7 @@ use std::ptr::null_mut;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::WM_COMMAND;
+use crate::{CreateWindow, WM_COMMAND};
 
 /// Contains information about the menu and first multiple-document interface (MDI) child window of
 /// an MDI client window. An application passes a pointer to this structure as the `param`

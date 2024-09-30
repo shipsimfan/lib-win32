@@ -4,9 +4,10 @@ use std::ffi::c_int;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    CreateWindowEx, GetLastError, RegisterClass, RegisterClassEx, ShowWindow, CLIENTCREATESTRUCT,
-    CW_USEDEFAULT, FALSE, MDICREATESTRUCT, SW_SHOW, WM_CREATE, WM_MOUSEACTIVATE, WM_NCACTIVATE,
-    WM_NCCALCSIZE, WM_NCCREATE, WS_EX_COMPOSITED, WS_EX_NOACTIVATE, WS_EX_TRANSPARENT, WS_VISIBLE,
+    CreateWindow, CreateWindowEx, GetLastError, RegisterClass, RegisterClassEx, ShowWindow,
+    CLIENTCREATESTRUCT, CREATESTRUCT, CW_USEDEFAULT, FALSE, HWND_MESSAGE, MDICREATESTRUCT, SW_SHOW,
+    WM_CREATE, WM_MOUSEACTIVATE, WM_NCACTIVATE, WM_NCCALCSIZE, WM_NCCREATE, WS_EX_COMPOSITED,
+    WS_EX_NOACTIVATE, WS_EX_TRANSPARENT, WS_VISIBLE,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;

@@ -6,7 +6,7 @@ use std::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{CreateWindowEx, MDICREATESTRUCT, SHORT};
+use crate::{CreateWindow, CreateWindowEx, CLIENTCREATESTRUCT, MDICREATESTRUCT, SHORT};
 
 /// Defines the initialization parameters passed to the window procedure of an application. These
 /// members are identical to the parameters of the [`CreateWindowEx`] function.
@@ -35,7 +35,7 @@ pub struct CREATESTRUCTW {
     /// A handle to the parent window, if the window is a child window. If the window is owned,
     /// this member identifies the owner window. If the window is not a child or owned window, this
     /// member is [`null_mut`].
-    pub wnd_parent: HWND,
+    pub parent: HWND,
 
     /// The height of the new window, in pixels.
     pub cy: c_int,
@@ -73,7 +73,7 @@ impl Default for CREATESTRUCTW {
             create_params: null_mut(),
             instance: null_mut(),
             menu: null_mut(),
-            wnd_parent: null_mut(),
+            parent: null_mut(),
             cy: 0,
             cx: 0,
             y: 0,
