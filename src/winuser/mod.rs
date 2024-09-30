@@ -37,9 +37,10 @@ mod types;
 pub use constants::*;
 pub use functions::{
     BeginPaint, CallWindowProc, CallWindowProcW, CreateWindowEx, CreateWindowExW, DefWindowProc,
-    DefWindowProcW, DestroyWindow, DispatchMessage, DispatchMessageW, EndPaint, GetClientRect,
-    GetWindowLongPtr, GetWindowLongPtrW, MessageBox, MessageBoxEx, MessageBoxExW, MessageBoxW,
-    PeekMessage, PeekMessageW, PostQuitMessage, RegisterClass, RegisterClassEx, RegisterClassExW,
+    DefWindowProcW, DestroyWindow, DispatchMessage, DispatchMessageW, EndPaint, GetClassInfo,
+    GetClassInfoEx, GetClassInfoExW, GetClassInfoW, GetClientRect, GetWindowLongPtr,
+    GetWindowLongPtrW, MessageBox, MessageBoxEx, MessageBoxExW, MessageBoxW, PeekMessage,
+    PeekMessageW, PostQuitMessage, RegisterClass, RegisterClassEx, RegisterClassExW,
     RegisterClassW, SetLastErrorEx, SetWindowLongPtr, SetWindowLongPtrW, ShowWindow,
     TranslateMessage, UnregisterClass, UnregisterClassW,
 };
@@ -47,4 +48,4 @@ pub use macros::MAKEINTRESOURCE;
 pub use structures::{
     CREATESTRUCT, CREATESTRUCTW, MSG, PAINTSTRUCT, WNDCLASS, WNDCLASSEX, WNDCLASSEXW, WNDCLASSW,
 };
-pub use types::{LPMSG, LPPAINTSTRUCT, WNDPROC};
+pub use types::{LPMSG, LPPAINTSTRUCT, LPWNDCLASSEXW, LPWNDCLASSW, WNDPROC};
