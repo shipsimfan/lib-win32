@@ -1,5 +1,8 @@
 use crate::{DWORD, HANDLE, LPARAM, LPCWSTR};
-use std::ffi::c_int;
+use std::{
+    ffi::c_int,
+    ptr::{null, null_mut},
+};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -51,4 +54,20 @@ pub struct MDICREATESTRUCTW {
 
     /// An application-defined value.
     pub l_param: LPARAM,
+}
+
+impl Default for MDICREATESTRUCTW {
+    fn default() -> Self {
+        MDICREATESTRUCTW {
+            class: null(),
+            title: null(),
+            owner: null_mut(),
+            x: 0,
+            y: 0,
+            cx: 0,
+            cy: 0,
+            style: 0,
+            l_param: 0,
+        }
+    }
 }

@@ -1,11 +1,12 @@
 use crate::{DWORD, HINSTANCE, HMENU, HWND, LONG, LPCWSTR, LPVOID};
-use std::ffi::c_int;
+use std::{
+    ffi::c_int,
+    ptr::{null, null_mut},
+};
 
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{CreateWindowEx, MDICREATESTRUCT, SHORT};
-#[allow(unused_imports)]
-use std::ptr::null_mut;
 
 /// Defines the initialization parameters passed to the window procedure of an application. These
 /// members are identical to the parameters of the [`CreateWindowEx`] function.
@@ -64,4 +65,23 @@ pub struct CREATESTRUCTW {
 
     /// The extended window style for the new window.
     pub ex_style: DWORD,
+}
+
+impl Default for CREATESTRUCTW {
+    fn default() -> Self {
+        CREATESTRUCTW {
+            create_params: null_mut(),
+            instance: null_mut(),
+            menu: null_mut(),
+            wnd_parent: null_mut(),
+            cy: 0,
+            cx: 0,
+            y: 0,
+            x: 0,
+            style: 0,
+            name: null(),
+            class: null(),
+            ex_style: 0,
+        }
+    }
 }
