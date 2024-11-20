@@ -4,7 +4,7 @@ use crate::{PULONG, ULONG};
 #[allow(unused_imports)]
 use crate::{ERROR_FILE_NOT_FOUND, ERROR_MORE_DATA, ERROR_SUCCESS};
 
-#[link(name = "KernelBase")]
+#[link(name = "OneCore")]
 extern "system" {
     /// Gets an array that contains the well-formed COM ports.
     ///
