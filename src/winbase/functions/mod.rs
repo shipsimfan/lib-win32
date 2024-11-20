@@ -18,6 +18,7 @@ mod local_size;
 mod local_unlock;
 
 pub use format_message_w::{FormatMessageW, FormatMessageW as FormatMessage};
+pub use get_comm_ports::GetCommPorts;
 pub use global_alloc::GlobalAlloc;
 pub use global_flags::GlobalFlags;
 pub use global_free::GlobalFree;
