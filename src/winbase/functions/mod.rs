@@ -1,4 +1,5 @@
 mod format_message_w;
+mod get_comm_ports;
 mod global_alloc;
 mod global_flags;
 mod global_free;

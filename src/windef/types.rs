@@ -80,6 +80,9 @@ pub type PDWORD = *mut DWORD;
 /// A pointer to an [`HKEY`]
 pub type PHKEY = *mut HKEY;
 
+/// A pointer to a [`ULONG`]
+pub type PULONG = *mut ULONG;
+
 /// An unsigned [`INT`]. The range is 0 through 4294967295 decimal.
 pub type UINT = c_uint;
 
