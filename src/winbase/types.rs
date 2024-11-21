@@ -1,4 +1,7 @@
-use crate::{FILETIME, SECURITY_ATTRIBUTES, SYSTEMTIME};
+use crate::{DCB, FILETIME, SECURITY_ATTRIBUTES, SYSTEMTIME};
+
+/// A pointer to a [`DCB`] structure
+pub type LPDCB = *mut DCB;
 
 /// A pointer to a [`FILETIME`] structure
 pub type LPFILETIME = *mut FILETIME;

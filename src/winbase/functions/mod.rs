@@ -1,5 +1,6 @@
 mod format_message_w;
 mod get_comm_ports;
+mod get_comm_state;
 mod global_alloc;
 mod global_flags;
 mod global_free;
@@ -19,6 +20,7 @@ mod local_unlock;
 
 pub use format_message_w::{FormatMessageW, FormatMessageW as FormatMessage};
 pub use get_comm_ports::GetCommPorts;
+pub use get_comm_state::GetCommState;
 pub use global_alloc::GlobalAlloc;
 pub use global_flags::GlobalFlags;
 pub use global_free::GlobalFree;

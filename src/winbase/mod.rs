@@ -23,9 +23,9 @@ mod types;
 
 pub use constants::*;
 pub use functions::{
-    FormatMessage, FormatMessageW, GetCommPorts, GlobalAlloc, GlobalFlags, GlobalFree,
-    GlobalHandle, GlobalLock, GlobalReAlloc, GlobalSize, GlobalUnlock, LocalAlloc, LocalFlags,
-    LocalFree, LocalHandle, LocalLock, LocalReAlloc, LocalSize, LocalUnlock,
+    FormatMessage, FormatMessageW, GetCommPorts, GetCommState, GlobalAlloc, GlobalFlags,
+    GlobalFree, GlobalHandle, GlobalLock, GlobalReAlloc, GlobalSize, GlobalUnlock, LocalAlloc,
+    LocalFlags, LocalFree, LocalHandle, LocalLock, LocalReAlloc, LocalSize, LocalUnlock,
 };
 pub use structures::{DCB, FILETIME, SECURITY_ATTRIBUTES, SYSTEMTIME};
-pub use types::{LPFILETIME, LPSECURITY_ATTRIBUTES, LPSYSTEMTIME, PFILETIME};
+pub use types::{LPDCB, LPFILETIME, LPSECURITY_ATTRIBUTES, LPSYSTEMTIME, PFILETIME};
