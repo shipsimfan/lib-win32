@@ -26,6 +26,7 @@ pub use functions::{
     FormatMessage, FormatMessageW, GetCommPorts, GetCommState, GlobalAlloc, GlobalFlags,
     GlobalFree, GlobalHandle, GlobalLock, GlobalReAlloc, GlobalSize, GlobalUnlock, LocalAlloc,
     LocalFlags, LocalFree, LocalHandle, LocalLock, LocalReAlloc, LocalSize, LocalUnlock,
+    SetCommState,
 };
 pub use structures::{DCB, FILETIME, SECURITY_ATTRIBUTES, SYSTEMTIME};
 pub use types::{LPDCB, LPFILETIME, LPSECURITY_ATTRIBUTES, LPSYSTEMTIME, PFILETIME};

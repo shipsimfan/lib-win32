@@ -17,6 +17,7 @@ mod local_lock;
 mod local_realloc;
 mod local_size;
 mod local_unlock;
+mod set_comm_state;
 
 pub use format_message_w::{FormatMessageW, FormatMessageW as FormatMessage};
 pub use get_comm_ports::GetCommPorts;
@@ -37,3 +38,4 @@ pub use local_lock::LocalLock;
 pub use local_realloc::LocalReAlloc;
 pub use local_size::LocalSize;
 pub use local_unlock::LocalUnlock;
+pub use set_comm_state::SetCommState;
