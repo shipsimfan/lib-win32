@@ -2,7 +2,7 @@ use crate::{BOOL, HANDLE, LPDCB};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, DCB};
+use crate::{CreateFile, GetLastError, DCB};
 
 #[link(name = "Kernel32")]
 extern "system" {

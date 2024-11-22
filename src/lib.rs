@@ -18,6 +18,7 @@ pub mod winsock2;
 // Headers automatically included with `Windows.h`
 pub mod basetsd;
 pub mod errhandlingapi;
+pub mod fileapi;
 pub mod guiddef;
 pub mod handleapi;
 pub mod heapapi;
@@ -37,6 +38,7 @@ pub mod winuser;
 
 pub use basetsd::*;
 pub use errhandlingapi::*;
+pub use fileapi::*;
 pub use guiddef::*;
 pub use handleapi::*;
 pub use heapapi::*;

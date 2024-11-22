@@ -2,7 +2,7 @@ use crate::{BOOL, DWORD, LPVOID};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{RegCreateKeyEx, RegSaveKeyEx, SECURITY_DESCRIPTOR, TRUE};
+use crate::{CreateFile, RegCreateKeyEx, RegSaveKeyEx, SECURITY_DESCRIPTOR, TRUE};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
