@@ -4,7 +4,7 @@ use crate::{BOOL, HANDLE, LARGE_INTEGER, LONG, LPVOID, PTIMERAPCROUTINE};
 #[allow(unused_imports)]
 use crate::{
     CancelWaitableTimer, CreateWaitableTimer, GetLastError, ERROR_NOT_SUPPORTED, FILETIME,
-    TIMER_MODIFY_STATE, TRUE,
+    OVERLAPPED, TIMER_MODIFY_STATE, TRUE,
 };
 
 #[link(name = "Kernel32")]

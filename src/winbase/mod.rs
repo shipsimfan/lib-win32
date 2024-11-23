@@ -28,5 +28,8 @@ pub use functions::{
     LocalFlags, LocalFree, LocalHandle, LocalLock, LocalReAlloc, LocalSize, LocalUnlock,
     SetCommState,
 };
-pub use structures::{DCB, FILETIME, SECURITY_ATTRIBUTES, SYSTEMTIME};
-pub use types::{LPDCB, LPFILETIME, LPSECURITY_ATTRIBUTES, LPSYSTEMTIME, PFILETIME};
+pub use structures::{
+    DCB, FILETIME, OVERLAPPED, OVERLAPPED_UNION, OVERLAPPED_UNION_STRUCT, SECURITY_ATTRIBUTES,
+    SYSTEMTIME,
+};
+pub use types::{LPDCB, LPFILETIME, LPOVERLAPPED, LPSECURITY_ATTRIBUTES, LPSYSTEMTIME, PFILETIME};

@@ -2,7 +2,7 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{CreateFile, CREATE_ALWAYS, FILE_SHARE_DELETE};
+use crate::{CreateFile, CREATE_ALWAYS, FILE_SHARE_DELETE, OVERLAPPED};
 
 /// The file is being opened or created for a backup or restore operation. The system ensures that
 /// the calling process overrides file security checks when the process has [`SE_BACKUP_NAME`] and

@@ -1,10 +1,13 @@
-use crate::{DCB, FILETIME, SECURITY_ATTRIBUTES, SYSTEMTIME};
+use crate::{DCB, FILETIME, OVERLAPPED, SECURITY_ATTRIBUTES, SYSTEMTIME};
 
 /// A pointer to a [`DCB`] structure
 pub type LPDCB = *mut DCB;
 
 /// A pointer to a [`FILETIME`] structure
 pub type LPFILETIME = *mut FILETIME;
+
+/// A pointer to an [`OVERLAPPED`] structure
+pub type LPOVERLAPPED = *mut OVERLAPPED;
 
 /// A pointer to a [`SECURITY_ATTRIBUTES`] structure
 #[allow(non_camel_case_types)]
