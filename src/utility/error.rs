@@ -1,7 +1,7 @@
 use crate::{
-    string::wcslen, winsock2::WSAGetLastError, FormatMessage, GetLastError, LocalFree, DWORD,
-    FORMAT_MESSAGE_ALLOCATE_BUFFER, FORMAT_MESSAGE_FROM_SYSTEM, FORMAT_MESSAGE_IGNORE_INSERTS,
-    HRESULT, HRESULT_FROM_WIN32, LANG_NEUTRAL, LPWSTR, MAKELANGID, SUBLANG_DEFAULT,
+    string::wcslen, winsock2::WSAGetLastError, FormatMessage, GetLastError,
+    GetUserDefaultUILanguage, LocalFree, DWORD, FORMAT_MESSAGE_ALLOCATE_BUFFER,
+    FORMAT_MESSAGE_FROM_SYSTEM, FORMAT_MESSAGE_IGNORE_INSERTS, HRESULT, HRESULT_FROM_WIN32, LPWSTR,
 };
 use std::{
     fmt::Write,
@@ -87,7 +87,7 @@ impl std::fmt::Display for Error {
                     | FORMAT_MESSAGE_IGNORE_INSERTS,
                 null(),
                 self.0 as DWORD,
-                MAKELANGID!(LANG_NEUTRAL, SUBLANG_DEFAULT),
+                GetUserDefaultUILanguage() as _,
                 &mut buffer as *mut LPWSTR as _,
                 0,
                 null_mut(),
