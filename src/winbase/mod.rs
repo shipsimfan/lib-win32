@@ -23,13 +23,15 @@ mod types;
 
 pub use constants::*;
 pub use functions::{
-    FormatMessage, FormatMessageW, GetCommPorts, GetCommState, GlobalAlloc, GlobalFlags,
-    GlobalFree, GlobalHandle, GlobalLock, GlobalReAlloc, GlobalSize, GlobalUnlock, LocalAlloc,
-    LocalFlags, LocalFree, LocalHandle, LocalLock, LocalReAlloc, LocalSize, LocalUnlock,
-    SetCommState,
+    FormatMessage, FormatMessageW, GetCommPorts, GetCommState, GetCommTimeouts, GlobalAlloc,
+    GlobalFlags, GlobalFree, GlobalHandle, GlobalLock, GlobalReAlloc, GlobalSize, GlobalUnlock,
+    LocalAlloc, LocalFlags, LocalFree, LocalHandle, LocalLock, LocalReAlloc, LocalSize,
+    LocalUnlock, SetCommState, SetCommTimeouts,
 };
 pub use structures::{
-    DCB, FILETIME, OVERLAPPED, OVERLAPPED_UNION, OVERLAPPED_UNION_STRUCT, SECURITY_ATTRIBUTES,
-    SYSTEMTIME,
+    COMMTIMEOUTS, DCB, FILETIME, OVERLAPPED, OVERLAPPED_UNION, OVERLAPPED_UNION_STRUCT,
+    SECURITY_ATTRIBUTES, SYSTEMTIME,
 };
-pub use types::{LPDCB, LPFILETIME, LPOVERLAPPED, LPSECURITY_ATTRIBUTES, LPSYSTEMTIME, PFILETIME};
+pub use types::{
+    LPCOMMTIMEOUTS, LPDCB, LPFILETIME, LPOVERLAPPED, LPSECURITY_ATTRIBUTES, LPSYSTEMTIME, PFILETIME,
+};

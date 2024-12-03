@@ -1,6 +1,7 @@
 mod format_message_w;
 mod get_comm_ports;
 mod get_comm_state;
+mod get_comm_timeouts;
 mod global_alloc;
 mod global_flags;
 mod global_free;
@@ -18,10 +19,12 @@ mod local_realloc;
 mod local_size;
 mod local_unlock;
 mod set_comm_state;
+mod set_comm_timeouts;
 
 pub use format_message_w::{FormatMessageW, FormatMessageW as FormatMessage};
 pub use get_comm_ports::GetCommPorts;
 pub use get_comm_state::GetCommState;
+pub use get_comm_timeouts::GetCommTimeouts;
 pub use global_alloc::GlobalAlloc;
 pub use global_flags::GlobalFlags;
 pub use global_free::GlobalFree;
@@ -39,3 +42,4 @@ pub use local_realloc::LocalReAlloc;
 pub use local_size::LocalSize;
 pub use local_unlock::LocalUnlock;
 pub use set_comm_state::SetCommState;
+pub use set_comm_timeouts::SetCommTimeouts;

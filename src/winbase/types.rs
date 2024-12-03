@@ -1,4 +1,7 @@
-use crate::{DCB, FILETIME, OVERLAPPED, SECURITY_ATTRIBUTES, SYSTEMTIME};
+use crate::{COMMTIMEOUTS, DCB, FILETIME, OVERLAPPED, SECURITY_ATTRIBUTES, SYSTEMTIME};
+
+/// A pointer to a [`COMMTIMEOUTS`] structure
+pub type LPCOMMTIMEOUTS = COMMTIMEOUTS;
 
 /// A pointer to a [`DCB`] structure
 pub type LPDCB = *mut DCB;
