@@ -1,5 +1,6 @@
 mod baud_rates;
 mod dtr_control;
+mod escape_comm_functions;
 mod format_message_flags;
 mod global_alloc_flags;
 mod infinite;
@@ -14,6 +15,7 @@ mod waits;
 
 pub use baud_rates::*;
 pub use dtr_control::*;
+pub use escape_comm_functions::*;
 pub use format_message_flags::*;
 pub use global_alloc_flags::*;
 pub use infinite::*;
