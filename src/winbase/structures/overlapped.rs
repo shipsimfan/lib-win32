@@ -2,7 +2,7 @@ use crate::{DWORD, HANDLE, PVOID, ULONG_PTR};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{ReadFile, ERROR_INVALID_PARAMETER, TRUE};
+use crate::{ReadFile, WriteFile, ERROR_INVALID_PARAMETER, TRUE};
 
 /// Contains information used in asynchronous (or overlapped) input and output (I/O).
 ///

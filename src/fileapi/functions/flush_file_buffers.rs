@@ -3,7 +3,7 @@ use crate::{BOOL, HANDLE};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    CreateFile, GetLastError, ERROR_INVALID_HANDLE, FALSE, FILE_FLAG_NO_BUFFERING,
+    CreateFile, GetLastError, WriteFile, ERROR_INVALID_HANDLE, FALSE, FILE_FLAG_NO_BUFFERING,
     FILE_FLAG_WRITE_THROUGH, GENERIC_WRITE,
 };
 

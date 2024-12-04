@@ -2,7 +2,7 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::ReadFile;
+use crate::{ReadFile, WriteFile};
 
 /// Contains the time-out parameters for a communications device. The parameters determine the
 /// behavior of [`ReadFile`], [`WriteFile`], [`ReadFileEx`], and [`WriteFileEx`] operations on the
