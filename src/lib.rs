@@ -17,6 +17,7 @@ pub mod winsock2;
 
 // Headers automatically included with `Windows.h`
 pub mod basetsd;
+pub mod consoleapi2;
 pub mod errhandlingapi;
 pub mod fileapi;
 pub mod guiddef;
@@ -29,6 +30,7 @@ pub mod synchapi;
 pub mod sysinfoapi;
 pub mod timezoneapi;
 pub mod winbase;
+pub mod wincontypes;
 pub mod windef;
 pub mod winerror;
 pub mod winnls;
@@ -37,6 +39,7 @@ pub mod winreg;
 pub mod winuser;
 
 pub use basetsd::*;
+pub use consoleapi2::*;
 pub use errhandlingapi::*;
 pub use fileapi::*;
 pub use guiddef::*;
@@ -50,6 +53,7 @@ pub use synchapi::*;
 pub use sysinfoapi::*;
 pub use timezoneapi::*;
 pub use winbase::*;
+pub use wincontypes::*;
 pub use windef::*;
 pub use winerror::*;
 pub use winnls::*;
