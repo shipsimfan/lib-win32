@@ -4,6 +4,7 @@ use crate::{BOOL, DWORD, HANDLE};
 #[allow(unused_imports)]
 use crate::{ReadFile, WriteFile, GENERIC_READ};
 
+#[link(name = "Kernel32")]
 extern "system" {
     /// Sets the input mode of a console's input buffer or the output mode of a console screen
     /// buffer.
@@ -176,5 +177,5 @@ extern "system" {
     ///
     /// To determine the current mode of a console input buffer or a screen buffer, use the
     /// [`GetConsoleMode`] function.
-    pub fn set_console_mode(console_handle: HANDLE, mode: DWORD) -> BOOL;
+    pub fn SetConsoleMode(console_handle: HANDLE, mode: DWORD) -> BOOL;
 }

@@ -9,6 +9,7 @@ use crate::{
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
+#[link(name = "Kernel32")]
 extern "system" {
     /// Retrieves a handle to the specified standard device (standard input, standard output, or
     /// standard error).
