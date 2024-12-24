@@ -4,4 +4,4 @@ mod constants;
 mod functions;
 
 pub use constants::*;
-pub use functions::{ReadConsoleInput, SetConsoleMode};
+pub use functions::{ReadConsoleInput, ReadConsoleInputW, SetConsoleMode};

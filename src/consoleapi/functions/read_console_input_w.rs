@@ -44,7 +44,7 @@ extern "system" {
     /// change the console's code page, use the [`SetConsoleCP`] or [`SetConsoleOutputCP`]
     /// functions. Legacy consumers may also use the chcp or mode con cp select= commands, but it
     /// is not recommended for new development.
-    pub fn ReadConsoleInput(
+    pub fn ReadConsoleInputW(
         console_input: HANDLE,
         buffer: PINPUT_RECORD,
         length: DWORD,
