@@ -47,3 +47,14 @@ pub union INPUT_RECORD_UNION {
     pub menu_event: MENU_EVENT_RECORD,
     pub focus_event: FOCUS_EVENT_RECORD,
 }
+
+impl Default for INPUT_RECORD {
+    fn default() -> Self {
+        INPUT_RECORD {
+            event_type: 0,
+            event: INPUT_RECORD_UNION {
+                key_event: KEY_EVENT_RECORD::default(),
+            },
+        }
+    }
+}
