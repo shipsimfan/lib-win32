@@ -1,7 +1,6 @@
 use crate::{
-    string::wcslen, Error, FormatMessage, GetUserDefaultUILanguage, LocalFree, DWORD,
-    FORMAT_MESSAGE_ALLOCATE_BUFFER, FORMAT_MESSAGE_FROM_SYSTEM, FORMAT_MESSAGE_IGNORE_INSERTS,
-    LPWSTR,
+    string::wcslen, Error, FormatMessage, LocalFree, DWORD, FORMAT_MESSAGE_ALLOCATE_BUFFER,
+    FORMAT_MESSAGE_FROM_SYSTEM, FORMAT_MESSAGE_IGNORE_INSERTS, LPWSTR,
 };
 use std::{
     fmt::Write,
@@ -19,7 +18,7 @@ impl std::fmt::Display for Error {
                     | FORMAT_MESSAGE_IGNORE_INSERTS,
                 null(),
                 self.0 as DWORD,
-                GetUserDefaultUILanguage() as _,
+                0,
                 &mut buffer as *mut LPWSTR as _,
                 0,
                 null_mut(),
