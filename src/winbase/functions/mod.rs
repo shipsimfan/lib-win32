@@ -1,3 +1,4 @@
+mod cancel_io;
 mod escape_comm_function;
 mod format_message_w;
 mod get_comm_ports;
@@ -22,6 +23,7 @@ mod local_unlock;
 mod set_comm_state;
 mod set_comm_timeouts;
 
+pub use cancel_io::CancelIo;
 pub use escape_comm_function::EscapeCommFunction;
 pub use format_message_w::{FormatMessageW, FormatMessageW as FormatMessage};
 pub use get_comm_ports::GetCommPorts;

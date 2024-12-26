@@ -23,10 +23,10 @@ mod types;
 
 pub use constants::*;
 pub use functions::{
-    EscapeCommFunction, FormatMessage, FormatMessageW, GetCommPorts, GetCommState, GetCommTimeouts,
-    GlobalAlloc, GlobalFlags, GlobalFree, GlobalHandle, GlobalLock, GlobalReAlloc, GlobalSize,
-    GlobalUnlock, LocalAlloc, LocalFlags, LocalFree, LocalHandle, LocalLock, LocalReAlloc,
-    LocalSize, LocalUnlock, SetCommState, SetCommTimeouts,
+    CancelIo, EscapeCommFunction, FormatMessage, FormatMessageW, GetCommPorts, GetCommState,
+    GetCommTimeouts, GlobalAlloc, GlobalFlags, GlobalFree, GlobalHandle, GlobalLock, GlobalReAlloc,
+    GlobalSize, GlobalUnlock, LocalAlloc, LocalFlags, LocalFree, LocalHandle, LocalLock,
+    LocalReAlloc, LocalSize, LocalUnlock, SetCommState, SetCommTimeouts,
 };
 pub use structures::{
     COMMTIMEOUTS, DCB, FILETIME, OVERLAPPED, OVERLAPPED_UNION, OVERLAPPED_UNION_STRUCT,
