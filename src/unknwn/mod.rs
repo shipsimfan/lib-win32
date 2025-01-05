@@ -2,4 +2,4 @@
 
 mod interfaces;
 
-pub use interfaces::{IUnknown, IUnknownTrait};
+pub use interfaces::*;

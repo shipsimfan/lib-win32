@@ -9,10 +9,12 @@
 #![feature(c_size_t)]
 
 // Header not automatically included with `Windows.h`
+pub mod dxgi;
 pub mod ktmw32;
 pub mod shlwapi;
 pub mod string;
 pub mod strsafe;
+pub mod unknwn;
 pub mod winsock2;
 
 // Headers automatically included with `Windows.h`
@@ -32,7 +34,6 @@ pub mod processenv;
 pub mod synchapi;
 pub mod sysinfoapi;
 pub mod timezoneapi;
-pub mod unknwn;
 pub mod winbase;
 pub mod wincon;
 pub mod wincontypes;

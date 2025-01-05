@@ -61,7 +61,7 @@ com_interface!(
         ///    successfully for a second, and through that pointer queries successfully for a third
         ///    interface, then a query for the first interface through the pointer for the third
         ///    interface must succeed.
-        fn query_interface(riid: REFIID, object: *mut *mut c_void) -> HRESULT;
+        fn query_interface(&mut self, riid: REFIID, object: *mut *mut c_void) -> HRESULT;
 
         /// Increments the reference count for an interface pointer to a COM object. You should
         /// call this method whenever you make a copy of an interface pointer.
@@ -79,7 +79,7 @@ com_interface!(
         ///
         /// The internal reference counter that AddRef maintains should be a 32-bit unsigned
         /// integer.
-        fn add_ref() -> ULONG;
+        fn add_ref(&mut self) -> ULONG;
 
         /// Decrements the reference count for an interface on a COM object.
         ///
@@ -94,6 +94,6 @@ com_interface!(
         /// implementation must free the object.
         ///
         /// Note that aggregation of objects restricts the ability to recover interface pointers.
-        fn release() -> ULONG;
+        fn release(&mut self) -> ULONG;
     }
 );

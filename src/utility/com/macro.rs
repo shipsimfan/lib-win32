@@ -3,12 +3,12 @@
 macro_rules! com_interface {
     (
         $(#[$meta: meta])*
-        $vis: vis abstract $struct_name: ident($vtable_name: ident / $trait_name: ident) {
+        $vis: vis abstract $struct_name: ident($vtable_name: ident / $trait_name: ident)$(: $super_type: ident/$super_trait: ident($super_name: ident))* {
             const IID = $iid1: literal - $iid2: literal - $iid3: literal - $iid4: literal - $iid5: literal;
 
             $(
                 $(#[$fn_meta: meta])*
-                fn $fn_name: ident($($parameter_name: ident: $parameter_type: ty),*)$( -> $return_type: ty)*;
+                fn $fn_name: ident(&mut self$(, $parameter_name: ident: $parameter_type: ty)*)$( -> $return_type: ty)*;
             )*
         }
     ) => {
@@ -21,19 +21,24 @@ macro_rules! com_interface {
 
         #[doc = ::std::concat!("Virtual function call table for [`", ::std::stringify!($struct_name), "`]")]
         #[repr(C)]
-        $vis struct $vtable_name {$(
-            $fn_name: Option<extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
-        )*}
+        $vis struct $vtable_name {
+            $(
+                $super_name: <$super_type as $crate::COMInterface>::VTable,
+            )*
+            $(
+                $fn_name: Option<extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
+            )*
+        }
 
         $(#[$meta])*
-        $vis trait $trait_name {
+        $vis trait $trait_name$(: $super_trait)* {
             /// Get the vtable for this interface
             fn vtable(&self) -> &$vtable_name;
 
             $(
                 $(#[$fn_meta])*
                 fn $fn_name(&mut self, $($parameter_name: $parameter_type),*)$( -> $return_type)* {
-                    self.vtable().$fn_name.unwrap()(self as *mut Self as *mut _, $($parameter_name),*)
+                    $trait_name::vtable(self).$fn_name.unwrap()(self as *mut Self as *mut _, $($parameter_name),*)
                 }
             )*
         }
@@ -46,6 +51,8 @@ macro_rules! com_interface {
         )*}
 
         impl $crate::utility::COMInterface for $struct_name {
+            type VTable = $vtable_name;
+
             const IID: $crate::IID = $crate::IID {
                 data1: $iid1,
                 data2: $iid2,
@@ -64,5 +71,13 @@ macro_rules! com_interface {
                 unsafe { self.vtable.unwrap().as_ref() }
             }
         }
+
+        $(
+            impl $super_trait for $struct_name {
+                fn vtable(&self) -> &<$super_type as $crate::COMInterface>::VTable {
+                    &$trait_name::vtable(self).$super_name
+                }
+            }
+        )*
     };
 }
