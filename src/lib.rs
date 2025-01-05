@@ -32,6 +32,7 @@ pub mod processenv;
 pub mod synchapi;
 pub mod sysinfoapi;
 pub mod timezoneapi;
+pub mod unknwn;
 pub mod winbase;
 pub mod wincon;
 pub mod wincontypes;
