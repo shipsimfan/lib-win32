@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::winsock2::SOCKET_ERROR;
+use crate::{winsock2::SOCKET_ERROR, S_OK};
 #[allow(unused_imports)]
 use std::ptr::null;
 
@@ -26,6 +26,20 @@ macro_rules! try_wsa_get_last_error {
             Err($crate::Error::wsa_get_last_error())
         } else {
             Ok(result)
+        }
+    }};
+}
+
+/// Convert an HRESULT result ([`S_OK`] on success) into a [`Result<()>`]
+#[macro_export]
+macro_rules! try_hresult {
+    ($expr: expr) => {{
+        #[allow(unused_unsafe)]
+        let result = unsafe { $expr };
+        if result == $crate::S_OK {
+            Ok(())
+        } else {
+            Err($crate::Error::new(result))
         }
     }};
 }

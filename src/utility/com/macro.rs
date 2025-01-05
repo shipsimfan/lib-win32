@@ -38,6 +38,13 @@ macro_rules! com_interface {
             )*
         }
 
+        impl $struct_name {$(
+            $(#[$fn_meta])*
+            pub fn $fn_name(&mut self, $($parameter_name: $parameter_type),*) $(-> $return_type)* {
+                $trait_name::$fn_name(self $(, $parameter_name)*)
+            }
+        )*}
+
         impl $crate::utility::COMInterface for $struct_name {
             const IID: $crate::IID = $crate::IID {
                 data1: $iid1,
