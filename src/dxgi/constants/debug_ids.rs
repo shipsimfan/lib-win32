@@ -1,0 +1,41 @@
+use crate::GUID;
+
+/// All Direct3D and DXGI objects and private apps.
+pub const DXGI_DEBUG_ALL: GUID = GUID {
+    data1: 0xE48AE283,
+    data2: 0xDA80,
+    data3: 0x490B,
+    data4: [0x87, 0xE6, 0x43, 0xE9, 0xA9, 0xCF, 0xDA, 0x8],
+};
+
+/// Direct3D and DXGI objects.
+pub const DXGI_DEBUG_DX: GUID = GUID {
+    data1: 0x35CDD7FC,
+    data2: 0x13B2,
+    data3: 0x421D,
+    data4: [0xA5, 0xD7, 0x7E, 0x44, 0x51, 0x28, 0x7D, 0x64],
+};
+
+/// DXGI.
+pub const DXGI_DEBUG_DXGI: GUID = GUID {
+    data1: 0x25CDDAA4,
+    data2: 0xB1C6,
+    data3: 0x47E1,
+    data4: [0xAC, 0x3E, 0x98, 0x87, 0x5B, 0x5A, 0x2E, 0x2A],
+};
+
+/// Private apps. Any messages that you add with IDXGIInfoQueue::AddApplicationMessage.
+pub const DXGI_DEBUG_APP: GUID = GUID {
+    data1: 0x6CD6E01,
+    data2: 0x4219,
+    data3: 0x4EBD,
+    data4: [0x87, 0x9, 0x27, 0xED, 0x23, 0x36, 0xC, 0x62],
+};
+
+/// Direct3D 11. Defined in D3D11SDKLayers.h.
+pub const DXGI_DEBUG_D3D11: GUID = GUID {
+    data1: 0x4B99317B,
+    data2: 0xAC39,
+    data3: 0x4AA6,
+    data4: [0xBB, 0xB, 0xBA, 0xA0, 0x47, 0x84, 0x79, 0x8F],
+};

@@ -9,6 +9,8 @@
 //! a window, monitor, or other graphics component for eventual composition and display. You can
 //! also use DXGI to read the contents on a monitor.
 
+mod constants;
 mod interfaces;
 
+pub use constants::*;
 pub use interfaces::*;
