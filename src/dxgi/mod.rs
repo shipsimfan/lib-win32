@@ -10,7 +10,9 @@
 //! also use DXGI to read the contents on a monitor.
 
 mod constants;
+mod functions;
 mod interfaces;
 
 pub use constants::*;
+pub use functions::*;
 pub use interfaces::*;

@@ -73,7 +73,7 @@ macro_rules! com_interface {
         }
 
         $(
-            impl $super_trait for $struct_name {
+            impl<T: $trait_name> $super_trait for T {
                 fn vtable(&self) -> &<$super_type as $crate::COMInterface>::VTable {
                     &$trait_name::vtable(self).$super_name
                 }
