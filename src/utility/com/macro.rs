@@ -3,7 +3,7 @@
 macro_rules! com_interface {
     (
         $(#[$meta: meta])*
-        $vis: vis abstract $struct_name: ident($vtable_name: ident / $trait_name: ident)$(: $super_type: ident/$super_trait: ident($super_name: ident))* {
+        $vis: vis abstract $struct_name: ident($vtable_name: ident / $trait_name: ident)$(: $first_super_type: ident/$first_super_trait: ident($first_super_name: ident))*$( + $super_type: ident/$super_trait: ident($super_name: ident$(.$super_child: ident)*))* {
             const IID = $iid1: literal - $iid2: literal - $iid3: literal - $iid4: literal - $iid5: literal;
 
             $(
@@ -23,7 +23,8 @@ macro_rules! com_interface {
         #[repr(C)]
         $vis struct $vtable_name {
             $(
-                $super_name: <$super_type as $crate::COMInterface>::VTable,
+                #[allow(missing_docs)]
+                pub $first_super_name: <$first_super_type as $crate::COMInterface>::VTable,
             )*
             $(
                 $fn_name: Option<extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
@@ -31,7 +32,7 @@ macro_rules! com_interface {
         }
 
         $(#[$meta])*
-        $vis trait $trait_name$(: $super_trait)* {
+        $vis trait $trait_name$(: $first_super_trait)* {
             /// Get the vtable for this interface
             fn vtable(&self) -> &$vtable_name;
 
@@ -72,10 +73,19 @@ macro_rules! com_interface {
             }
         }
 
+
         $(
-            impl<T: $trait_name> $super_trait for T {
+            impl $first_super_trait for $struct_name {
+                fn vtable(&self) -> &<$first_super_type as $crate::COMInterface>::VTable {
+                    &$trait_name::vtable(self).$first_super_name
+                }
+            }
+        )*
+
+        $(
+            impl $super_trait for $struct_name {
                 fn vtable(&self) -> &<$super_type as $crate::COMInterface>::VTable {
-                    &$trait_name::vtable(self).$super_name
+                    &$trait_name::vtable(self).$super_name$(.$super_child)*
                 }
             }
         )*
