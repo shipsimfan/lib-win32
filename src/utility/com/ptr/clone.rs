@@ -1,8 +1,8 @@
-use crate::{COMInterface, COMPtr};
+use crate::{ComInterface, ComPtr};
 
-impl<T: COMInterface> Clone for COMPtr<T> {
+impl<T: ComInterface> Clone for ComPtr<T> {
     fn clone(&self) -> Self {
-        let mut ptr = COMPtr::new(self.ptr.as_ptr());
+        let mut ptr = ComPtr::new(self.ptr.as_ptr());
         ptr.add_ref();
         ptr
     }

@@ -24,7 +24,7 @@ macro_rules! com_interface {
         $vis struct $vtable_name {
             $(
                 #[allow(missing_docs)]
-                pub $first_super_name: <$first_super_type as $crate::COMInterface>::VTable,
+                pub $first_super_name: <$first_super_type as $crate::ComInterface>::VTable,
             )*
             $(
                 $fn_name: Option<extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
@@ -51,7 +51,7 @@ macro_rules! com_interface {
             }
         )*}
 
-        impl $crate::utility::COMInterface for $struct_name {
+        impl $crate::utility::ComInterface for $struct_name {
             type VTable = $vtable_name;
 
             const IID: $crate::IID = $crate::IID {
@@ -76,7 +76,7 @@ macro_rules! com_interface {
 
         $(
             impl $first_super_trait for $struct_name {
-                fn vtable(&self) -> &<$first_super_type as $crate::COMInterface>::VTable {
+                fn vtable(&self) -> &<$first_super_type as $crate::ComInterface>::VTable {
                     &$trait_name::vtable(self).$first_super_name
                 }
             }
@@ -84,7 +84,7 @@ macro_rules! com_interface {
 
         $(
             impl $super_trait for $struct_name {
-                fn vtable(&self) -> &<$super_type as $crate::COMInterface>::VTable {
+                fn vtable(&self) -> &<$super_type as $crate::ComInterface>::VTable {
                     &$trait_name::vtable(self).$super_name$(.$super_child)*
                 }
             }

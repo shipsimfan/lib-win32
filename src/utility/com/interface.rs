@@ -1,7 +1,7 @@
 use crate::{unknwn::IUnknownTrait, IID};
 
 /// An interface presented through the component object model
-pub trait COMInterface: IUnknownTrait {
+pub trait ComInterface: IUnknownTrait {
     /// The virtual function call table type
     type VTable;
 

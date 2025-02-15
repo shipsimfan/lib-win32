@@ -1,6 +1,6 @@
-use crate::{COMInterface, COMPtr};
+use crate::{ComInterface, ComPtr};
 
-impl<T: COMInterface> Drop for COMPtr<T> {
+impl<T: ComInterface> Drop for ComPtr<T> {
     fn drop(&mut self) {
         self.release();
     }

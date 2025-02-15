@@ -3,7 +3,7 @@ use std::ffi::c_void;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{COMInterface, E_NOINTERFACE, E_POINTER, IID, S_OK};
+use crate::{ComInterface, E_NOINTERFACE, E_POINTER, IID, S_OK};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
