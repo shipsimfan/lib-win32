@@ -25,3 +25,12 @@ pub struct DXGI_SAMPLE_DESC {
     /// information about these quality level values, see Remarks.
     pub quality: UINT,
 }
+
+impl Default for DXGI_SAMPLE_DESC {
+    fn default() -> Self {
+        DXGI_SAMPLE_DESC {
+            count: 1,
+            quality: 0,
+        }
+    }
+}

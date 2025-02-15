@@ -23,3 +23,12 @@ pub struct DXGI_RATIONAL {
     /// An unsigned integer value representing the bottom of the rational number.
     pub denominator: UINT,
 }
+
+impl Default for DXGI_RATIONAL {
+    fn default() -> Self {
+        DXGI_RATIONAL {
+            numerator: 0,
+            denominator: 1,
+        }
+    }
+}

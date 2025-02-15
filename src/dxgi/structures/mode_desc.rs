@@ -73,3 +73,16 @@ pub struct DXGI_MODE_DESC {
     /// A member of the [`DXGI_MODE_SCALING`] enumerated type describing the scaling mode.
     pub scaling: DXGI_MODE_SCALING,
 }
+
+impl Default for DXGI_MODE_DESC {
+    fn default() -> Self {
+        DXGI_MODE_DESC {
+            width: 0,
+            height: 0,
+            refresh_rate: DXGI_RATIONAL::default(),
+            format: DXGI_FORMAT::Unknown,
+            scanline_ordering: DXGI_MODE_SCANLINE_ORDER::Unspecified,
+            scaling: DXGI_MODE_SCALING::Unspecified,
+        }
+    }
+}

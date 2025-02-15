@@ -50,3 +50,19 @@ pub struct DXGI_ADAPTER_DESC {
     /// A unique value that identifies the adapter. See [`LUID`] for a definition of the structure.
     pub adapter_luid: LUID,
 }
+
+impl Default for DXGI_ADAPTER_DESC {
+    fn default() -> Self {
+        DXGI_ADAPTER_DESC {
+            description: [0; 128],
+            vendor_id: 0,
+            device_id: 0,
+            sub_sys_id: 0,
+            revision: 0,
+            dedicated_video_memory: 0,
+            dedicated_system_memory: 0,
+            shared_system_memory: 0,
+            adapter_luid: LUID::default(),
+        }
+    }
+}

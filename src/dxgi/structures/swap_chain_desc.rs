@@ -1,3 +1,5 @@
+use std::ptr::null_mut;
+
 use crate::{
     dxgi::{DXGI_MODE_DESC, DXGI_SAMPLE_DESC, DXGI_SWAP_EFFECT, DXGI_USAGE},
     BOOL, HWND, UINT,
@@ -42,4 +44,19 @@ pub struct DXGI_SWAP_CHAIN_DESC {
 
     /// A member of the DXGI_SWAP_CHAIN_FLAG enumerated type that describes options for swap-chain behavior.
     pub flags: UINT,
+}
+
+impl Default for DXGI_SWAP_CHAIN_DESC {
+    fn default() -> Self {
+        DXGI_SWAP_CHAIN_DESC {
+            buffer_desc: DXGI_MODE_DESC::default(),
+            sample_desc: DXGI_SAMPLE_DESC::default(),
+            buffer_usage: 0,
+            buffer_count: 0,
+            output_window: null_mut(),
+            windowed: 0,
+            swap_effect: DXGI_SWAP_EFFECT::Discard,
+            flags: 0,
+        }
+    }
 }

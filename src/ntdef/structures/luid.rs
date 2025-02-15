@@ -11,3 +11,12 @@ pub struct LUID {
     #[allow(missing_docs)]
     pub high_part: LONG,
 }
+
+impl Default for LUID {
+    fn default() -> Self {
+        LUID {
+            low_part: 0,
+            high_part: 0,
+        }
+    }
+}
