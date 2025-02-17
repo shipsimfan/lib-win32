@@ -47,3 +47,15 @@ pub struct DXGI_FRAME_STATISTICS {
     /// Reserved. Always returns 0.
     pub sync_gpu_time: LARGE_INTEGER,
 }
+
+impl Default for DXGI_FRAME_STATISTICS {
+    fn default() -> Self {
+        DXGI_FRAME_STATISTICS {
+            present_count: 0,
+            present_refresh_count: 0,
+            sync_refresh_count: 0,
+            sync_qpc_time: LARGE_INTEGER::default(),
+            sync_gpu_time: LARGE_INTEGER::default(),
+        }
+    }
+}

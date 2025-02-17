@@ -25,6 +25,12 @@ pub struct LARGE_INTEGER_DUMMY {
     pub high_part: LONG,
 }
 
+impl Default for LARGE_INTEGER {
+    fn default() -> Self {
+        LARGE_INTEGER { quad_part: 0 }
+    }
+}
+
 impl Display for LARGE_INTEGER {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         Display::fmt(unsafe { &self.quad_part }, f)
