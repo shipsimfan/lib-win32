@@ -1,11 +1,21 @@
 mod adapter_desc;
+mod frame_statistics;
+mod gamma_control;
+mod gamma_control_capabilities;
 mod mode_desc;
+mod output_desc;
 mod rational;
+mod rgb;
 mod sample_desc;
 mod swap_chain_desc;
 
 pub use adapter_desc::DXGI_ADAPTER_DESC;
+pub use frame_statistics::DXGI_FRAME_STATISTICS;
+pub use gamma_control::DXGI_GAMMA_CONTROL;
+pub use gamma_control_capabilities::DXGI_GAMMA_CONTROL_CAPABILITIES;
 pub use mode_desc::DXGI_MODE_DESC;
+pub use output_desc::DXGI_OUTPUT_DESC;
 pub use rational::DXGI_RATIONAL;
+pub use rgb::DXGI_RGB;
 pub use sample_desc::DXGI_SAMPLE_DESC;
 pub use swap_chain_desc::DXGI_SWAP_CHAIN_DESC;

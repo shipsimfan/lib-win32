@@ -44,6 +44,9 @@ pub type HMENU = HANDLE;
 /// A handle to a module. This is the base address of the module in memory.
 pub type HMODULE = HANDLE;
 
+/// A handle to a display monitor.
+pub type HMONITOR = HANDLE;
+
 /// A handle to a window.
 pub type HWND = HANDLE;
 
