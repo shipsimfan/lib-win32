@@ -8,6 +8,7 @@ mod output_desc;
 mod rational;
 mod rgb;
 mod sample_desc;
+mod shared_resource;
 mod surface_desc;
 mod swap_chain_desc;
 
@@ -21,5 +22,6 @@ pub use output_desc::DXGI_OUTPUT_DESC;
 pub use rational::DXGI_RATIONAL;
 pub use rgb::DXGI_RGB;
 pub use sample_desc::DXGI_SAMPLE_DESC;
+pub use shared_resource::DXGI_SHARED_RESOURCE;
 pub use surface_desc::DXGI_SURFACE_DESC;
 pub use swap_chain_desc::DXGI_SWAP_CHAIN_DESC;
