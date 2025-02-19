@@ -14,7 +14,7 @@ com_interface!(
     /// [`IDXGIFactory2::create_swap_chain_for_composition`]. You can also create a swap chain when
     /// you call [`D3D11CreateDeviceAndSwapChain`]; however, you can then only access the sub-set
     /// of swap-chain functionality that the [`IDXGISwapChain`] interface provides.
-    pub abstract IDXGISwapChain(IDXGIFactoryVTable/IDXGIFactoryTrait):
+    pub abstract IDXGISwapChain(IDXGISwapChainVTable/IDXGISwapChainTrait):
         IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(device_sub_object) +
         IDXGIObject/IDXGIObjectTrait(device_sub_object.object) +
         IUnknown/IUnknownTrait(device_sub_object.object.unknown) {
