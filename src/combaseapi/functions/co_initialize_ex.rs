@@ -3,8 +3,9 @@ use crate::{DWORD, HRESULT, LPVOID};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    PeekMessage, COINIT_APARTMENTTHREADED, COINIT_MULTITHREADED, CO_E_NOTINITIALIZED, E_INVALIDARG,
-    E_OUTOFMEMORY, E_UNEXPECTED, RPC_E_CHANGED_MODE, S_FALSE, S_OK,
+    CoUninitialize, PeekMessage, COINIT_APARTMENTTHREADED, COINIT_MULTITHREADED,
+    CO_E_NOTINITIALIZED, E_INVALIDARG, E_OUTOFMEMORY, E_UNEXPECTED, RPC_E_CHANGED_MODE, S_FALSE,
+    S_OK,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
