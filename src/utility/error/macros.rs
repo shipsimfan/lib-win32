@@ -36,7 +36,7 @@ macro_rules! try_hresult {
     ($expr: expr) => {{
         #[allow(unused_unsafe)]
         let result = unsafe { $expr };
-        if result == $crate::S_OK {
+        if result == $crate::S_OK || result == $crate::S_FALSE {
             Ok(())
         } else {
             Err($crate::Error::new(result))

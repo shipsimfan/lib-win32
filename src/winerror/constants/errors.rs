@@ -9,6 +9,9 @@ pub const NO_ERROR: HRESULT = 0;
 /// There was no error
 pub const S_OK: HRESULT = 0;
 
+/// There was no error
+pub const S_FALSE: HRESULT = 1;
+
 /// Incorrect function.
 pub const ERROR_INVALID_FUNCTION: HRESULT = 1;
 
