@@ -4,4 +4,4 @@ mod structures;
 mod types;
 
 pub use structures::GUID;
-pub use types::{IID, LPGUID, REFGUID, REFIID};
+pub use types::{IID, LPGUID, REFCLSID, REFGUID, REFIID};

@@ -4,4 +4,4 @@ mod constants;
 mod functions;
 
 pub use constants::*;
-pub use functions::{CoInitializeEx, CoUninitialize};
+pub use functions::{CoCreateInstance, CoInitializeEx, CoUninitialize};

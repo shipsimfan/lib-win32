@@ -7,6 +7,9 @@ pub type IID = GUID;
 pub type LPGUID = *mut GUID;
 
 /// A reference to an [`IID`]
+pub type REFCLSID = *const IID;
+
+/// A reference to an [`IID`]
 pub type REFIID = *const IID;
 
 /// A reference to a [`GUID`]
