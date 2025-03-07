@@ -2,7 +2,10 @@ use crate::{DWORD, HANDLE, ULONG_PTR};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{CloseHandle, CreateFile, GetLastError, FILE_FLAG_OVERLAPPED, INVALID_HANDLE_VALUE};
+use crate::{
+    CloseHandle, CreateFile, GetLastError, GetQueuedCompletionStatus, PostQueuedCompletionStatus,
+    FILE_FLAG_OVERLAPPED, INVALID_HANDLE_VALUE,
+};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
