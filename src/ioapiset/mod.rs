@@ -2,4 +2,4 @@
 
 mod functions;
 
-pub use functions::GetOverlappedResult;
+pub use functions::{CreateIoCompletionPort, GetOverlappedResult, GetQueuedCompletionStatus};
