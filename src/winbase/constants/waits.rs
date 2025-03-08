@@ -13,6 +13,13 @@ use crate::{FALSE, TRUE};
 /// of all the signaled objects.
 pub const WAIT_OBJECT_0: DWORD = 0;
 
+/// The specified object is a mutex object that was not released by the thread that owned the mutex
+/// object before the owning thread terminated. Ownership of the mutex object is granted to the
+/// calling thread and the mutex state is set to nonsignaled.
+///
+/// If the mutex was protecting persistent state information, you should check it for consistency.
+pub const WAIT_ABANDONED: DWORD = 0x80;
+
 /// If `wait_all` is [`TRUE`], a return value in this range indicates that the state of all
 /// specified objects is signaled, and at least one of the objects is an abandoned mutex object.
 ///

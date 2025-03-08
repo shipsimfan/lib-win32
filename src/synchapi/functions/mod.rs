@@ -6,6 +6,7 @@ mod set_event;
 mod set_watiable_timer;
 mod sleep_ex;
 mod wait_for_multiple_objects_ex;
+mod wait_for_single_object;
 
 pub use cancel_waitable_timer::CancelWaitableTimer;
 pub use create_event_w::{CreateEventW, CreateEventW as CreateEvent};
@@ -17,3 +18,4 @@ pub use set_event::SetEvent;
 pub use set_watiable_timer::SetWaitableTimer;
 pub use sleep_ex::SleepEx;
 pub use wait_for_multiple_objects_ex::WaitForMultipleObjectsEx;
+pub use wait_for_single_object::WaitForSingleObject;
