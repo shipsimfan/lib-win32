@@ -7,7 +7,7 @@ mod types;
 
 pub use constants::*;
 pub use functions::{
-    accept, bind, closesocket, connect, getsockname, ioctlsocket, listen, socket, WSACleanup,
+    accept, bind, closesocket, connect, getsockname, ioctlsocket, listen, send, socket, WSACleanup,
     WSACloseEvent, WSACreateEvent, WSAEventSelect, WSAGetLastError, WSASocket, WSASocketW,
     WSAStartup,
 };
