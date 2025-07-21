@@ -1,6 +1,7 @@
 use crate::winsock2::SOCKET;
 
 mod address;
+mod event;
 
 mod accept;
 mod bind;
@@ -14,6 +15,7 @@ mod recv;
 mod send;
 
 pub use address::SocketAddress;
+pub use event::SocketEvent;
 
 /// A wrapper around a win32 socket
 pub struct Socket {

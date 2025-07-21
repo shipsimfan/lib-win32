@@ -6,4 +6,4 @@ mod socket;
 pub use com::{ComInterface, ComPtr};
 pub use error::{Error, Result};
 pub use event::Event;
-pub use socket::{Socket, SocketAddress};
+pub use socket::{Socket, SocketAddress, SocketEvent};

@@ -4,8 +4,8 @@ mod deref;
 mod drop;
 mod get;
 mod new;
-mod read;
-mod write;
+mod signal;
+mod wait;
 
 /// A synchronization object that lets threads signal each other to coordinate actions or wait for specific conditions
 pub struct Event {
