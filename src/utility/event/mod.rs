@@ -12,3 +12,6 @@ pub struct Event {
     /// The handle to the Windows event
     handle: HANDLE,
 }
+
+unsafe impl Send for Event {}
+unsafe impl Sync for Event {}

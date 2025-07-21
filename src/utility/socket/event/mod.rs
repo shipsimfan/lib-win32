@@ -12,3 +12,6 @@ pub struct SocketEvent {
     /// The handle to the underlying event
     handle: WSAEVENT,
 }
+
+unsafe impl Send for SocketEvent {}
+unsafe impl Sync for SocketEvent {}
