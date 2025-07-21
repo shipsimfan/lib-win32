@@ -1,6 +1,7 @@
 use crate::HRESULT;
 
 mod display;
+mod get;
 mod last_error;
 mod macros;
 mod new;
