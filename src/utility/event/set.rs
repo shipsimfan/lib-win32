@@ -2,7 +2,7 @@ use crate::{try_get_last_error, Event, ResetEvent, Result, SetEvent};
 
 impl Event {
     /// Signals a thread waiting on this event to wake up
-    pub fn signal(&self) -> Result<()> {
+    pub fn set(&self) -> Result<()> {
         try_get_last_error!(SetEvent(self.handle)).map(|_| ())
     }
 

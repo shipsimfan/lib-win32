@@ -4,7 +4,7 @@ mod deref;
 mod drop;
 mod get;
 mod new;
-mod signal;
+mod set;
 mod wait;
 
 /// A synchronization object that lets threads signal each other to coordinate actions or wait for specific conditions
