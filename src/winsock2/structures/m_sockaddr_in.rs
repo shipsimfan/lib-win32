@@ -1,9 +1,5 @@
-use crate::winsock2::in_addr;
+use crate::winsock2::{in_addr, AF_INET};
 use std::ffi::{c_char, c_short, c_ushort};
-
-// rustdoc imports
-#[allow(unused_imports)]
-use crate::winsock2::AF_INET;
 
 /// An IPv4 socket address
 #[repr(C)]
@@ -21,4 +17,15 @@ pub struct sockaddr_in {
 
     /// Padding
     pub zero: [c_char; 8],
+}
+
+impl Default for sockaddr_in {
+    fn default() -> Self {
+        sockaddr_in {
+            family: AF_INET as _,
+            port: 0,
+            addr: 0,
+            zero: [0; 8],
+        }
+    }
 }

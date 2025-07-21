@@ -1,9 +1,5 @@
-use crate::winsock2::in6_addr;
+use crate::winsock2::{in6_addr, AF_INET6};
 use std::ffi::{c_short, c_ulong, c_ushort};
-
-// rustdoc imports
-#[allow(unused_imports)]
-use crate::winsock2::AF_INET6;
 
 /// An IPv6 socket address
 #[repr(C)]
@@ -24,4 +20,16 @@ pub struct sockaddr_in6 {
 
     /// Scope ID
     pub scope_id: c_ulong,
+}
+
+impl Default for sockaddr_in6 {
+    fn default() -> Self {
+        sockaddr_in6 {
+            family: AF_INET6 as _,
+            port: 0,
+            flowinfo: 0,
+            addr: [0; 16],
+            scope_id: 0,
+        }
+    }
 }

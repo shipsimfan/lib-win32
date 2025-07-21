@@ -11,3 +11,12 @@ pub struct sockaddr {
     /// The data defining the address
     pub data: [c_char; 14],
 }
+
+impl Default for sockaddr {
+    fn default() -> Self {
+        sockaddr {
+            family: 0,
+            data: [0; 14],
+        }
+    }
+}
