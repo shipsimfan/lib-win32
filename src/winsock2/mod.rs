@@ -8,8 +8,8 @@ mod types;
 pub use constants::*;
 pub use functions::{
     accept, bind, closesocket, connect, getsockname, ioctlsocket, listen, recv, send, socket,
-    WSACleanup, WSACloseEvent, WSACreateEvent, WSAEventSelect, WSAGetLastError, WSARecv, WSASocket,
-    WSASocketW, WSAStartup,
+    WSACleanup, WSACloseEvent, WSACreateEvent, WSAEventSelect, WSAGetLastError,
+    WSAGetOverlappedResult, WSARecv, WSASocket, WSASocketW, WSAStartup,
 };
 pub use structures::{sockaddr, sockaddr_in, sockaddr_in6, WSABUF, WSADATA, WSAOVERLAPPED};
 pub use types::{in6_addr, in_addr, GROUP, LPWSADATA, LPWSAPROTOCOL_INFOW, SOCKET, WSAEVENT};
