@@ -12,4 +12,7 @@ pub use functions::{
     WSAGetOverlappedResult, WSARecv, WSASocket, WSASocketW, WSAStartup,
 };
 pub use structures::{sockaddr, sockaddr_in, sockaddr_in6, WSABUF, WSADATA, WSAOVERLAPPED};
-pub use types::{in6_addr, in_addr, GROUP, LPWSADATA, LPWSAPROTOCOL_INFOW, SOCKET, WSAEVENT};
+pub use types::{
+    in6_addr, in_addr, GROUP, LPWSABUF, LPWSADATA, LPWSAOVERLAPPED,
+    LPWSAOVERLAPPED_COMPLETION_ROUTINE, LPWSAPROTOCOL_INFOW, SOCKET, WSAEVENT,
+};
