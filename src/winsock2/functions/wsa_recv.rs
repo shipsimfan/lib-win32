@@ -133,6 +133,6 @@ extern "system" {
         number_of_bytes_recvd: LPDWORD,
         flags: LPDWORD,
         overlapped: LPWSAOVERLAPPED,
-        completion_routine: LPWSAOVERLAPPED_COMPLETION_ROUTINE,
+        completion_routine: Option<LPWSAOVERLAPPED_COMPLETION_ROUTINE>,
     ) -> c_int;
 }
