@@ -7,7 +7,7 @@ use crate::{
     TCHAR,
 };
 #[allow(unused_imports)]
-use std::{ffi::VaList, ptr::null};
+use std::ptr::null;
 
 /// The function allocates a buffer large enough to hold the formatted message, and places a
 /// pointer to the allocated buffer at the address specified by `buffer`. The `buffer` parameter is

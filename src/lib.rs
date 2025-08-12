@@ -5,9 +5,6 @@
 #![deny(rustdoc::unescaped_backticks)]
 #![deny(rustdoc::redundant_explicit_links)]
 #![warn(rustdoc::broken_intra_doc_links)]
-#![feature(c_variadic)]
-#![feature(c_size_t)]
-#![feature(ip_from)]
 
 // Header not automatically included with `Windows.h`
 pub mod dxgi;

@@ -1,8 +1,8 @@
 use crate::{
+    c_size_t,
     strsafe::{STRSAFE_LPCWSTR, STRSAFE_LPWSTR},
     DWORD, HRESULT,
 };
-use core::ffi::c_size_t;
 
 // rustdoc imports
 #[allow(unused_imports)]

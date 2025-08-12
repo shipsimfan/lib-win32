@@ -1,5 +1,5 @@
 use crate::{DWORD, LPCVOID, LPWSTR};
-use std::ffi::VaList;
+use std::ffi::c_void;
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -171,6 +171,6 @@ extern "system" {
         language_id: DWORD,
         buffer: LPWSTR,
         size: DWORD,
-        arguments: *mut VaList,
+        arguments: *mut c_void,
     ) -> DWORD;
 }
