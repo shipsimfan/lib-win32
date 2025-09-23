@@ -43,6 +43,9 @@ pub type PULONG_PTR = *mut ULONG_PTR;
 #[allow(non_camel_case_types)]
 pub type SIZE_T = ULONG_PTR;
 
+/// An unsigned [`INT64`]. The range is 0 through 18446744073709551615 decimal.
+pub type UINT64 = u64;
+
 /// An unsigned [`INT_PTR`]
 #[cfg(target_pointer_width = "64")]
 #[allow(non_camel_case_types)]

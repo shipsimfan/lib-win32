@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi::DXGI_SWAP_CHAIN_DESC;
+use crate::dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC};
 
 /// Options for handling pixels in a display surface after calling [`IDXGISwapChain1::present1`].
 ///

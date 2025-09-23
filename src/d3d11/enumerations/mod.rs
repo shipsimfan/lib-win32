@@ -1,0 +1,3 @@
+mod authenticated_channel_type;
+
+pub use authenticated_channel_type::D3D11_AUTHENTICATED_CHANNEL_TYPE;
