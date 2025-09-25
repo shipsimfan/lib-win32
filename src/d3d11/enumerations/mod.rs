@@ -1,3 +1,5 @@
 mod authenticated_channel_type;
+mod authenticated_process_identifier_type;
 
 pub use authenticated_channel_type::D3D11_AUTHENTICATED_CHANNEL_TYPE;
+pub use authenticated_process_identifier_type::D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE;

@@ -8,9 +8,9 @@ pub enum D3D11_AUTHENTICATED_CHANNEL_TYPE {
 
     /// Software driver channel. This channel provides communication with a driver that implements
     /// content protection mechanisms in software.
-    SOFTWARE = 2,
+    Software = 2,
 
     /// Hardware driver channel. This channel provides communication with a driver that implements
     /// content protection mechanisms in the GPU hardware.
-    HARDWARE = 3,
+    Hardware = 3,
 }
