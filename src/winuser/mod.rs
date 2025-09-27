@@ -37,21 +37,22 @@ mod types;
 pub use constants::*;
 pub use functions::{
     AllowSetForegroundWindow, BeginPaint, CallWindowProc, CallWindowProcA, CallWindowProcW,
-    CreateWindowEx, CreateWindowExA, CreateWindowExW, DefWindowProc, DefWindowProcA,
-    DefWindowProcW, DestroyWindow, DialogBoxParam, DialogBoxParamA, DialogBoxParamW,
-    DispatchMessage, DispatchMessageA, DispatchMessageW, EndDialog, EndPaint, GetClassInfo,
-    GetClassInfoA, GetClassInfoEx, GetClassInfoExA, GetClassInfoExW, GetClassInfoW, GetClientRect,
-    GetSubMenu, GetWindowLong, GetWindowLongA, GetWindowLongPtr, GetWindowLongPtrA,
-    GetWindowLongPtrW, GetWindowLongW, IsDialogMessage, IsDialogMessageA, IsDialogMessageW,
-    LockSetForegroundWindow, MessageBox, MessageBoxA, MessageBoxEx, MessageBoxExA, MessageBoxExW,
-    MessageBoxW, PeekMessage, PeekMessageA, PeekMessageW, PostQuitMessage, RegisterClass,
-    RegisterClassA, RegisterClassEx, RegisterClassExA, RegisterClassExW, RegisterClassW,
-    SetActiveWindow, SetForegroundWindow, SetLastErrorEx, SetParent, SetWindowLong, SetWindowLongA,
-    SetWindowLongPtr, SetWindowLongPtrA, SetWindowLongPtrW, SetWindowLongW, SetWindowPos,
-    ShowWindow, SystemParametersInfo, SystemParametersInfoA, SystemParametersInfoForDpi,
-    SystemParametersInfoW, TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW,
+    CreateDialogParam, CreateDialogParamA, CreateDialogParamW, CreateWindowEx, CreateWindowExA,
+    CreateWindowExW, DefWindowProc, DefWindowProcA, DefWindowProcW, DestroyWindow, DialogBoxParam,
+    DialogBoxParamA, DialogBoxParamW, DispatchMessage, DispatchMessageA, DispatchMessageW,
+    EndDialog, EndPaint, GetClassInfo, GetClassInfoA, GetClassInfoEx, GetClassInfoExA,
+    GetClassInfoExW, GetClassInfoW, GetClientRect, GetSubMenu, GetWindowLong, GetWindowLongA,
+    GetWindowLongPtr, GetWindowLongPtrA, GetWindowLongPtrW, GetWindowLongW, IsDialogMessage,
+    IsDialogMessageA, IsDialogMessageW, LockSetForegroundWindow, MessageBox, MessageBoxA,
+    MessageBoxEx, MessageBoxExA, MessageBoxExW, MessageBoxW, PeekMessage, PeekMessageA,
+    PeekMessageW, PostQuitMessage, RegisterClass, RegisterClassA, RegisterClassEx,
+    RegisterClassExA, RegisterClassExW, RegisterClassW, SetActiveWindow, SetForegroundWindow,
+    SetLastErrorEx, SetParent, SetWindowLong, SetWindowLongA, SetWindowLongPtr, SetWindowLongPtrA,
+    SetWindowLongPtrW, SetWindowLongW, SetWindowPos, ShowWindow, SystemParametersInfo,
+    SystemParametersInfoA, SystemParametersInfoForDpi, SystemParametersInfoW, TranslateMessage,
+    UnregisterClass, UnregisterClassA, UnregisterClassW,
 };
-pub use macros::{CreateWindow, DialogBox, MAKEINTRESOURCE};
+pub use macros::{CreateDialog, CreateWindow, DialogBox, MAKEINTRESOURCE};
 pub use structures::{
     CLIENTCREATESTRUCT, CREATESTRUCT, CREATESTRUCTA, CREATESTRUCTW, HIGHCONTRAST, HIGHCONTRASTA,
     HIGHCONTRASTW, MDICREATESTRUCT, MDICREATESTRUCTA, MDICREATESTRUCTW, MSG, PAINTSTRUCT, WNDCLASS,

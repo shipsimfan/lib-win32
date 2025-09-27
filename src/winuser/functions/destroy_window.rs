@@ -2,7 +2,9 @@ use crate::{BOOL, HWND};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, WM_DESTROY, WM_NCDESTROY, WM_PARENTNOTIFY, WS_EX_NOPARENTNOTIFY};
+use crate::{
+    CreateDialog, GetLastError, WM_DESTROY, WM_NCDESTROY, WM_PARENTNOTIFY, WS_EX_NOPARENTNOTIFY,
+};
 
 #[link(name = "User32")]
 extern "system" {

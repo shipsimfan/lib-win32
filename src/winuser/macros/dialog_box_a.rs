@@ -1,15 +1,15 @@
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    CreateWindowEx, DialogBox, DialogBoxParam, EndDialog, DS_SETFONT, DS_SHELLFONT,
+    CreateWindowEx, DialogBox, DialogBoxParam, EndDialog, DLGPROC, DS_SETFONT, DS_SHELLFONT,
     MAKEINTRESOURCE, WM_INITDIALOG, WM_SETFONT, WS_VISIBLE,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
-/// Creates a modal dialog box from a dialog box template resource. [`DialogBox`] does not
-/// return control until the specified callback function terminates the modal dialog box by
-/// calling the [`EndDialog`] function.
+/// Creates a modal dialog box from a dialog box template resource. [`DialogBox`] does not return
+/// control until the specified callback function terminates the modal dialog box by calling the
+/// [`EndDialog`] function.
 ///
 /// [`DialogBox`] is implemented as a call to the [`DialogBoxParam`] function.
 ///
@@ -23,16 +23,16 @@ use std::ptr::null_mut;
 ///                 high-order word must be zero and its low-order word must contain the
 ///                 identifier. You can use the [`MAKEINTRESOURCE`] macro to create this value.
 ///  * `wnd_parent` - A handle to the window that owns the dialog box.
-///  * `dialog_func` - A pointer to the dialog box procedure. For more information about the
-///                    dialog box procedure, see [`DLGPROC`].
+///  * `dialog_func` - A pointer to the dialog box procedure. For more information about the dialog
+///                    box procedure, see [`DLGPROC`].
 ///
 /// # Remarks
 /// The [`DialogBox`] macro uses the [`CreateWindowEx`] function to create the dialog box.
 /// [`DialogBox`] then sends a [`WM_INITDIALOG`] message (and a [`WM_SETFONT`] message if the
-/// template specifies the [`DS_SETFONT`] or [`DS_SHELLFONT`] style) to the dialog box
-/// procedure. The function displays the dialog box (regardless of whether the template
-/// specifies the [`WS_VISIBLE`] style), disables the owner window, and starts its own message
-/// loop to retrieve and dispatch messages for the dialog box.
+/// template specifies the [`DS_SETFONT`] or [`DS_SHELLFONT`] style) to the dialog box procedure.
+/// The function displays the dialog box (regardless of whether the template specifies the
+/// [`WS_VISIBLE`] style), disables the owner window, and starts its own message loop to retrieve
+/// and dispatch messages for the dialog box.
 ///
 /// When the dialog box procedure calls the [`EndDialog`] function, [`DialogBox`] destroys the
 /// dialog box, ends the message loop, enables the owner window (if previously enabled), and
