@@ -16,3 +16,12 @@ pub struct D3D11_AUTHENTICATED_CONFIGURE_ACCESSIBLE_ENCRYPTION_INPUT {
     /// A GUID that specifies the type of encryption to apply.
     pub encryption_guid: GUID,
 }
+
+impl Default for D3D11_AUTHENTICATED_CONFIGURE_ACCESSIBLE_ENCRYPTION_INPUT {
+    fn default() -> Self {
+        D3D11_AUTHENTICATED_CONFIGURE_ACCESSIBLE_ENCRYPTION_INPUT {
+            parameters: D3D11_AUTHENTICATED_CONFIGURE_INPUT::default(),
+            encryption_guid: GUID::default(),
+        }
+    }
+}

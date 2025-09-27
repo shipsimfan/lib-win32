@@ -2,6 +2,7 @@ use crate::{
     d3d11::{D3D11_AUTHENTICATED_CONFIGURE_INPUT, D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE},
     BOOL, HANDLE,
 };
+use std::ptr::null_mut;
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -29,4 +30,15 @@ pub struct D3D11_AUTHENTICATED_CONFIGURE_SHARED_RESOURCE_INPUT {
 
     /// If [`TRUE`], the specified process has access to restricted shared resources.
     pub allow_access: BOOL,
+}
+
+impl Default for D3D11_AUTHENTICATED_CONFIGURE_SHARED_RESOURCE_INPUT {
+    fn default() -> Self {
+        D3D11_AUTHENTICATED_CONFIGURE_SHARED_RESOURCE_INPUT {
+            parameters: D3D11_AUTHENTICATED_CONFIGURE_INPUT::default(),
+            process_type: D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE::Unknown,
+            process_handle: null_mut(),
+            allow_access: 0,
+        }
+    }
 }

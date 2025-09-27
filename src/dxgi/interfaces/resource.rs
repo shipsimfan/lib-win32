@@ -9,7 +9,14 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::CloseHandle;
+use crate::{
+    d3d11::ID3D11Device,
+    dxgi::{
+        DXGI_RESOURCE_PRIORITY_HIGH, DXGI_RESOURCE_PRIORITY_LOW, DXGI_RESOURCE_PRIORITY_MAXIMUM,
+        DXGI_RESOURCE_PRIORITY_MINIMUM, DXGI_RESOURCE_PRIORITY_NORMAL,
+    },
+    CloseHandle,
+};
 
 com_interface!(
     /// An [`IDXGIResource`] interface allows resource sharing and identifies the memory that a

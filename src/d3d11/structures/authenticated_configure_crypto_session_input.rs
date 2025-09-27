@@ -1,4 +1,5 @@
 use crate::{d3d11::D3D11_AUTHENTICATED_CONFIGURE_INPUT, HANDLE};
+use std::ptr::null_mut;
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -24,4 +25,15 @@ pub struct D3D11_AUTHENTICATED_CONFIGURE_CRYPTO_SESSION_INPUT {
     /// [`D3D11VideoContext::query_authenticated_channel`] using
     /// [`D3D11_AUTHENTICATED_QUERY_DEVICE_HANDLE`].
     pub device_handle: HANDLE,
+}
+
+impl Default for D3D11_AUTHENTICATED_CONFIGURE_CRYPTO_SESSION_INPUT {
+    fn default() -> Self {
+        D3D11_AUTHENTICATED_CONFIGURE_CRYPTO_SESSION_INPUT {
+            parameters: D3D11_AUTHENTICATED_CONFIGURE_INPUT::default(),
+            decoder_handle: null_mut(),
+            crypto_session_handle: null_mut(),
+            device_handle: null_mut(),
+        }
+    }
 }

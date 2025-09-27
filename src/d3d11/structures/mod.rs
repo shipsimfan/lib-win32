@@ -5,7 +5,9 @@ mod authenticated_configure_initialize_input;
 mod authenticated_configure_input;
 mod authenticated_configure_protection_input;
 mod authenticated_configure_shared_resource_input;
+mod buffer_desc;
 mod omac;
+mod subresource_data;
 
 pub use aes_ctr_iv::D3D11_AES_CTR_IV;
 pub use authenticated_configure_accessible_encryption_input::D3D11_AUTHENTICATED_CONFIGURE_ACCESSIBLE_ENCRYPTION_INPUT;
@@ -16,4 +18,6 @@ pub use authenticated_configure_protection_input::{
     D3D11_AUTHENTICATED_CONFIGURE_PROTECTION_INPUT, D3D11_AUTHENTICATED_PROTECTION_FLAGS,
 };
 pub use authenticated_configure_shared_resource_input::D3D11_AUTHENTICATED_CONFIGURE_SHARED_RESOURCE_INPUT;
+pub use buffer_desc::D3D11_BUFFER_DESC;
 pub use omac::D3D11_OMAC;
+pub use subresource_data::D3D11_SUBRESOURCE_DATA;

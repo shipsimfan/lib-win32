@@ -12,3 +12,9 @@ pub struct D3D11_AES_CTR_IV {
     /// The block count, in big-endian format.
     pub count: UINT64,
 }
+
+impl Default for D3D11_AES_CTR_IV {
+    fn default() -> Self {
+        D3D11_AES_CTR_IV { iv: 0, count: 0 }
+    }
+}

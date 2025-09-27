@@ -1,4 +1,5 @@
 use crate::{d3d11::D3D11_OMAC, GUID, HANDLE, UINT};
+use std::ptr::null_mut;
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -57,4 +58,15 @@ pub struct D3D11_AUTHENTICATED_CONFIGURE_INPUT {
     /// 32-bit random number to use as the starting sequence number. For each query, increment the
     /// sequence number by 1.
     pub sequence_number: UINT,
+}
+
+impl Default for D3D11_AUTHENTICATED_CONFIGURE_INPUT {
+    fn default() -> Self {
+        D3D11_AUTHENTICATED_CONFIGURE_INPUT {
+            omac: D3D11_OMAC::default(),
+            configure_type: GUID::default(),
+            channel: null_mut(),
+            sequence_number: 0,
+        }
+    }
 }

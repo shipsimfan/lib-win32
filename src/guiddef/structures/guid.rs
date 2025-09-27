@@ -21,3 +21,14 @@ pub struct GUID {
     /// remaining 6 bytes contain the final 12 hexadecimal digits.
     pub data4: [c_uchar; 8],
 }
+
+impl Default for GUID {
+    fn default() -> Self {
+        GUID {
+            data1: 0,
+            data2: 0,
+            data3: 0,
+            data4: [0; 8],
+        }
+    }
+}
