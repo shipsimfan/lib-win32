@@ -2,7 +2,7 @@ use crate::UINT;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{MessageBox, WM_HELP, WS_EX_TOPMOST};
+use crate::{MessageBox, SetForegroundWindow, WM_HELP, WS_EX_TOPMOST};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 

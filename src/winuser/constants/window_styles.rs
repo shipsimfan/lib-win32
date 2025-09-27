@@ -2,7 +2,9 @@ use crate::DWORD;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{ShowWindow, WM_PAINT, WS_EX_CONTEXTHELP};
+use crate::{
+    IsDialogMessage, SetWindowLong, SetWindowPos, ShowWindow, WM_PAINT, WS_EX_CONTEXTHELP,
+};
 
 /// The window has a thin-line border
 pub const WS_BORDER: DWORD = 0x00800000;

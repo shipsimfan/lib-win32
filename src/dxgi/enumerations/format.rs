@@ -457,8 +457,8 @@ pub enum DXGI_FORMAT {
     ///
     /// Width and height must be even. Direct3D 11 staging resources and `init_data` parameters for
     /// this format use `row_pitch * (height + (height / 2))` bytes. The first
-    /// `sys_mem_pitch * height` bytes are the Y plane, the remaining `sys_mem_pitch * (height / 2)``
-    /// bytes are the UV plane.
+    /// `sys_mem_pitch * height` bytes are the Y plane, the remaining
+    /// `sys_mem_pitch * (height / 2)` bytes are the UV plane.
     ///
     /// An app using the YUY 4:2:0 formats must map the luma (Y) plane separately from the chroma
     /// (UV) planes. Developers do this by calling [`ID3D12Device::create_shader_resource_view`]

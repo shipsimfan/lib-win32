@@ -28,8 +28,14 @@ pub type LONGLONG = i64;
 /// A pointer to a constant null-terminated string of 8-bit Windows (ANSI) characters.
 pub type LPCSTR = *const CHAR;
 
+/// An [`LPCWSTR`] if `UNICODE` is defined, an [`LPCSTR`] otherwise.
+pub type LPCTSTR = LPCWSTR;
+
 /// A pointer to a constant null-terminated string of 16-bit Unicode characters
 pub type LPCWSTR = *const WCHAR;
+
+/// A pointer to a null-terminated string of 8-bit Windows (ANSI) characters.
+pub type LPSTR = *mut CHAR;
 
 /// An [`LPWSTR`]
 pub type LPTSTR = LPWSTR;

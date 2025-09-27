@@ -4,8 +4,9 @@ use std::ffi::c_int;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, GetWindowLongPtr, RegisterClassEx, SetWindowLongPtr, GWLP_HINSTANCE, GWLP_ID,
-    GWLP_USERDATA, GWLP_WNDPROC, GWL_EXSTYLE, GWL_STYLE, WNDCLASSEX,
+    CallWindowProc, GetLastError, GetWindowLongPtr, RegisterClassEx, SetWindowLong,
+    SetWindowLongPtr, GWLP_HINSTANCE, GWLP_HWNDPARENT, GWLP_ID, GWLP_USERDATA, GWLP_WNDPROC,
+    GWL_EXSTYLE, GWL_STYLE, WNDCLASSEX,
 };
 
 #[link(name = "User32")]
@@ -19,15 +20,17 @@ extern "system" {
     ///              range zero through the number of bytes of extra window memory, minus the size
     ///              of a [`LONG_PTR`]. To retrieve any other value, specify one of the following
     ///              values:
-    ///    * [`GWL_EXSTYLE`] - Sets a new extended window style.
-    ///    * [`GWLP_HINSTANCE`] - Sets a new application instance handle.
-    ///    * [`GWLP_ID`] - Sets a new identifier of the child window. The window cannot be a
-    ///                    top-level window.
-    ///    * [`GWL_STYLE`] - Sets a new window style.
-    ///    * [`GWLP_USERDATA`] - Sets the user data associated with the window. This data is
+    ///    * [`GWL_EXSTYLE`] - Retrieves the extended window styles.
+    ///    * [`GWLP_HINSTANCE`] - Retrieves a handle to the application instance.
+    ///    * [`GWLP_HWNDPARENT`] - Retrieves a handle to the parent window, if there is one.
+    ///    * [`GWLP_ID`] - Retrieves the identifier of the window.
+    ///    * [`GWL_STYLE`] - Retrieves the window styles.
+    ///    * [`GWLP_USERDATA`] - Retrieves the user data associated with the window. This data is
     ///                          intended for use by the application that created the window. Its
     ///                          value is initially zero.
-    ///    * [`GWLP_WNDPROC`] - Sets a new address for the window procedure.
+    ///    * [`GWLP_WNDPROC`] -  Retrieves the pointer to the window procedure, or a handle
+    ///                          representing the pointer to the window procedure. You must use the
+    ///                          [`CallWindowProc`] function to call the window procedure.
     ///
     /// # Return Value
     /// If the function succeeds, the return value is the requested value.

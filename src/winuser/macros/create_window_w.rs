@@ -3,7 +3,7 @@
 use crate::{
     CreateWindow, CreateWindowEx, DestroyWindow, GetLastError, RegisterClass, RegisterClassEx,
     ShowWindow, CLIENTCREATESTRUCT, CREATESTRUCT, CW_USEDEFAULT, HWND_MESSAGE, MDICREATESTRUCT,
-    SW_SHOW, WM_CREATE, WM_GETMINMAXINFO, WM_NCCREATE, WS_VISIBLE,
+    SW_SHOW, WM_CREATE, WM_GETMINMAXINFO, WM_NCCREATE, WS_VISIBLE, SS_ICON
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;

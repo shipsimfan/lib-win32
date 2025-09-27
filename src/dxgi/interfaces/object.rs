@@ -36,7 +36,7 @@ com_interface!(
         /// Direct3D 11 child device through [`ID3D11DeviceChild::set_private_data`]).
         ///
         /// The debug layer reports memory leaks by outputting a list of object interface pointers
-        /// along with their friendly names. The default friendly name is "<unnamed>". You can set
+        /// along with their friendly names. The default friendly name is "\<unnamed>". You can set
         /// the friendly name so that you can determine if the corresponding object interface
         /// pointer caused the leak. To set the friendly name, use the `set_private_data` method
         /// and the well-known private data [`GUID`] ([`WKPDID_D3DDebugObjectName`]) that is in
@@ -47,7 +47,12 @@ com_interface!(
         /// output of the debug layer that is related to memory leaks
         /// ([`ID3D11Debug::report_live_device_objects`]) and with the event tracing for Windows
         /// events that we've added to Windows 8.
-        fn set_private_data(&mut self, name: REFGUID, data_size: UINT, data: *const c_void) -> HRESULT;
+        fn set_private_data(
+            &mut self,
+            name: REFGUID,
+            data_size: UINT,
+            data: *const c_void
+        ) -> HRESULT;
 
         /// Set an interface in the object's private data.
         ///
@@ -64,7 +69,11 @@ com_interface!(
         /// When the interface is set its reference count is incremented. When the data are
         /// overwritten (by calling SPD or SPDI with the same GUID) or the object is destroyed,
         /// `::release()` is called and the interface's reference count is decremented.
-        fn set_private_data_interface(&mut self, name: REFGUID, unknown: *const IUnknown) -> HRESULT;
+        fn set_private_data_interface(
+            &mut self,
+            name: REFGUID,
+            unknown: *const IUnknown
+        ) -> HRESULT;
 
         /// Get a pointer to the object's data.
         ///
@@ -101,7 +110,12 @@ com_interface!(
         /// type is always a value from [`D3D_DRIVER_TYPE`]. Don't use
         /// `IDXGIObject::set_private_data` with [`GUID_DeviceType`] because the behavior when
         /// doing so is undefined.
-        fn get_private_data(&mut self, name: REFGUID, data_size: *mut UINT, data: *mut c_void) -> HRESULT;
+        fn get_private_data(
+            &mut self,
+            name: REFGUID,
+            data_size: *mut UINT,
+            data: *mut c_void
+        ) -> HRESULT;
 
         /// Gets the parent of the object.
         ///

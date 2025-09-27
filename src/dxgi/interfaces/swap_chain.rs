@@ -16,8 +16,9 @@ use crate::{
         IDXGIAdapter, IDXGIFactory, IDXGIResource, DXGI_PRESENT_DO_NOT_SEQUENCE, DXGI_SWAP_EFFECT,
         DXGI_USAGE,
     },
-    DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_DEVICE_RESET, DXGI_ERROR_NOT_CURRENTLY_AVAILABLE,
-    DXGI_STATUS_MODE_CHANGE_IN_PROGRESS, DXGI_STATUS_OCCLUDED, FALSE, S_OK, TRUE,
+    SetWindowPos, DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_DEVICE_RESET,
+    DXGI_ERROR_NOT_CURRENTLY_AVAILABLE, DXGI_STATUS_MODE_CHANGE_IN_PROGRESS, DXGI_STATUS_OCCLUDED,
+    FALSE, S_OK, TRUE,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
@@ -147,7 +148,11 @@ com_interface!(
         /// # Remarks
         /// When the swap chain is in full-screen mode, a pointer to the target output will be
         /// returned and its reference count will be incremented.
-        fn get_fullscreen_state(&mut self, fullscreen: BOOL, target: *mut *mut IDXGIOutput) -> HRESULT;
+        fn get_fullscreen_state(
+            &mut self,
+            fullscreen: BOOL,
+            target: *mut *mut IDXGIOutput
+        ) -> HRESULT;
 
         /// Get a description of the swap chain.
         ///

@@ -185,7 +185,12 @@ com_interface!(
         /// applications must use the [`IDXGIFactory2::create_swap_chain_for_hwnd`] method.
         /// Otherwise, the back-buffer contents implicitly scale to fit the presentation target
         /// size; that is, you can't turn off scaling.
-        fn create_swap_chain(&mut self, device: *mut IUnknown, desc: *mut DXGI_SWAP_CHAIN_DESC, swap_chain: *mut *mut IDXGISwapChain) -> HRESULT;
+        fn create_swap_chain(
+            &mut self,
+            device: *mut IUnknown,
+            desc: *mut DXGI_SWAP_CHAIN_DESC,
+            swap_chain: *mut *mut IDXGISwapChain
+        ) -> HRESULT;
 
         /// Create an adapter interface that represents a software adapter.
         ///
@@ -212,6 +217,10 @@ com_interface!(
         /// the DLL's [`HMODULE`]. Since the software adapter calls [`FreeLibrary`] when it is
         /// destroyed, the lifetime of the DLL will now be owned by the adapter, and the
         /// application is free of any further consideration of its lifetime.
-        fn create_software_adapter(&mut self, module: HMODULE, adapter: *mut *mut IDXGIAdapter) -> HRESULT;
+        fn create_software_adapter(
+            &mut self,
+            module: HMODULE,
+            adapter: *mut *mut IDXGIAdapter
+        ) -> HRESULT;
     }
 );

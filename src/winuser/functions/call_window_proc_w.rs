@@ -2,7 +2,7 @@ use crate::{HWND, LPARAM, LRESULT, UINT, WNDPROC, WPARAM};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::CallWindowProc;
+use crate::{CallWindowProc, GetWindowLong, SetWindowLong, DWL_DLGPROC, GWL_WNDPROC};
 
 #[link(name = "User32")]
 extern "system" {

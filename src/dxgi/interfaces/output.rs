@@ -70,7 +70,13 @@ com_interface!(
         /// mode, use this API to poll the set of display modes that are validated against monitor
         /// capabilities, or all modes that match the desktop (if the desktop settings are not
         /// validated against the monitor).
-        fn get_display_mode_list(&mut self, format: DXGI_FORMAT, flags: UINT, num_modes: *mut UINT, desc: *mut DXGI_MODE_DESC) -> HRESULT;
+        fn get_display_mode_list(
+            &mut self,
+            format: DXGI_FORMAT,
+            flags: UINT,
+            num_modes: *mut UINT,
+            desc: *mut DXGI_MODE_DESC
+        ) -> HRESULT;
 
         /// Finds the display mode that most closely matches the requested display mode.
         ///
@@ -104,7 +110,12 @@ com_interface!(
         /// [`IDXGIOutput1::find_closest_matching_mode1`] returns a matched display-mode set with
         /// only stereo modes or only mono modes. [`IDXGIOutput::find_closest_matching_mode`]
         /// behaves as though you specified the input mode as mono.
-        fn find_closest_matching_mode(&mut self, mode_to_match: *const DXGI_MODE_DESC, closest_match: *mut DXGI_MODE_DESC, concerned_device: *mut IUnknown) -> HRESULT;
+        fn find_closest_matching_mode(
+            &mut self,
+            mode_to_match: *const DXGI_MODE_DESC,
+            closest_match: *mut DXGI_MODE_DESC,
+            concerned_device: *mut IUnknown
+        ) -> HRESULT;
 
         /// Halt a thread until the next vertical blank occurs.
         ///
@@ -153,7 +164,10 @@ com_interface!(
         ///
         /// # Return Value
         /// Returns one of the `DXGI_ERROR` values.
-        fn get_gamma_control_capabilities(&mut self, gamma_caps: *mut DXGI_GAMMA_CONTROL_CAPABILITIES) -> HRESULT;
+        fn get_gamma_control_capabilities(
+            &mut self,
+            gamma_caps: *mut DXGI_GAMMA_CONTROL_CAPABILITIES
+        ) -> HRESULT;
 
         /// Sets the gamma controls.
         ///

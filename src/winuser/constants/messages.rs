@@ -257,3 +257,7 @@ pub const WM_PENWINLAST: UINT = 0x038F;
 pub const WM_APP: UINT = 0x8000;
 pub const WM_USER: UINT = 0x0400;
 pub const WM_TOOLTIPDISMISS: UINT = 0x0345;
+
+pub const DM_GETDEFID: UINT = WM_USER + 0;
+pub const DM_SETDEFID: UINT = WM_USER + 1;
+pub const DM_REPOSITION: UINT = WM_USER + 2;

@@ -54,7 +54,12 @@ com_interface!(
         /// which was previously set by [`ID3D11DeviceChild::set_private_data_interface`], that
         /// interface will have its reference count incremented before the private data is
         /// returned.
-        fn get_private_data(&mut self, guid: REFGUID, data_size: *mut UINT, data: *mut c_void) -> HRESULT;
+        fn get_private_data(
+            &mut self,
+            guid: REFGUID,
+            data_size: *mut UINT,
+            data: *mut c_void
+        ) -> HRESULT;
 
         /// Set application-defined data to a device child and associate that data with an
         /// application-defined guid.
@@ -74,12 +79,17 @@ com_interface!(
         /// [`ID3D11DeviceChild::get_private_data`].
         ///
         /// The debug layer reports memory leaks by outputting a list of object interface pointers
-        /// along with their friendly names. The default friendly name is "<unnamed>". You can set
+        /// along with their friendly names. The default friendly name is "\<unnamed>". You can set
         /// the friendly name so that you can determine if the corresponding object interface
         /// pointer caused the leak. To set the friendly name, use the
         /// [`ID3D11DeviceChild::set_private_data`] method and the [`WKPDID_D3DDebugObjectName`]
         /// GUID that is in [`d3d_common`].
-        fn set_private_data(&mut self, guid: REFGUID, data_size: UINT, data: *const c_void) -> HRESULT;
+        fn set_private_data(
+            &mut self,
+            guid: REFGUID,
+            data_size: UINT,
+            data: *const c_void
+        ) -> HRESULT;
 
         /// Associate an [`IUnknown`]-derived interface with this device child and associate that
         /// interface with an application-defined guid.

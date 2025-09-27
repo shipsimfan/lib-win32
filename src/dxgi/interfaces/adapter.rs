@@ -93,6 +93,10 @@ com_interface!(
         /// # Return Value
         /// [`S_OK`] indicates that the interface is supported, otherwise
         /// [`DXGI_ERROR_UNSUPPORTED`] is returned.
-        fn check_interface_support(&mut self, interface_name: REFGUID, umd_version: *mut LARGE_INTEGER) -> HRESULT;
+        fn check_interface_support(
+            &mut self,
+            interface_name: REFGUID,
+            umd_version: *mut LARGE_INTEGER
+        ) -> HRESULT;
     }
 );

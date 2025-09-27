@@ -2,7 +2,7 @@ use crate::{BOOL, HINSTANCE, LPCWSTR, LPWNDCLASSEXW};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, RegisterClass, RegisterClassEx, WNDCLASSEX};
+use crate::{GetClassInfo, GetLastError, RegisterClass, RegisterClassEx, WNDCLASSEX};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 

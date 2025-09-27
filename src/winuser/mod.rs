@@ -36,17 +36,25 @@ mod types;
 
 pub use constants::*;
 pub use functions::{
-    BeginPaint, CallWindowProc, CallWindowProcW, CreateWindowEx, CreateWindowExW, DefWindowProc,
-    DefWindowProcW, DestroyWindow, DispatchMessage, DispatchMessageW, EndPaint, GetClassInfo,
-    GetClassInfoEx, GetClassInfoExW, GetClassInfoW, GetClientRect, GetWindowLongPtr,
-    GetWindowLongPtrW, MessageBox, MessageBoxEx, MessageBoxExW, MessageBoxW, PeekMessage,
-    PeekMessageW, PostQuitMessage, RegisterClass, RegisterClassEx, RegisterClassExW,
-    RegisterClassW, SetLastErrorEx, SetWindowLongPtr, SetWindowLongPtrW, ShowWindow,
-    TranslateMessage, UnregisterClass, UnregisterClassW,
+    AllowSetForegroundWindow, BeginPaint, CallWindowProc, CallWindowProcA, CallWindowProcW,
+    CreateWindowEx, CreateWindowExA, CreateWindowExW, DefWindowProc, DefWindowProcA,
+    DefWindowProcW, DestroyWindow, DialogBoxParam, DialogBoxParamA, DialogBoxParamW,
+    DispatchMessage, DispatchMessageA, DispatchMessageW, EndDialog, EndPaint, GetClassInfo,
+    GetClassInfoA, GetClassInfoEx, GetClassInfoExA, GetClassInfoExW, GetClassInfoW, GetClientRect,
+    GetSubMenu, GetWindowLong, GetWindowLongA, GetWindowLongPtr, GetWindowLongPtrA,
+    GetWindowLongPtrW, GetWindowLongW, IsDialogMessage, IsDialogMessageA, IsDialogMessageW,
+    LockSetForegroundWindow, MessageBox, MessageBoxA, MessageBoxEx, MessageBoxExA, MessageBoxExW,
+    MessageBoxW, PeekMessage, PeekMessageA, PeekMessageW, PostQuitMessage, RegisterClass,
+    RegisterClassA, RegisterClassEx, RegisterClassExA, RegisterClassExW, RegisterClassW,
+    SetActiveWindow, SetForegroundWindow, SetLastErrorEx, SetParent, SetWindowLong, SetWindowLongA,
+    SetWindowLongPtr, SetWindowLongPtrA, SetWindowLongPtrW, SetWindowLongW, SetWindowPos,
+    ShowWindow, SystemParametersInfo, SystemParametersInfoA, SystemParametersInfoForDpi,
+    SystemParametersInfoW, TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW,
 };
-pub use macros::{CreateWindow, MAKEINTRESOURCE};
+pub use macros::{CreateWindow, DialogBox, MAKEINTRESOURCE};
 pub use structures::{
-    CLIENTCREATESTRUCT, CREATESTRUCT, CREATESTRUCTW, MDICREATESTRUCT, MDICREATESTRUCTW, MSG,
-    PAINTSTRUCT, WNDCLASS, WNDCLASSEX, WNDCLASSEXW, WNDCLASSW,
+    CLIENTCREATESTRUCT, CREATESTRUCT, CREATESTRUCTA, CREATESTRUCTW, HIGHCONTRAST, HIGHCONTRASTA,
+    HIGHCONTRASTW, MDICREATESTRUCT, MDICREATESTRUCTA, MDICREATESTRUCTW, MSG, PAINTSTRUCT, WNDCLASS,
+    WNDCLASSA, WNDCLASSEX, WNDCLASSEXA, WNDCLASSEXW, WNDCLASSW,
 };
-pub use types::{LPMSG, LPPAINTSTRUCT, LPWNDCLASSEXW, LPWNDCLASSW, WNDPROC};
+pub use types::{DLGPROC, LPMSG, LPPAINTSTRUCT, LPWNDCLASSEXW, LPWNDCLASSW, WNDPROC};

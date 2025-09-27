@@ -3,8 +3,8 @@ use crate::{BOOL, MSG};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    PeekMessage, WM_CHAR, WM_DEADCHAR, WM_KEYDOWN, WM_KEYUP, WM_SYSCHAR, WM_SYSDEADCHAR,
-    WM_SYSKEYDOWN, WM_SYSKEYUP,
+    IsDialogMessage, PeekMessage, WM_CHAR, WM_DEADCHAR, WM_KEYDOWN, WM_KEYUP, WM_SYSCHAR,
+    WM_SYSDEADCHAR, WM_SYSKEYDOWN, WM_SYSKEYUP,
 };
 
 #[link(name = "User32")]
@@ -43,7 +43,7 @@ extern "system" {
     /// [`TranslateMessage`]. For instance, an application should not call [`TranslateMessage`] if
     /// the [`TranslateAccelerator`] function returns a nonzero value. Note that the application is
     /// responsible for retrieving and dispatching input messages to the dialog box. Most
-    /// applications use the main message loop for this. However, to permit the user to move to and 
+    /// applications use the main message loop for this. However, to permit the user to move to and
     /// to select controls by using the keyboard, the application must call [`IsDialogMessage`].
     pub fn TranslateMessage(msg: *const MSG) -> BOOL;
 }
