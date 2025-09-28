@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi1_3::DXGI_FRAME_STATISTICS_MEDIA;
+use crate::dxgi1_3::{IDXGIDecodeSwapChain, DXGI_FRAME_STATISTICS_MEDIA};
 
 /// Indicates options for presenting frames to the swap chain.
 ///

@@ -1,3 +1,5 @@
 mod frame_presentation_mode;
+mod multiplane_overlay_ycbcr_flags;
 
 pub use frame_presentation_mode::DXGI_FRAME_PRESENTATION_MODE;
+pub use multiplane_overlay_ycbcr_flags::DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS;
