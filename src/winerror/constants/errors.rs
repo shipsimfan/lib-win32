@@ -1,5 +1,9 @@
 use crate::HRESULT;
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::QueryPerformanceCounter;
+
 /// The operation completed successfully.
 pub const ERROR_SUCCESS: HRESULT = 0;
 
@@ -19381,7 +19385,7 @@ pub const MILERR_SHADER_COMPILE_FAILED: HRESULT = 0x88980099u32 as HRESULT;
 /// Requested DX redirection surface size exceeded maximum texture size.
 pub const MILERR_MAX_TEXTURE_SIZE_EXCEEDED: HRESULT = 0x8898009Au32 as HRESULT;
 
-/// QueryPerformanceCounter returned a time in the past.
+/// [`QueryPerformanceCounter`] returned a time in the past.
 pub const MILERR_QPC_TIME_WENT_BACKWARD: HRESULT = 0x8898009Bu32 as HRESULT;
 
 /// Primary Display device returned an invalid refresh rate.

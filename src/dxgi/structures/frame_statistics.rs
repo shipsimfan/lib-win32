@@ -2,7 +2,10 @@ use crate::{LARGE_INTEGER, UINT};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi::{IDXGIOutput, IDXGISwapChain, DXGI_SWAP_EFFECT};
+use crate::{
+    dxgi::{IDXGIOutput, IDXGISwapChain, DXGI_SWAP_EFFECT},
+    QueryPerformanceCounter,
+};
 
 /// Describes timing and presentation statistics for a frame.
 ///
