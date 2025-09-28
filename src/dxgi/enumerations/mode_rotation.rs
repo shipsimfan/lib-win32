@@ -1,4 +1,5 @@
-/// Flags that indicate how the back buffers should be rotated to fit the physical rotation of a monitor.
+/// Flags that indicate how the back buffers should be rotated to fit the physical rotation of a
+/// monitor.
 #[repr(C)]
 #[derive(Debug, Clone)]
 #[allow(non_camel_case_types)]

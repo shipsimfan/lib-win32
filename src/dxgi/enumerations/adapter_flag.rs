@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi::{DXGI_ADAPTER_DESC1, DXGI_ADAPTER_DESC2};
+use crate::{dxgi::DXGI_ADAPTER_DESC1, dxgi1_2::DXGI_ADAPTER_DESC2};
 
 /// Identifies the type of DXGI adapter.
 ///

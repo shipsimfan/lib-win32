@@ -1,25 +1,17 @@
 mod adapter_flag;
-mod alpha_mode;
-mod compute_preemption_granularity;
 mod format;
-mod graphics_preemption_granularity;
 mod mode_rotation;
 mod mode_scaling;
 mod mode_scanline_order;
 mod residency;
-mod scaling;
 mod swap_chain_flag;
 mod swap_effect;
 
 pub use adapter_flag::DXGI_ADAPTER_FLAG;
-pub use alpha_mode::DXGI_ALPHA_MODE;
-pub use compute_preemption_granularity::DXGI_COMPUTE_PREEMPTION_GRANULARITY;
 pub use format::DXGI_FORMAT;
-pub use graphics_preemption_granularity::DXGI_GRAPHICS_PREEMPTION_GRANULARITY;
 pub use mode_rotation::DXGI_MODE_ROTATION;
 pub use mode_scaling::DXGI_MODE_SCALING;
 pub use mode_scanline_order::DXGI_MODE_SCANLINE_ORDER;
 pub use residency::DXGI_RESIDENCY;
-pub use scaling::DXGI_SCALING;
 pub use swap_chain_flag::DXGI_SWAP_CHAIN_FLAG;
 pub use swap_effect::DXGI_SWAP_EFFECT;

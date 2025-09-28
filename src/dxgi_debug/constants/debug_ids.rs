@@ -24,7 +24,7 @@ pub const DXGI_DEBUG_DXGI: GUID = GUID {
     data4: [0xAC, 0x3E, 0x98, 0x87, 0x5B, 0x5A, 0x2E, 0x2A],
 };
 
-/// Private apps. Any messages that you add with IDXGIInfoQueue::AddApplicationMessage.
+/// Private apps. Any messages that you add with [`IDXGIInfoQueue::AddApplicationMessage`].
 pub const DXGI_DEBUG_APP: GUID = GUID {
     data1: 0x6CD6E01,
     data2: 0x4219,
@@ -32,7 +32,7 @@ pub const DXGI_DEBUG_APP: GUID = GUID {
     data4: [0x87, 0x9, 0x27, 0xED, 0x23, 0x36, 0xC, 0x62],
 };
 
-/// Direct3D 11. Defined in D3D11SDKLayers.h.
+/// Direct3D 11.
 pub const DXGI_DEBUG_D3D11: GUID = GUID {
     data1: 0x4B99317B,
     data2: 0xAC39,

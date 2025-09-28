@@ -21,7 +21,8 @@ pub enum DXGI_MODE_SCALING {
     /// Unspecified scaling.
     Unspecified = 0,
 
-    /// Specifies no scaling. The image is centered on the display. This flag is typically used for a fixed-dot-pitch display (such as an LED display).
+    /// Specifies no scaling. The image is centered on the display. This flag is typically used for
+    /// a fixed-dot-pitch display (such as an LED display).
     Centered = 1,
 
     /// Specifies stretched scaling.

@@ -1,5 +1,9 @@
 use crate::LONG;
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::dxgi::IDXGIResource;
+
 /// The surface or resource is used as a back buffer. You don’t need to pass
 /// [`DXGI_USAGE_BACK_BUFFER`] when you create a swap chain. But you can determine whether a
 /// resource belongs to a swap chain when you call [`IDXGIResource::get_usage`] and get
