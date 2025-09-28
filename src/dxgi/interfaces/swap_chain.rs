@@ -16,6 +16,7 @@ use crate::{
         IDXGIAdapter, IDXGIFactory, IDXGIResource, IDXGISurface1, DXGI_PRESENT_DO_NOT_SEQUENCE,
         DXGI_SWAP_CHAIN_FLAG, DXGI_SWAP_EFFECT, DXGI_USAGE,
     },
+    dxgi1_2::IDXGISwapChain1,
     SetWindowPos, DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_DEVICE_RESET,
     DXGI_ERROR_NOT_CURRENTLY_AVAILABLE, DXGI_STATUS_MODE_CHANGE_IN_PROGRESS, DXGI_STATUS_OCCLUDED,
     FALSE, S_OK, TRUE,
@@ -275,10 +276,10 @@ com_interface!(
         /// [`IDXGIFactory2::create_swap_chain_for_composition`].
         ///
         /// Apps must still call [`IDXGISwapChain::resize_buffers`] after they call
-        /// [`IDXGISwapChain::resize_target`] because only [`IDXGISwapChian::ResizeBuffers`] can
+        /// [`IDXGISwapChain::resize_target`] because only [`IDXGISwapChian::resize_buffers`] can
         /// change the back buffers. But, if those apps have implemented window resize processing
-        /// to call [`IDXGISwapChain::ResizeBuffers`], they don't need to explicitly call
-        /// [`IDXGISwapChain::ResizeBuffers`] after they call [`IDXGISwapChain::resize_target`]
+        /// to call [`IDXGISwapChain::resize_buffers`], they don't need to explicitly call
+        /// [`IDXGISwapChain::resize_buffers`] after they call [`IDXGISwapChain::resize_target`]
         /// because the window resize processing will achieve what the app requires.
         fn resize_target(&mut self, new_target_parameters: *mut DXGI_MODE_DESC) -> HRESULT;
 

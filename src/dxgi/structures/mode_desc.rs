@@ -5,7 +5,7 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi::{IDXGIFactory, DXGI_SWAP_CHAIN_DESC};
+use crate::dxgi::{IDXGIFactory, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC};
 
 /// Describes a display mode.
 ///

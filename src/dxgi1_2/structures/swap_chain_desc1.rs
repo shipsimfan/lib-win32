@@ -8,6 +8,7 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGIFactory, IDXGISwapChain, DXGI_SWAP_CHAIN_FLAG},
+    dxgi1_2::IDXGISwapChain1,
     FALSE, HWND, TRUE,
 };
 

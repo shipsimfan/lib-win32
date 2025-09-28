@@ -3,6 +3,7 @@
 use crate::{
     d3d11::D3D11_BIND_FLAG,
     dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG},
+    dxgi1_2::IDXGISwapChain1,
     ScrollWindowEx,
 };
 
@@ -97,7 +98,7 @@ pub enum DXGI_SWAP_EFFECT {
     FlipSequential = 3,
 
     /// Use this flag to specify the flip presentation model and to specify that DXGI discard the
-    /// contents of the back buffer after you call [`IDXGISwapChain1::Present1`].
+    /// contents of the back buffer after you call [`IDXGISwapChain1::present1`].
     ///
     /// This flag cannot be used with multisampling and partial presentation.
     ///

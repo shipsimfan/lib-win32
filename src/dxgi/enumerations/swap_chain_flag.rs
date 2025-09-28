@@ -5,6 +5,7 @@ use crate::{
         IDXGIDevice1, IDXGIFactory, IDXGISurface1, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC,
         DXGI_SWAP_EFFECT,
     },
+    dxgi1_2::IDXGISwapChain1,
     SetWindowDisplayAffinity, HWND,
 };
 

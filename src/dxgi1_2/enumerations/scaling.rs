@@ -2,6 +2,7 @@
 #[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGIFactory, DXGI_SWAP_EFFECT},
+    dxgi1_2::IDXGISwapChain1,
     HWND, WS_EX_LAYOUTRTL,
 };
 
