@@ -5,7 +5,7 @@ use crate::{
         IDXGIDevice1, IDXGIFactory, IDXGISurface1, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC,
         DXGI_SWAP_EFFECT,
     },
-    HWND,
+    SetWindowDisplayAffinity, HWND,
 };
 
 /// Options for swap-chain behavior.

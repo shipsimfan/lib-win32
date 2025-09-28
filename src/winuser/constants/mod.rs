@@ -19,6 +19,7 @@ mod show_window_commands;
 mod static_controls;
 mod system_parameter_info_flags;
 mod system_parameter_infos;
+mod window_display_affinities;
 mod window_properties;
 mod window_styles;
 
@@ -43,5 +44,6 @@ pub use show_window_commands::*;
 pub use static_controls::*;
 pub use system_parameter_info_flags::*;
 pub use system_parameter_infos::*;
+pub use window_display_affinities::*;
 pub use window_properties::*;
 pub use window_styles::*;
