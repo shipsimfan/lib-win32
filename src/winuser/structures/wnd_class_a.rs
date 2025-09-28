@@ -21,6 +21,7 @@ use crate::{
 /// [`RegisterClassEx`] function. You can still use [`WNDCLASS`] and [`RegisterClass`] if you do
 /// not need to set the small icon associated with the window class.
 #[repr(C)]
+#[derive(Debug, Clone)]
 pub struct WNDCLASSA {
     /// The class style(s). This member can be any combination of the Class Styles.
     pub style: UINT,

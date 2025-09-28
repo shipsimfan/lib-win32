@@ -18,6 +18,7 @@ use std::ptr::{null, null_mut};
 /// structure, and the `icon_sm` member, which contains a handle to a small icon associated with
 /// the window class.
 #[repr(C)]
+#[derive(Debug, Clone)]
 pub struct WNDCLASSEXA {
     /// The size, in bytes, of this structure. Set this member to
     /// `std::mem::size_of::<WNDCLASSEXA>()`. Be sure to set this member before calling the

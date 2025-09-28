@@ -4,8 +4,8 @@ use crate::UINT;
 #[allow(unused_imports)]
 use crate::{
     SetForegroundWindow, SystemParametersInfo, BOOL, CS_DROPSHADOW, DWORD,
-    ERROR_OPERATION_IN_PROGRESS, FALSE, HIGHCONTRAST, MAX_PATH, PVOID, RECT, TRUE, ULONG,
-    WM_MOUSEHOVER,
+    ERROR_OPERATION_IN_PROGRESS, FALSE, HIGHCONTRAST, LOGFONT, MAX_PATH, MINIMIZEDMETRICS,
+    NONCLIENTMETRICS, PVOID, RECT, TRUE, ULONG, WM_MOUSEHOVER,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;

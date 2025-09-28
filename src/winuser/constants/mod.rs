@@ -1,3 +1,4 @@
+mod arrange_directions;
 mod class_styles;
 mod colors;
 mod command_ids;
@@ -21,6 +22,7 @@ mod system_parameter_infos;
 mod window_properties;
 mod window_styles;
 
+pub use arrange_directions::*;
 pub use class_styles::*;
 pub use colors::*;
 pub use command_ids::*;

@@ -41,21 +41,25 @@ pub use functions::{
     CreateWindowExW, DefWindowProc, DefWindowProcA, DefWindowProcW, DestroyWindow, DialogBoxParam,
     DialogBoxParamA, DialogBoxParamW, DispatchMessage, DispatchMessageA, DispatchMessageW,
     EnableWindow, EndDialog, EndPaint, GetClassInfo, GetClassInfoA, GetClassInfoEx,
-    GetClassInfoExA, GetClassInfoExW, GetClassInfoW, GetClientRect, GetSubMenu, GetWindowLong,
-    GetWindowLongA, GetWindowLongPtr, GetWindowLongPtrA, GetWindowLongPtrW, GetWindowLongW,
-    IsDialogMessage, IsDialogMessageA, IsDialogMessageW, LockSetForegroundWindow, MessageBox,
-    MessageBoxA, MessageBoxEx, MessageBoxExA, MessageBoxExW, MessageBoxW, PeekMessage,
-    PeekMessageA, PeekMessageW, PostQuitMessage, RegisterClass, RegisterClassA, RegisterClassEx,
-    RegisterClassExA, RegisterClassExW, RegisterClassW, SetActiveWindow, SetForegroundWindow,
-    SetLastErrorEx, SetParent, SetWindowLong, SetWindowLongA, SetWindowLongPtr, SetWindowLongPtrA,
-    SetWindowLongPtrW, SetWindowLongW, SetWindowPos, ShowWindow, SystemParametersInfo,
-    SystemParametersInfoA, SystemParametersInfoForDpi, SystemParametersInfoW, TranslateMessage,
-    UnregisterClass, UnregisterClassA, UnregisterClassW,
+    GetClassInfoExA, GetClassInfoExW, GetClassInfoW, GetClientRect, GetSubMenu, GetVersionEx,
+    GetVersionExW, GetWindowLong, GetWindowLongA, GetWindowLongPtr, GetWindowLongPtrA,
+    GetWindowLongPtrW, GetWindowLongW, IsDialogMessage, IsDialogMessageA, IsDialogMessageW,
+    LockSetForegroundWindow, MessageBox, MessageBoxA, MessageBoxEx, MessageBoxExA, MessageBoxExW,
+    MessageBoxW, PeekMessage, PeekMessageA, PeekMessageW, PostQuitMessage, RegisterClass,
+    RegisterClassA, RegisterClassEx, RegisterClassExA, RegisterClassExW, RegisterClassW,
+    SetActiveWindow, SetForegroundWindow, SetLastErrorEx, SetParent, SetWindowLong, SetWindowLongA,
+    SetWindowLongPtr, SetWindowLongPtrA, SetWindowLongPtrW, SetWindowLongW, SetWindowPos,
+    ShowWindow, SystemParametersInfo, SystemParametersInfoA, SystemParametersInfoForDpi,
+    SystemParametersInfoW, TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW,
 };
 pub use macros::{CreateDialog, CreateWindow, DialogBox, MAKEINTRESOURCE};
 pub use structures::{
     CLIENTCREATESTRUCT, CREATESTRUCT, CREATESTRUCTA, CREATESTRUCTW, HIGHCONTRAST, HIGHCONTRASTA,
-    HIGHCONTRASTW, MDICREATESTRUCT, MDICREATESTRUCTA, MDICREATESTRUCTW, MSG, PAINTSTRUCT, WNDCLASS,
+    HIGHCONTRASTW, MDICREATESTRUCT, MDICREATESTRUCTA, MDICREATESTRUCTW, MINIMIZEDMETRICS, MSG,
+    NONCLIENTMETRICS, NONCLIENTMETRICSA, NONCLIENTMETRICSW, OSVERSIONINFO, OSVERSIONINFOA,
+    OSVERSIONINFOEX, OSVERSIONINFOEXA, OSVERSIONINFOEXW, OSVERSIONINFOW, PAINTSTRUCT, WNDCLASS,
     WNDCLASSA, WNDCLASSEX, WNDCLASSEXA, WNDCLASSEXW, WNDCLASSW,
 };
-pub use types::{DLGPROC, LPMSG, LPPAINTSTRUCT, LPWNDCLASSEXW, LPWNDCLASSW, WNDPROC};
+pub use types::{
+    DLGPROC, LPMSG, LPOSVERSIONINFOW, LPPAINTSTRUCT, LPWNDCLASSEXW, LPWNDCLASSW, WNDPROC,
+};

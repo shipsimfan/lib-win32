@@ -1,5 +1,6 @@
 use crate::{
-    HWND, INT_PTR, LPARAM, LRESULT, MSG, PAINTSTRUCT, UINT, WNDCLASSEXW, WNDCLASSW, WPARAM,
+    HWND, INT_PTR, LPARAM, LRESULT, MSG, OSVERSIONINFOW, PAINTSTRUCT, UINT, WNDCLASSEXW, WNDCLASSW,
+    WPARAM,
 };
 
 // rustdoc imports
@@ -57,6 +58,9 @@ pub type DLGPROC = extern "system" fn(HWND, UINT, WPARAM, LPARAM) -> INT_PTR;
 
 /// A pointer to a [`MSG`]
 pub type LPMSG = *mut MSG;
+
+/// A pointer to an [`OSVERSIONINFOW`]
+pub type LPOSVERSIONINFOW = *mut OSVERSIONINFOW;
 
 /// A pointer to a [`PAINTSTRUCT`]
 pub type LPPAINTSTRUCT = *mut PAINTSTRUCT;
