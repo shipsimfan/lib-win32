@@ -13,8 +13,8 @@ use std::ffi::c_void;
 #[allow(unused_imports)]
 use crate::{
     dxgi::{
-        IDXGIAdapter, IDXGIFactory, IDXGIResource, DXGI_PRESENT_DO_NOT_SEQUENCE, DXGI_SWAP_EFFECT,
-        DXGI_USAGE,
+        IDXGIAdapter, IDXGIFactory, IDXGIResource, DXGI_PRESENT_DO_NOT_SEQUENCE,
+        DXGI_SWAP_CHAIN_FLAG, DXGI_SWAP_EFFECT, DXGI_USAGE,
     },
     SetWindowPos, DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_DEVICE_RESET,
     DXGI_ERROR_NOT_CURRENTLY_AVAILABLE, DXGI_STATUS_MODE_CHANGE_IN_PROGRESS, DXGI_STATUS_OCCLUDED,
@@ -189,7 +189,7 @@ com_interface!(
         ///                   format of the back buffer. The flip presentation model supports a
         ///                   more restricted set of formats than the bit-block transfer (bitblt)
         ///                   model.
-        ///  * `swap_chain_flags` - A combination of `DXGI_SWAP_CHAIN_FLAG`-typed values that are
+        ///  * `swap_chain_flags` - A combination of [`DXGI_SWAP_CHAIN_FLAG`]-typed values that are
         ///                         combined by using a bitwise OR operation. The resulting value
         ///                         specifies options for swap-chain behavior.
         ///

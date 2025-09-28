@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC};
+use crate::dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG};
 
 /// Options for handling pixels in a display surface after calling [`IDXGISwapChain1::present1`].
 ///
@@ -58,7 +58,7 @@ use crate::dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC};
 /// Regardless of whether the flip model is more efficient, an application still might choose the
 /// bitblt model because the bitblt model is the only way to mix GDI and DirectX presentation. In
 /// the flip model, the application must create the swap chain with
-/// [`DXGI_SWAP_CHAIN_FLAG_GDI_COMPATIBLE`], and then must use [`GetDC`] on the back buffer
+/// [`DXGI_SWAP_CHAIN_FLAG::GdiCompatible`], and then must use [`GetDC`] on the back buffer
 /// explicitly. After the first successful call to [`IDXGISwapChain1::present1`] on a flip-model
 /// swap chain, GDI no longer works with the HWND that is associated with that swap chain, even
 /// after the destruction of the swap chain. This restriction even extends to methods like

@@ -1,7 +1,10 @@
 mod adapter;
+mod adapter1;
 mod device;
+mod device1;
 mod device_sub_object;
 mod factory;
+mod factory1;
 mod object;
 mod output;
 mod resource;
@@ -9,9 +12,12 @@ mod surface;
 mod swap_chain;
 
 pub use adapter::*;
+pub use adapter1::*;
 pub use device::*;
+pub use device1::*;
 pub use device_sub_object::*;
 pub use factory::*;
+pub use factory1::*;
 pub use object::*;
 pub use output::*;
 pub use resource::*;

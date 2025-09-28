@@ -120,11 +120,11 @@ com_interface!(
         /// Gets the parent of the object.
         ///
         /// # Parameters
-        ///  * `riid` - The ID of the requested interface.
+        ///  * `iid` - The ID of the requested interface.
         ///  * `parent` - The address of a pointer to the parent object.
         ///
         /// # Return Value
         /// Returns one of the `DXGI_ERROR` values.
-        fn get_parent(&mut self, riid: REFIID, parent: *mut *mut c_void) -> HRESULT;
+        fn get_parent(&mut self, iid: REFIID, parent: *mut *mut c_void) -> HRESULT;
     }
 );

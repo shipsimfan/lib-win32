@@ -8,7 +8,10 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    dxgi::{DXGI_MWA_NO_ALT_ENTER, DXGI_MWA_NO_PRINT_SCREEN, DXGI_MWA_NO_WINDOW_CHANGES},
+    dxgi::{
+        DXGI_MWA_NO_ALT_ENTER, DXGI_MWA_NO_PRINT_SCREEN, DXGI_MWA_NO_WINDOW_CHANGES,
+        DXGI_SWAP_CHAIN_FLAG, DXGI_SWAP_EFFECT,
+    },
     FreeLibrary, GetModuleHandle, LoadLibrary, DXGI_ERROR_INVALID_CALL, DXGI_ERROR_NOT_FOUND,
     DXGI_STATUS_OCCLUDED, E_OUTOFMEMORY, S_OK, WM_SIZE, WM_SIZING,
 };
@@ -177,7 +180,7 @@ com_interface!(
         /// After the runtime renders the initial frame in full screen, the runtime might
         /// unexpectedly exit full screen during a call to [`IDXGISwapChain::present`].
         ///
-        /// You can specify `DXGI_SWAP_EFFECT` and `DXGI_SWAP_CHAIN_FLAG` values in the swap-chain
+        /// You can specify [`DXGI_SWAP_EFFECT`] and [`DXGI_SWAP_CHAIN_FLAG`] values in the swap-chain
         /// description that `desc` points to. These values allow you to use features like
         /// flip-model presentation and content protection by using pre-Windows 8 APIs.
         ///

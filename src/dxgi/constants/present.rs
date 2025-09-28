@@ -2,7 +2,7 @@ use crate::ULONG;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{DXGI_ERROR_INVALID_CALL, DXGI_ERROR_WAS_STILL_DRAWING};
+use crate::{dxgi::DXGI_SWAP_CHAIN_FLAG, DXGI_ERROR_INVALID_CALL, DXGI_ERROR_WAS_STILL_DRAWING};
 
 /// Present a frame from the current buffer to the output. Use this flag so that the presentation
 /// can use vertical-blank synchronization instead of sequencing buffers in the chain in the usual
@@ -63,7 +63,7 @@ pub const DXGI_PRESENT_USE_DURATION: ULONG = 0x00000100;
 /// Allowing tearing is a requirement of variable refresh rate displays.
 ///
 /// The conditions for using [`DXGI_PRESENT_ALLOW_TEARING`] during present are as follows:
-///  - The swap chain must be created with the [`DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING`] flag.
+///  - The swap chain must be created with the [`DXGI_SWAP_CHAIN_FLAG::AllowTearing`] flag.
 ///  - The sync interval passed in to `present` (or `present1`) must be 0.
 ///  - The [`DXGI_PRESENT_ALLOW_TEARING`] flag cannot be used in an application that is currently
 ///    in full screen exclusive mode (set by calling `SetFullscreenState(TRUE)`). It can only be

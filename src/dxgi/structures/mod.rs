@@ -1,4 +1,6 @@
 mod adapter_desc;
+mod adapter_desc1;
+mod adapter_desc2;
 mod frame_statistics;
 mod gamma_control;
 mod gamma_control_capabilities;
@@ -11,8 +13,11 @@ mod sample_desc;
 mod shared_resource;
 mod surface_desc;
 mod swap_chain_desc;
+mod swap_chain_desc1;
 
 pub use adapter_desc::DXGI_ADAPTER_DESC;
+pub use adapter_desc1::DXGI_ADAPTER_DESC1;
+pub use adapter_desc2::DXGI_ADAPTER_DESC2;
 pub use frame_statistics::DXGI_FRAME_STATISTICS;
 pub use gamma_control::DXGI_GAMMA_CONTROL;
 pub use gamma_control_capabilities::DXGI_GAMMA_CONTROL_CAPABILITIES;
@@ -25,3 +30,4 @@ pub use sample_desc::DXGI_SAMPLE_DESC;
 pub use shared_resource::DXGI_SHARED_RESOURCE;
 pub use surface_desc::DXGI_SURFACE_DESC;
 pub use swap_chain_desc::DXGI_SWAP_CHAIN_DESC;
+pub use swap_chain_desc1::DXGI_SWAP_CHAIN_DESC1;
