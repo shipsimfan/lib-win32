@@ -22,6 +22,7 @@ mod get_class_info_ex_w;
 mod get_class_info_w;
 mod get_client_rect;
 mod get_sub_menu;
+mod get_version_ex_a;
 mod get_version_ex_w;
 mod get_window_long_a;
 mod get_window_long_ptr_a;
@@ -82,6 +83,7 @@ pub use get_class_info_ex_w::{GetClassInfoExW, GetClassInfoExW as GetClassInfoEx
 pub use get_class_info_w::{GetClassInfoW, GetClassInfoW as GetClassInfo};
 pub use get_client_rect::GetClientRect;
 pub use get_sub_menu::GetSubMenu;
+pub use get_version_ex_a::GetVersionExA;
 pub use get_version_ex_w::{GetVersionExW, GetVersionExW as GetVersionEx};
 pub use get_window_long_a::GetWindowLongA;
 pub use get_window_long_ptr_a::GetWindowLongPtrA;

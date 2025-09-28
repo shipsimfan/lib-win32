@@ -42,15 +42,16 @@ pub use functions::{
     DialogBoxParamA, DialogBoxParamW, DispatchMessage, DispatchMessageA, DispatchMessageW,
     EnableWindow, EndDialog, EndPaint, GetClassInfo, GetClassInfoA, GetClassInfoEx,
     GetClassInfoExA, GetClassInfoExW, GetClassInfoW, GetClientRect, GetSubMenu, GetVersionEx,
-    GetVersionExW, GetWindowLong, GetWindowLongA, GetWindowLongPtr, GetWindowLongPtrA,
-    GetWindowLongPtrW, GetWindowLongW, IsDialogMessage, IsDialogMessageA, IsDialogMessageW,
-    LockSetForegroundWindow, MessageBox, MessageBoxA, MessageBoxEx, MessageBoxExA, MessageBoxExW,
-    MessageBoxW, PeekMessage, PeekMessageA, PeekMessageW, PostQuitMessage, RegisterClass,
-    RegisterClassA, RegisterClassEx, RegisterClassExA, RegisterClassExW, RegisterClassW,
-    SetActiveWindow, SetForegroundWindow, SetLastErrorEx, SetParent, SetWindowLong, SetWindowLongA,
-    SetWindowLongPtr, SetWindowLongPtrA, SetWindowLongPtrW, SetWindowLongW, SetWindowPos,
-    ShowWindow, SystemParametersInfo, SystemParametersInfoA, SystemParametersInfoForDpi,
-    SystemParametersInfoW, TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW,
+    GetVersionExA, GetVersionExW, GetWindowLong, GetWindowLongA, GetWindowLongPtr,
+    GetWindowLongPtrA, GetWindowLongPtrW, GetWindowLongW, IsDialogMessage, IsDialogMessageA,
+    IsDialogMessageW, LockSetForegroundWindow, MessageBox, MessageBoxA, MessageBoxEx,
+    MessageBoxExA, MessageBoxExW, MessageBoxW, PeekMessage, PeekMessageA, PeekMessageW,
+    PostQuitMessage, RegisterClass, RegisterClassA, RegisterClassEx, RegisterClassExA,
+    RegisterClassExW, RegisterClassW, SetActiveWindow, SetForegroundWindow, SetLastErrorEx,
+    SetParent, SetWindowLong, SetWindowLongA, SetWindowLongPtr, SetWindowLongPtrA,
+    SetWindowLongPtrW, SetWindowLongW, SetWindowPos, ShowWindow, SystemParametersInfo,
+    SystemParametersInfoA, SystemParametersInfoForDpi, SystemParametersInfoW, TranslateMessage,
+    UnregisterClass, UnregisterClassA, UnregisterClassW,
 };
 pub use macros::{CreateDialog, CreateWindow, DialogBox, MAKEINTRESOURCE};
 pub use structures::{
@@ -61,5 +62,6 @@ pub use structures::{
     WNDCLASSA, WNDCLASSEX, WNDCLASSEXA, WNDCLASSEXW, WNDCLASSW,
 };
 pub use types::{
-    DLGPROC, LPMSG, LPOSVERSIONINFOW, LPPAINTSTRUCT, LPWNDCLASSEXW, LPWNDCLASSW, WNDPROC,
+    DLGPROC, LPMSG, LPOSVERSIONINFOA, LPOSVERSIONINFOW, LPPAINTSTRUCT, LPWNDCLASSEXW, LPWNDCLASSW,
+    WNDPROC,
 };
