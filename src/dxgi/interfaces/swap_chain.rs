@@ -13,7 +13,7 @@ use std::ffi::c_void;
 #[allow(unused_imports)]
 use crate::{
     dxgi::{
-        IDXGIAdapter, IDXGIFactory, IDXGIResource, DXGI_PRESENT_DO_NOT_SEQUENCE,
+        IDXGIAdapter, IDXGIFactory, IDXGIResource, IDXGISurface1, DXGI_PRESENT_DO_NOT_SEQUENCE,
         DXGI_SWAP_CHAIN_FLAG, DXGI_SWAP_EFFECT, DXGI_USAGE,
     },
     SetWindowPos, DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_DEVICE_RESET,

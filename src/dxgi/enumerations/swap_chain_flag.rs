@@ -1,7 +1,10 @@
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    dxgi::{IDXGIDevice1, IDXGIFactory, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_EFFECT},
+    dxgi::{
+        IDXGIDevice1, IDXGIFactory, IDXGISurface1, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC,
+        DXGI_SWAP_EFFECT,
+    },
     HWND,
 };
 

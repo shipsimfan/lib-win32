@@ -1,5 +1,6 @@
 mod adapter_desc;
 mod adapter_desc1;
+mod display_color_space;
 mod frame_statistics;
 mod gamma_control;
 mod gamma_control_capabilities;
@@ -15,6 +16,7 @@ mod swap_chain_desc;
 
 pub use adapter_desc::DXGI_ADAPTER_DESC;
 pub use adapter_desc1::DXGI_ADAPTER_DESC1;
+pub use display_color_space::DXGI_DISPLAY_COLOR_SPACE;
 pub use frame_statistics::DXGI_FRAME_STATISTICS;
 pub use gamma_control::DXGI_GAMMA_CONTROL;
 pub use gamma_control_capabilities::DXGI_GAMMA_CONTROL_CAPABILITIES;

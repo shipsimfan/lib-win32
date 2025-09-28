@@ -1,6 +1,9 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG};
+use crate::{
+    d3d11::D3D11_BIND_FLAG,
+    dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG},
+};
 
 /// Options for handling pixels in a display surface after calling [`IDXGISwapChain1::present1`].
 ///
@@ -18,7 +21,7 @@ use crate::dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG};
 /// [`DXGI_SWAP_EFFECT::FlipSequential`], you must perform the multisampling in a separate render
 /// target. For example, create a multisampled texture by calling
 /// [`ID3D11Device::create_texture_2d`] with a filled [`D3D11_TEXTURE2D_DESC`] structure
-/// (`bind_flags` member set to [`D3D11_BIND::RenderTarget`] and `sample_desc` member with
+/// (`bind_flags` member set to [`D3D11_BIND_FLAG::RenderTarget`] and `sample_desc` member with
 /// multisampling parameters). Next call [`ID3D11Device::create_render_target_view`] to create a
 /// render-target view for the texture, and render your scene into the texture. Finally call
 /// [`ID3D11DeviceContext::resolve_subresource`] to resolve the multisampled texture into your

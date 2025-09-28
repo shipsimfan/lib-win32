@@ -1,5 +1,5 @@
 use crate::{DWORD, HANDLE, LONG_PTR, RECT, UINT_PTR};
-use std::ffi::{c_int, c_uchar, c_uint, c_ulong, c_ushort, c_void};
+use std::ffi::{c_float, c_int, c_uchar, c_uint, c_ulong, c_ushort, c_void};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -13,6 +13,9 @@ pub type BOOL = c_int;
 
 /// A byte (8 bits)
 pub type BYTE = c_uchar;
+
+/// A floating-point variable.
+pub type FLOAT = c_float;
 
 /// A handle to a brush.
 pub type HBRUSH = HANDLE;

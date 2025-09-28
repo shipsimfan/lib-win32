@@ -7,6 +7,7 @@
 #![warn(rustdoc::broken_intra_doc_links)]
 
 // Header not automatically included with `Windows.h`
+pub mod d3d10;
 pub mod d3d11;
 pub mod dxgi;
 pub mod dxgi1_2;

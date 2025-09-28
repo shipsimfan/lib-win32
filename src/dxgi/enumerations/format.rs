@@ -528,7 +528,7 @@ pub enum DXGI_FORMAT {
     /// twice what the [`DXGI_FORMAT::R8G8B8A8UNorm`] or [`DXGI_FORMAT::R8G8B8A8UInt`] view would
     /// be when hardware reconstructs RGBA automatically on read and before filtering. This
     /// Direct3D hardware behavior is legacy and is likely not useful any more. With this view
-    /// format, the mapping to the view channel is Y0->R8, U0->G8[0], Y1->B8, and V0->G8[1].
+    /// format, the mapping to the view channel is `Y0->R8`, `U0->G8[0]`, `Y1->B8`, and `V0->G8[1]`.
     ///
     /// Width must be even.
     YUY2 = 107,
