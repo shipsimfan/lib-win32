@@ -3,6 +3,7 @@
 use crate::{
     d3d11::D3D11_BIND_FLAG,
     dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG},
+    ScrollWindowEx,
 };
 
 /// Options for handling pixels in a display surface after calling [`IDXGISwapChain1::present1`].

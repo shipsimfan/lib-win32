@@ -50,6 +50,9 @@ pub type HMODULE = HANDLE;
 /// A handle to a display monitor.
 pub type HMONITOR = HANDLE;
 
+/// A handle to a region.
+pub type HRGN = HANDLE;
+
 /// A handle to a window.
 pub type HWND = HANDLE;
 

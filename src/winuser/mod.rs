@@ -47,11 +47,11 @@ pub use functions::{
     IsDialogMessageW, LockSetForegroundWindow, MessageBox, MessageBoxA, MessageBoxEx,
     MessageBoxExA, MessageBoxExW, MessageBoxW, PeekMessage, PeekMessageA, PeekMessageW,
     PostQuitMessage, RegisterClass, RegisterClassA, RegisterClassEx, RegisterClassExA,
-    RegisterClassExW, RegisterClassW, SetActiveWindow, SetForegroundWindow, SetLastErrorEx,
-    SetParent, SetWindowDisplayAffinity, SetWindowLong, SetWindowLongA, SetWindowLongPtr,
-    SetWindowLongPtrA, SetWindowLongPtrW, SetWindowLongW, SetWindowPos, ShowWindow,
-    SystemParametersInfo, SystemParametersInfoA, SystemParametersInfoForDpi, SystemParametersInfoW,
-    TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW,
+    RegisterClassExW, RegisterClassW, ScrollWindowEx, SetActiveWindow, SetForegroundWindow,
+    SetLastErrorEx, SetParent, SetWindowDisplayAffinity, SetWindowLong, SetWindowLongA,
+    SetWindowLongPtr, SetWindowLongPtrA, SetWindowLongPtrW, SetWindowLongW, SetWindowPos,
+    ShowWindow, SystemParametersInfo, SystemParametersInfoA, SystemParametersInfoForDpi,
+    SystemParametersInfoW, TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW,
 };
 pub use macros::{CreateDialog, CreateWindow, DialogBox, MAKEINTRESOURCE};
 pub use structures::{
