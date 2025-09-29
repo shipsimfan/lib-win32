@@ -7,7 +7,12 @@ use std::ffi::c_void;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::GUID;
+use crate::{
+    d3d11::ID3D11Device,
+    dxgi::{IDXGIAdapter, IDXGIAdapter1, IDXGIDevice},
+    dxgi1_2::IDXGIAdapter2,
+    GUID,
+};
 
 com_interface!(
     /// An [`IDXGIObject`] interface is a base interface for all DXGI objects; [`IDXGIObject`]

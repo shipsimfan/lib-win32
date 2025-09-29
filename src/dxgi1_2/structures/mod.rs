@@ -1,9 +1,21 @@
 mod adapter_desc2;
+mod mode_desc1;
+mod outdupl_desc;
+mod outdupl_frame_info;
+mod outdupl_move_rect;
+mod outdupl_pointer_position;
+mod outdupl_pointer_shape_info;
 mod present_parameters;
 mod swap_chain_desc1;
 mod swap_chain_fullscreen_desc;
 
 pub use adapter_desc2::DXGI_ADAPTER_DESC2;
+pub use mode_desc1::DXGI_MODE_DESC1;
+pub use outdupl_desc::DXGI_OUTDUPL_DESC;
+pub use outdupl_frame_info::DXGI_OUTDUPL_FRAME_INFO;
+pub use outdupl_move_rect::DXGI_OUTDUPL_MOVE_RECT;
+pub use outdupl_pointer_position::DXGI_OUTDUPL_POINTER_POSITION;
+pub use outdupl_pointer_shape_info::DXGI_OUTDUPL_POINTER_SHAPE_INFO;
 pub use present_parameters::DXGI_PRESENT_PARAMETERS;
 pub use swap_chain_desc1::DXGI_SWAP_CHAIN_DESC1;
 pub use swap_chain_fullscreen_desc::DXGI_SWAP_CHAIN_FULLSCREEN_DESC;

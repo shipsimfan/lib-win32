@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi1_2::DXGI_ADAPTER_DESC2;
+use crate::dxgi1_2::{IDXGIAdapter2, DXGI_ADAPTER_DESC2};
 
 /// Identifies the granularity at which the graphics processing unit (GPU) can be preempted from
 /// performing its current graphics rendering task.

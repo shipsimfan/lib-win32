@@ -12,6 +12,7 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGISwapChain, DXGI_ENUM_MODES_SCALING, DXGI_USAGE_BACK_BUFFER},
+    dxgi1_2::DXGI_MODE_DESC1,
     DXGI_ERROR_INVALID_CALL, DXGI_ERROR_MORE_DATA, DXGI_ERROR_NOT_CURRENTLY_AVAILABLE, FALSE, S_OK,
     TRUE,
 };

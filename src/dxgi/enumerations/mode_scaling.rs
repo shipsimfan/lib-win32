@@ -1,6 +1,9 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi::{IDXGISwapChain, DXGI_MODE_DESC};
+use crate::{
+    dxgi::{IDXGISwapChain, DXGI_MODE_DESC},
+    dxgi1_2::{DXGI_MODE_DESC1, DXGI_SWAP_CHAIN_FULLSCREEN_DESC},
+};
 
 /// Flags indicating how an image is stretched to fit a given monitor's resolution.
 ///

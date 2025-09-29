@@ -4,7 +4,7 @@ use crate::{
 };
 
 #[allow(unused_imports)]
-use crate::dxgi::DXGI_ADAPTER_FLAG;
+use crate::{dxgi::DXGI_ADAPTER_FLAG, dxgi1_2::IDXGIAdapter2};
 
 /// Describes an adapter (or video card) that uses Microsoft DirectX Graphics Infrastructure (DXGI)
 /// 1.2.
