@@ -5,7 +5,10 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{dxgi1_2::IDXGISwapChain1, FALSE, TRUE};
+use crate::{
+    dxgi1_2::{IDXGIFactory2, IDXGISwapChain1},
+    FALSE, TRUE,
+};
 
 /// Describes full-screen mode for a swap chain.
 ///

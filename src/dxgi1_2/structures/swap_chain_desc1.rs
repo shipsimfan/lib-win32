@@ -8,7 +8,7 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGIFactory, IDXGISwapChain, DXGI_SWAP_CHAIN_FLAG},
-    dxgi1_2::IDXGISwapChain1,
+    dxgi1_2::{IDXGIFactory2, IDXGISwapChain1},
     FALSE, HWND, TRUE,
 };
 
@@ -18,7 +18,7 @@ use crate::{
 /// This structure is used by the [`IDXGIFactory2::create_swap_chain_for_hwnd`],
 /// [`IDXGIFactory2::create_swap_chain_for_core_window`],
 /// [`IDXGIFactory2::create_swap_chain_for_composition`],
-/// [`IDXGIFactory2::create_swap_chain_for_composition_surface_handle`], and
+/// [`IDXGIFactoryMedia::create_swap_chain_for_composition_surface_handle`], and
 /// [`IDXGISwapChain1::get_desc1`] methods.
 ///
 /// In full-screen mode, there is a dedicated front buffer; in windowed mode, the desktop is the

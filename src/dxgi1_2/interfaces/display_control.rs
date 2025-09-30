@@ -8,6 +8,7 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGIFactory, IDXGIFactory1},
+    dxgi1_2::IDXGIFactory2,
     FALSE, TRUE,
 };
 
