@@ -43,7 +43,7 @@ use crate::{
 /// [`DXGI_SWAP_EFFECT::FlipDiscard`] is that [`DXGI_SWAP_EFFECT::FlipSequential`] forces DXGI to
 /// guarantee that the contents of each back buffer is preserved across [`IDXGISwapChain::present`]
 /// calls, whereas [`DXGI_SWAP_EFFECT::FlipDiscard`] doesn't provide this guarantee. The
-/// compositor, under certain scenarios, can use [`DirectFlip`], where it uses the application's
+/// compositor, under certain scenarios, can use DirectFlip, where it uses the application's
 /// back buffer as the entire display back buffer, which elides the cost of copying the
 /// application's back buffer into the final desktop back buffer. With
 /// [`DXGI_SWAP_EFFECT::FlipSequential`] and [`DXGI_SWAP_EFFECT::FlipDiscard`], this optimization
@@ -63,11 +63,11 @@ use crate::{
 /// Regardless of whether the flip model is more efficient, an application still might choose the
 /// bitblt model because the bitblt model is the only way to mix GDI and DirectX presentation. In
 /// the flip model, the application must create the swap chain with
-/// [`DXGI_SWAP_CHAIN_FLAG::GdiCompatible`], and then must use [`GetDC`] on the back buffer
-/// explicitly. After the first successful call to [`IDXGISwapChain1::present1`] on a flip-model
-/// swap chain, GDI no longer works with the HWND that is associated with that swap chain, even
-/// after the destruction of the swap chain. This restriction even extends to methods like
-/// [`ScrollWindowEx`].
+/// [`DXGI_SWAP_CHAIN_FLAG::GdiCompatible`], and then must use [`IDXGISurface1::get_dc`] on the
+/// back buffer explicitly. After the first successful call to [`IDXGISwapChain1::present1`] on a
+/// flip-model swap chain, GDI no longer works with the HWND that is associated with that swap
+/// chain, even after the destruction of the swap chain. This restriction even extends to methods
+/// like [`ScrollWindowEx`].
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]

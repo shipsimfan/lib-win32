@@ -1,5 +1,9 @@
 use crate::{POINT, RECT};
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::dxgi1_2::IDXGIOutputDuplication;
+
 /// The [`DXGI_OUTDUPL_MOVE_RECT`] structure describes the movement of a rectangle.
 ///
 /// # Remarks

@@ -5,7 +5,7 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{dxgi::DXGI_FORMAT, FALSE, TRUE};
+use crate::{dxgi::DXGI_FORMAT, dxgi1_2::IDXGIOutputDuplication, FALSE, TRUE};
 
 /// The [`DXGI_OUTDUPL_DESC`] structure describes the dimension of the output and the surface that
 /// contains the desktop image. The format of the desktop image is always

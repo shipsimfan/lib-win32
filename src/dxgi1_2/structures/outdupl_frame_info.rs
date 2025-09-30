@@ -2,7 +2,7 @@ use crate::{dxgi1_2::DXGI_OUTDUPL_POINTER_POSITION, BOOL, LARGE_INTEGER, UINT};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{QueryPerformanceCounter, FALSE, TRUE};
+use crate::{dxgi1_2::IDXGIOutputDuplication, QueryPerformanceCounter, FALSE, TRUE};
 
 /// The [`DXGI_OUTDUPL_FRAME_INFO`] structure describes the current desktop image.
 ///

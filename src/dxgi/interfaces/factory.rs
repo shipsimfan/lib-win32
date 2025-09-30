@@ -9,8 +9,9 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     dxgi::{
-        DXGI_MWA_NO_ALT_ENTER, DXGI_MWA_NO_PRINT_SCREEN, DXGI_MWA_NO_WINDOW_CHANGES,
-        DXGI_SWAP_CHAIN_FLAG, DXGI_SWAP_EFFECT,
+        CreateDXGIFactory, IDXGIDevice, IDXGIOutput, DXGI_MWA_NO_ALT_ENTER,
+        DXGI_MWA_NO_PRINT_SCREEN, DXGI_MWA_NO_WINDOW_CHANGES, DXGI_SWAP_CHAIN_FLAG,
+        DXGI_SWAP_EFFECT,
     },
     dxgi1_2::IDXGIFactory2,
     FreeLibrary, GetModuleHandle, LoadLibrary, DXGI_ERROR_INVALID_CALL, DXGI_ERROR_NOT_FOUND,
@@ -175,8 +176,7 @@ com_interface!(
         ///    full-screen.
         ///
         /// If the swap chain is in full-screen mode, before you release it you must use
-        /// [`set_fullscreen_sstate`] to switch it to windowed mode. For more information about
-        /// releasing a swap chain, see the "Destroying a Swap Chain" section of DXGI Overview.
+        /// [`IDXGISwapChain::set_fullscreen_state`] to switch it to windowed mode.
         ///
         /// After the runtime renders the initial frame in full screen, the runtime might
         /// unexpectedly exit full screen during a call to [`IDXGISwapChain::present`].

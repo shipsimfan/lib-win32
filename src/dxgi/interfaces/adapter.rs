@@ -8,7 +8,8 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    dxgi::IDXGIFactory, DXGI_ERROR_NOT_FOUND, DXGI_ERROR_UNSUPPORTED, E_INVALIDARG, GUID, S_OK,
+    dxgi::{IDXGIDevice, IDXGIFactory},
+    DXGI_ERROR_NOT_FOUND, DXGI_ERROR_UNSUPPORTED, E_INVALIDARG, GUID, S_OK,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;

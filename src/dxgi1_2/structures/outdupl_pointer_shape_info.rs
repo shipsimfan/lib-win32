@@ -2,7 +2,9 @@ use crate::{POINT, UINT};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi1_2::{DXGI_OUTDUPL_POINTER_POSITION, DXGI_OUTDUPL_POINTER_SHAPE_TYPE};
+use crate::dxgi1_2::{
+    IDXGIOutputDuplication, DXGI_OUTDUPL_POINTER_POSITION, DXGI_OUTDUPL_POINTER_SHAPE_TYPE,
+};
 
 /// The [`DXGI_OUTDUPL_POINTER_SHAPE_INFO`] structure describes information about the cursor shape.
 ///
