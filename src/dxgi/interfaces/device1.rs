@@ -7,7 +7,9 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{dxgi::DXGI_SWAP_CHAIN_FLAG, DXGI_ERROR_DEVICE_REMOVED, S_OK};
+use crate::{
+    dxgi::DXGI_SWAP_CHAIN_FLAG, dxgi1_3::IDXGISwapChain2, DXGI_ERROR_DEVICE_REMOVED, S_OK,
+};
 
 com_interface!(
     /// An [`IDXGIDevice1`] interface implements a derived class for DXGI objects that produce
@@ -71,7 +73,7 @@ com_interface!(
         ///
         /// # Return Value
         /// Returns [`S_OK`] if successful; otherwise, returns one of the following members of the
-        /// D3DERR enumerated type:
+        /// `D3DERR` enumerated type:
         ///  - [`D3DERR_DEVICELOST`]
         ///  - [`D3DERR_DEVICEREMOVED`]
         ///  - [`D3DERR_DRIVERINTERNALERROR`]

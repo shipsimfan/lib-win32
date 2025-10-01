@@ -1,5 +1,9 @@
 use crate::FLOAT;
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::dxgi1_3::IDXGISwapChain2;
+
 /// Represents a 3x2 matrix. Used with [`IDXGISwapChain2::get_matrix_transform`] and
 /// [`IDXGISwapChain2::set_matrix_transform`] to indicate the scaling and translation transform for
 /// `SwapChainPanel` swap chains.
