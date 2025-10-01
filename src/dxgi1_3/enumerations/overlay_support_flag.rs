@@ -1,3 +1,7 @@
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::dxgi1_3::IDXGIOutput3;
+
 /// Specifies overlay support to check for in a call to [`IDXGIOutput3::check_overlay_support`].
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
