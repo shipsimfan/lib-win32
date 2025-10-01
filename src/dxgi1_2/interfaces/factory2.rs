@@ -16,7 +16,7 @@ use crate::{
         CreateDXGIFactory, CreateDXGIFactory1, IDXGIDevice, IDXGIDevice1, IDXGISwapChain,
         DXGI_PRESENT_RESTRICT_TO_OUTPUT, DXGI_SWAP_EFFECT,
     },
-    dxgi1_2::{IDXGIDevice2, DXGI_SCALING},
+    dxgi1_2::{IDXGIDevice2, IDXGIResource1, DXGI_SCALING},
     CreateEvent, DXGI_ERROR_INVALID_CALL, E_OUTOFMEMORY, FALSE, S_OK, TRUE,
 };
 #[allow(unused_imports)]

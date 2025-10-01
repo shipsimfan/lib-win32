@@ -4,6 +4,8 @@ mod display_control;
 mod factory2;
 mod output1;
 mod output_duplication;
+mod resource1;
+mod surface2;
 mod swap_chain1;
 
 pub use adapter2::*;
@@ -12,4 +14,6 @@ pub use display_control::*;
 pub use factory2::*;
 pub use output1::*;
 pub use output_duplication::*;
+pub use resource1::*;
+pub use surface2::*;
 pub use swap_chain1::*;
