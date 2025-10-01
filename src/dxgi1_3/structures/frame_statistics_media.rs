@@ -45,3 +45,17 @@ pub struct DXGI_FRAME_STATISTICS_MEDIA {
     /// If the app's custom present duration request is not approved, this field is set to zero.
     pub approved_present_duration: UINT,
 }
+
+impl Default for DXGI_FRAME_STATISTICS_MEDIA {
+    fn default() -> Self {
+        DXGI_FRAME_STATISTICS_MEDIA {
+            present_count: 0,
+            present_refresh_count: 0,
+            sync_refresh_count: 0,
+            sync_qpc_time: LARGE_INTEGER::default(),
+            sync_gpu_time: LARGE_INTEGER::default(),
+            composition_mode: DXGI_FRAME_PRESENTATION_MODE::Composed,
+            approved_present_duration: 0,
+        }
+    }
+}
