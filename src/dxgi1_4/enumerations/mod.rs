@@ -1,0 +1,7 @@
+mod memory_segment_group;
+mod overlay_color_space_support_flag;
+mod swap_chain_color_space_support_flag;
+
+pub use memory_segment_group::DXGI_MEMORY_SEGMENT_GROUP;
+pub use overlay_color_space_support_flag::DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG;
+pub use swap_chain_color_space_support_flag::DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG;
