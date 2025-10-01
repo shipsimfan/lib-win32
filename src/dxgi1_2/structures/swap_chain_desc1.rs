@@ -9,6 +9,7 @@ use crate::{
 use crate::{
     dxgi::{IDXGIFactory, IDXGISwapChain, DXGI_SWAP_CHAIN_FLAG},
     dxgi1_2::{IDXGIFactory2, IDXGISwapChain1},
+    dxgi1_3::IDXGIFactoryMedia,
     FALSE, HWND, TRUE,
 };
 

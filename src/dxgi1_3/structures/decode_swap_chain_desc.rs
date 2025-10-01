@@ -2,7 +2,7 @@ use crate::UINT;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi::DXGI_SWAP_CHAIN_FLAG;
+use crate::{dxgi::DXGI_SWAP_CHAIN_FLAG, dxgi1_3::IDXGIFactoryMedia};
 
 /// Used with [`IDXGIFactoryMedia::create_decode_swap_chain_for_composition_surface_handle`] to
 /// describe a decode swap chain.
