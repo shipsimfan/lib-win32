@@ -1,5 +1,9 @@
 use crate::UINT64;
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::dxgi1_4::IDXGIAdapter3;
+
 /// Describes the current video memory budgeting parameters.
 ///
 /// # Remarks

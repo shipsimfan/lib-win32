@@ -1,3 +1,7 @@
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::dxgi1_4::IDXGIAdapter3;
+
 /// Specifies the memory segment group to use.
 ///
 /// # Remarks
