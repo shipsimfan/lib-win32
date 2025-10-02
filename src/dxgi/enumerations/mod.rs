@@ -1,4 +1,5 @@
 mod adapter_flag;
+mod color_space_type;
 mod format;
 mod mode_rotation;
 mod mode_scaling;
@@ -8,6 +9,7 @@ mod swap_chain_flag;
 mod swap_effect;
 
 pub use adapter_flag::DXGI_ADAPTER_FLAG;
+pub use color_space_type::DXGI_COLOR_SPACE_TYPE;
 pub use format::DXGI_FORMAT;
 pub use mode_rotation::DXGI_MODE_ROTATION;
 pub use mode_scaling::DXGI_MODE_SCALING;
