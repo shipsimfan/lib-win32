@@ -2,8 +2,8 @@
 #[allow(unused_imports)]
 use crate::{
     d3d11::D3D11_BIND_FLAG,
-    dxgi::{IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG},
-    dxgi1_2::IDXGISwapChain1,
+    dxgi::{IDXGISurface1, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG},
+    dxgi1_2::{IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1},
     ScrollWindowEx,
 };
 

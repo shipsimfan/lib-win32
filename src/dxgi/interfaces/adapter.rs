@@ -9,7 +9,7 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGIDevice, IDXGIFactory},
-    DXGI_ERROR_NOT_FOUND, DXGI_ERROR_UNSUPPORTED, E_INVALIDARG, GUID, S_OK,
+    ComInterface, DXGI_ERROR_NOT_FOUND, DXGI_ERROR_UNSUPPORTED, E_INVALIDARG, GUID, S_OK,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;

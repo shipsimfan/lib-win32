@@ -202,7 +202,7 @@ com_interface!(
         /// of target monitor rotation. A destination resource created by a graphics component
         /// (such as Direct3D 11) must be created with CPU write permission (see
         /// [`D3D11_CPU_ACCESS_WRITE`]). Other surfaces can be created with CPU read-write
-        /// permission (`D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE``).
+        /// permission (`D3D11_CPU_ACCESS_READ | D3D11_CPU_ACCESS_WRITE`).
         /// [`IDXGIOutput1::get_display_surface_data1`] modifies the surface data to fit the
         /// destination resource (stretch, shrink, convert format, rotate).
         /// [`IDXGIOutput1::get_display_surface_data1`] performs the stretch and shrink with point
