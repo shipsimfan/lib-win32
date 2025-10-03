@@ -1,5 +1,9 @@
 use crate::{UINT, UINT16};
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::dxgi1_5::IDXGISwapChain4;
+
 /// Describes the metadata for HDR10, used when video is compressed using High Efficiency Video
 /// Coding (HEVC). This is used to describe the capabilities of the display used to master the
 /// content and the luminance values of the content.

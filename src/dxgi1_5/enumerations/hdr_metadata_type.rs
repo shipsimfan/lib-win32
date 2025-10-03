@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi1_5::DXGI_HDR_METADATA_HDR10;
+use crate::dxgi1_5::{IDXGISwapChain4, DXGI_HDR_METADATA_HDR10};
 
 /// Specifies the header metadata type.
 ///
