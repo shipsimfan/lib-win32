@@ -1,3 +1,5 @@
+use std::ffi::c_ushort;
+
 /// A 64-bit unsigned integer.
 pub type DWORD64 = u64;
 
@@ -42,6 +44,9 @@ pub type PULONG_PTR = *mut ULONG_PTR;
 /// full range of a pointer.
 #[allow(non_camel_case_types)]
 pub type SIZE_T = ULONG_PTR;
+
+/// An unsigned [`INT16`]
+pub type UINT16 = c_ushort;
 
 /// An unsigned [`INT64`]. The range is 0 through 18446744073709551615 decimal.
 pub type UINT64 = u64;

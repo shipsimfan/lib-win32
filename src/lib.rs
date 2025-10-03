@@ -13,6 +13,7 @@ pub mod dxgi;
 pub mod dxgi1_2;
 pub mod dxgi1_3;
 pub mod dxgi1_4;
+pub mod dxgi1_5;
 pub mod dxgi_debug;
 pub mod ktmw32;
 pub mod shlwapi;
