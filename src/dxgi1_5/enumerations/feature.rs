@@ -1,3 +1,7 @@
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::dxgi1_5::IDXGIFactory5;
+
 /// Specifies a range of hardware features, to be used when checking for feature support.
 ///
 /// # Remarks
