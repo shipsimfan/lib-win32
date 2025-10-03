@@ -8,7 +8,9 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    d3d11::{D3D11_BIND_FLAG, D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT, D3D11_USAGE},
+    d3d11::{
+        ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT, D3D11_USAGE,
+    },
     E_OUTOFMEMORY, S_FALSE,
 };
 #[allow(unused_imports)]

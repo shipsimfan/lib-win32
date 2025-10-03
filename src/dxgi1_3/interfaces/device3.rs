@@ -8,6 +8,10 @@ use crate::{
     unknwn::{IUnknown, IUnknownTrait},
 };
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::d3d11::ID3D11DeviceContext;
+
 com_interface!(
     /// The [`IDXGIDevice3`] interface implements a derived class for DXGI objects that produce
     /// image data. The interface exposes a method to trim graphics memory usage by the DXGI

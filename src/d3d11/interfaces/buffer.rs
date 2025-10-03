@@ -9,7 +9,7 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::d3d11::ID3D11Device;
+use crate::d3d11::{ID3D11Device, ID3D11DeviceContext};
 
 com_interface!(
     /// A buffer interface accesses a buffer resource, which is unstructured memory. Buffers

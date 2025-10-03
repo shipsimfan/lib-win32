@@ -1,5 +1,6 @@
 use crate::{
     com_interface,
+    d3d11::ID3D11DeviceContext,
     dxgi::{
         IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
         IDXGISurface, IDXGISurfaceTrait,

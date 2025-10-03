@@ -14,6 +14,7 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
+    d3d11::ID3D11DeviceContext,
     dxgi::{IDXGIKeyedMutex, IDXGISwapChain},
     dxgi1_2::IDXGISwapChain1,
     dxgi1_5::DXGI_OFFER_RESOURCE_FLAGS,

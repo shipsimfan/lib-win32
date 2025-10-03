@@ -1,7 +1,10 @@
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    d3d11::{ID3D11Device, D3D11_BIND_FLAG, D3D11_BUFFER_DESC, D3D11_CPU_ACCESS_FLAG, D3D11_USAGE},
+    d3d11::{
+        ID3D11Device, ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_BUFFER_DESC,
+        D3D11_CPU_ACCESS_FLAG, D3D11_USAGE,
+    },
     dxgi::{IDXGIKeyedMutex, IDXGISurface1, DXGI_FORMAT, DXGI_SAMPLE_DESC},
     unknwn::IUnknown,
     E_OUTOFMEMORY,

@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::d3d11::ID3D11Device;
+use crate::d3d11::{ID3D11Device, ID3D11DeviceContext};
 
 /// Identifies how to bind a resource to the pipeline.
 ///
