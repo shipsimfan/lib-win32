@@ -1,3 +1,7 @@
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::dxgi1_5::IDXGIDevice4;
+
 /// Specifies flags for the [`IDXGIDevice4::offer_resources1`] method.
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

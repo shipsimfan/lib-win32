@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi1_2::IDXGIDevice2;
+use crate::{dxgi1_2::IDXGIDevice2, dxgi1_5::IDXGIDevice4};
 
 /// Specifies result flags for the [`IDXGIDevice4::reclaim_resources1`] method.
 #[repr(C)]
