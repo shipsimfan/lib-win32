@@ -13,6 +13,7 @@ use std::ffi::c_void;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
+    d3d11::D3D11CreateDeviceAndSwapChain,
     dxgi::{DXGI_PRESENT_DO_NOT_SEQUENCE, DXGI_PRESENT_STEREO_TEMPORARY_MONO, DXGI_SWAP_EFFECT},
     dxgi1_2::{IDXGIFactory2, DXGI_ALPHA_MODE, DXGI_SCALING},
     DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_INVALID_CALL, DXGI_STATUS_OCCLUDED, E_INVALIDARG,

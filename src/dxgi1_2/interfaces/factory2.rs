@@ -12,6 +12,8 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
+    d3d11_1::ID3D11Device1,
+    d3dcommon::D3D_DRIVER_TYPE,
     dxgi::{
         CreateDXGIFactory, CreateDXGIFactory1, IDXGIDevice, IDXGIDevice1, IDXGISwapChain,
         DXGI_PRESENT_RESTRICT_TO_OUTPUT, DXGI_SWAP_EFFECT,
@@ -340,7 +342,7 @@ com_interface!(
         ///               the Direct3D device for the swap chain. For Direct3D 12 this is a pointer
         ///               to a direct command queue (refer to [`ID3D12CommandQueue`]). This
         ///               parameter cannot be [`null_mut`]. Software drivers, like
-        ///               [`D3D_DRIVER_TYPE_REFERENCE`], are not supported for composition swap
+        ///               [`D3D_DRIVER_TYPE::Reference`], are not supported for composition swap
         ///               chains.
         ///  * `desc` - A pointer to a [`DXGI_SWAP_CHAIN_DESC1`] structure for the swap-chain
         ///             description. This parameter cannot be [`null`]. You must specify the

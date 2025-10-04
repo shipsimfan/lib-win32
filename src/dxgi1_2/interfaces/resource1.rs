@@ -13,6 +13,7 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     d3d11::D3D11_RESOURCE_MISC_FLAG,
+    d3d11_1::ID3D11Device1,
     dxgi::{IDXGIDevice, IDXGISurface, IDXGISurface1},
     dxgi1_2::{DXGI_SHARED_RESOURCE_READ, DXGI_SHARED_RESOURCE_WRITE},
     CloseHandle, DXGI_ERROR_INVALID_CALL, DXGI_ERROR_NAME_ALREADY_EXISTS, E_ACCESSDENIED,

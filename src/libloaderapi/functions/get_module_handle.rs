@@ -2,7 +2,7 @@ use crate::{HMODULE, LPCWSTR};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{FreeLibrary, GetLastError, GetModuleHandle};
+use crate::{FreeLibrary, GetLastError, GetModuleHandle, LoadLibraryEx};
 #[allow(unused_imports)]
 use std::ptr::null;
 

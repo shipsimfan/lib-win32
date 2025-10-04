@@ -11,7 +11,11 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::dxgi::{CreateDXGIFactory, CreateDXGIFactory1};
+use crate::{
+    d3d11::{D3D11CreateDevice, D3D11CreateDeviceAndSwapChain},
+    dxgi::{CreateDXGIFactory, CreateDXGIFactory1},
+    dxgi1_3::CreateDXGIFactory2,
+};
 
 com_interface!(
     /// Enables creating Microsoft DirectX Graphics Infrastructure (DXGI) objects.

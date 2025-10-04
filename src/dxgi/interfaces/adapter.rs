@@ -8,6 +8,7 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
+    d3dcommon::D3D_DRIVER_TYPE,
     dxgi::{IDXGIDevice, IDXGIFactory},
     ComInterface, DXGI_ERROR_NOT_FOUND, DXGI_ERROR_UNSUPPORTED, E_INVALIDARG, GUID, S_OK,
 };
@@ -46,7 +47,7 @@ com_interface!(
         /// A code that indicates success or failure. [`DXGI_ERROR_NOT_FOUND`] is returned if the
         /// index is greater than the number of outputs.
         ///
-        /// If the adapter came from a device created using [`D3D_DRIVER_TYPE_WARP`], then the
+        /// If the adapter came from a device created using [`D3D_DRIVER_TYPE::Warp`], then the
         /// adapter has no outputs, so [`DXGI_ERROR_NOT_FOUND`] is returned.
         ///
         /// # Remarks

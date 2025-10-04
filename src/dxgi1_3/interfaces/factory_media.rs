@@ -11,12 +11,13 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     d3d11::D3D11_BIND_FLAG,
+    d3dcommon::D3D_DRIVER_TYPE,
     dxgi::{
         CreateDXGIFactory, CreateDXGIFactory1, IDXGIDevice, IDXGIDevice1, IDXGIObject,
         DXGI_PRESENT_RESTRICT_TO_OUTPUT,
     },
     dxgi1_2::IDXGIDevice2,
-    dxgi1_3::IDXGIDevice3,
+    dxgi1_3::{CreateDXGIFactory2, IDXGIDevice3},
     DXGI_ERROR_INVALID_CALL, E_OUTOFMEMORY, S_OK,
 };
 #[allow(unused_imports)]
@@ -46,7 +47,7 @@ com_interface!(
         /// # Parameters
         ///  * `device` - A pointer to the Direct3D device for the swap chain. This parameter
         ///               cannot be [`null_mut`]. Software drivers, like
-        ///               [`D3D_DRIVER_TYPE_REFERENCE`], are not supported for composition swap
+        ///               [`D3D_DRIVER_TYPE::Reference`], are not supported for composition swap
         ///               chains.
         ///  * `surface` - A handle to an existing DirectComposition surface. This parameter cannot
         ///                be [`null_mut`].
@@ -97,7 +98,7 @@ com_interface!(
         /// # Parameters
         ///  * `device` - A pointer to the Direct3D device for the swap chain. This parameter
         ///               cannot be [`null_mut`]. Software drivers, like
-        ///               [`D3D_DRIVER_TYPE_REFERENCE`], are not supported for composition swap
+        ///               [`D3D_DRIVER_TYPE::Reference`], are not supported for composition swap
         ///               chains.
         ///  * `surface` - A handle to an existing DirectComposition surface. This parameter cannot
         ///                be [`null_mut`].

@@ -13,6 +13,7 @@ use crate::d3d11::{D3D11_BUFFER_DESC, D3D11_RESOURCE_MISC_FLAG, D3D11_USAGE};
 ///
 /// The [`D3D11_RESOURCE_MISC_FLAG`] cannot be used when creating resources with
 /// [`D3D11_CPU_ACCESS_FLAG`]s.
+#[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 pub enum D3D11_CPU_ACCESS_FLAG {

@@ -1,6 +1,6 @@
 use crate::{
-    com_interface,
     d3d11::{ID3D11Buffer, D3D11_BUFFER_DESC, D3D11_SUBRESOURCE_DATA},
+    immut_com_interface,
     unknwn::{IUnknown, IUnknownTrait},
     HRESULT,
 };
@@ -16,7 +16,7 @@ use crate::{
 #[allow(unused_imports)]
 use std::ptr::null;
 
-com_interface!(
+immut_com_interface!(
     /// The device interface represents a virtual adapter; it is used to create resources.
     pub abstract ID3D11Device(ID3D11DeviceVTable/ID3D11DeviceTrait):
         IUnknown/IUnknownTrait(unknown) {
@@ -66,7 +66,7 @@ com_interface!(
         /// On runtimes older than Direct3D 11.1, a call to [`ID3D11Device::create_buffer`] to
         /// request a constant buffer that is larger than 4096 fails.
         fn create_buffer(
-            &mut self,
+            &self,
             desc: *const D3D11_BUFFER_DESC,
             initial_data: *const D3D11_SUBRESOURCE_DATA,
             buffer: *mut *mut ID3D11Buffer

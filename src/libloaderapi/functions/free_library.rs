@@ -2,7 +2,7 @@ use crate::{BOOL, HMODULE};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, LoadLibrary};
+use crate::{GetLastError, LoadLibrary, LoadLibraryEx};
 
 #[link(name = "Kernel32")]
 extern "system" {

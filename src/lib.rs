@@ -9,6 +9,9 @@
 // Header not automatically included with `Windows.h`
 pub mod d3d10;
 pub mod d3d11;
+pub mod d3d11_1;
+pub mod d3d11_2;
+pub mod d3dcommon;
 pub mod dxgi;
 pub mod dxgi1_2;
 pub mod dxgi1_3;

@@ -4,5 +4,5 @@ mod functions;
 
 pub use functions::{
     FreeLibrary, GetModuleHandle, GetModuleHandleW, GetProcAddress, LoadLibrary, LoadLibraryA,
-    LoadLibraryW,
+    LoadLibraryEx, LoadLibraryExW, LoadLibraryW,
 };
