@@ -1,5 +1,8 @@
 use crate::{
-    d3d11::{ID3D11Buffer, D3D11_BUFFER_DESC, D3D11_SUBRESOURCE_DATA},
+    d3d11::{
+        ID3D11Buffer, ID3D11Texture1D, D3D11_BUFFER_DESC, D3D11_SUBRESOURCE_DATA,
+        D3D11_TEXTURE1D_DESC,
+    },
     immut_com_interface,
     unknwn::{IUnknown, IUnknownTrait},
     HRESULT,
@@ -11,10 +14,10 @@ use crate::{
     d3d11::{
         ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT, D3D11_USAGE,
     },
-    E_OUTOFMEMORY, S_FALSE,
+    E_OUTOFMEMORY, S_FALSE, S_OK,
 };
 #[allow(unused_imports)]
-use std::ptr::null;
+use std::ptr::{null, null_mut};
 
 immut_com_interface!(
     /// The device interface represents a virtual adapter; it is used to create resources.
@@ -70,6 +73,53 @@ immut_com_interface!(
             desc: *const D3D11_BUFFER_DESC,
             initial_data: *const D3D11_SUBRESOURCE_DATA,
             buffer: *mut *mut ID3D11Buffer
+        ) -> HRESULT;
+
+        /// Creates an array of 1D textures.
+        ///
+        /// # Parameters
+        ///  * `desc` - A pointer to a [`D3D11_TEXTURE1D_DESC`] structure that describes a 1D
+        ///             texture resource. To create a typeless resource that can be interpreted at
+        ///             runtime into different, compatible formats, specify a typeless format in
+        ///             the texture description. To generate mipmap levels automatically, set the
+        ///             number of mipmap levels to 0.
+        ///  * `initial_data` - A pointer to an array of [`D3D11_SUBRESOURCE_DATA`] structures that
+        ///                     describe subresources for the 1D texture resource. Applications
+        ///                     can't specify [`null`] for `initial_data` when creating
+        ///                     [`D3D11_USAGE::Immutable`] resources. If the resource is
+        ///                     multisampled, `initial_data` must be [`null`] because multisampled
+        ///                     resources cannot be initialized with data when they are created. If
+        ///                     you don't pass anything to `initial_data`, the initial content of
+        ///                     the memory for the resource is undefined. In this case, you need to
+        ///                     write the resource content some other way before the resource is
+        ///                     read. You can determine the size of this array from values in the
+        ///                     `mip_levels` and `array_size` members of the
+        ///                     [`D3D11_TEXTURE1D_DESC`] structure to which `desc` points by using
+        ///                     the following calculation: `mip_levels * array_size`
+        ///  * `texture_1d` - A pointer to a buffer that receives a pointer to a
+        ///                   [`ID3D11Texture1D`] interface for the created texture. Set this
+        ///                   parameter to [`null_mut`] to validate the other input parameters (the
+        ///                   method will return [`S_FALSE`] if the other input parameters pass
+        ///                   validation).
+        ///
+        /// # Return Value
+        /// If the method succeeds, the return code is [`S_OK`].
+        ///
+        /// # Remarks
+        /// [`ID3D11Device::create_texture_1d`] creates a 1D texture resource, which can contain a
+        /// number of 1D subresources. The number of textures is specified in the texture
+        /// description. All textures in a resource must have the same format, size, and number of
+        /// mipmap levels.
+        ///
+        /// All resources are made up of one or more subresources. To load data into the texture,
+        /// applications can supply the data initially as an array of [`D3D11_SUBRESOURCE_DATA`]
+        /// structures pointed to by `initial_data`, or they can use one of the D3DX texture
+        /// functions such as [`D3DX11CreateTextureFromFile`].
+        fn create_texture_1d(
+            &self,
+            desc: *const D3D11_TEXTURE1D_DESC,
+            initial_data: *const D3D11_SUBRESOURCE_DATA,
+            texture_1d: *mut *mut ID3D11Texture1D
         ) -> HRESULT;
     }
 );
