@@ -10,7 +10,11 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{dxgi::IDXGIResource, DXGI_ERROR_DEVICE_REMOVED, E_INVALIDARG, E_POINTER, S_OK};
+use crate::{
+    d3d11::{ID3D11Device, ID3D11Texture2D},
+    dxgi::IDXGIResource,
+    DXGI_ERROR_DEVICE_REMOVED, E_INVALIDARG, E_POINTER, S_OK,
+};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 

@@ -11,6 +11,7 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
+    d3d11::{ID3D11Texture2D, D3D11_TEXTURE2D_DESC},
     dxgi::{
         IDXGIAdapter, IDXGIFactory1, IDXGISurface, IDXGISwapChain, DXGI_ENUM_MODES_SCALING,
         DXGI_ENUM_MODES_STEREO, DXGI_MODE_DESC,

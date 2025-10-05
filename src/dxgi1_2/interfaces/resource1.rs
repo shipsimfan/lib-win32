@@ -12,7 +12,7 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    d3d11::D3D11_RESOURCE_MISC_FLAG,
+    d3d11::{ID3D11Device, ID3D11Texture2D, D3D11_RESOURCE_MISC_FLAG},
     d3d11_1::ID3D11Device1,
     dxgi::{IDXGIDevice, IDXGISurface, IDXGISurface1},
     dxgi1_2::{DXGI_SHARED_RESOURCE_READ, DXGI_SHARED_RESOURCE_WRITE},

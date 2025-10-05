@@ -1,7 +1,7 @@
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    d3d11::{ID3D11DeviceContext, D3D11_BIND_FLAG},
+    d3d11::{ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_TEXTURE2D_DESC},
     dxgi::{IDXGISurface1, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG},
     dxgi1_2::{IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1},
     ScrollWindowEx,
