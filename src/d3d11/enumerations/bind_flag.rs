@@ -1,6 +1,9 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::d3d11::{ID3D11Device, ID3D11DeviceContext, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC};
+use crate::d3d11::{
+    ID3D11Device, ID3D11DeviceContext, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC,
+    D3D11_TEXTURE3D_DESC,
+};
 
 /// Identifies how to bind a resource to the pipeline.
 ///

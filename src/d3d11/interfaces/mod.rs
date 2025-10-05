@@ -6,6 +6,7 @@ mod resource;
 mod shader_resource_view;
 mod texture_1d;
 mod texture_2d;
+mod texture_3d;
 mod view;
 
 pub use buffer::*;
@@ -16,4 +17,5 @@ pub use resource::*;
 pub use shader_resource_view::*;
 pub use texture_1d::*;
 pub use texture_2d::*;
+pub use texture_3d::*;
 pub use view::*;

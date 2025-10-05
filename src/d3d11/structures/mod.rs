@@ -22,6 +22,7 @@ mod texcube_array_srv;
 mod texcube_srv;
 mod texture_1d_desc;
 mod texture_2d_desc;
+mod texture_3d_desc;
 
 pub use aes_ctr_iv::D3D11_AES_CTR_IV;
 pub use authenticated_configure_accessible_encryption_input::D3D11_AUTHENTICATED_CONFIGURE_ACCESSIBLE_ENCRYPTION_INPUT;
@@ -51,3 +52,4 @@ pub use texcube_array_srv::D3D11_TEXCUBE_ARRAY_SRV;
 pub use texcube_srv::D3D11_TEXCUBE_SRV;
 pub use texture_1d_desc::D3D11_TEXTURE1D_DESC;
 pub use texture_2d_desc::D3D11_TEXTURE2D_DESC;
+pub use texture_3d_desc::D3D11_TEXTURE3D_DESC;

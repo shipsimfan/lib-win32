@@ -2,7 +2,7 @@
 #[allow(unused_imports)]
 use crate::d3d11::{
     D3D11_BUFFER_DESC, D3D11_RESOURCE_MISC_FLAG, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC,
-    D3D11_USAGE,
+    D3D11_TEXTURE3D_DESC, D3D11_USAGE,
 };
 
 /// Specifies the types of CPU access allowed for a resource.

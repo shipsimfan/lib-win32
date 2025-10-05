@@ -1,6 +1,8 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::d3d11::{D3D11_BUFFER_DESC, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC};
+use crate::d3d11::{
+    D3D11_BUFFER_DESC, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC,
+};
 
 /// Identifies expected resource use during rendering. The usage directly reflects whether a
 /// resource is accessible by the CPU and/or the graphics processing unit (GPU).
