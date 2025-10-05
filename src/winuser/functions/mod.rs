@@ -1,3 +1,5 @@
+mod adjust_window_rect;
+mod adjust_window_rect_ex;
 mod allow_set_foreground_window;
 mod begin_paint;
 mod call_window_proc_a;
@@ -61,6 +63,8 @@ mod translate_message;
 mod unregister_class_a;
 mod unregister_class_w;
 
+pub use adjust_window_rect::AdjustWindowRect;
+pub use adjust_window_rect_ex::AdjustWindowRectEx;
 pub use allow_set_foreground_window::AllowSetForegroundWindow;
 pub use begin_paint::BeginPaint;
 pub use call_window_proc_a::CallWindowProcA;
