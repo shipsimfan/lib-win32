@@ -1,6 +1,7 @@
 use crate::{
     d3d11::{
-        ID3D11Buffer, ID3D11Texture1D, ID3D11Texture2D, ID3D11Texture3D, D3D11_BUFFER_DESC,
+        ID3D11Buffer, ID3D11Resource, ID3D11ShaderResourceView, ID3D11Texture1D, ID3D11Texture2D,
+        ID3D11Texture3D, D3D11_BUFFER_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
         D3D11_SUBRESOURCE_DATA, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC,
     },
     immut_com_interface,
@@ -12,8 +13,10 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     d3d11::{
-        ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT, D3D11_USAGE,
+        ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT,
+        D3D11_SRV_DIMENSION, D3D11_USAGE,
     },
+    dxgi::DXGI_FORMAT,
     E_OUTOFMEMORY, S_FALSE, S_OK,
 };
 #[allow(unused_imports)]
@@ -214,6 +217,61 @@ immut_com_interface!(
             desc: *const D3D11_TEXTURE3D_DESC,
             initial_data: *const D3D11_SUBRESOURCE_DATA,
             texture_3d: *mut *mut ID3D11Texture3D
+        ) -> HRESULT;
+
+        /// Create a shader-resource view for accessing data in a resource.
+        ///
+        /// # Parameters
+        ///  * `resource` - Pointer to the resource that will serve as input to a shader. This
+        ///                 resource must have been created with the
+        ///                 [`D3D11_BIND_FLAG::ShaderResource`] flag.
+        ///  * `desc` - Pointer to a shader-resource view description (see
+        ///             [`D3D11_SHADER_RESOURCE_VIEW_DESC`]). Set this parameter to [`null`] to
+        ///             create a view that accesses the entire resource (using the format the
+        ///             resource was created with).
+        ///  * `sr_view` - Address of a pointer to an [`ID3D11ShaderResourceView`]. Set this
+        ///                parameter to [`null_mut`] to validate the other input parameters (the
+        ///                method will return [`S_FALSE`] if the other input parameters pass
+        ///                validation).
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// A resource is made up of one or more subresources; a view identifies which subresources
+        /// to allow the pipeline to access. In addition, each resource is bound to the pipeline
+        /// using a view. A shader-resource view is designed to bind any buffer or texture resource
+        /// to the shader stages using the following API methods:
+        /// [`ID3D11DeviceContext::vs_set_shader_resources`],
+        /// [`ID3D11DeviceContext::gs_set_shader_resources`] and
+        /// [`ID3D11DeviceContext::ps_set_shader_resources`].
+        ///
+        /// Because a view is fully typed, this means that typeless resources become fully typed
+        /// when bound to the pipeline.
+        ///
+        /// The Direct3D 11.1 runtime, which is available starting with Windows 8, allows you to
+        /// use [`ID3D11Device::create_shader_resource_view`] for the following new purpose.
+        ///
+        /// You can create shader-resource views of video resources so that Direct3D shaders can
+        /// process those shader-resource views. These video resources are either Texture 2D or
+        /// Texture 2D Array. The value in the `view_dimension` member of the
+        /// [`D3D11_SHADER_RESOURCE_VIEW_DESC`] structure for a created shader-resource view must
+        /// match the type of video resource, [`D3D11_SRV_DIMENSION::Texture2D`] for Texture 2D and
+        /// [`D3D11_SRV_DIMENSION::Texture2DArray`] for Texture 2D Array. Additionally, the format
+        /// of the underlying video resource restricts the formats that the view can use. The video
+        /// resource format values on the [`DXGI_FORMAT`] reference page specify the format values
+        /// that views are restricted to.
+        ///
+        /// The runtime read+write conflict prevention logic (which stops a resource from being
+        /// bound as an SRV and RTV or UAV at the same time) treats views of different parts of the
+        /// same video surface as conflicting for simplicity. Therefore, the runtime does not allow
+        /// an application to read from luma while the application simultaneously renders to chroma
+        /// in the same surface even though the hardware might allow these simultaneous operations.
+        fn create_shader_resource_view(
+            &self,
+            resource: *mut ID3D11Resource,
+            desc: *const D3D11_SHADER_RESOURCE_VIEW_DESC,
+            sr_view: *mut *mut ID3D11ShaderResourceView
         ) -> HRESULT;
     }
 );
