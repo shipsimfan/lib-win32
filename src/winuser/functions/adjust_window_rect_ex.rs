@@ -41,5 +41,5 @@ extern "system" {
     ///
     /// This API is not DPI aware, and should not be used if the calling thread is per-monitor DPI
     /// aware.
-    pub fn AdjustWindowRectEx(rect: LPRECT, style: DWORD, menu: BOOL) -> BOOL;
+    pub fn AdjustWindowRectEx(rect: LPRECT, style: DWORD, menu: BOOL, ex_style: DWORD) -> BOOL;
 }
