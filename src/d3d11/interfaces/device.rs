@@ -1,8 +1,9 @@
 use crate::{
     d3d11::{
         ID3D11Buffer, ID3D11Resource, ID3D11ShaderResourceView, ID3D11Texture1D, ID3D11Texture2D,
-        ID3D11Texture3D, D3D11_BUFFER_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
-        D3D11_SUBRESOURCE_DATA, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC,
+        ID3D11Texture3D, ID3D11UnorderedAccessView, D3D11_BUFFER_DESC,
+        D3D11_SHADER_RESOURCE_VIEW_DESC, D3D11_SUBRESOURCE_DATA, D3D11_TEXTURE1D_DESC,
+        D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC, D3D11_UNORDERED_ACCESS_VIEW_DESC,
     },
     immut_com_interface,
     unknwn::{IUnknown, IUnknownTrait},
@@ -272,6 +273,49 @@ immut_com_interface!(
             resource: *mut ID3D11Resource,
             desc: *const D3D11_SHADER_RESOURCE_VIEW_DESC,
             sr_view: *mut *mut ID3D11ShaderResourceView
+        ) -> HRESULT;
+
+        /// Creates a view for accessing an unordered access resource.
+        ///
+        /// # Parameters
+        ///  * `resource` - Pointer to an [`ID3D11Resource`] that represents a resources that will
+        ///                 serve as an input to a shader.
+        ///  * `desc` - Pointer to an [`D3D11_UNORDERED_ACCESS_VIEW_DESC`] that represents a
+        ///             shader-resource view description. Set this parameter to [`null`] to create
+        ///             a view that accesses the entire resource (using the format the resource was
+        ///             created with).
+        ///  * `ua_view` - Address of a pointer to an [`ID3D11UnorderedAccessView`] that represents
+        ///                an unordered-access view. Set this parameter to [`null_mut`] to validate
+        ///                the other input parameters (the method will return [`S_FALSE`] if the
+        ///                other input parameters pass validation).
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// The Direct3D 11.1 runtime, which is available starting with Windows 8, allows you to
+        /// use [`ID3D11Device::create_unordered_access_view`] for the following new purpose.
+        ///
+        /// You can create unordered-access views of video resources so that Direct3D shaders can
+        /// process those unordered-access views. These video resources are either Texture 2D or
+        /// Texture 2D Array. The value in the `view_dimension` member of the
+        /// [`D3D11_UNORDERED_ACCESS_VIEW_DESC`] structure for a created unordered-access view must
+        /// match the type of video resource, [`D3D11_UAV_DIMENSION::Texture2D`] for Texture 2D and
+        /// [`D3D11_UAV_DIMENSION::Texture2DArray`] for Texture 2D Array. Additionally, the format
+        /// of the underlying video resource restricts the formats that the view can use. The video
+        /// resource format values on the [`DXGI_FORMAT`] reference page specify the format values
+        /// that views are restricted to.
+        ///
+        /// The runtime read+write conflict prevention logic (which stops a resource from being
+        /// bound as an SRV and RTV or UAV at the same time) treats views of different parts of the
+        /// same video surface as conflicting for simplicity. Therefore, the runtime does not allow
+        /// an application to read from luma while the application simultaneously renders to chroma
+        /// in the same surface even though the hardware might allow these simultaneous operations.
+        fn create_unordered_access_view(
+            &self,
+            resource: *mut ID3D11Resource,
+            desc: *const D3D11_UNORDERED_ACCESS_VIEW_DESC,
+            ua_view: *mut *mut ID3D11UnorderedAccessView
         ) -> HRESULT;
     }
 );
