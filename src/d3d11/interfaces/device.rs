@@ -1,9 +1,10 @@
 use crate::{
     d3d11::{
-        ID3D11Buffer, ID3D11Resource, ID3D11ShaderResourceView, ID3D11Texture1D, ID3D11Texture2D,
-        ID3D11Texture3D, ID3D11UnorderedAccessView, D3D11_BUFFER_DESC,
-        D3D11_SHADER_RESOURCE_VIEW_DESC, D3D11_SUBRESOURCE_DATA, D3D11_TEXTURE1D_DESC,
-        D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC, D3D11_UNORDERED_ACCESS_VIEW_DESC,
+        ID3D11Buffer, ID3D11RenderTargetView, ID3D11Resource, ID3D11ShaderResourceView,
+        ID3D11Texture1D, ID3D11Texture2D, ID3D11Texture3D, ID3D11UnorderedAccessView,
+        D3D11_BUFFER_DESC, D3D11_RENDER_TARGET_VIEW_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
+        D3D11_SUBRESOURCE_DATA, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC,
+        D3D11_UNORDERED_ACCESS_VIEW_DESC,
     },
     immut_com_interface,
     unknwn::{IUnknown, IUnknownTrait},
@@ -15,7 +16,7 @@ use crate::{
 use crate::{
     d3d11::{
         ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT,
-        D3D11_SRV_DIMENSION, D3D11_USAGE,
+        D3D11_RTV_DIMENSION, D3D11_SRV_DIMENSION, D3D11_UAV_DIMENSION, D3D11_USAGE,
     },
     dxgi::DXGI_FORMAT,
     E_OUTOFMEMORY, S_FALSE, S_OK,
@@ -316,6 +317,52 @@ immut_com_interface!(
             resource: *mut ID3D11Resource,
             desc: *const D3D11_UNORDERED_ACCESS_VIEW_DESC,
             ua_view: *mut *mut ID3D11UnorderedAccessView
+        ) -> HRESULT;
+
+        /// Creates a render-target view for accessing resource data.
+        ///
+        /// # Parameters
+        ///  * `resource` - Pointer to a [`ID3D11Resource`] that represents a render target. This
+        ///                 resource must have been created with the
+        ///                 [`D3D11_BIND_FLAG::RenderTarget`] flag.
+        ///  * `desc` - Pointer to a [`D3D11_RENDER_TARGET_VIEW_DESC`] that represents a
+        ///             render-target view description. Set this parameter to [`null`] to create a
+        ///             view that accesses all of the subresources in mipmap level 0.
+        ///  * `rt_view` - Address of a pointer to an [`ID3D11RenderTargetView`]. Set this
+        ///                parameter to [`null_mut`] to validate the other input parameters (the
+        ///                method will return [`S_FALSE`] if the other input parameters pass
+        ///                validation).
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// A render-target view can be bound to the output-merger stage by calling
+        /// [`ID3D11DeviceContext::om_set_render_targets`].
+        ///
+        /// The Direct3D 11.1 runtime, which is available starting with Windows 8, allows you to
+        /// use [`ID3D11Device::create_render_target_view`] for the following new purpose.
+        ///
+        /// You can create render-target views of video resources so that Direct3D shaders can
+        /// process those render-target views. These video resources are either Texture 2D or
+        /// Texture 2D Array. The value in the `view_dimension` member of the
+        /// [`D3D11_RENDER_TARGET_VIEW_DESC`] structure for a created render-target view must match
+        /// the type of video resource, [`D3D11_RTV_DIMENSION::Texture2D`] for Texture 2D and
+        /// [`D3D11_RTV_DIMENSION::Texture2DArray`] for Texture 2D Array. Additionally, the format
+        /// of the underlying video resource restricts the formats that the view can use. The video
+        /// resource format values on the [`DXGI_FORMAT`] reference page specify the format values
+        /// that views are restricted to.
+        ///
+        /// The runtime read+write conflict prevention logic (which stops a resource from being
+        /// bound as an SRV and RTV or UAV at the same time) treats views of different parts of the
+        /// same video surface as conflicting for simplicity. Therefore, the runtime does not allow
+        /// an application to read from luma while the application simultaneously renders to chroma
+        /// in the same surface even though the hardware might allow these simultaneous operations.
+        fn create_render_target_view(
+            &self,
+            resource: *mut ID3D11Resource,
+            desc: *const D3D11_RENDER_TARGET_VIEW_DESC,
+            rt_view: *mut *mut ID3D11RenderTargetView
         ) -> HRESULT;
     }
 );
