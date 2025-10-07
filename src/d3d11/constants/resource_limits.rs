@@ -4,6 +4,12 @@ use crate::UINT;
 #[allow(unused_imports)]
 use crate::d3d11::{ID3D11Texture1D, ID3D11Texture2D, ID3D11Texture3D};
 
+/// The maximum number of constant buffer slots
+pub const D3D11_COMMONSHADER_CONSTANT_BUFFER_API_SLOT_COUNT: UINT = 14;
+
+/// The maximum number of shader resources that can be attached to one shader
+pub const D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT: UINT = 128;
+
 /// Limit of the number of elements in a constant buffer
 pub const D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT: UINT = 4096;
 
