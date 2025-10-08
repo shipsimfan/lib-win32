@@ -2,7 +2,7 @@ use crate::{
     com_interface,
     d3d11::{
         ID3D11Buffer, ID3D11ClassInstance, ID3D11DeviceChild, ID3D11DeviceChildTrait,
-        ID3D11PixelShader, ID3D11ShaderResourceView,
+        ID3D11PixelShader, ID3D11SamplerState, ID3D11ShaderResourceView,
     },
     unknwn::{IUnknown, IUnknownTrait},
     UINT,
@@ -107,6 +107,29 @@ com_interface!(
             pixel_shader: *mut ID3D11PixelShader,
             class_instances: *const *mut ID3D11ClassInstance,
             num_class_instances: UINT
+        );
+
+        /// Set an array of sampler states to the pixel shader pipeline stage.
+        ///
+        /// # Parameters
+        ///  * `start_slot` - Index into the device's zero-based array to begin setting samplers to
+        ///                   (ranges from 0 to `D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT - 1`).
+        ///  * `num_samplers` - Number of samplers in the array. Each pipeline stage has a total of
+        ///                     16 sampler slots available (ranges from 0 to
+        ///                     `D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT - start_slot`).
+        ///  * `samplers` - Pointer to an array of sampler-state interfaces (see
+        ///                 [`ID3D11SamplerState`]).
+        ///
+        /// # Remarks
+        /// Any sampler may be set to [`null_mut`]; this invokes the default state.
+        ///
+        /// The method will hold a reference to the interfaces passed in. This differs from the
+        /// device state behavior in Direct3D 10.
+        fn ps_set_samplers(
+            &mut self,
+            start_slot: UINT,
+            num_samplers: UINT,
+            samplers: *const *mut ID3D11SamplerState
         );
     }
 );

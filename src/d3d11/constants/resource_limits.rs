@@ -10,6 +10,9 @@ pub const D3D11_COMMONSHADER_CONSTANT_BUFFER_API_SLOT_COUNT: UINT = 14;
 /// The maximum number of shader resources that can be attached to one shader
 pub const D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT: UINT = 128;
 
+/// The maximum number of samplers that can be attach to one shader
+pub const D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT: UINT = 16;
+
 /// Limit of the number of elements in a constant buffer
 pub const D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT: UINT = 4096;
 

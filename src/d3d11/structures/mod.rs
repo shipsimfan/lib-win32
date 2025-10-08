@@ -11,8 +11,11 @@ mod buffer_srv;
 mod buffer_uav;
 mod bufferex_srv;
 mod class_instance_desc;
+mod feature_data_d3d11_options1;
 mod omac;
+mod packed_mip_desc;
 mod render_target_view_desc;
+mod sampler_desc;
 mod shader_resource_view_desc;
 mod subresource_data;
 mod tex1d_array_rtv;
@@ -56,10 +59,13 @@ pub use buffer_srv::{D3D11_BUFFER_SRV, D3D11_BUFFER_SRV_UNION1, D3D11_BUFFER_SRV
 pub use buffer_uav::D3D11_BUFFER_UAV;
 pub use bufferex_srv::D3D11_BUFFEREX_SRV;
 pub use class_instance_desc::D3D11_CLASS_INSTANCE_DESC;
+pub use feature_data_d3d11_options1::D3D11_FEATURE_DATA_D3D11_OPTIONS1;
 pub use omac::D3D11_OMAC;
+pub use packed_mip_desc::D3D11_PACKED_MIP_DESC;
 pub use render_target_view_desc::{
     D3D11_RENDER_TARGET_VIEW_DESC, D3D11_RENDER_TARGET_VIEW_DESC_UNION,
 };
+pub use sampler_desc::D3D11_SAMPLER_DESC;
 pub use shader_resource_view_desc::{
     D3D11_SHADER_RESOURCE_VIEW_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC_UNION,
 };
