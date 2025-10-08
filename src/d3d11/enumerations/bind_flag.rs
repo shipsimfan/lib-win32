@@ -1,7 +1,7 @@
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::d3d11::{
-    ID3D11Device, ID3D11DeviceContext, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC,
+    ID3D11Device, ID3D11DeviceContext, D3D11_MAP, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC,
     D3D11_TEXTURE3D_DESC,
 };
 
@@ -23,7 +23,7 @@ use crate::d3d11::{
 /// [`ID3D11DeviceContext::gs_set_shader_resources`],
 /// [`ID3D11DeviceContext::ps_set_shader_resources`], or
 /// [`ID3D11DeviceContext::vs_set_shader_resources`]. Furthermore, a shader-resource buffer cannot
-/// use the [`D3D11_MAP_FLAG::WriteNoOverwrite`] flag.
+/// use the [`D3D11_MAP::WriteNoOverwrite`] flag.
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
@@ -39,7 +39,7 @@ pub enum D3D11_BIND_FLAG {
     ConstantBuffer = 0x4,
 
     /// Bind a buffer or texture to a shader stage; this flag cannot be used with the
-    /// [`D3D11_MAP_FLAG::WriteNoOverwrite`] flag.
+    /// [`D3D11_MAP::WriteNoOverwrite`] flag.
     ShaderResource = 0x8,
 
     /// Bind an output buffer for the stream-output stage.

@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::d3d11::D3D11_SAMPLER_DESC;
+use crate::d3d11::{D3D11_DEPTH_STENCILOP_DESC, D3D11_DEPTH_STENCIL_DESC, D3D11_SAMPLER_DESC};
 
 /// Comparison options.
 ///

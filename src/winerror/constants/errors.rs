@@ -2,6 +2,9 @@ use crate::HRESULT;
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
+use crate::d3d11::D3D11_MAP;
+#[allow(unused_imports)]
 use crate::QueryPerformanceCounter;
 
 /// The operation completed successfully.
@@ -18956,7 +18959,7 @@ pub const D3D11_ERROR_FILE_NOT_FOUND: HRESULT = 0x887C0002u32 as HRESULT;
 /// The limit is 2^20 for feature levels up to 11.1.
 pub const D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS: HRESULT = 0x887C0003u32 as HRESULT;
 
-/// The application's first call per command list to Map on a deferred context did not use D3D11_MAP_WRITE_DISCARD.
+/// The application's first call per command list to Map on a deferred context did not use [`D3D11_MAP::WriteDiscard`].
 pub const D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD: HRESULT =
     0x887C0004u32 as HRESULT;
 
