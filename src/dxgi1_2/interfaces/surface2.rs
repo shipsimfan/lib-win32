@@ -11,12 +11,10 @@ use std::ffi::c_void;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{
-    d3d11::{ID3D11Device, ID3D11Texture2D},
-    dxgi::IDXGIOutput,
-    dxgi1_2::IDXGIResource1,
-    E_NOINTERFACE, S_OK,
-};
+#[cfg(feature = "d3d11")]
+use crate::d3d11::{ID3D11Device, ID3D11Texture2D};
+#[allow(unused_imports)]
+use crate::{dxgi::IDXGIOutput, dxgi1_2::IDXGIResource1, E_NOINTERFACE, S_OK};
 
 com_interface!(
     /// The [`IDXGISurface2`] interface extends the [`IDXGISurface1`] interface by adding support

@@ -9,8 +9,10 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
+use crate::d3d11::ID3D11Device;
+#[allow(unused_imports)]
 use crate::{
-    d3d11::ID3D11Device,
     dxgi::{
         DXGI_RESOURCE_PRIORITY_HIGH, DXGI_RESOURCE_PRIORITY_LOW, DXGI_RESOURCE_PRIORITY_MAXIMUM,
         DXGI_RESOURCE_PRIORITY_MINIMUM, DXGI_RESOURCE_PRIORITY_NORMAL,

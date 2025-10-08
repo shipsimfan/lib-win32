@@ -11,8 +11,10 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
+use crate::d3d11::{D3D11CreateDevice, D3D11CreateDeviceAndSwapChain};
+#[allow(unused_imports)]
 use crate::{
-    d3d11::{D3D11CreateDevice, D3D11CreateDeviceAndSwapChain},
     dxgi::{CreateDXGIFactory, CreateDXGIFactory1},
     dxgi1_3::CreateDXGIFactory2,
 };

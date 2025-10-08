@@ -10,8 +10,10 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
+use crate::d3d11::{ID3D11Device, ID3D11DeviceContext, ID3D11Texture2D, D3D11_RESOURCE_MISC_FLAG};
+#[allow(unused_imports)]
 use crate::{
-    d3d11::{ID3D11Device, ID3D11DeviceContext, ID3D11Texture2D, D3D11_RESOURCE_MISC_FLAG},
     dxgi::{IDXGIOutput, DXGI_FORMAT, DXGI_SWAP_CHAIN_FLAG},
     S_OK, TRUE,
 };

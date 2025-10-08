@@ -7,9 +7,13 @@ use std::ffi::c_void;
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
+use crate::d3d11::ID3D11Device;
+#[allow(unused_imports)]
+#[cfg(feature = "d3dcommon")]
+use crate::d3dcommon::D3D_DRIVER_TYPE;
+#[allow(unused_imports)]
 use crate::{
-    d3d11::ID3D11Device,
-    d3dcommon::D3D_DRIVER_TYPE,
     dxgi::{IDXGIAdapter, IDXGIAdapter1, IDXGIDevice},
     dxgi1_2::IDXGIAdapter2,
     GUID,

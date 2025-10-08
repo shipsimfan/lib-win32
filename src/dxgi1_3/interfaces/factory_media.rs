@@ -9,9 +9,13 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
+use crate::d3d11::D3D11_BIND_FLAG;
+#[allow(unused_imports)]
+#[cfg(feature = "d3dcommon")]
+use crate::d3dcommon::D3D_DRIVER_TYPE;
+#[allow(unused_imports)]
 use crate::{
-    d3d11::D3D11_BIND_FLAG,
-    d3dcommon::D3D_DRIVER_TYPE,
     dxgi::{
         CreateDXGIFactory, CreateDXGIFactory1, IDXGIDevice, IDXGIDevice1, IDXGIObject,
         DXGI_PRESENT_RESTRICT_TO_OUTPUT,

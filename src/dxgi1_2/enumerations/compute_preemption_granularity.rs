@@ -1,9 +1,9 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{
-    d3d11::ID3D11DeviceContext,
-    dxgi1_2::{IDXGIAdapter2, DXGI_ADAPTER_DESC2},
-};
+#[cfg(feature = "d3d11")]
+use crate::d3d11::ID3D11DeviceContext;
+#[allow(unused_imports)]
+use crate::dxgi1_2::{IDXGIAdapter2, DXGI_ADAPTER_DESC2};
 
 /// Identifies the granularity at which the graphics processing unit (GPU) can be preempted from
 /// performing its current compute task.

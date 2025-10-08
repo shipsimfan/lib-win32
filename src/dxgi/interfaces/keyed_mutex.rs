@@ -7,10 +7,13 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{
-    d3d10::D3D10_RESOURCE_MISC_FLAG, d3d11::D3D11_RESOURCE_MISC_FLAG, dxgi::IDXGIFactory1, E_FAIL,
-    INFINITE, SUCCEEDED, S_OK, WAIT_ABANDONED, WAIT_TIMEOUT,
-};
+#[cfg(feature = "d3d10")]
+use crate::d3d10::D3D10_RESOURCE_MISC_FLAG;
+#[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
+use crate::d3d11::D3D11_RESOURCE_MISC_FLAG;
+#[allow(unused_imports)]
+use crate::{dxgi::IDXGIFactory1, E_FAIL, INFINITE, SUCCEEDED, S_OK, WAIT_ABANDONED, WAIT_TIMEOUT};
 
 com_interface!(
     /// Represents a keyed mutex, which allows exclusive access to a shared resource that is used

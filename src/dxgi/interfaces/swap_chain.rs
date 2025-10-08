@@ -11,8 +11,10 @@ use std::ffi::c_void;
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
+use crate::d3d11::{D3D11CreateDeviceAndSwapChain, ID3D11DeviceContext};
+#[allow(unused_imports)]
 use crate::{
-    d3d11::{D3D11CreateDeviceAndSwapChain, ID3D11DeviceContext},
     dxgi::{
         IDXGIAdapter, IDXGIFactory, IDXGIResource, IDXGISurface1, DXGI_PRESENT_DO_NOT_SEQUENCE,
         DXGI_SWAP_CHAIN_FLAG, DXGI_SWAP_EFFECT, DXGI_USAGE,

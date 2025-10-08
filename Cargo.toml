@@ -7,3 +7,10 @@ description = "Win32 raw bindings"
 repository = "https://github.com/shipsimfan/lib-win32"
 license = "GPL-3.0-or-later"
 publish = false
+
+[features]
+d3dcommon = []
+d3d10 = ["d3dcommon", "dxgi"]
+d3d11 = ["d3dcommon", "dxgi"]
+
+dxgi = []

@@ -7,8 +7,10 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3dcommon")]
+use crate::d3dcommon::D3D_DRIVER_TYPE;
+#[allow(unused_imports)]
 use crate::{
-    d3dcommon::D3D_DRIVER_TYPE,
     dxgi::{IDXGIDevice, IDXGIFactory},
     ComInterface, DXGI_ERROR_NOT_FOUND, DXGI_ERROR_UNSUPPORTED, E_INVALIDARG, GUID, S_OK,
 };

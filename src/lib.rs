@@ -7,16 +7,27 @@
 #![warn(rustdoc::broken_intra_doc_links)]
 
 // Header not automatically included with `Windows.h`
+#[cfg(feature = "d3d10")]
 pub mod d3d10;
+#[cfg(feature = "d3d11")]
 pub mod d3d11;
+#[cfg(feature = "d3d11")]
 pub mod d3d11_1;
+#[cfg(feature = "d3d11")]
 pub mod d3d11_2;
+#[cfg(feature = "d3dcommon")]
 pub mod d3dcommon;
+#[cfg(feature = "dxgi")]
 pub mod dxgi;
+#[cfg(feature = "dxgi")]
 pub mod dxgi1_2;
+#[cfg(feature = "dxgi")]
 pub mod dxgi1_3;
+#[cfg(feature = "dxgi")]
 pub mod dxgi1_4;
+#[cfg(feature = "dxgi")]
 pub mod dxgi1_5;
+#[cfg(feature = "dxgi")]
 pub mod dxgi_debug;
 pub mod ktmw32;
 pub mod shlwapi;

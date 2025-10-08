@@ -11,9 +11,13 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
+use crate::d3d11_1::ID3D11Device1;
+#[allow(unused_imports)]
+#[cfg(feature = "d3dcommon")]
+use crate::d3dcommon::D3D_DRIVER_TYPE;
+#[allow(unused_imports)]
 use crate::{
-    d3d11_1::ID3D11Device1,
-    d3dcommon::D3D_DRIVER_TYPE,
     dxgi::{
         CreateDXGIFactory, CreateDXGIFactory1, IDXGIDevice, IDXGIDevice1, IDXGISwapChain,
         DXGI_PRESENT_RESTRICT_TO_OUTPUT, DXGI_SWAP_EFFECT,

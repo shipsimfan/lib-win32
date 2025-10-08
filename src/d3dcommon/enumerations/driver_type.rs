@@ -1,4 +1,5 @@
 // rustdoc imports
+#[cfg(feature = "d3d11")]
 #[allow(unused_imports)]
 use crate::d3d11::{D3D11CreateDevice, D3D11CreateDeviceAndSwapChain};
 
