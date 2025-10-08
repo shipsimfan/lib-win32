@@ -10,6 +10,7 @@ mod buffer_rtv;
 mod buffer_srv;
 mod buffer_uav;
 mod bufferex_srv;
+mod class_instance_desc;
 mod omac;
 mod render_target_view_desc;
 mod shader_resource_view_desc;
@@ -54,6 +55,7 @@ pub use buffer_rtv::{D3D11_BUFFER_RTV, D3D11_BUFFER_RTV_UNION1, D3D11_BUFFER_RTV
 pub use buffer_srv::{D3D11_BUFFER_SRV, D3D11_BUFFER_SRV_UNION1, D3D11_BUFFER_SRV_UNION2};
 pub use buffer_uav::D3D11_BUFFER_UAV;
 pub use bufferex_srv::D3D11_BUFFEREX_SRV;
+pub use class_instance_desc::D3D11_CLASS_INSTANCE_DESC;
 pub use omac::D3D11_OMAC;
 pub use render_target_view_desc::{
     D3D11_RENDER_TARGET_VIEW_DESC, D3D11_RENDER_TARGET_VIEW_DESC_UNION,

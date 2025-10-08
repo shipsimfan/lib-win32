@@ -1,7 +1,10 @@
 mod buffer;
+mod class_instance;
+mod class_linkage;
 mod device;
 mod device_child;
 mod device_context;
+mod pixel_shader;
 mod render_target_view;
 mod resource;
 mod shader_resource_view;
@@ -12,9 +15,12 @@ mod unordered_access_view;
 mod view;
 
 pub use buffer::*;
+pub use class_instance::*;
+pub use class_linkage::*;
 pub use device::*;
 pub use device_child::*;
 pub use device_context::*;
+pub use pixel_shader::*;
 pub use render_target_view::*;
 pub use resource::*;
 pub use shader_resource_view::*;
