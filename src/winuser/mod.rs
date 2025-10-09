@@ -50,9 +50,9 @@ pub use functions::{
     RegisterClassExA, RegisterClassExW, RegisterClassW, ScrollWindowEx, SetActiveWindow,
     SetForegroundWindow, SetLastErrorEx, SetParent, SetWindowDisplayAffinity, SetWindowLong,
     SetWindowLongA, SetWindowLongPtr, SetWindowLongPtrA, SetWindowLongPtrW, SetWindowLongW,
-    SetWindowPos, ShowWindow, SystemParametersInfo, SystemParametersInfoA,
-    SystemParametersInfoForDpi, SystemParametersInfoW, TranslateMessage, UnregisterClass,
-    UnregisterClassA, UnregisterClassW,
+    SetWindowPos, SetWindowText, SetWindowTextA, SetWindowTextW, ShowWindow, SystemParametersInfo,
+    SystemParametersInfoA, SystemParametersInfoForDpi, SystemParametersInfoW, TranslateMessage,
+    UnregisterClass, UnregisterClassA, UnregisterClassW,
 };
 pub use macros::{CreateDialog, CreateWindow, DialogBox, MAKEINTRESOURCE};
 pub use structures::{
