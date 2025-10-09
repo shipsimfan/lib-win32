@@ -1,4 +1,5 @@
 use crate::{d3d11::D3D11_OMAC, GUID, HANDLE, HRESULT, UINT};
+use std::ptr::null_mut;
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -27,4 +28,16 @@ pub struct D3D11_AUTHENTICATED_QUERY_OUTPUT {
 
     /// The result code for the query.
     pub return_code: HRESULT,
+}
+
+impl Default for D3D11_AUTHENTICATED_QUERY_OUTPUT {
+    fn default() -> Self {
+        D3D11_AUTHENTICATED_QUERY_OUTPUT {
+            omac: D3D11_OMAC::default(),
+            query_type: GUID::default(),
+            channel: null_mut(),
+            sequence_number: 0,
+            return_code: 0,
+        }
+    }
 }

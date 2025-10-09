@@ -5,8 +5,11 @@ mod authenticated_configure_initialize_input;
 mod authenticated_configure_input;
 mod authenticated_configure_protection_input;
 mod authenticated_configure_shared_resource_input;
+mod authenticated_query_channel_type_output;
+mod authenticated_query_device_handle_output;
 mod authenticated_query_input;
 mod authenticated_query_output;
+mod authenticated_query_protection_output;
 mod authenticated_query_restricted_shared_resource_process_output;
 mod buffer_desc;
 mod buffer_rtv;
@@ -58,8 +61,11 @@ pub use authenticated_configure_protection_input::{
     D3D11_AUTHENTICATED_CONFIGURE_PROTECTION_INPUT, D3D11_AUTHENTICATED_PROTECTION_FLAGS,
 };
 pub use authenticated_configure_shared_resource_input::D3D11_AUTHENTICATED_CONFIGURE_SHARED_RESOURCE_INPUT;
+pub use authenticated_query_channel_type_output::D3D11_AUTHENTICATED_QUERY_CHANNEL_TYPE_OUTPUT;
+pub use authenticated_query_device_handle_output::D3D11_AUTHENTICATED_QUERY_DEVICE_HANDLE_OUTPUT;
 pub use authenticated_query_input::D3D11_AUTHENTICATED_QUERY_INPUT;
 pub use authenticated_query_output::D3D11_AUTHENTICATED_QUERY_OUTPUT;
+pub use authenticated_query_protection_output::D3D11_AUTHENTICATED_QUERY_PROTECTION_OUTPUT;
 pub use authenticated_query_restricted_shared_resource_process_output::D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_OUTPUT;
 pub use buffer_desc::D3D11_BUFFER_DESC;
 pub use buffer_rtv::{D3D11_BUFFER_RTV, D3D11_BUFFER_RTV_UNION1, D3D11_BUFFER_RTV_UNION2};
