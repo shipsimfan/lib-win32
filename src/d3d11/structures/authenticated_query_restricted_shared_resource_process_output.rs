@@ -2,6 +2,7 @@ use crate::{
     d3d11::{D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE, D3D11_AUTHENTICATED_QUERY_OUTPUT},
     HANDLE, UINT,
 };
+use std::ptr::null_mut;
 
 #[allow(unused_imports)]
 use crate::d3d11::D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS;
@@ -31,4 +32,15 @@ pub struct D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_OUTPUT {
     /// the `process_handle` member contains a valid handle to a process. Otherwise, this member is
     /// ignored.
     pub process_handle: HANDLE,
+}
+
+impl Default for D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_OUTPUT {
+    fn default() -> Self {
+        D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_OUTPUT {
+            output: D3D11_AUTHENTICATED_QUERY_OUTPUT::default(),
+            process_index: 0,
+            process_identifier: D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE::Unknown,
+            process_handle: null_mut(),
+        }
+    }
 }

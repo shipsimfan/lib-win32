@@ -3,6 +3,7 @@ mod authenticated_process_identifier_type;
 mod bind_flag;
 mod buffer_uav_flag;
 mod bufferex_srv_flag;
+mod bus_type;
 mod comparison_func;
 mod cpu_access_flag;
 mod create_device_flag;
@@ -26,6 +27,7 @@ pub use authenticated_process_identifier_type::D3D11_AUTHENTICATED_PROCESS_IDENT
 pub use bind_flag::D3D11_BIND_FLAG;
 pub use buffer_uav_flag::D3D11_BUFFER_UAV_FLAG;
 pub use bufferex_srv_flag::D3D11_BUFFEREX_SRV_FLAG;
+pub use bus_type::D3D11_BUS_TYPE;
 pub use comparison_func::D3D11_COMPARISON_FUNC;
 pub use cpu_access_flag::D3D11_CPU_ACCESS_FLAG;
 pub use create_device_flag::D3D11_CREATE_DEVICE_FLAG;
