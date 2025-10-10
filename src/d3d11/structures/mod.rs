@@ -43,11 +43,13 @@ mod feature_data_d3d9_simple_instancing_support;
 mod feature_data_doubles;
 mod feature_data_format_support;
 mod feature_data_format_support2;
+mod feature_data_marker_support;
 mod feature_data_shader_min_precision_support;
 mod feature_data_threading;
 mod input_element_desc;
 mod omac;
 mod packed_mip_desc;
+mod rasterizer_desc;
 mod render_target_view_desc;
 mod sampler_desc;
 mod shader_resource_view_desc;
@@ -125,11 +127,13 @@ pub use feature_data_d3d9_simple_instancing_support::D3D11_FEATURE_DATA_D3D9_SIM
 pub use feature_data_doubles::D3D11_FEATURE_DATA_DOUBLES;
 pub use feature_data_format_support::D3D11_FEATURE_DATA_FORMAT_SUPPORT;
 pub use feature_data_format_support2::D3D11_FEATURE_DATA_FORMAT_SUPPORT2;
+pub use feature_data_marker_support::D3D11_FEATURE_DATA_MARKER_SUPPORT;
 pub use feature_data_shader_min_precision_support::D3D11_FEATURE_DATA_SHADER_MIN_PRECISION_SUPPORT;
 pub use feature_data_threading::D3D11_FEATURE_DATA_THREADING;
 pub use input_element_desc::D3D11_INPUT_ELEMENT_DESC;
 pub use omac::D3D11_OMAC;
 pub use packed_mip_desc::D3D11_PACKED_MIP_DESC;
+pub use rasterizer_desc::D3D11_RASTERIZER_DESC;
 pub use render_target_view_desc::{
     D3D11_RENDER_TARGET_VIEW_DESC, D3D11_RENDER_TARGET_VIEW_DESC_UNION,
 };

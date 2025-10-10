@@ -4,7 +4,7 @@ use crate::BOOL;
 #[allow(unused_imports)]
 use crate::{
     d3d11::{ID3D11Device, D3D11_FEATURE, D3D11_MAP},
-    d3d11_1::ID3D11DeviceContext1,
+    d3d11_1::{ID3D11DeviceContext1, D3D11_RASTERIZER_DESC1},
     d3dcommon::D3D_FEATURE_LEVEL,
     FALSE, TRUE,
 };
