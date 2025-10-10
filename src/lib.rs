@@ -15,6 +15,8 @@ pub mod d3d11;
 pub mod d3d11_1;
 #[cfg(feature = "d3d11")]
 pub mod d3d11_2;
+#[cfg(feature = "d3d11")]
+pub mod d3d11_3;
 #[cfg(feature = "d3dcommon")]
 pub mod d3dcommon;
 #[cfg(feature = "dxgi")]
