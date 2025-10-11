@@ -13,6 +13,9 @@ pub const D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT: UINT = 128;
 /// The maximum number of samplers that can be attach to one shader
 pub const D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT: UINT = 16;
 
+/// The maximum number of vertex buffers that can be attached at one time
+pub const D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT: UINT = 32;
+
 /// Limit of the number of elements in a constant buffer
 pub const D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT: UINT = 4096;
 
