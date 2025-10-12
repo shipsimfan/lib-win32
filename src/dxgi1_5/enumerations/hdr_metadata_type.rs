@@ -9,6 +9,7 @@ use crate::dxgi1_5::{IDXGISwapChain4, DXGI_HDR_METADATA_HDR10};
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_HDR_METADATA_TYPE {
     /// Indicates there is no header metadata.
     None = 0,

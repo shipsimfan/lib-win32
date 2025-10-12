@@ -9,6 +9,7 @@ use crate::d3d11::{ID3D11DeviceContext, D3D11_QUERY_DESC};
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_QUERY_MISC_FLAG {
     /// Tell the hardware that if it is not yet sure if something is hidden or not to draw it
     /// anyway. This is only used with an occlusion predicate. Predication data cannot be returned

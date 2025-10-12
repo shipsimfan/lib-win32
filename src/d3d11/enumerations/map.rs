@@ -10,6 +10,7 @@ use crate::d3d11::{ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_CPU_ACCESS_FLAG, 
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_MAP {
     /// Resource is mapped for reading. The resource must have been created with read access (see
     /// [`D3D11_CPU_ACCESS_FLAG::Read`]).

@@ -11,6 +11,7 @@ use crate::d3d11shader::D3D11_SHADER_INPUT_BIND_DESC;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_SHADER_INPUT_TYPE {
     /// The shader resource is a constant buffer.
     CBuffer = 0,

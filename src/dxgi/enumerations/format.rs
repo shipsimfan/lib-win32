@@ -7,6 +7,7 @@ use crate::RECT;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_FORMAT {
     /// The format is not known.
     Unknown = 0,

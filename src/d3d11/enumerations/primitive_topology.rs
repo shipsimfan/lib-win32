@@ -3,6 +3,7 @@
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_PRIMITIVE_TOPOLOGY {
     /// The IA stage has not been initialized with a primitive topology. The IA stage will not
     /// function properly unless a primitive topology is defined.

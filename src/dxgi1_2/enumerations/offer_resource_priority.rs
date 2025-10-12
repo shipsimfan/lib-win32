@@ -11,6 +11,7 @@ use crate::dxgi1_2::IDXGIDevice2;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_OFFER_RESOURCE_PRIORITY {
     /// The resource is low priority. The operating system discards a low priority resource before
     /// other offered resources with higher priority. It is a good programming practice to mark a

@@ -15,6 +15,7 @@ use crate::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_QUERY {
     /// Determines whether or not the GPU is finished processing commands. When the GPU is finished
     /// processing commands [`ID3D11DeviceContext::get_data`] will return [`S_OK`], and `data` will

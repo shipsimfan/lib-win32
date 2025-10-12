@@ -10,6 +10,7 @@ use crate::dxgi1_2::{DXGI_MODE_DESC1, DXGI_SWAP_CHAIN_FULLSCREEN_DESC};
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_MODE_SCANLINE_ORDER {
     /// Scanline order is unspecified.
     Unspecified = 0,

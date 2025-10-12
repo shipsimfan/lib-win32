@@ -11,6 +11,7 @@ use crate::{d3d11::D3D11_SHADER_RESOURCE_VIEW_DESC, d3d11shader::D3D11_SHADER_IN
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_SRV_DIMENSION {
     /// The type is unknown.
     Unknown = 0,

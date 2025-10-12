@@ -15,6 +15,7 @@ use crate::d3d11::D3D11_FEATURE_DATA_D3D11_OPTIONS2;
 #[repr(C)]
 #[derive(Debug, Clone)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_TEXTURE_LAYOUT {
     /// The texture layout is undefined, and is selected by the driver.
     Undefined = 0,

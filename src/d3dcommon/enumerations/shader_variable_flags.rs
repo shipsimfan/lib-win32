@@ -11,6 +11,7 @@ use crate::d3d11shader::{ID3D11ShaderReflectionVariable, D3D11_SHADER_VARIABLE_D
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_SHADER_VARIABLE_FLAGS {
     /// Indicates that the registers assigned to this shader variable were explicitly declared in
     /// shader code (instead of automatically assigned by the compiler).

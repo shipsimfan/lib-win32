@@ -2,6 +2,7 @@
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_DEPTH_WRITE_MASK {
     /// Turn off writes to the depth-stencil buffer.
     Zero = 0,

@@ -2,6 +2,7 @@
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_SHADER_MIN_PRECISION_SUPPORT {
     /// Minimum precision level is 10-bit.
     _10Bit = 0x1,

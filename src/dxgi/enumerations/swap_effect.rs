@@ -73,6 +73,7 @@ use crate::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_SWAP_EFFECT {
     /// Use this flag to specify the bit-block transfer (bitblt) model and to specify that DXGI
     /// discard the contents of the back buffer after you call [`IDXGISwapChain1::present1`].

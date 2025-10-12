@@ -2,6 +2,7 @@
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_CBUFFER_TYPE {
     /// A buffer containing scalar constants.
     CBuffer = 0,

@@ -20,6 +20,7 @@ use crate::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_CREATE_DEVICE_FLAG {
     /// Use this flag if your application will only call methods of Direct3D 11 interfaces from a
     /// single thread. By default, the [`ID3D11Device`] object is thread-safe. By using this flag,

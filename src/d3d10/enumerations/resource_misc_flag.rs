@@ -20,6 +20,7 @@ use crate::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D10_RESOURCE_MISC_FLAG {
     /// Enables an application to call [`ID3D10Device::generate_mips`] on a texture resource. The
     /// resource must be created with the bind flags that specify that the resource is a render

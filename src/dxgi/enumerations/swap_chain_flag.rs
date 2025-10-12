@@ -37,6 +37,7 @@ use crate::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_SWAP_CHAIN_FLAG {
     /// Set this flag to turn off automatic image rotation; that is, do not perform a rotation when
     /// transferring the contents of the front buffer to the monitor.

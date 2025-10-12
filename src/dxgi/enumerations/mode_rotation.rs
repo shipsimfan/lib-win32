@@ -3,6 +3,7 @@
 #[repr(C)]
 #[derive(Debug, Clone)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_MODE_ROTATION {
     /// Unspecified rotation.
     Unspecified = 0,

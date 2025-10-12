@@ -11,6 +11,7 @@ use crate::d3d11shader::D3D11_SIGNATURE_PARAMETER_DESC;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_NAME {
     /// This parameter does not use a predefined system-value semantic.
     Undefined = 0,

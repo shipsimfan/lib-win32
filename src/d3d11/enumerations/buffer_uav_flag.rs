@@ -6,6 +6,7 @@ use crate::dxgi::DXGI_FORMAT;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_BUFFER_UAV_FLAG {
     /// Resource contains raw, unstructured data. Requires the UAV format to be
     /// [`DXGI_FORMAT::R32Typeless`].

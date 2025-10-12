@@ -7,6 +7,7 @@ use crate::d3d11::{ID3D11Device, ID3D11DeviceContext};
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_FORMAT_SUPPORT {
     /// Buffer resources supported.
     Buffer = 0x1,

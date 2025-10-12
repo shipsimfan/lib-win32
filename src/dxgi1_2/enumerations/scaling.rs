@@ -18,6 +18,7 @@ use crate::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_SCALING {
     /// Directs DXGI to make the back-buffer contents scale to fit the presentation target size.
     /// This is the implicit behavior of DXGI when you call the [`IDXGIFactory::create_swap_chain`]

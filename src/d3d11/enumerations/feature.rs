@@ -18,6 +18,7 @@ use crate::d3d11::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_FEATURE {
     /// The driver supports multithreading. Refer to [`D3D11_FEATURE_DATA_THREADING`].
     Threading,

@@ -15,6 +15,7 @@ use crate::d3d11::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_USAGE {
     /// A resource that requires read and write access by the GPU. This is likely to be the most
     /// common usage choice.

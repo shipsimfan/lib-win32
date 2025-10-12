@@ -10,6 +10,7 @@ use crate::d3d11shader::D3D11_SHADER_DESC;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_TESSELLATOR_OUTPUT_PRIMITIVE {
     #[allow(missing_docs)]
     Undefined = 0,

@@ -2,6 +2,7 @@
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_OUTDUPL_POINTER_SHAPE_TYPE {
     /// The pointer type is a monochrome mouse pointer, which is a monochrome bitmap. The bitmap's
     /// size is specified by width and height in a 1 bits per pixel (bpp) device independent bitmap

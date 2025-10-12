@@ -2,6 +2,7 @@
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_BUS_TYPE {
     /// Indicates a type of bus other than the types listed here.
     Other = 0,

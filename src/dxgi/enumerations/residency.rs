@@ -2,6 +2,7 @@
 #[repr(C)]
 #[derive(Debug, Clone)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_RESIDENCY {
     /// The resource is located in video memory.
     FullyResident = 1,

@@ -24,6 +24,7 @@ use crate::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_RESOURCE_MISC_FLAG {
     /// Enables MIP map generation by using [`ID3D11DeviceContext::generate_mips`] on a texture
     /// resource. The resource must be created with the bind flags that specify that the resource

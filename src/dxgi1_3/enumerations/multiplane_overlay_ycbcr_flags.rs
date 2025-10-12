@@ -9,6 +9,7 @@ use crate::dxgi1_3::IDXGIDecodeSwapChain;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS {
     /// Specifies nominal range YCbCr, which isn't an absolute color space, but a way of encoding
     /// RGB info.

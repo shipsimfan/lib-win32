@@ -13,6 +13,7 @@ use crate::d3d11::{D3D11_COUNTER_DESC, D3D11_COUNTER_INFO};
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_COUNTER {
     /// Define a performance counter that is dependent on the hardware device.
     DeviceDependent0 = 0x40000000,

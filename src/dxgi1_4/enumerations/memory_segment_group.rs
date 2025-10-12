@@ -12,6 +12,7 @@ use crate::dxgi1_4::IDXGIAdapter3;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_MEMORY_SEGMENT_GROUP {
     /// The grouping of segments which is considered local to the video adapter, and represents the
     /// fastest available memory to the GPU. Applications should target the local segment group as

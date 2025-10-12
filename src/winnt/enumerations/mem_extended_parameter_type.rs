@@ -6,6 +6,7 @@ use crate::{MapViewOfFile3, VirtualAlloc2};
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum MEM_EXTENDED_PARAMETER_TYPE {
     /// 0
     MemExtendedParameterInvalidType = 0,

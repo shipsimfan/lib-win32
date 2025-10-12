@@ -6,6 +6,7 @@ use crate::d3d11::{ID3D11Device, D3D11_PACKED_MIP_DESC, D3D11_RESOURCE_MISC_FLAG
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_TILED_RESOURCES_TIER {
     /// Tiled resources are not supported.
     NotSupported = 0,

@@ -10,6 +10,7 @@ use crate::d3d11::D3D11_INPUT_ELEMENT_DESC;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_INPUT_CLASSIFICATION {
     /// Input data is per-vertex data.
     PerVertexData = 0,

@@ -18,6 +18,7 @@ use crate::d3d11::D3D11_FEATURE_DATA_D3D11_OPTIONS1;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_FILTER {
     /// Use point sampling for minification, magnification, and mip-level sampling.
     MinMagMipPoint = 0,

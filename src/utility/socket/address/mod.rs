@@ -8,6 +8,7 @@ mod len;
 
 /// A win32 socket address
 #[derive(Debug, Clone)]
+#[non_exhaustive]
 pub enum SocketAddress {
     /// The address is for IPv4
     V4(sockaddr_in),

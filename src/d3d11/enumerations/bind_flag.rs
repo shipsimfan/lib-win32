@@ -27,6 +27,7 @@ use crate::d3d11::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_BIND_FLAG {
     /// Bind a buffer as a vertex buffer to the input-assembler stage.
     VertexBuffer = 0x1,

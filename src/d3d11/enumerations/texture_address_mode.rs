@@ -7,6 +7,7 @@ use crate::d3d11::D3D11_SAMPLER_DESC;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_TEXTURE_ADDRESS_MODE {
     /// Tile the texture at every (u,v) integer junction. For example, for u values between 0 and
     /// 3, the texture is repeated three times.

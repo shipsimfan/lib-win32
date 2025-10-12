@@ -12,6 +12,7 @@ use crate::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_SHARED_RESOURCE_TIER {
     /// Specifies the support available when
     /// [`D3D11_FEATURE_DATA_D3D11_OPTIONS::extended_resource_sharing`] is [`FALSE`] (only very old

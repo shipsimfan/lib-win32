@@ -2,6 +2,7 @@
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_FEATURE_LEVEL {
     /// Allows Microsoft Compute Driver Model (MCDM) devices to be used, or more feature-rich
     /// devices (such as traditional GPUs) that support a superset of the functionality. MCDM is

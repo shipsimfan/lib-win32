@@ -10,6 +10,7 @@ use crate::d3d11shader::D3D11_SHADER_BUFFER_DESC;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_SHADER_CBUFFER_FLAGS {
     /// Bind the constant buffer to an input slot defined in HLSL code (instead of letting the
     /// compiler choose the input slot).

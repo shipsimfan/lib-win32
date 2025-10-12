@@ -7,6 +7,7 @@ use crate::d3d11::ID3D11Device;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_FORMAT_SUPPORT2 {
     /// Format supports atomic add.
     UavAtomicAdd = 0x1,

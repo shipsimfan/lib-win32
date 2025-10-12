@@ -19,6 +19,7 @@ use crate::d3d11::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_CPU_ACCESS_FLAG {
     /// The resource is to be mappable so that the CPU can change its contents. Resources created
     /// with this flag cannot be set as outputs of the pipeline and must be created with either

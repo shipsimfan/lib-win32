@@ -9,6 +9,7 @@ use crate::d3d11::D3D11_RENDER_TARGET_VIEW_DESC;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_RTV_DIMENSION {
     /// Do not use this value, as it will cause [`ID3D11Device::create_render_target_view`] to
     /// fail.

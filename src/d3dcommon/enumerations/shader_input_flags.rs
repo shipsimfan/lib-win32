@@ -10,6 +10,7 @@ use crate::d3d11shader::D3D11_SHADER_INPUT_BIND_DESC;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_SHADER_INPUT_FLAGS {
     /// Assign a shader input to a register based on the register assignment in the HLSL code
     /// (instead of letting the compiler choose the register).

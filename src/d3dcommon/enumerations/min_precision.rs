@@ -2,6 +2,7 @@
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_MIN_PRECISION {
     /// Default minimum precision, which is 32-bit precision.
     Default = 0,

@@ -10,6 +10,7 @@ use crate::{d3d11shader::ID3D11ShaderReflection, d3dcommon::D3D11_PRIMITIVE};
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D_PRIMITIVE {
     #[allow(missing_docs)]
     Undefined = 0,

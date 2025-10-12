@@ -9,6 +9,7 @@ use crate::dxgi1_3::{IDXGIDecodeSwapChain, DXGI_FRAME_STATISTICS_MEDIA};
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_FRAME_PRESENTATION_MODE {
     /// Specifies that the presentation mode is a composition surface, meaning that the conversion
     /// from YUV to RGB is happening once per output refresh (for example, 60 Hz). When this value

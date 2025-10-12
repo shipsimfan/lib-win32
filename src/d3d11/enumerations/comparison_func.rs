@@ -13,6 +13,7 @@ use crate::d3d11::{D3D11_DEPTH_STENCILOP_DESC, D3D11_DEPTH_STENCIL_DESC, D3D11_S
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_COMPARISON_FUNC {
     /// Never pass the comparison.
     Never = 1,

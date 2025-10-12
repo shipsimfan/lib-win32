@@ -13,6 +13,7 @@ use crate::dxgi1_2::{IDXGIAdapter2, DXGI_ADAPTER_DESC2};
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_GRAPHICS_PREEMPTION_GRANULARITY {
     /// Indicates the preemption granularity as a DMA buffer.
     DmaBufferBoundary = 0,

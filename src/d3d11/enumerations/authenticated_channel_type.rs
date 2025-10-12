@@ -2,6 +2,7 @@
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_AUTHENTICATED_CHANNEL_TYPE {
     /// Direct3D 11 channel. This channel provides communication with the Direct3D runtime.
     D3D11 = 1,

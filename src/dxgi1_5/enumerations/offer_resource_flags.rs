@@ -6,6 +6,7 @@ use crate::dxgi1_5::IDXGIDevice4;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_OFFER_RESOURCE_FLAGS {
     /// Indicates the ability to allow memory de-commit by the DirectX Graphics Kernel.
     Decommit = 0x1,

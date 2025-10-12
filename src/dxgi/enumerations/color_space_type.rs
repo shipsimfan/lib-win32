@@ -13,6 +13,7 @@ use crate::dxgi1_4::{IDXGIOutput4, IDXGISwapChain3};
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_COLOR_SPACE_TYPE {
     /// This is the standard definition for sRGB.
     RgbFullG22NoneP709 = 0,

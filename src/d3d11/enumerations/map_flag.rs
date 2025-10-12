@@ -16,6 +16,7 @@ use crate::{
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum D3D11_MAP_FLAG {
     /// Specifies that [`ID3D11DeviceContext::map`] should return [`DXGI_ERROR_WAS_STILL_DRAWING`]
     /// when the GPU blocks the CPU from accessing a resource.

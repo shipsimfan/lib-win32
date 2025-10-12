@@ -9,6 +9,7 @@ use crate::dxgi1_5::IDXGIFactory5;
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum DXGI_FEATURE {
     /// The display supports tearing, a requirement of variable refresh rate displays.
     AllowTearing = 0,
