@@ -1,9 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11Buffer, ID3D11ClassInstance, ID3D11DeviceChild, ID3D11DeviceChildTrait,
-        ID3D11InputLayout, ID3D11PixelShader, ID3D11Resource, ID3D11SamplerState,
-        ID3D11ShaderResourceView, ID3D11VertexShader, D3D11_MAP, D3D11_MAPPED_SUBRESOURCE,
+        ID3D11Asynchronous, ID3D11Buffer, ID3D11ClassInstance, ID3D11DeviceChild,
+        ID3D11DeviceChildTrait, ID3D11GeometryShader, ID3D11InputLayout, ID3D11PixelShader,
+        ID3D11Resource, ID3D11SamplerState, ID3D11ShaderResourceView, ID3D11VertexShader,
+        D3D11_MAP, D3D11_MAPPED_SUBRESOURCE, D3D11_PRIMITIVE_TOPOLOGY,
     },
     dxgi::DXGI_FORMAT,
     unknwn::{IUnknown, IUnknownTrait},
@@ -473,5 +474,104 @@ com_interface!(
             num_buffers: UINT,
             constant_buffers: *const *mut ID3D11Buffer
         );
+
+        /// Set a geometry shader to the device.
+        ///
+        /// # Parameters
+        ///  * `shader` - Pointer to a geometry shader (see [`ID3D11GeometryShader`]). Passing in
+        ///               [`null_mut`] disables the shader for this pipeline stage.
+        ///  * `class_instances` - A pointer to an array of class-instance interfaces (see
+        ///                        [`ID3D11ClassInstance`]). Each interface used by a shader must
+        ///                        have a corresponding class instance or the shader will get
+        ///                        disabled. Set `class_instances` to [`null`] if the shader does
+        ///                        not use any interfaces.
+        ///  * `num_class_instances` - The number of class-instance interfaces in the array.
+        ///
+        /// # Remarks
+        /// The method will hold a reference to the interfaces passed in. This differs from the
+        /// device state behavior in Direct3D 10.
+        ///
+        /// The maximum number of instances a shader can have is 256.
+        fn gs_set_shader(
+            &mut self,
+            shader: *mut ID3D11GeometryShader,
+            class_instances: *const *mut ID3D11ClassInstance,
+            num_class_instances: UINT
+        );
+
+        /// Bind information about the primitive type, and data order that describes input data for
+        /// the input assembler stage.
+        ///
+        /// # Parameters
+        ///  * `topology` - The type of primitive and ordering of the primitive data (see
+        ///                 [`D3D11_PRIMITIVE_TOPOLOGY`]).
+        fn ia_set_primitive_topology(&mut self, topology: D3D11_PRIMITIVE_TOPOLOGY);
+
+        /// Bind an array of shader resources to the vertex-shader stage.
+        ///
+        /// # Parameters
+        ///  * `start_slot` - Index into the device's zero-based array to begin setting shader
+        ///                   resources to (range is from 0 to
+        ///                   `D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT - 1`).
+        ///  * `num_views` - Number of shader resources to set. Up to a maximum of 128 slots are
+        ///                  available for shader resources (range is from 0 to
+        ///                  `D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT - start_slot`).
+        ///  * `shader_resource_views` - Array of shader resource view interfaces to set to the
+        ///                              device.
+        ///
+        /// # Remarks
+        /// If an overlapping resource view is already bound to an output slot, such as a
+        /// rendertarget, then this API will fill the destination shader resource slot with
+        /// [`null_mut`].
+        ///
+        /// For information about creating shader-resource views, see
+        /// [`ID3D11Device::create_shader_resource_view`].
+        ///
+        /// The method will hold a reference to the interfaces passed in. This differs from the
+        /// device state behavior in Direct3D 10.
+        fn vs_set_shader_resources(
+            &mut self,
+            start_slot: UINT,
+            num_views: UINT,
+            shader_resource_views: *const *mut ID3D11ShaderResourceView
+        );
+
+        /// Set an array of sampler states to the vertex shader pipeline stage.
+        ///
+        /// # Parameters
+        ///  * `start_slot` - Index into the device's zero-based array to begin setting samplers to
+        ///                   (ranges from 0 to `D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT - 1`).
+        ///  * `num_samplers` - Number of samplers in the array. Each pipeline stage has a total of
+        ///                     16 sampler slots available (ranges from 0 to
+        ///                     `D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT - start_slot`).
+        ///  * `samplers` - Pointer to an array of sampler-state interfaces (see
+        ///                 [`ID3D11SamplerState`]).
+        ///
+        /// # Remarks
+        /// Any sampler may be set to [`null_mut`]; this invokes the default state.
+        fn vs_set_samplers(
+            &mut self,
+            start_slot: UINT,
+            num_samplers: UINT,
+            samplers: *const *mut ID3D11SamplerState
+        );
+
+        /// Mark the beginning of a series of commands.
+        ///
+        /// # Parameters
+        ///  * `r#async` - A pointer to an [`ID3D11Asynchronous`] interface.
+        ///
+        /// # Remarks
+        /// Use [`ID3D11DeviceContext::end`] to mark the ending of the series of commands.
+        fn begin(&mut self, r#async: *mut ID3D11Asynchronous);
+
+        /// Mark the end of a series of commands.
+        ///
+        /// # Parameters
+        ///  * `r#async` - A pointer to an [`ID3D11Asynchronous`] interface.
+        ///
+        /// # Remarks
+        /// Use [`ID3D11DeviceContext::begin`] to mark the beginning of the series of commands.
+        fn end(&mut self, r#async: *mut ID3D11Asynchronous);
     }
 );

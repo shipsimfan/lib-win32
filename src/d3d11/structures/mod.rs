@@ -31,6 +31,8 @@ mod buffer_srv;
 mod buffer_uav;
 mod bufferex_srv;
 mod class_instance_desc;
+mod counter_desc;
+mod counter_info;
 mod depth_stencil_desc;
 mod depth_stencilop_desc;
 mod feature_data_architecture_info;
@@ -58,6 +60,9 @@ mod input_element_desc;
 mod mapped_subresource;
 mod omac;
 mod packed_mip_desc;
+mod query_data_so_statistics;
+mod query_data_timestamp_disjoint;
+mod query_desc;
 mod rasterizer_desc;
 mod render_target_view_desc;
 mod sampler_desc;
@@ -124,6 +129,8 @@ pub use buffer_srv::{D3D11_BUFFER_SRV, D3D11_BUFFER_SRV_UNION1, D3D11_BUFFER_SRV
 pub use buffer_uav::D3D11_BUFFER_UAV;
 pub use bufferex_srv::D3D11_BUFFEREX_SRV;
 pub use class_instance_desc::D3D11_CLASS_INSTANCE_DESC;
+pub use counter_desc::D3D11_COUNTER_DESC;
+pub use counter_info::D3D11_COUNTER_INFO;
 pub use depth_stencil_desc::D3D11_DEPTH_STENCIL_DESC;
 pub use depth_stencilop_desc::D3D11_DEPTH_STENCILOP_DESC;
 pub use feature_data_architecture_info::D3D11_FEATURE_DATA_ARCHITECTURE_INFO;
@@ -151,6 +158,9 @@ pub use input_element_desc::D3D11_INPUT_ELEMENT_DESC;
 pub use mapped_subresource::D3D11_MAPPED_SUBRESOURCE;
 pub use omac::D3D11_OMAC;
 pub use packed_mip_desc::D3D11_PACKED_MIP_DESC;
+pub use query_data_so_statistics::D3D11_QUERY_DATA_SO_STATISTICS;
+pub use query_data_timestamp_disjoint::D3D11_QUERY_DATA_TIMESTAMP_DISJOINT;
+pub use query_desc::D3D11_QUERY_DESC;
 pub use rasterizer_desc::D3D11_RASTERIZER_DESC;
 pub use render_target_view_desc::{
     D3D11_RENDER_TARGET_VIEW_DESC, D3D11_RENDER_TARGET_VIEW_DESC_UNION,
