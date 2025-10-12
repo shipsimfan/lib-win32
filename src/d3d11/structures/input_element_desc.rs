@@ -53,7 +53,7 @@ impl Default for D3D11_INPUT_ELEMENT_DESC {
             format: DXGI_FORMAT::Unknown,
             input_slot: 0,
             aligned_byte_offset: 0,
-            input_slot_class: D3D11_INPUT_CLASSIFICATION::VertexData,
+            input_slot_class: D3D11_INPUT_CLASSIFICATION::PerVertexData,
             instance_data_step_rate: 0,
         }
     }

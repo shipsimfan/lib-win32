@@ -1,4 +1,4 @@
-use super::ComInterface;
+use crate::unknwn::IUnknownTrait;
 use std::ptr::NonNull;
 
 mod clone;
@@ -9,7 +9,7 @@ mod new_in;
 mod query_interface;
 
 /// A pointer to a COM object
-pub struct ComPtr<T: ComInterface> {
+pub struct ComPtr<T: IUnknownTrait> {
     /// The pointer to the interface
     ptr: NonNull<T>,
 }

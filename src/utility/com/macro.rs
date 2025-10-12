@@ -32,7 +32,7 @@ macro_rules! com_interface {
         }
 
         $(#[$meta])*
-        $vis trait $trait_name$(: $first_super_trait)* {
+        $vis trait $trait_name: $crate::utility::ComInterface $(+ $first_super_trait)* {
             /// Get the vtable for this interface
             fn vtable(&self) -> &$vtable_name;
 

@@ -12,8 +12,8 @@ use crate::d3d11::D3D11_INPUT_ELEMENT_DESC;
 #[allow(non_camel_case_types)]
 pub enum D3D11_INPUT_CLASSIFICATION {
     /// Input data is per-vertex data.
-    VertexData = 0,
+    PerVertexData = 0,
 
     /// Input data is per-instance data.
-    InstanceData = 1,
+    PerInstanceData = 1,
 }

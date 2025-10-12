@@ -13,8 +13,13 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    d3d11::{ID3D11Device, D3D11_BIND_FLAG, D3D11_MAP_FLAG},
+    d3d11::{ID3D11Device, D3D11_BIND_FLAG, D3D11_INPUT_CLASSIFICATION, D3D11_MAP_FLAG},
     d3d11_1::ID3D11DeviceContext1,
+    d3d11shader::{
+        ID3D11ShaderReflection, ID3D11ShaderReflectionConstantBuffer,
+        ID3D11ShaderReflectionVariable,
+    },
+    d3dcompiler::D3D11Reflect,
     DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_WAS_STILL_DRAWING,
 };
 #[allow(unused_imports)]
@@ -365,6 +370,108 @@ com_interface!(
             index_buffer: *mut ID3D11Buffer,
             format: DXGI_FORMAT,
             offset: UINT
+        );
+
+        /// Draw indexed, instanced primitives.
+        ///
+        /// # Parameters
+        ///  * `index_count_per_instance` - Number of indices read from the index buffer for each
+        ///                                 instance.
+        ///  * `instance_count` - Number of instances to draw.
+        ///  * `start_index_location` - The location of the first index read by the GPU from the
+        ///                             index buffer.
+        ///  * `base_vertex_location` - A value added to each index before reading a vertex from
+        ///                             the vertex buffer.
+        ///  * `start_instance_location` - A value added to each index before reading per-instance
+        ///                                data from a vertex buffer.
+        ///
+        /// # Remarks
+        /// A draw API submits work to the rendering pipeline.
+        ///
+        /// Instancing may extend performance by reusing the same geometry to draw multiple objects
+        /// in a scene. One example of instancing could be to draw the same object with different
+        /// positions and colors. Instancing requires multiple vertex buffers: at least one for
+        /// per-vertex data and a second buffer for per-instance data.
+        ///
+        /// The second buffer is needed only if the input layout that you use has elements that use
+        /// [`D3D11_INPUT_CLASSIFICATION::PerInstanceData`] as the input element classification
+        /// buffer for per-instance data.
+        fn draw_indexed_instanced(
+            &mut self,
+            index_count_per_instance: UINT,
+            instance_count: UINT,
+            start_index_location: UINT,
+            base_vertex_location: INT,
+            start_instance_location: UINT
+        );
+
+        /// Draw non-indexed, instanced primitives.
+        ///
+        /// # Parameters
+        ///  * `vertex_count_per_instance` - Number of vertices to draw.
+        ///  * `instance_count` - Number of instances to draw.
+        ///  * `start_vertex_location` - Index of the first vertex.
+        ///  * `start_instance_location` - A value added to each index before reading per-instance
+        ///                                data from a vertex buffer.
+        ///
+        /// # Remarks
+        /// A draw API submits work to the rendering pipeline.
+        ///
+        /// Instancing may extend performance by reusing the same geometry to draw multiple objects
+        /// in a scene. One example of instancing could be to draw the same object with different
+        /// positions and colors.
+        ///
+        /// The vertex data for an instanced draw call normally comes from a vertex buffer that is
+        /// bound to the pipeline. However, you could also provide the vertex data from a shader
+        /// that has instanced data identified with a system-value semantic (`SV_InstanceID`).
+        fn draw_instanced(
+            &mut self,
+            vertex_count_per_instance: UINT,
+            instance_count: UINT,
+            start_vertex_location: UINT,
+            start_instance_location: UINT
+        );
+
+        /// Sets the constant buffers used by the geometry shader pipeline stage.
+        ///
+        /// # Parameters
+        ///  * `start_slot` - Index into the device's zero-based array to begin setting constant
+        ///                   buffers to (ranges from 0 to
+        ///                   `D3D11_COMMONSHADER_CONSTANT_BUFFER_API_SLOT_COUNT - 1`).
+        ///  * `num_buffers` - Number of buffers to set (ranges from 0 to
+        ///                    `D3D11_COMMONSHADER_CONSTANT_BUFFER_API_SLOT_COUNT - start_slot`).
+        ///  * `constant_buffers` - Array of constant buffers (see [`ID3D11Buffer`]) being given to
+        ///                         the device.
+        ///
+        /// # Remarks
+        /// The method will hold a reference to the interfaces passed in. This differs from the
+        /// device state behavior in Direct3D 10.
+        ///
+        /// You can't use the [`ID3D11ShaderReflectionConstantBuffer`] interface to get information
+        /// about what is currently bound to the pipeline in the device context. But you can use
+        /// [`ID3D11ShaderReflectionConstantBuffer`] to get information from a compiled shader. For
+        /// example, you can use [`ID3D11ShaderReflectionConstantBuffer`] and
+        /// [`ID3D11ShaderReflectionVariable`] to determine the slot in which a geometry shader
+        /// expects a constant buffer. You can then pass this slot number to
+        /// [`ID3D11DeviceContext::gs_set_constant_buffers`] to set the constant buffer. You can
+        /// call the [`D3D11Reflect`] function to retrieve the address of a pointer to the
+        /// [`ID3D11ShaderReflection`] interface and then call
+        /// [`ID3D11ShaderReflection::get_constant_buffer_by_name`] to get a pointer to
+        /// [`ID3D11ShaderReflectionConstantBuffer`].
+        ///
+        /// The Direct3D 11.1 runtime, which is available starting with Windows 8, can bind a
+        /// larger number of [`ID3D11Buffer`] resources to the shader than the maximum constant
+        /// buffer size that is supported by shaders (4096 constants – 432-bit components each).
+        /// When you bind such a large buffer, the shader can access only the first 4096 432-bit
+        /// component constants in the buffer, as if 4096 constants is the full size of the buffer.
+        ///
+        /// If the application wants the shader to access other parts of the buffer, it must call
+        /// the [`ID3D11DeviceContext1::gs_set_constant_buffers1`] method instead.
+        fn gs_set_constant_buffers(
+            &mut self,
+            start_slot: UINT,
+            num_buffers: UINT,
+            constant_buffers: *const *mut ID3D11Buffer
         );
     }
 );
