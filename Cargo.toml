@@ -12,5 +12,6 @@ publish = false
 d3dcommon = []
 d3d10 = ["d3dcommon", "dxgi"]
 d3d11 = ["d3dcommon", "dxgi"]
+d3dcompiler = ["d3d11"]
 
 dxgi = []

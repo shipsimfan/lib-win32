@@ -21,7 +21,7 @@ pub mod d3d11_3;
 pub mod d3d11shader;
 #[cfg(feature = "d3dcommon")]
 pub mod d3dcommon;
-#[cfg(feature = "d3dcommon")]
+#[cfg(feature = "d3dcompiler")]
 pub mod d3dcompiler;
 #[cfg(feature = "dxgi")]
 pub mod dxgi;

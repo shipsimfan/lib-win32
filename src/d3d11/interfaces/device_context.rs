@@ -12,8 +12,12 @@ use crate::{
     unknwn::{IUnknown, IUnknownTrait},
     BOOL, FLOAT, HRESULT, INT, UINT,
 };
+use std::ffi::c_void;
 
 // rustdoc imports
+#[cfg(feature = "d3dcompiler")]
+#[allow(unused_imports)]
+use crate::d3dcompiler::D3D11Reflect;
 #[allow(unused_imports)]
 use crate::{
     d3d11::{
@@ -29,11 +33,9 @@ use crate::{
         ID3D11ShaderReflectionVariable,
     },
     d3dcommon::D3D_FEATURE_LEVEL,
-    d3dcompiler::D3D11Reflect,
     dxgi::DXGI_SAMPLE_DESC,
     DWORD, DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_WAS_STILL_DRAWING, FALSE, S_FALSE, S_OK, TRUE,
 };
-use std::ffi::c_void;
 #[allow(unused_imports)]
 use std::ptr::{null, null_mut};
 

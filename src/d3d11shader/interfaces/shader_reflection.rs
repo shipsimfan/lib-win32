@@ -10,11 +10,13 @@ use crate::{
 };
 
 // rustdoc imports
+#[cfg(feature = "d3dcompiler")]
+#[allow(unused_imports)]
+use crate::d3dcompiler::D3DReflect;
 #[allow(unused_imports)]
 use crate::{
     d3d11::{ID3D11DeviceContext, D3D11_PRIMITIVE_TOPOLOGY},
     d3dcommon::D3D_PRIMITIVE_TOPOLOGY,
-    d3dcompiler::D3DReflect,
 };
 
 com_interface!(
