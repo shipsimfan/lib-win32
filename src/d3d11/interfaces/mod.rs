@@ -1,8 +1,10 @@
 mod asynchronous;
+mod blend_state;
 mod buffer;
 mod class_instance;
 mod class_linkage;
 mod counter;
+mod depth_stencil_view;
 mod device;
 mod device_child;
 mod device_context;
@@ -23,10 +25,12 @@ mod vertex_shader;
 mod view;
 
 pub use asynchronous::*;
+pub use blend_state::*;
 pub use buffer::*;
 pub use class_instance::*;
 pub use class_linkage::*;
 pub use counter::*;
+pub use depth_stencil_view::*;
 pub use device::*;
 pub use device_child::*;
 pub use device_context::*;
