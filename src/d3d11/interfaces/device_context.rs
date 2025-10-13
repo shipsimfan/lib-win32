@@ -1030,6 +1030,27 @@ com_interface!(
             aligned_byte_offset_for_args: UINT
         );
 
+        /// Draw instanced, GPU-generated primitives.
+        ///
+        /// # Parameters
+        ///  * `buffer_for_args` - A pointer to an [`ID3D11Buffer`], which is a buffer containing
+        ///                        the GPU generated primitives.
+        ///  * `aligned_byte_offset_for_args` - Offset in `buffer_for_args` to the start of the GPU
+        ///                                     generated primitives.
+        ///
+        /// # Remarks
+        /// When an application creates a buffer that is associated with the [`ID3D11Buffer`]
+        /// interface that `buffer_for_args` points to, the application must set the
+        /// [`D3D11_RESOURCE_MISC_FLAG::DrawIndirectArgs`] flag in the `misc_flags` member of the
+        /// [`D3D11_BUFFER_DESC`] structure that describes the buffer. To create the buffer, the
+        /// application calls the [`ID3D11Device::create_buffer`] method and in this call passes a
+        /// pointer to [`D3D11_BUFFER_DESC`] in the `desc` parameter.
+        fn draw_instanced_indirect(
+            &mut self,
+            buffer_for_args: *mut ID3D11Buffer,
+            aligned_byte_offset_for_args: UINT
+        );
+
         /// Execute a command list from a thread group.
         ///
         /// # Parameters
@@ -1352,7 +1373,7 @@ com_interface!(
         fn clear_render_target_view(
             &mut self,
             render_target_view: *mut ID3D11RenderTargetView,
-            color_rgba: [FLOAT; 4]
+            color_rgba: *const FLOAT
         );
     }
 );

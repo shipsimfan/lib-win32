@@ -50,7 +50,7 @@ pub struct LOGFONTW {
     ///
     /// For the MM_TEXT mapping mode, you can use the following formula to specify a height for a
     /// font with a specified point size:
-    /// ```
+    /// ```ignore
     /// let height = -MulDiv(point_size, GetDeviceCaps(dc, LOGPIXELSY), 72);
     /// ```
     pub height: LONG,

@@ -16,7 +16,7 @@ macro_rules! com_interface {
         #[repr(C)]
         $vis struct $struct_name {
             /// The table with function calls for this interface
-            vtable: Option<::std::ptr::NonNull<$vtable_name>>,
+            pub vtable: Option<::std::ptr::NonNull<$vtable_name>>,
         }
 
         #[doc = ::std::concat!("Virtual function call table for [`", ::std::stringify!($struct_name), "`]")]
@@ -27,7 +27,8 @@ macro_rules! com_interface {
                 pub $first_super_name: <$first_super_type as $crate::ComInterface>::VTable,
             )*
             $(
-                $fn_name: Option<extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
+                $(#[$fn_meta])*
+                pub $fn_name: Option<extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
             )*
         }
 
