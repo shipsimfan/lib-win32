@@ -26,6 +26,7 @@ mod authenticated_query_restricted_shared_resource_process_input;
 mod authenticated_query_restricted_shared_resource_process_output;
 mod authenticated_query_unrestricted_protected_shared_resource_count_output;
 mod blend_desc;
+mod r#box;
 mod buffer_desc;
 mod buffer_rtv;
 mod buffer_srv;
@@ -102,6 +103,7 @@ mod texture_1d_desc;
 mod texture_2d_desc;
 mod texture_3d_desc;
 mod unordered_access_view_desc;
+mod viewport;
 
 pub use aes_ctr_iv::D3D11_AES_CTR_IV;
 pub use authenticated_configure_accessible_encryption_input::D3D11_AUTHENTICATED_CONFIGURE_ACCESSIBLE_ENCRYPTION_INPUT;
@@ -174,6 +176,7 @@ pub use packed_mip_desc::D3D11_PACKED_MIP_DESC;
 pub use query_data_so_statistics::D3D11_QUERY_DATA_SO_STATISTICS;
 pub use query_data_timestamp_disjoint::D3D11_QUERY_DATA_TIMESTAMP_DISJOINT;
 pub use query_desc::D3D11_QUERY_DESC;
+pub use r#box::D3D11_BOX;
 pub use rasterizer_desc::D3D11_RASTERIZER_DESC;
 pub use render_target_blend_desc::D3D11_RENDER_TARGET_BLEND_DESC;
 pub use render_target_view_desc::{
@@ -217,3 +220,4 @@ pub use texture_3d_desc::D3D11_TEXTURE3D_DESC;
 pub use unordered_access_view_desc::{
     D3D11_UNORDERED_ACCESS_VIEW_DESC, D3D11_UNORDERED_ACCESS_VIEW_DESC_UNION,
 };
+pub use viewport::D3D11_VIEWPORT;

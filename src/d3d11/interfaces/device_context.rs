@@ -2,10 +2,11 @@ use crate::{
     com_interface,
     d3d11::{
         ID3D11Asynchronous, ID3D11BlendState, ID3D11Buffer, ID3D11ClassInstance,
-        ID3D11DepthStencilView, ID3D11DeviceChild, ID3D11DeviceChildTrait, ID3D11GeometryShader,
-        ID3D11InputLayout, ID3D11PixelShader, ID3D11Predicate, ID3D11RenderTargetView,
-        ID3D11Resource, ID3D11SamplerState, ID3D11ShaderResourceView, ID3D11UnorderedAccessView,
-        ID3D11VertexShader, D3D11_MAP, D3D11_MAPPED_SUBRESOURCE, D3D11_PRIMITIVE_TOPOLOGY,
+        ID3D11DepthStencilState, ID3D11DepthStencilView, ID3D11DeviceChild, ID3D11DeviceChildTrait,
+        ID3D11GeometryShader, ID3D11InputLayout, ID3D11PixelShader, ID3D11Predicate,
+        ID3D11RasterizerState, ID3D11RenderTargetView, ID3D11Resource, ID3D11SamplerState,
+        ID3D11ShaderResourceView, ID3D11UnorderedAccessView, ID3D11VertexShader, D3D11_BOX,
+        D3D11_MAP, D3D11_MAPPED_SUBRESOURCE, D3D11_PRIMITIVE_TOPOLOGY, D3D11_RECT,
     },
     dxgi::DXGI_FORMAT,
     unknwn::{IUnknown, IUnknownTrait},
@@ -16,18 +17,21 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
     d3d11::{
-        ID3D11Device, D3D11_ASYNC_GETDATA_FLAG, D3D11_BIND_FLAG, D3D11_BLEND,
-        D3D11_BUFFER_UAV_FLAG, D3D11_COUNTER, D3D11_INPUT_CLASSIFICATION,
-        D3D11_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL, D3D11_KEEP_UNORDERED_ACCESS_VIEWS,
-        D3D11_MAP_FLAG, D3D11_QUERY, D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT,
+        D3D11CalcSubresource, ID3D11Device, D3D11_ASYNC_GETDATA_FLAG, D3D11_BIND_FLAG, D3D11_BLEND,
+        D3D11_BUFFER_DESC, D3D11_BUFFER_UAV_FLAG, D3D11_COUNTER, D3D11_DEPTH_STENCIL_DESC,
+        D3D11_INPUT_CLASSIFICATION, D3D11_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL,
+        D3D11_KEEP_UNORDERED_ACCESS_VIEWS, D3D11_MAP_FLAG, D3D11_QUERY, D3D11_RESOURCE_MISC_FLAG,
+        D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT, D3D11_VIEWPORT,
     },
     d3d11_1::{ID3D11DeviceContext1, D3D11_1_UAV_SLOT_COUNT},
     d3d11shader::{
         ID3D11ShaderReflection, ID3D11ShaderReflectionConstantBuffer,
         ID3D11ShaderReflectionVariable,
     },
+    d3dcommon::D3D_FEATURE_LEVEL,
     d3dcompiler::D3D11Reflect,
-    DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_WAS_STILL_DRAWING, FALSE, S_FALSE, S_OK, TRUE,
+    dxgi::DXGI_SAMPLE_DESC,
+    DWORD, DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_WAS_STILL_DRAWING, FALSE, S_FALSE, S_OK, TRUE,
 };
 use std::ffi::c_void;
 #[allow(unused_imports)]
@@ -914,6 +918,439 @@ com_interface!(
             blend_state: *mut ID3D11BlendState,
             blend_factor: [FLOAT; 4],
             sample_mask: UINT
+        );
+
+        /// Sets the depth-stencil state of the output-merger stage.
+        ///
+        /// # Parameters
+        ///  * `depth_stencil_state` - Pointer to a depth-stencil state interface (see
+        ///                            [`ID3D11DepthStencilState`]) to bind to the device. Set this
+        ///                            to [`null_mut`] to use the default state listed in
+        ///                            [`D3D11_DEPTH_STENCIL_DESC`].
+        ///  * `stencil_ref` - Reference value to perform against when doing a depth-stencil test.
+        ///
+        /// # Remarks
+        /// To create a depth-stencil state interface, call
+        /// [`ID3D11Device::create_depth_stencil_state`].
+        ///
+        /// The method will hold a reference to the interfaces passed in. This differs from the
+        /// device state behavior in Direct3D 10.
+        fn om_set_depth_stencil_state(
+            &mut self,
+            depth_stencil_state: *mut ID3D11DepthStencilState,
+            stencil_ref: UINT
+        );
+
+        /// Set the target output buffers for the stream-output stage of the pipeline.
+        ///
+        /// # Parameters
+        ///  * `num_buffers` - The number of buffer to bind to the device. A maximum of four output
+        ///                    buffers can be set. If less than four are defined by the call, the
+        ///                    remaining buffer slots are set to [`null_mut`].
+        ///  * `so_targets` - The array of output buffers (see [`ID3D11Buffer`]) to bind to the
+        ///                   device. The buffers must have been created with the
+        ///                   [`D3D11_BIND_FLAG::StreamOutput`] flag.
+        ///  * `offsets` - Array of offsets to the output buffers from `so_targets`, one offset for
+        ///                each buffer. The offset values must be in bytes.
+        ///
+        /// # Remarks
+        /// An offset of -1 will cause the stream output buffer to be appended, continuing after
+        /// the last location written to the buffer in a previous stream output pass.
+        ///
+        /// Calling this method using a buffer that is currently bound for writing will effectively
+        /// bind [`null_mut`] instead because a buffer cannot be bound as both an input and an
+        /// output at the same time.
+        ///
+        /// The debug layer will generate a warning whenever a resource is prevented from being
+        /// bound simultaneously as an input and an output, but this will not prevent invalid data
+        /// from being used by the runtime.
+        ///
+        /// The method will hold a reference to the interfaces passed in. This differs from the
+        /// device state behavior in Direct3D 10.
+        fn so_set_targets(
+            &mut self,
+            num_buffers: UINT,
+            so_targets: *const *mut ID3D11Buffer,
+            offsets: *const UINT
+        );
+
+        /// Draw geometry of an unknown size.
+        ///
+        /// # Remarks
+        /// A draw API submits work to the rendering pipeline. This API submits work of an unknown
+        /// size that was processed by the input assembler, vertex shader, and stream-output
+        /// stages; the work may or may not have gone through the geometry-shader stage.
+        ///
+        /// After data has been streamed out to stream-output stage buffers, those buffers can be
+        /// again bound to the Input Assembler stage at input slot 0 and
+        /// [`ID3D11DeviceContext::draw_auto`] will draw them without the application needing to
+        /// know the amount of data that was written to the buffers. A measurement of the amount of
+        /// data written to the SO stage buffers is maintained internally when the data is streamed
+        /// out. This means that the CPU does not need to fetch the measurement before re-binding
+        /// the data that was streamed as input data. Although this amount is tracked internally,
+        /// it is still the responsibility of applications to use input layouts to describe the
+        /// format of the data in the SO stage buffers so that the layouts are available when the
+        /// buffers are again bound to the input assembler.
+        ///
+        /// Calling [`ID3D11DeviceContext::draw_auto`] does not change the state of the
+        /// streaming-output buffers that were bound again as inputs.
+        ///
+        /// [`ID3D11DeviceContext::draw_auto`] only works when drawing with one input buffer bound
+        /// as an input to the IA stage at slot 0. Applications must create the SO buffer resource
+        /// with both binding flags, [`D3D11_BIND_FLAG::VertexBuffer`] and
+        /// [`D3D11_BIND_FLAG::StreamOutput`].
+        ///
+        /// This API does not support indexing or instancing.
+        ///
+        /// If an application needs to retrieve the size of the streaming-output buffer, it can
+        /// query for statistics on streaming output by using [`D3D11_QUERY::SoStatistics`].
+        fn draw_auto(&mut self);
+
+        /// Draw indexed, instanced, GPU-generated primitives.
+        ///
+        /// # Parameters
+        ///  * `buffer_for_args` - A pointer to an [`ID3D11Buffer`], which is a buffer containing
+        ///                        the GPU-generated primitives.
+        ///  * `aligned_byte_offset_for_args` - A [`DWORD`]-aligned byte offset in
+        ///                                     `buffer_for_args` to the start of the GPU generated
+        ///                                     primitives.
+        ///
+        /// # Remarks
+        /// When an application creates a buffer that is associated with the [`ID3D11Buffer`]
+        /// interface that `buffer_for_args` points to, your application must set the
+        /// [`D3D11_RESOURCE_MISC_FLAG::DrawIndirectArgs`] flag in the `misc_flags` member of the
+        /// [`D3D11_BUFFER_DESC`] structure that describes the buffer. To create the buffer, your
+        /// application should call the [`ID3D11Device::create_buffer`] method, and pass a pointer
+        /// to a [`D3D11_BUFFER_DESC`] in the `desc` parameter.
+        fn draw_indexed_instanced_indirect(
+            &mut self,
+            buffer_for_args: *mut ID3D11Buffer,
+            aligned_byte_offset_for_args: UINT
+        );
+
+        /// Execute a command list from a thread group.
+        ///
+        /// # Parameters
+        ///  * `thread_group_count_x` - The number of groups dispatched in the x direction.
+        ///                             `thread_group_count_x` must be less than or equal to
+        ///                             [`D3D11_CS_DISPATCH_MAX_THREAD_GROUPS_PER_DIMENSION`].
+        ///  * `thread_group_count_y` - The number of groups dispatched in the y direction.
+        ///                             `thread_group_count_y` must be less than or equal to
+        ///                             [`D3D11_CS_DISPATCH_MAX_THREAD_GROUPS_PER_DIMENSION`].
+        ///  * `thread_group_count_z` - The number of groups dispatched in the z direction.
+        ///                             `thread_group_count_z` must be less than or equal to
+        ///                             [`D3D11_CS_DISPATCH_MAX_THREAD_GROUPS_PER_DIMENSION`]. In
+        ///                             feature level 10 the value for `thread_group_count_z` must
+        ///                             be 1.
+        ///
+        /// # Remarks
+        /// You call the Dispatch method to execute commands in a compute shader. A compute shader
+        /// can be run on many threads in parallel, within a thread group. Index a particular
+        /// thread, within a thread group using a 3D vector given by (x,y,z).
+        fn dispatch(
+            &mut self,
+            thread_group_count_x: UINT,
+            thread_group_count_y: UINT,
+            thread_group_count_z: UINT
+        );
+
+        /// Execute a command list over one or more thread groups.
+        ///
+        /// # Parameters
+        ///  * `buffer_for_args` - A pointer to an [`ID3D11Buffer`], which must be loaded with data
+        ///                        that matches the argument list for
+        ///                        [`ID3D11DeviceContext::dispatch`].
+        ///  * `aligned_byte_offset_for_args` - A byte-aligned offset between the start of the
+        ///                                     buffer and the arguments.
+        ///
+        /// # Remarks
+        /// You call the [`ID3D11DeviceContext::dispatch_indirect`] method to execute commands in a
+        /// compute shader.
+        ///
+        /// When an application creates a buffer that is associated with the [`ID3D11Buffer`]
+        /// interface that `buffer_for_args` points to, the application must set the
+        /// [`D3D11_RESOURCE_MISC_FLAG::DrawIndirectArgs`] flag in the `misc_flags` member of the
+        /// [`D3D11_BUFFER_DESC`] structure that describes the buffer. To create the buffer, the
+        /// application calls the [`ID3D11Device::create_buffer`] method and in this call passes a
+        /// pointer to [`D3D11_BUFFER_DESC`] in the `desc` parameter.
+        fn dispatch_indirect(&mut self, buffer_for_args: *mut ID3D11Buffer, aligned_byte_offset_for_args: UINT);
+
+        /// Set the rasterizer state for the rasterizer stage of the pipeline.
+        ///
+        /// # Parameters
+        ///  * `rasterizer_state` - Pointer to a rasterizer-state interface (see
+        ///                         [`ID3D11RasterizerState`]) to bind to the pipeline.
+        ///
+        /// # Remarks
+        /// To create a rasterizer state interface, call [`ID3D11Device::create_rasterizer_state`].
+        ///
+        /// The method will hold a reference to the interfaces passed in. This differs from the
+        /// device state behavior in Direct3D 10.
+        fn rs_set_state(&mut self, rasterizer_state: *mut ID3D11RasterizerState);
+
+        /// Bind an array of viewports to the rasterizer stage of the pipeline.
+        ///
+        /// # Parameters
+        ///  * `num_viewports` - Number of viewports to bind.
+        ///  * `viewports` - An array of [`D3D11_VIEWPORT`] structures to bind to the device. See
+        ///                  the structure page for details about how the viewport size is
+        ///                  dependent on the device feature level which has changed between
+        ///                  Direct3D 11 and Direct3D 10.
+        ///
+        /// # Remarks
+        /// All viewports must be set atomically as one operation. Any viewports not defined by the
+        /// call are disabled.
+        ///
+        /// Which viewport to use is determined by the `SV_ViewportArrayIndex` semantic output by a
+        /// geometry shader; if a geometry shader does not specify the semantic, Direct3D will use
+        /// the first viewport in the array.
+        fn rs_set_viewports(&mut self, num_viewports: UINT, viewports: *const D3D11_VIEWPORT);
+
+        /// Bind an array of scissor rectangles to the rasterizer stage.
+        ///
+        /// # Parameters
+        ///  * `num_rects` - Number of scissor rectangles to bind.
+        ///  * `rects` - An array of scissor rectangles (see [`D3D11_RECT`]).
+        ///
+        /// # Remarks
+        /// All scissor rects must be set atomically as one operation. Any scissor rects not
+        /// defined by the call are disabled.
+        ///
+        /// The scissor rectangles will only be used if ScissorEnable is set to true in the
+        /// rasterizer state (see [`D3D11_RASTERIZER_DESC`]).
+        ///
+        /// Which scissor rectangle to use is determined by the `SV_ViewportArrayIndex` semantic
+        /// output by a geometry shader (see shader semantic syntax). If a geometry shader does not
+        /// make use of the `SV_ViewportArrayIndex` semantic then Direct3D will use the first
+        /// scissor rectangle in the array.
+        ///
+        /// Each scissor rectangle in the array corresponds to a viewport in an array of viewports
+        /// (see [`ID3D11DeviceContext::rs_set_viewports`]).
+        fn rs_set_scissor_rects(&mut self, num_rects: UINT, rects: *const D3D11_RECT);
+
+        /// Copy a region from a source resource to a destination resource.
+        ///
+        /// # Parameters
+        ///  * `dst_resource` - A pointer to the destination resource (see [`ID3D11Resource`]).
+        ///  * `dst_subresource` - Destination subresource index.
+        ///  * `dst_x` - The x-coordinate of the upper left corner of the destination region.
+        ///  * `dst_y` - The y-coordinate of the upper left corner of the destination region. For a
+        ///              1D subresource, this must be zero.
+        ///  * `dst_z` - The z-coordinate of the upper left corner of the destination region. For a
+        ///              1D or 2D subresource, this must be zero.
+        ///  * `src_resource` - A pointer to the source resource (see [`ID3D11Resource`]).
+        ///  * `src_subresource` - Source subresource index.
+        ///  * `src_box` - A pointer to a 3D box (see [`D3D11_BOX`]) that defines the source
+        ///                subresource that can be copied. If [`null`], the entire source
+        ///                subresource is copied. The box must fit within the source resource. An
+        ///                empty box results in a no-op. A box is empty if the top value is greater
+        ///                than or equal to the bottom value, or the left value is greater than or
+        ///                equal to the right value, or the front value is greater than or equal to
+        ///                the back value. When the box is empty,
+        ///                [`ID3D11DeviceContext::copy_subresource_region`] doesn't perform a copy
+        ///                operation.
+        ///
+        /// # Remarks
+        /// The source box must be within the size of the source resource. The destination offsets,
+        /// (x, y, and z), allow the source box to be offset when writing into the destination
+        /// resource; however, the dimensions of the source box and the offsets must be within the
+        /// size of the resource. If you try and copy outside the destination resource or specify a
+        /// source box that is larger than the source resource, the behavior of
+        /// [`ID3D11DeviceContext::copy_subresource_region`] is undefined. If you created a device
+        /// that supports the debug layer, the debug output reports an error on this invalid
+        /// [`ID3D11DeviceContext::copy_subresource_region`] call. Invalid parameters to
+        /// [`ID3D11DeviceContext::copy_subresource_region`] cause undefined behavior and might
+        /// result in incorrect rendering, clipping, no copy, or even the removal of the rendering
+        /// device.
+        ///
+        /// If the resources are buffers, all coordinates are in bytes; if the resources are
+        /// textures, all coordinates are in texels. [`D3D11CalcSubresource`] is a helper function
+        /// for calculating subresource indexes.
+        ///
+        /// [`ID3D11DeviceContext::copy_subresource_region`] performs the copy on the GPU (similar
+        /// to a memcpy by the CPU). As a consequence, the source and destination resources:
+        ///  - Must be different subresources (although they can be from the same resource).
+        ///  - Must be the same type.
+        ///  - Must have compatible DXGI formats (identical or from the same type group). For
+        ///    example, a [`DXGI_FORMAT::R32G32B32Float`] texture can be copied to a
+        ///    [`DXGI_FORMAT::R32G32B32UInt`] texture since both of these formats are in the
+        ///    [`DXGI_FORMAT::R32G32B32Typeless`] group.
+        ///    [`ID3D11DeviceContext::copy_subresource_region`] can copy between a few format
+        ///    types.
+        ///  - May not be currently mapped.
+        ///
+        /// [`ID3D11DeviceContext::copy_subresource_region`] only supports copy; it doesn't support
+        /// any stretch, color key, or blend. [`ID3D11DeviceContext::copy_subresource_region`] can
+        /// reinterpret the resource data between a few format types.
+        ///
+        /// If your app needs to copy an entire resource, we recommend to use
+        /// [`ID3D11DeviceContext::copy_resource`] instead.
+        ///
+        /// [`ID3D11DeviceContext::copy_subresource_region`] is an asynchronous call, which may be
+        /// added to the command-buffer queue, this attempts to remove pipeline stalls that may
+        /// occur when copying data.
+        fn copy_subresource_region(
+            &mut self,
+            dst_resource: *mut ID3D11Resource,
+            dst_subresource: UINT,
+            dst_x: UINT,
+            dst_y: UINT,
+            dst_z: UINT,
+            src_resource: *mut ID3D11Resource,
+            src_subresource: UINT,
+            src_box: *const D3D11_BOX
+        );
+
+        /// Copy the entire contents of the source resource to the destination resource using the GPU.
+        ///
+        /// # Parameters
+        ///  * `dst_resource` - A pointer to the [`ID3D11Resource`] interface that represents the
+        ///                     destination resource.
+        ///  * `src_resource` - A pointer to the [`ID3D11Resource`] interface that represents the
+        ///                     source resource.
+        ///
+        /// # Remarks
+        /// This method is unusual in that it causes the GPU to perform the copy operation (similar
+        /// to a `memcpy` by the CPU). As a result, it has a few restrictions designed for
+        /// improving performance. For instance, the source and destination resources:
+        ///  - Must be different resources.
+        ///  - Must be the same type.
+        ///  - Must have identical dimensions (including width, height, depth, and size as
+        ///    appropriate).
+        ///  - Must have compatible DXGI formats, which means the formats must be identical or at
+        ///    least from the same type group. For example, a [`DXGI_FORMAT::R32G32B32Float`]
+        ///    texture can be copied to a [`DXGI_FORMAT::R32G32B32UInt`] texture since both of
+        ///    these formats are in the [`DXGI_FORMAT::R32G32B32Typeless`] group.
+        ///    [`ID3D11DeviceContext::copy_resource`] can copy between a few format types.
+        ///  - Can't be currently mapped.
+        ///
+        /// [`ID3D11DeviceContext::copy_resource`] only supports copy; it doesn't support any
+        /// stretch, color key, or blend. [`ID3D11DeviceContext::copy_resource`] can reinterpret
+        /// the resource data between a few format types.
+        ///
+        /// You can't use an Immutable resource as a destination. You can use a depth-stencil
+        /// resource as either a source or a destination provided that the feature level is
+        /// [`D3D_FEATURE_LEVEL::_10_1`] or greater. For feature levels 9_x, resources created with
+        /// the [`D3D11_BIND_FLAG::DepthStencil`] flag can only be used as a source for
+        /// [`ID3D11DeviceContext::copy_resource`]. Resources created with multisampling capability
+        /// (see [`DXGI_SAMPLE_DESC`]) can be used as source and destination only if both source
+        /// and destination have identical multisampled count and quality. If source and
+        /// destination differ in multisampled count and quality or if one is multisampled and the
+        /// other is not multisampled, the call to [`ID3D11DeviceContext::copy_resource`] fails.
+        /// Use [`ID3D11DeviceContext::resolve_subresource`] to resolve a multisampled resource to
+        /// a resource that is not multisampled.
+        ///
+        /// The method is an asynchronous call, which may be added to the command-buffer queue.
+        /// This attempts to remove pipeline stalls that may occur when copying data.
+        ///
+        /// We recommend to use [`ID3D11DeviceContext::copy_subresource_region`] instead if you
+        /// only need to copy a portion of the data in a resource.
+        fn copy_resource(&mut self, dst_resource: ID3D11Resource, src_resource: ID3D11Resource);
+
+        /// The CPU copies data from memory to a subresource created in non-mappable memory.
+        ///
+        /// # Parameters
+        ///  * `dst_resource` - A pointer to the destination resource (see [`ID3D11Resource`]).
+        ///  * `dst_subresource` - A zero-based index, that identifies the destination subresource.
+        ///                        See [`D3D11CalcSubresource`] for more details.
+        ///  * `dst_box` - A pointer to a box that defines the portion of the destination
+        ///                subresource to copy the resource data into. Coordinates are in bytes for
+        ///                buffers and in texels for textures. If [`null`], the data is written to
+        ///                the destination subresource with no offset. The dimensions of the source
+        ///                must fit the destination (see [`D3D11_BOX`]). An empty box results in a
+        ///                no-op. A box is empty if the top value is greater than or equal to the
+        ///                bottom value, or the left value is greater than or equal to the right
+        ///                value, or the front value is greater than or equal to the back value.
+        ///                When the box is empty, [`ID3D11DeviceContext::update_subresource`]
+        ///                doesn't perform an update operation.
+        ///  * `src_data` - A pointer to the source data in memory.
+        ///  * `src_row_pitch` - The size of one row of the source data.
+        ///  * `src_depth_pitch` - The size of one depth slice of source data.
+        ///
+        /// # Remarks
+        /// For a shader-constant buffer; set `dst_box` to [`null`]. It is not possible to use this
+        /// method to partially update a shader-constant buffer.
+        ///
+        /// A resource cannot be used as a destination if:
+        ///  - the resource is created with immutable or dynamic usage.
+        ///  - the resource is created as a depth-stencil resource.
+        ///  - the resource is created with multisampling capability (see [`DXGI_SAMPLE_DESC`]).
+        ///
+        /// When [`ID3D11DeviceContext::update_subresource`] returns, the application is free to
+        /// change or even free the data pointed to by `src_data` because the method has already
+        /// copied/snapped away the original contents.
+        ///
+        /// The performance of [`ID3D11DeviceContext::update_subresource`] depends on whether or
+        /// not there is contention for the destination resource. For example, contention for a
+        /// vertex buffer resource occurs when the application executes a
+        /// [`ID3D11DeviceContext::draw`] call and later calls
+        /// [`ID3D11DeviceContext::update_subresource`] on the same vertex buffer before the
+        /// [`ID3D11DeviceContext::draw`] call is actually executed by the GPU.
+        ///  - When there is contention for the resource,
+        ///    [`ID3D11DeviceContext::update_subresource`] will perform 2 copies of the source
+        ///    data. First, the data is copied by the CPU to a temporary storage space accessible
+        ///    by the command buffer. This copy happens before the method returns. A second copy is
+        ///    then performed by the GPU to copy the source data into non-mappable memory. This
+        ///    second copy happens asynchronously because it is executed by GPU when the command
+        ///    buffer is flushed.
+        ///  - When there is no resource contention, the behavior of
+        ///    [`ID3D11DeviceContext::update_subresource`] is dependent on which is faster (from
+        ///    the CPU's perspective): copying the data to the command buffer and then having a
+        ///    second copy execute when the command buffer is flushed, or having the CPU copy the
+        ///    data to the final resource location. This is dependent on the architecture of the
+        ///    underlying system.
+        fn update_subresource(
+            &mut self,
+            dst_resource: ID3D11Resource,
+            dst_subresource: UINT,
+            dst_box: *const D3D11_BOX,
+            src_data: *const c_void,
+            src_row_pitch: UINT,
+            src_depth_pitch: UINT
+        );
+
+        /// Copies data from a buffer holding variable length data.
+        ///
+        /// # Parameters
+        ///  * `dst_buffer` - Pointer to [`ID3D11Buffer`]. This can be any buffer resource that
+        ///                   other copy commands, such as [`ID3D11DeviceContext::copy_resource`]
+        ///                   or [`ID3D11DeviceContext::copy_subresource_region`], are able to
+        ///                   write to.
+        ///  * `dst_aligned_byte_offset` - Offset from the start of `dst_buffer` to write 32-bit
+        ///                                [`UINT`] structure (vertex) count from `src_view`.
+        ///  * `src_view` - Pointer to an [`ID3D11UnorderedAccessView`] of a Structured Buffer
+        ///                 resource created with either [`D3D11_BUFFER_UAV_FLAG::Append`] or
+        ///                 [`D3D11_BUFFER_UAV_FLAG::Counter`] specified when the UAV was created.
+        ///                 These types of resources have hidden counters tracking "how many"
+        ///                 records have been written.
+        fn copy_structure_count(
+            &mut self,
+            dst_buffer: *mut ID3D11Buffer,
+            dst_aligned_byte_offset: UINT,
+            src_view: *mut ID3D11UnorderedAccessView
+        );
+
+        /// Set all the elements in a render target to one value.
+        ///
+        /// # Parameters
+        ///  * `render_target_view` - Pointer to the render target.
+        ///  * `color_rgba` - A 4-component array that represents the color to fill the render
+        ///                   target with.
+        ///
+        /// # Remarks
+        /// Applications that wish to clear a render target to a specific integer value bit pattern
+        /// should render a screen-aligned quad instead of using this method. The reason for this
+        /// is because this method accepts as input a floating point value, which may not have the
+        /// same bit pattern as the original integer.
+        ///
+        /// When using `D3D_FEATURE_LEVEL::_9_x`, [`ID3D11DeviceContext::clear_render_target_view`]
+        /// only clears the first array slice in the render target view. This can impact (for
+        /// example) cube map rendering scenarios. Applications should create a render target view
+        /// for each face or array slice, then clear each view individually.
+        fn clear_render_target_view(
+            &mut self,
+            render_target_view: *mut ID3D11RenderTargetView,
+            color_rgba: [FLOAT; 4]
         );
     }
 );

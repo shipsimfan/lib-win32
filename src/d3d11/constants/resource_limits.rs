@@ -13,6 +13,9 @@ pub const D3D11_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT: UINT = 128;
 /// The maximum number of samplers that can be attach to one shader
 pub const D3D11_COMMONSHADER_SAMPLER_SLOT_COUNT: UINT = 16;
 
+/// The maximum thread groups a single dimension may have for compute shaders
+pub const D3D11_CS_DISPATCH_MAX_THREAD_GROUPS_PER_DIMENSION: UINT = 65535;
+
 /// The maximum number of vertex buffers that can be attached at one time
 pub const D3D11_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT: UINT = 32;
 

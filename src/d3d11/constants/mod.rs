@@ -6,6 +6,7 @@ mod render_target_flags;
 mod resource_limits;
 mod sdk_version;
 mod type_limits;
+mod viewport_bounds;
 
 pub use authenticated_configure_guids::*;
 pub use authenticated_queries::*;
@@ -15,3 +16,4 @@ pub use render_target_flags::*;
 pub use resource_limits::*;
 pub use sdk_version::*;
 pub use type_limits::*;
+pub use viewport_bounds::*;
