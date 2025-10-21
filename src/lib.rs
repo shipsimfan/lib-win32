@@ -17,6 +17,8 @@ pub mod d3d11_1;
 pub mod d3d11_2;
 #[cfg(feature = "d3d11_3")]
 pub mod d3d11_3;
+#[cfg(feature = "d3d11sdklayers")]
+pub mod d3d11sdklayers;
 #[cfg(feature = "d3d11shader")]
 pub mod d3d11shader;
 #[cfg(feature = "d3dcommon")]
