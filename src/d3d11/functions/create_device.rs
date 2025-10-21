@@ -7,10 +7,14 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11_1")]
+use crate::d3d11_1::ID3D11Device1;
+#[allow(unused_imports)]
+#[cfg(feature = "d3d11_2")]
+use crate::d3d11_2::ID3D11Device2;
+#[allow(unused_imports)]
 use crate::{
     d3d11::{D3D11CreateDeviceAndSwapChain, D3D11_CREATE_DEVICE_FLAG, D3D11_SDK_VERSION},
-    d3d11_1::ID3D11Device1,
-    d3d11_2::ID3D11Device2,
     dxgi::IDXGIFactory,
     unknwn::IUnknown,
     GetModuleHandle, LoadLibrary, LoadLibraryEx, DXGI_ERROR_SDK_COMPONENT_MISSING, E_INVALIDARG,

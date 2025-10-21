@@ -2,10 +2,10 @@ use crate::UINT;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{
-    d3d11::{D3D11_FEATURE_DATA_D3D11_OPTIONS, D3D11_FEATURE_DATA_D3D9_SHADOW_SUPPORT},
-    d3d11_2::ID3D11Device2,
-};
+use crate::d3d11::{D3D11_FEATURE_DATA_D3D11_OPTIONS, D3D11_FEATURE_DATA_D3D9_SHADOW_SUPPORT};
+#[allow(unused_imports)]
+#[cfg(feature = "d3d11_2")]
+use crate::d3d11_2::ID3D11Device2;
 
 /// Shader requires that the graphics driver and hardware support double data type.
 pub const D3D_SHADER_REQUIRES_DOUBLES: UINT = 0x00000001;

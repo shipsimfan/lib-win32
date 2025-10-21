@@ -1,5 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11shader")]
 use crate::d3d11shader::{ID3D11ShaderReflectionVariable, D3D11_SHADER_VARIABLE_DESC};
 
 /// Values that identify information about a shader variable.

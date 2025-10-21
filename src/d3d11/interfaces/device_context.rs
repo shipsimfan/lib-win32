@@ -15,6 +15,14 @@ use crate::{
 use std::ffi::c_void;
 
 // rustdoc imports
+#[allow(unused_imports)]
+#[cfg(feature = "d3d11_1")]
+use crate::d3d11_1::{ID3D11DeviceContext1, D3D11_1_UAV_SLOT_COUNT};
+#[allow(unused_imports)]
+#[cfg(feature = "d3d11shader")]
+use crate::d3d11shader::{
+    ID3D11ShaderReflection, ID3D11ShaderReflectionConstantBuffer, ID3D11ShaderReflectionVariable,
+};
 #[cfg(feature = "d3dcompiler")]
 #[allow(unused_imports)]
 use crate::d3dcompiler::D3D11Reflect;
@@ -26,11 +34,6 @@ use crate::{
         D3D11_INPUT_CLASSIFICATION, D3D11_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL,
         D3D11_KEEP_UNORDERED_ACCESS_VIEWS, D3D11_MAP_FLAG, D3D11_QUERY, D3D11_RESOURCE_MISC_FLAG,
         D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT, D3D11_VIEWPORT,
-    },
-    d3d11_1::{ID3D11DeviceContext1, D3D11_1_UAV_SLOT_COUNT},
-    d3d11shader::{
-        ID3D11ShaderReflection, ID3D11ShaderReflectionConstantBuffer,
-        ID3D11ShaderReflectionVariable,
     },
     d3dcommon::D3D_FEATURE_LEVEL,
     dxgi::DXGI_SAMPLE_DESC,

@@ -5,9 +5,11 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11_3")]
+use crate::d3d11_3::D3D11_TEXTURE_LAYOUT;
+#[allow(unused_imports)]
 use crate::{
     d3d11::{D3D11_CPU_ACCESS_FLAG, D3D11_USAGE},
-    d3d11_3::D3D11_TEXTURE_LAYOUT,
     TRUE,
 };
 

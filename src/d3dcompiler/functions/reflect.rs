@@ -1,5 +1,8 @@
-use crate::{d3d11shader::ID3D11ShaderReflection, HRESULT, LPCVOID, REFIID, SIZE_T};
+use crate::{HRESULT, LPCVOID, REFIID, SIZE_T};
 use std::ffi::c_void;
+
+#[cfg(feature = "d3d11")]
+use crate::d3d11shader::ID3D11ShaderReflection;
 
 #[link(name = "D3dcompiler")]
 extern "system" {
@@ -20,6 +23,7 @@ extern "system" {
     /// or Direct3D 10.1 reflection interface, for example, [`ID3D10ShaderReflection`].
     ///
     /// Shader code contains metadata that can be inspected using the reflection APIs.
+    #[cfg(feature = "d3d11")]
     pub fn D3D11Reflect(
         src_data: LPCVOID,
         src_data_size: SIZE_T,

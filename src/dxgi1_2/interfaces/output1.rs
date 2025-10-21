@@ -13,12 +13,14 @@ use crate::{
 #[cfg(feature = "d3d11")]
 use crate::d3d11::{ID3D11Texture2D, D3D11_TEXTURE2D_DESC};
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_5")]
+use crate::dxgi1_5::IDXGIOutput5;
+#[allow(unused_imports)]
 use crate::{
     dxgi::{
         IDXGIAdapter, IDXGIFactory1, IDXGISurface, IDXGISwapChain, DXGI_ENUM_MODES_SCALING,
         DXGI_ENUM_MODES_STEREO, DXGI_MODE_DESC,
     },
-    dxgi1_5::IDXGIOutput5,
     DXGI_ERROR_MORE_DATA, DXGI_ERROR_NOT_CURRENTLY_AVAILABLE, DXGI_ERROR_SESSION_DISCONNECTED,
     DXGI_ERROR_UNSUPPORTED, E_ACCESSDENIED, E_INVALIDARG, S_OK,
 };

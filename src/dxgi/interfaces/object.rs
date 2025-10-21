@@ -13,9 +13,11 @@ use crate::d3d11::ID3D11Device;
 #[cfg(feature = "d3dcommon")]
 use crate::d3dcommon::D3D_DRIVER_TYPE;
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_2")]
+use crate::dxgi1_2::IDXGIAdapter2;
+#[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGIAdapter, IDXGIAdapter1, IDXGIDevice},
-    dxgi1_2::IDXGIAdapter2,
     GUID,
 };
 

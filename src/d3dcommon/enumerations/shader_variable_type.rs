@@ -1,5 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11shader")]
 use crate::d3d11shader::{ID3D11ShaderReflectionType, D3D11_SHADER_TYPE_DESC};
 
 /// Values that identify various data, texture, and buffer types that can be assigned to a shader

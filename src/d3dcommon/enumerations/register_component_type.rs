@@ -1,5 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11shader")]
 use crate::d3d11shader::D3D11_SIGNATURE_PARAMETER_DESC;
 
 /// Values that identify the data types that can be stored in a register.

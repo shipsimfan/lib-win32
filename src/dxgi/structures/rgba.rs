@@ -2,6 +2,7 @@ use std::ffi::c_float;
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_2")]
 use crate::dxgi1_2::{IDXGISwapChain1, DXGI_ALPHA_MODE};
 
 /// Represents a color value with alpha, which is used for transparency.

@@ -7,13 +7,15 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_2")]
+use crate::dxgi1_2::IDXGIFactory2;
+#[allow(unused_imports)]
 use crate::{
     dxgi::{
         CreateDXGIFactory, IDXGIDevice, IDXGIOutput, DXGI_MWA_NO_ALT_ENTER,
         DXGI_MWA_NO_PRINT_SCREEN, DXGI_MWA_NO_WINDOW_CHANGES, DXGI_SWAP_CHAIN_FLAG,
         DXGI_SWAP_EFFECT,
     },
-    dxgi1_2::IDXGIFactory2,
     FreeLibrary, GetModuleHandle, LoadLibrary, DXGI_ERROR_INVALID_CALL, DXGI_ERROR_NOT_FOUND,
     DXGI_STATUS_OCCLUDED, E_OUTOFMEMORY, S_OK, WM_SIZE, WM_SIZING,
 };

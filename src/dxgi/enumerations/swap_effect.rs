@@ -3,9 +3,11 @@
 #[cfg(feature = "d3d11")]
 use crate::d3d11::{ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_TEXTURE2D_DESC};
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_2")]
+use crate::dxgi1_2::{IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1};
+#[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGISurface1, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC, DXGI_SWAP_CHAIN_FLAG},
-    dxgi1_2::{IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1},
     ScrollWindowEx,
 };
 

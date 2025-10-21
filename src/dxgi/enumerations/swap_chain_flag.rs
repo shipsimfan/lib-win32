@@ -1,13 +1,19 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_2")]
+use crate::dxgi1_2::{IDXGIFactory2, IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1};
+#[allow(unused_imports)]
+#[cfg(feature = "dxgi1_3")]
+use crate::dxgi1_3::{IDXGIOutput2, IDXGISwapChain2};
+#[allow(unused_imports)]
+#[cfg(feature = "dxgi1_5")]
+use crate::dxgi1_5::IDXGIFactory5;
+#[allow(unused_imports)]
 use crate::{
     dxgi::{
         IDXGIDevice1, IDXGIFactory, IDXGISurface1, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC,
         DXGI_SWAP_EFFECT,
     },
-    dxgi1_2::{IDXGIFactory2, IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1},
-    dxgi1_3::{IDXGIOutput2, IDXGISwapChain2},
-    dxgi1_5::IDXGIFactory5,
     SetWindowDisplayAffinity, HWND,
 };
 

@@ -1,5 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11")]
 use crate::d3d11::ID3D11DeviceContext;
 
 /// Values that indicate how the pipeline interprets vertex data that is bound to the

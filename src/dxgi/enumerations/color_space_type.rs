@@ -1,5 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_4")]
 use crate::dxgi1_4::{IDXGIOutput4, IDXGISwapChain3};
 
 /// Specifies color space types.

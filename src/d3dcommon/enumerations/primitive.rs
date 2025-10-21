@@ -1,5 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11shader")]
 use crate::{d3d11shader::ID3D11ShaderReflection, d3dcommon::D3D11_PRIMITIVE};
 
 /// Indicates how the pipeline interprets geometry or hull shader input primitives.

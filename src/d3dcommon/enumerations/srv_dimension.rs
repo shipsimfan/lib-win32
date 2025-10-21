@@ -1,6 +1,10 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{d3d11::D3D11_SHADER_RESOURCE_VIEW_DESC, d3d11shader::D3D11_SHADER_INPUT_BIND_DESC};
+#[cfg(feature = "d3d11")]
+use crate::d3d11::D3D11_SHADER_RESOURCE_VIEW_DESC;
+#[allow(unused_imports)]
+#[cfg(feature = "d3d11shader")]
+use crate::d3d11shader::D3D11_SHADER_INPUT_BIND_DESC;
 
 /// Values that identify the type of resource to be viewed as a shader resource.
 ///

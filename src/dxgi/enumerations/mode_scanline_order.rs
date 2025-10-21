@@ -1,5 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_2")]
 use crate::dxgi1_2::{DXGI_MODE_DESC1, DXGI_SWAP_CHAIN_FULLSCREEN_DESC};
 
 /// Flags indicating the method the raster uses to create an image on a surface.

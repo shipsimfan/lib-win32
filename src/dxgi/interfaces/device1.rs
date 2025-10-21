@@ -7,9 +7,10 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{
-    dxgi::DXGI_SWAP_CHAIN_FLAG, dxgi1_3::IDXGISwapChain2, DXGI_ERROR_DEVICE_REMOVED, S_OK,
-};
+#[cfg(feature = "dxgi1_3")]
+use crate::dxgi1_3::IDXGISwapChain2;
+#[allow(unused_imports)]
+use crate::{dxgi::DXGI_SWAP_CHAIN_FLAG, DXGI_ERROR_DEVICE_REMOVED, S_OK};
 
 com_interface!(
     /// An [`IDXGIDevice1`] interface implements a derived class for DXGI objects that produce

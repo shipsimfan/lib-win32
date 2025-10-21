@@ -2,10 +2,14 @@ use crate::ULONG;
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_2")]
+use crate::dxgi1_2::IDXGISwapChain1;
+#[allow(unused_imports)]
+#[cfg(feature = "dxgi1_3")]
+use crate::dxgi1_3::IDXGISwapChainMedia;
+#[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGIFactory, IDXGISwapChain, DXGI_SWAP_CHAIN_FLAG, DXGI_SWAP_EFFECT},
-    dxgi1_2::IDXGISwapChain1,
-    dxgi1_3::IDXGISwapChainMedia,
     DXGI_ERROR_INVALID_CALL, DXGI_ERROR_WAS_STILL_DRAWING,
 };
 

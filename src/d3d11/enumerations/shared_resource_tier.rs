@@ -1,9 +1,11 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_2")]
+use crate::dxgi1_2::IDXGIResource1;
+#[allow(unused_imports)]
 use crate::{
     d3d11::{D3D11_FEATURE_DATA_D3D11_OPTIONS, D3D11_FEATURE_DATA_D3D11_OPTIONS4},
     dxgi::DXGI_FORMAT,
-    dxgi1_2::IDXGIResource1,
     FALSE, TRUE,
 };
 

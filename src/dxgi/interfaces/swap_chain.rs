@@ -14,12 +14,14 @@ use std::ffi::c_void;
 #[cfg(feature = "d3d11")]
 use crate::d3d11::{D3D11CreateDeviceAndSwapChain, ID3D11DeviceContext};
 #[allow(unused_imports)]
+#[cfg(feature = "dxgi1_2")]
+use crate::dxgi1_2::{IDXGIFactory2, IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1};
+#[allow(unused_imports)]
 use crate::{
     dxgi::{
         IDXGIAdapter, IDXGIFactory, IDXGIResource, IDXGISurface1, DXGI_PRESENT_DO_NOT_SEQUENCE,
         DXGI_SWAP_CHAIN_FLAG, DXGI_SWAP_EFFECT, DXGI_USAGE,
     },
-    dxgi1_2::{IDXGIFactory2, IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1},
     SetWindowPos, DXGI_ERROR_DEVICE_REMOVED, DXGI_ERROR_DEVICE_RESET,
     DXGI_ERROR_NOT_CURRENTLY_AVAILABLE, DXGI_STATUS_MODE_CHANGE_IN_PROGRESS, DXGI_STATUS_OCCLUDED,
     FALSE, S_OK, TRUE,

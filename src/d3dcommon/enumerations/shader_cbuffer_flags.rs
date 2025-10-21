@@ -1,5 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11shader")]
 use crate::d3d11shader::D3D11_SHADER_BUFFER_DESC;
 
 /// Values that identify the intended use of a constant-data buffer.

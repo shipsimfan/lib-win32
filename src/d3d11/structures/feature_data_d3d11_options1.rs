@@ -2,12 +2,14 @@ use crate::{d3d11::D3D11_TILED_RESOURCES_TIER, BOOL};
 
 // rustdoc imports
 #[allow(unused_imports)]
+#[cfg(feature = "d3d11_1")]
+use crate::d3d11_1::ID3D11DeviceContext1;
+#[allow(unused_imports)]
 use crate::{
     d3d11::{
         ID3D11Buffer, ID3D11Device, ID3D11DeviceContext, D3D11_BUFFER_DESC, D3D11_CPU_ACCESS_FLAG,
         D3D11_FEATURE, D3D11_FILTER, D3D11_USAGE,
     },
-    d3d11_1::ID3D11DeviceContext1,
     d3dcommon::D3D_FEATURE_LEVEL,
     TRUE,
 };
