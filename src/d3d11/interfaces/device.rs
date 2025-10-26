@@ -1,14 +1,15 @@
 use crate::{
     d3d11::{
-        ID3D11Buffer, ID3D11RenderTargetView, ID3D11Resource, ID3D11ShaderResourceView,
-        ID3D11Texture1D, ID3D11Texture2D, ID3D11Texture3D, ID3D11UnorderedAccessView,
-        D3D11_BUFFER_DESC, D3D11_RENDER_TARGET_VIEW_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
-        D3D11_SUBRESOURCE_DATA, D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC,
-        D3D11_UNORDERED_ACCESS_VIEW_DESC,
+        ID3D11Buffer, ID3D11DepthStencilView, ID3D11InputLayout, ID3D11RenderTargetView,
+        ID3D11Resource, ID3D11ShaderResourceView, ID3D11Texture1D, ID3D11Texture2D,
+        ID3D11Texture3D, ID3D11UnorderedAccessView, D3D11_BUFFER_DESC,
+        D3D11_DEPTH_STENCIL_VIEW_DESC, D3D11_INPUT_ELEMENT_DESC, D3D11_RENDER_TARGET_VIEW_DESC,
+        D3D11_SHADER_RESOURCE_VIEW_DESC, D3D11_SUBRESOURCE_DATA, D3D11_TEXTURE1D_DESC,
+        D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC, D3D11_UNORDERED_ACCESS_VIEW_DESC,
     },
     immut_com_interface,
     unknwn::{IUnknown, IUnknownTrait},
-    HRESULT,
+    HRESULT, SIZE_T, UINT,
 };
 
 // rustdoc imports
@@ -21,6 +22,7 @@ use crate::{
     dxgi::DXGI_FORMAT,
     E_OUTOFMEMORY, S_FALSE, S_OK,
 };
+use std::ffi::c_void;
 #[allow(unused_imports)]
 use std::ptr::{null, null_mut};
 
@@ -363,6 +365,79 @@ immut_com_interface!(
             resource: *mut ID3D11Resource,
             desc: *const D3D11_RENDER_TARGET_VIEW_DESC,
             rt_view: *mut *mut ID3D11RenderTargetView
+        ) -> HRESULT;
+
+        /// Create a depth-stencil view for accessing resource data.
+        ///
+        /// # Parameters
+        ///  * `resource` - Pointer to the resource that will serve as the depth-stencil surface.
+        ///                 This resource must have been created with the
+        ///                 [`D3D11_BIND_FLAG::DepthStencil`] flag.
+        ///  * `desc` - Pointer to a depth-stencil-view description (see
+        ///             [`D3D11_DEPTH_STENCIL_VIEW_DESC`]). Set this parameter to [`null`] to
+        ///             create a view that accesses mipmap level 0 of the entire resource (using
+        ///             the format the resource was created with).
+        ///  * `depth_stencil_view` - Address of a pointer to an [`ID3D11DepthStencilView`]. Set
+        ///                           this parameter to [`null_mut`] to validate the other input
+        ///                           parameters (the method will return [`S_FALSE`] if the other
+        ///                           input parameters pass validation).
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// A depth-stencil view can be bound to the output-merger stage by calling
+        /// [`ID3D11DeviceContext::om_set_render_targets`].
+        fn create_depth_stencil_view(
+            &self,
+            resource: *mut ID3D11Resource,
+            desc: *const D3D11_DEPTH_STENCIL_VIEW_DESC,
+            depth_stencil_view: *mut *mut ID3D11DepthStencilView
+        ) -> HRESULT;
+
+        /// Create an input-layout object to describe the input-buffer data for the input-assembler
+        /// stage.
+        ///
+        /// # Parameters
+        ///  * `input_element_descs` - An array of the input-assembler stage input data types; each
+        ///                            type is described by an element description (see
+        ///                            [`D3D11_INPUT_ELEMENT_DESC`]).
+        ///  * `num_elements` - The number of input-data types in the array of input-elements.
+        ///  * `shader_bytecode_with_input_signature` - A pointer to the compiled shader. The
+        ///                                             compiled shader code contains a input
+        ///                                             signature which is validated against the
+        ///                                             array of elements.
+        ///  * `bytecode_length` - Size of the compiled shader.
+        ///  * `input_layout` - A pointer to the input-layout object created (see
+        ///                     [`ID3D11InputLayout`]). To validate the other input parameters, set
+        ///                     this pointer to be [`null_mut`] and verify that the method returns
+        ///                     [`S_FALSE`].
+        ///
+        /// # Return Value
+        /// If the method succeeds, the return code is [`S_OK`].
+        ///
+        /// # Remarks
+        /// After creating an input layout object, it must be bound to the input-assembler stage
+        /// before calling a draw API.
+        ///
+        /// Once an input-layout object is created from a shader signature, the input-layout object
+        /// can be reused with any other shader that has an identical input signature (semantics
+        /// included). This can simplify the creation of input-layout objects when you are working
+        /// with many shaders with identical inputs.
+        ///
+        /// If a data type in the input-layout declaration does not match the data type in a
+        /// shader-input signature, [`ID3D11Device::create_input_layout`] will generate a warning
+        /// during compilation. The warning is simply to call attention to the fact that the data
+        /// may be reinterpreted when read from a register. You may either disregard this warning
+        /// (if reinterpretation is intentional) or make the data types match in both declarations
+        /// to eliminate the warning.
+        fn create_input_layout(
+            &self,
+            input_element_descs: *const D3D11_INPUT_ELEMENT_DESC,
+            num_elements: UINT,
+            shader_bytecode_with_input_signature: *const c_void,
+            bytecode_length: SIZE_T,
+            input_layout: *mut *mut ID3D11InputLayout
         ) -> HRESULT;
     }
 );
