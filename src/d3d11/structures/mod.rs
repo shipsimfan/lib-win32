@@ -71,6 +71,7 @@ mod render_target_blend_desc;
 mod render_target_view_desc;
 mod sampler_desc;
 mod shader_resource_view_desc;
+mod so_declaration_entry;
 mod subresource_data;
 mod tex1d_array_dsv;
 mod tex1d_array_rtv;
@@ -186,6 +187,7 @@ pub use sampler_desc::D3D11_SAMPLER_DESC;
 pub use shader_resource_view_desc::{
     D3D11_SHADER_RESOURCE_VIEW_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC_UNION,
 };
+pub use so_declaration_entry::D3D11_SO_DECLARATION_ENTRY;
 pub use subresource_data::D3D11_SUBRESOURCE_DATA;
 pub use tex1d_array_dsv::D3D11_TEX1D_ARRAY_DSV;
 pub use tex1d_array_rtv::D3D11_TEX1D_ARRAY_RTV;

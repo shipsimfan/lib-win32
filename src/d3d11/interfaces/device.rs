@@ -1,28 +1,36 @@
 use crate::{
     d3d11::{
-        ID3D11Buffer, ID3D11DepthStencilView, ID3D11InputLayout, ID3D11RenderTargetView,
-        ID3D11Resource, ID3D11ShaderResourceView, ID3D11Texture1D, ID3D11Texture2D,
-        ID3D11Texture3D, ID3D11UnorderedAccessView, D3D11_BUFFER_DESC,
-        D3D11_DEPTH_STENCIL_VIEW_DESC, D3D11_INPUT_ELEMENT_DESC, D3D11_RENDER_TARGET_VIEW_DESC,
-        D3D11_SHADER_RESOURCE_VIEW_DESC, D3D11_SUBRESOURCE_DATA, D3D11_TEXTURE1D_DESC,
+        ID3D11BlendState, ID3D11Buffer, ID3D11ClassLinkage, ID3D11ComputeShader,
+        ID3D11DepthStencilState, ID3D11DepthStencilView, ID3D11DomainShader, ID3D11GeometryShader,
+        ID3D11HullShader, ID3D11InputLayout, ID3D11PixelShader, ID3D11RasterizerState,
+        ID3D11RenderTargetView, ID3D11Resource, ID3D11SamplerState, ID3D11ShaderResourceView,
+        ID3D11Texture1D, ID3D11Texture2D, ID3D11Texture3D, ID3D11UnorderedAccessView,
+        ID3D11VertexShader, D3D11_BLEND_DESC, D3D11_BUFFER_DESC, D3D11_DEPTH_STENCIL_DESC,
+        D3D11_DEPTH_STENCIL_VIEW_DESC, D3D11_INPUT_ELEMENT_DESC, D3D11_RASTERIZER_DESC,
+        D3D11_RENDER_TARGET_VIEW_DESC, D3D11_SAMPLER_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
+        D3D11_SO_DECLARATION_ENTRY, D3D11_SUBRESOURCE_DATA, D3D11_TEXTURE1D_DESC,
         D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC, D3D11_UNORDERED_ACCESS_VIEW_DESC,
     },
     immut_com_interface,
     unknwn::{IUnknown, IUnknownTrait},
     HRESULT, SIZE_T, UINT,
 };
+use std::ffi::c_void;
 
 // rustdoc imports
+#[allow(unused_imports)]
+#[cfg(feature = "d3dcompiler")]
+use crate::d3dcompiler::D3DGetOutputSignatureBlob;
 #[allow(unused_imports)]
 use crate::{
     d3d11::{
         ID3D11DeviceContext, D3D11_BIND_FLAG, D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT,
-        D3D11_RTV_DIMENSION, D3D11_SRV_DIMENSION, D3D11_UAV_DIMENSION, D3D11_USAGE,
+        D3D11_RTV_DIMENSION, D3D11_SO_BUFFER_SLOT_COUNT, D3D11_SO_NO_RASTERIZED_STREAM,
+        D3D11_SRV_DIMENSION, D3D11_UAV_DIMENSION, D3D11_USAGE,
     },
     dxgi::DXGI_FORMAT,
     E_OUTOFMEMORY, S_FALSE, S_OK,
 };
-use std::ffi::c_void;
 #[allow(unused_imports)]
 use std::ptr::{null, null_mut};
 
@@ -438,6 +446,460 @@ immut_com_interface!(
             shader_bytecode_with_input_signature: *const c_void,
             bytecode_length: SIZE_T,
             input_layout: *mut *mut ID3D11InputLayout
+        ) -> HRESULT;
+
+        /// Create a vertex-shader object from a compiled shader.
+        ///
+        /// # Parameters
+        ///  * `shader_bytecode` - A pointer to the compiled shader.
+        ///  * `bytecode_length` - Size of the compiled vertex shader.
+        ///  * `class_linkage` - A pointer to a class linkage interface (see
+        ///                      [`ID3D11ClassLinkage`]); the value can be [`null_mut`].
+        ///  * `vertex_shader` - Address of a pointer to a [`ID3D11VertexShader`] interface. If
+        ///                      this is [`null_mut`], all other parameters will be validated, and
+        ///                      if all parameters pass validation this API will return [`S_FALSE`]
+        ///                      instead of [`S_OK`].
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// The Direct3D 11.1 runtime, which is available starting with Windows 8, provides the
+        /// following new functionality for [`ID3D11Device::create_vertex_shader`].
+        ///
+        /// The following shader model 5.0 instructions are available to just pixel shaders and
+        /// compute shaders in the Direct3D 11.0 runtime. For the Direct3D 11.1 runtime, because
+        /// unordered access views (UAV) are available at all shader stages, you can use these
+        /// instructions in all shader stages.
+        ///
+        /// Therefore, if you use the following shader model 5.0 instructions in a vertex shader,
+        /// you can successfully pass the compiled vertex shader to `shader_bytecode`. That is, the
+        /// call to [`ID3D11Device::create_vertex_shader`] succeeds.
+        ///
+        /// If you pass a compiled shader to `shader_bytecode` that uses any of the following
+        /// instructions on a device that doesn’t support UAVs at every shader stage (including
+        /// existing drivers that are not implemented to support UAVs at every shader stage),
+        /// [`ID3D11Device::create_vertex_shader`] fails. [`ID3D11Device::create_vertex_shader`]
+        /// also fails if the shader tries to use a UAV slot beyond the set of UAV slots that the
+        /// hardware supports.
+        ///
+        ///  - `dcl_uav_typed`
+        ///  - `dcl_uav_raw`
+        ///  - `dcl_uav_structured`
+        ///  - `ld_raw`
+        ///  - `ld_structured`
+        ///  - `ld_uav_typed`
+        ///  - `store_raw`
+        ///  - `store_structured`
+        ///  - `store_uav_typed`
+        ///  - `sync_uglobal`
+        ///  - All atomics and immediate atomics (for example, `atomic_and` and `imm_atomic_and`)
+        fn create_vertex_shader(
+            &self,
+            shader_bytecode: *const c_void,
+            bytecode_length: SIZE_T,
+            class_linkage: *mut ID3D11ClassLinkage,
+            vertex_shader: *mut *mut ID3D11VertexShader
+        ) -> HRESULT;
+
+        /// Create a geometry shader.
+        ///
+        /// # Parameters
+        ///  * `shader_bytecode` - A pointer to the compiled shader.
+        ///  * `bytecode_length` - Size of the compiled geometry shader.
+        ///  * `class_linkage` - A pointer to a class linkage interface (see
+        ///                      [`ID3D11ClassLinkage`]); the value can be [`null_mut`].
+        ///  * `geometry_shader` - Address of a pointer to a [`ID3D11GeometryShader`] interface. If
+        ///                        this is [`null_mut`], all other parameters will be validated,
+        ///                        and if all parameters pass validation this API will return
+        ///                        [`S_FALSE`] instead of [`S_OK`].
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// After it is created, the shader can be set to the device by calling
+        /// [`ID3D11DeviceContext::gs_set_shader`].
+        ///
+        /// The Direct3D 11.1 runtime, which is available starting with Windows 8, provides the
+        /// following new functionality for [`ID3D11Device::create_geometry_shader`].
+        ///
+        /// The following shader model 5.0 instructions are available to just pixel shaders and
+        /// compute shaders in the Direct3D 11.0 runtime. For the Direct3D 11.1 runtime, because
+        /// unordered access views (UAV) are available at all shader stages, you can use these
+        /// instructions in all shader stages.
+        ///
+        /// Therefore, if you use the following shader model 5.0 instructions in a geometry shader,
+        /// you can successfully pass the compiled geometry shader to `shader_bytecode`. That is,
+        /// the call to [`ID3D11Device::create_geometry_shader`] succeeds.
+        ///
+        /// If you pass a compiled shader to `shader_bytecode` that uses any of the following
+        /// instructions on a device that doesn’t support UAVs at every shader stage (including
+        /// existing drivers that are not implemented to support UAVs at every shader stage),
+        /// [`ID3D11Device::create_geometry_shader`] fails.
+        /// [`ID3D11Device::create_geometry_shader`] also fails if the shader tries to use a UAV
+        /// slot beyond the set of UAV slots that the hardware supports.
+        ///
+        ///  - `dcl_uav_typed`
+        ///  - `dcl_uav_raw`
+        ///  - `dcl_uav_structured`
+        ///  - `ld_raw`
+        ///  - `ld_structured`
+        ///  - `ld_uav_typed`
+        ///  - `store_raw`
+        ///  - `store_structured`
+        ///  - `store_uav_typed`
+        ///  - `sync_uglobal`
+        ///  - All atomics and immediate atomics (for example, `atomic_and` and `imm_atomic_and`)
+        fn create_geometry_shader(
+            &self,
+            shader_bytecode: *const c_void,
+            bytecode_length: SIZE_T,
+            class_linkage: *mut ID3D11ClassLinkage,
+            geometry_shader: *mut *mut ID3D11GeometryShader
+        ) -> HRESULT;
+
+        /// Creates a geometry shader that can write to streaming output buffers.
+        ///
+        /// # Parameters
+        ///  * `shader_bytecode` - A pointer to the compiled geometry shader for a standard
+        ///                        geometry shader plus stream output. To create the stream output
+        ///                        without using a geometry shader, pass a pointer to the output
+        ///                        signature for the prior stage. To obtain this output signature,
+        ///                        call the [`D3DGetOutputSignatureBlob`] compiler function. You
+        ///                        can also pass a pointer to the compiled shader for the prior
+        ///                        stage (for example, the vertex-shader stage or domain-shader
+        ///                        stage). This compiled shader provides the output signature for
+        ///                        the data.
+        ///  * `bytecode_length` - Size of the compiled geometry shader.
+        ///  * `so_declaration` - Pointer to a [`D3D11_SO_DECLARATION_ENTRY`] array. Cannot be
+        ///                       [`null`] if `num_entries > 0`.
+        ///  * `num_entries` - The number of entries in the stream output declaration ( ranges from
+        ///                    0 to `D3D11_SO_STREAM_COUNT * D3D11_SO_OUTPUT_COMPONENT_COUNT`).
+        ///  * `buffer_strides` - An array of buffer strides; each stride is the size of an element
+        ///                       for that buffer.
+        ///  * `num_strides` - The number of strides (or buffers) in `buffer_strides` (ranges from
+        ///                    0 to [`D3D11_SO_BUFFER_SLOT_COUNT`]).
+        ///  * `rasterized_stream` - The index number of the stream to be sent to the rasterizer
+        ///                          stage (ranges from 0 to `D3D11_SO_STREAM_COUNT - 1`). Set to
+        ///                          [`D3D11_SO_NO_RASTERIZED_STREAM`] if no stream is to be
+        ///                          rasterized.
+        ///  * `class_linkage` - A pointer to a class linkage interface (see
+        ///                      [`ID3D11ClassLinkage`]); the value can be [`null_mut`].
+        ///  * `geometry_shader` - Address of a pointer to an [`ID3D11GeometryShader`] interface,
+        ///                        representing the geometry shader that was created. Set this to
+        ///                        [`null_mut`] to validate the other parameters; if validation
+        ///                        passes, the method will return [`S_FALSE`] instead of [`S_OK`].
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// The Direct3D 11.1 runtime, which is available starting with Windows 8, provides the
+        /// following new functionality for
+        /// [`ID3D11Device::create_geometry_shader_with_stream_output`].
+        ///
+        /// The following shader model 5.0 instructions are available to just pixel shaders and
+        /// compute shaders in the Direct3D 11.0 runtime. For the Direct3D 11.1 runtime, because
+        /// unordered access views (UAV) are available at all shader stages, you can use these
+        /// instructions in all shader stages.
+        ///
+        /// Therefore, if you use the following shader model 5.0 instructions in a geometry shader,
+        /// you can successfully pass the compiled geometry shader to `shader_bytecode`. That is,
+        /// the call to [`ID3D11Device::create_geometry_shader_with_stream_output`] succeeds.
+        ///
+        /// If you pass a compiled shader to `shader_bytecode` that uses any of the following
+        /// instructions on a device that doesn’t support UAVs at every shader stage (including
+        /// existing drivers that are not implemented to support UAVs at every shader stage),
+        /// [`ID3D11Device::create_geometry_shader_with_stream_output`] fails.
+        /// [`ID3D11Device::create_geometry_shader_with_stream_output`] also fails if the shader
+        /// tries to use a UAV slot beyond the set of UAV slots that the hardware supports.
+        ///
+        ///  - `dcl_uav_typed`
+        ///  - `dcl_uav_raw`
+        ///  - `dcl_uav_structured`
+        ///  - `ld_raw`
+        ///  - `ld_structured`
+        ///  - `ld_uav_typed`
+        ///  - `store_raw`
+        ///  - `store_structured`
+        ///  - `store_uav_typed`
+        ///  - `sync_uglobal`
+        ///  - All atomics and immediate atomics (for example, atomic_and and imm_atomic_and)
+        fn create_geometry_shader_with_stream_output(
+            &self,
+            shader_bytecode: *const c_void,
+            bytecode_length: SIZE_T,
+            so_declaration: *const D3D11_SO_DECLARATION_ENTRY,
+            num_entries: UINT,
+            buffer_strides: *const UINT,
+            num_strides: UINT,
+            rasterized_stream: UINT,
+            class_linkage: *mut ID3D11ClassLinkage,
+            geometry_shader: *mut *mut ID3D11GeometryShader
+        ) -> HRESULT;
+
+        /// Create a pixel shader.
+        ///
+        /// # Parameters
+        ///  * `shader_bytecode` - A pointer to the compiled shader.
+        ///  * `bytecode_length` - Size of the compiled pixel shader.
+        ///  * `class_linkage` - A pointer to a class linkage interface (see
+        ///                      [`ID3D11ClassLinkage`]); the value can be [`null_mut`].
+        ///  * `pixel_shader` - Address of a pointer to a [`ID3D11PixelShader`] interface. If this
+        ///                     is [`null_mut`], all other parameters will be validated, and if all
+        ///                     parameters pass validation this API will return [`S_FALSE`] instead
+        ///                     of [`S_OK`].
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// After creating the pixel shader, you can set it to the device using
+        /// [`ID3D11DeviceContext::ps_set_shader`].
+        fn create_pixel_shader(
+            &self,
+            shader_bytecode: *const c_void,
+            bytecode_length: SIZE_T,
+            class_linkage: *mut ID3D11ClassLinkage,
+            pixel_shader: *mut *mut ID3D11PixelShader
+        ) -> HRESULT;
+
+        /// Create a hull shader.
+        ///
+        /// # Parameters
+        ///  * `shader_bytecode` - A pointer to a compiled shader.
+        ///  * `bytecode_length` - Size of the compiled shader.
+        ///  * `class_linkage` - A pointer to a class linkage interface (see
+        ///                      [`ID3D11ClassLinkage`]); the value can be [`null_mut`].
+        ///  * `hull_shader` - Address of a pointer to a [`ID3D11HullShader`] interface.
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// The Direct3D 11.1 runtime, which is available starting with Windows 8, provides the
+        /// following new functionality for [`ID3D11Device::create_hull_shader`].
+        ///
+        /// The following shader model 5.0 instructions are available to just pixel shaders and
+        /// compute shaders in the Direct3D 11.0 runtime. For the Direct3D 11.1 runtime, because
+        /// unordered access views (UAV) are available at all shader stages, you can use these
+        /// instructions in all shader stages.
+        ///
+        /// Therefore, if you use the following shader model 5.0 instructions in a hull shader, you
+        /// can successfully pass the compiled hull shader to `shader_bytecode`. That is, the call
+        /// to [`ID3D11Device::create_hull_shader`] succeeds.
+        ///
+        /// If you pass a compiled shader to `shader_bytecode` that uses any of the following
+        /// instructions on a device that doesn’t support UAVs at every shader stage (including
+        /// existing drivers that are not implemented to support UAVs at every shader stage),
+        /// [`ID3D11Device::create_hull_shader`] fails. [`ID3D11Device::create_hull_shader`] also
+        /// fails if the shader tries to use a UAV slot beyond the set of UAV slots that the
+        /// hardware supports.
+        ///
+        ///  - `dcl_uav_typed`
+        ///  - `dcl_uav_raw`
+        ///  - `dcl_uav_structured`
+        ///  - `ld_raw`
+        ///  - `ld_structured`
+        ///  - `ld_uav_typed`
+        ///  - `store_raw`
+        ///  - `store_structured`
+        ///  - `store_uav_typed`
+        ///  - `sync_uglobal`
+        ///  - All atomics and immediate atomics (for example, `atomic_and` and `imm_atomic_and`)
+        fn create_hull_shader(
+            &self,
+            shader_bytecode: *const c_void,
+            bytecode_length: SIZE_T,
+            class_linkage: *mut ID3D11ClassLinkage,
+            hull_shader: *mut *mut ID3D11HullShader
+        ) -> HRESULT;
+
+        /// Create a domain shader.
+        ///
+        /// # Parameters
+        ///  * `shader_bytecode` - A pointer to a compiled shader.
+        ///  * `bytecode_length` - Size of the compiled shader.
+        ///  * `class_linkage` - A pointer to a class linkage interface (see
+        ///                      [`ID3D11ClassLinkage`]); the value can be [`null_mut`].
+        ///  * `domain_shader` - Address of a pointer to a [`ID3D11DomainShader`] interface. If
+        ///                      this is [`null_mut`], all other parameters will be validated, and
+        ///                      if all parameters pass validation this API will return [`S_FALSE`]
+        ///                      instead of [`S_OK`].
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// The Direct3D 11.1 runtime, which is available starting with Windows 8, provides the
+        /// following new functionality for [`ID3D11Device::create_domain_shader`].
+        ///
+        /// The following shader model 5.0 instructions are available to just pixel shaders and
+        /// compute shaders in the Direct3D 11.0 runtime. For the Direct3D 11.1 runtime, because
+        /// unordered access views (UAV) are available at all shader stages, you can use these
+        /// instructions in all shader stages.
+        ///
+        /// Therefore, if you use the following shader model 5.0 instructions in a domain shader,
+        /// you can successfully pass the compiled domain shader to `shader_bytecode`. That is, the
+        /// call to [`ID3D11Device::create_domain_shader`] succeeds.
+        ///
+        /// If you pass a compiled shader to `shader_bytecode` that uses any of the following
+        /// instructions on a device that doesn’t support UAVs at every shader stage (including
+        /// existing drivers that are not implemented to support UAVs at every shader stage),
+        /// [`ID3D11Device::create_domain_shader`] fails. [`ID3D11Device::create_domain_shader`]
+        /// also fails if the shader tries to use a UAV slot beyond the set of UAV slots that the
+        /// hardware supports.
+        ///
+        ///  - `dcl_uav_typed`
+        ///  - `dcl_uav_raw`
+        ///  - `dcl_uav_structured`
+        ///  - `ld_raw`
+        ///  - `ld_structured`
+        ///  - `ld_uav_typed`
+        ///  - `store_raw`
+        ///  - `store_structured`
+        ///  - `store_uav_typed`
+        ///  - `sync_uglobal`
+        ///  - All atomics and immediate atomics (for example, `atomic_and` and `imm_atomic_and`)
+        fn create_domain_shader(
+            &self,
+            shader_bytecode: *const c_void,
+            bytecode_length: SIZE_T,
+            class_linkage: *mut ID3D11ClassLinkage,
+            domain_shader: *mut *mut ID3D11DomainShader
+        ) -> HRESULT;
+
+        /// Create a compute shader.
+        ///
+        /// # Parameters
+        ///  * `shder_bytecode` - A pointer to a compiled shader.
+        ///  * `bytecode_length` - Size of the compiled shader in `shader_bytecode`.
+        ///  * `class_linkage` - A pointer to a [`ID3D11ClassLinkage`], which represents class
+        ///                      linkage interface; the value can be [`null_mut`].
+        ///  * `compute_shader` - Address of a pointer to an [`ID3D11ComputeShader`] interface. If
+        ///                       this is [`null_mut`], all other parameters will be validated; if
+        ///                       validation passes, [`ID3D11Device::create_compute_shader`]
+        ///                       returns [`S_FALSE`] instead of [`S_OK`].
+        ///
+        /// # Return Value
+        /// This method returns [`E_OUTOFMEMORY`] if there is insufficient memory to create the
+        /// compute shader.
+        fn create_compute_shader(
+            &self,
+            shader_bytecode: *const c_void,
+            bytecode_length: SIZE_T,
+            class_linkage: *mut ID3D11ClassLinkage,
+            compute_shader: *mut *mut ID3D11ComputeShader
+        ) -> HRESULT;
+
+        /// Creates class linkage libraries to enable dynamic shader linkage.
+        ///
+        /// # Parameters
+        ///  * `linkage` - A pointer to a class-linkage interface pointer (see
+        ///                [`ID3D11ClassLinkage`]).
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// The [`ID3D11ClassLinkage`] interface returned in `linkage` is associated with a shader
+        /// by passing it as a parameter to one of the [`ID3D11Device`] create shader methods such
+        /// as [`ID3D11Device::create_pixel_shader`].
+        fn create_class_linkage(&self, linkage: *mut *mut ID3D11ClassLinkage) -> HRESULT;
+
+        /// Create a blend-state object that encapsulates blend state for the output-merger stage.
+        ///
+        /// # Parameters
+        ///  * `blend_state_desc` - Pointer to a blend-state description (see
+        ///                         [`D3D11_BLEND_DESC`]).
+        ///  * `blend_state` - Address of a pointer to the blend-state object created (see
+        ///                    [`ID3D11BlendState`]).
+        ///
+        /// # Return Value
+        /// This method returns [`E_OUTOFMEMORY`] if there is insufficient memory to create the
+        /// blend-state object.
+        ///
+        /// # Remarks
+        /// An application can create up to 4096 unique blend-state objects. For each object
+        /// created, the runtime checks to see if a previous object has the same state. If such a
+        /// previous object exists, the runtime will return a pointer to previous instance instead
+        /// of creating a duplicate object.
+        fn create_blend_state(
+            &self,
+            blend_state_desc: *const D3D11_BLEND_DESC,
+            blend_state: *mut *mut ID3D11BlendState
+        ) -> HRESULT;
+
+        /// Create a depth-stencil state object that encapsulates depth-stencil test information
+        /// for the output-merger stage.
+        ///
+        /// # Parameters
+        ///  * `depth_stencil_desc` - Pointer to a depth-stencil state description (see
+        ///                           [`D3D11_DEPTH_STENCIL_DESC`]).
+        ///  * `depth_stencil_state` - Address of a pointer to the depth-stencil state object
+        ///                            created (see [`ID3D11DepthStencilState`]).
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// 4096 unique depth-stencil state objects can be created on a device at a time.
+        ///
+        /// If an application attempts to create a depth-stencil-state interface with the same
+        /// state as an existing interface, the same interface will be returned and the total
+        /// number of unique depth-stencil state objects will stay the same.
+        fn create_depth_stencil_state(
+            &self,
+            depth_stencil_desc: *const D3D11_DEPTH_STENCIL_DESC,
+            depth_stencil_state: *mut *mut ID3D11DepthStencilState
+        ) -> HRESULT;
+
+        /// Create a rasterizer state object that tells the rasterizer stage how to behave.
+        ///
+        /// # Parameters
+        ///  * `rasterizer_desc` - Pointer to a rasterizer state description (see
+        ///                        [`D3D11_RASTERIZER_DESC`]).
+        ///  * `rasterizer_state` - Address of a pointer to the rasterizer state object created
+        ///                         (see [`ID3D11RasterizerState`]).
+        ///
+        /// # Return Value
+        /// This method returns [`E_OUTOFMEMORY`] if there is insufficient memory to create the
+        /// rasterizer-state object.
+        ///
+        /// # Remarks
+        /// 4096 unique rasterizer state objects can be created on a device at a time.
+        ///
+        /// If an application attempts to create a rasterizer-state interface with the same state
+        /// as an existing interface, the same interface will be returned and the total number of
+        /// unique rasterizer state objects will stay the same.
+        fn create_rasterizer_state(
+            &self,
+            rasterizer_desc: *const D3D11_RASTERIZER_DESC,
+            rasterizer_state: *mut *mut ID3D11RasterizerState
+        ) -> HRESULT;
+
+        /// Create a sampler-state object that encapsulates sampling information for a texture.
+        ///
+        /// # Parameters
+        ///  * `sampler_desc` - Pointer to a sampler state description (see
+        ///                     [`D3D11_SAMPLER_DESC`]).
+        ///  * `sampler_state` - Address of a pointer to the sampler state object created (see
+        ///                      [`ID3D11SamplerState`]).
+        ///
+        /// # Return Value
+        /// This method returns one of the Direct3D 11 Return Codes.
+        ///
+        /// # Remarks
+        /// 4096 unique sampler state objects can be created on a device at a time.
+        ///
+        /// If an application attempts to create a sampler-state interface with the same state as
+        /// an existing interface, the same interface will be returned and the total number of
+        /// unique sampler state objects will stay the same.
+        fn create_sampler_state(
+            &self,
+            sampler_desc: *const D3D11_SAMPLER_DESC,
+            sampler_state: *mut *mut ID3D11SamplerState
         ) -> HRESULT;
     }
 );

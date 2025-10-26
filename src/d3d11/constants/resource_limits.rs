@@ -42,3 +42,15 @@ pub const D3D11_REQ_TEXTURE3D_U_V_OR_W_DIMENSION: UINT = 2048;
 
 /// Maximum width or height of a texture cube
 pub const D3D11_REQ_TEXTURECUBE_DIMENSION: UINT = 16384;
+
+/// Maximum number of SO buffer slots
+pub const D3D11_SO_BUFFER_SLOT_COUNT: UINT = 4;
+
+/// Indicates and SO stream which is not rasterized
+pub const D3D11_SO_NO_RASTERIZED_STREAM: UINT = 0xFFFFFFFF;
+
+/// Maximum number of SO output components
+pub const D3D11_SO_OUTPUT_COMPONENT_COUNT: UINT = 128;
+
+/// Maximum number of SO streams
+pub const D3D11_SO_STREAM_COUNT: UINT = 4;

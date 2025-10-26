@@ -1,6 +1,7 @@
 mod cbuffer_type;
 mod driver_type;
 mod feature_level;
+mod include_type;
 mod min_precision;
 mod name;
 mod primitive;
@@ -21,6 +22,7 @@ mod tessellator_partitioning;
 pub use cbuffer_type::D3D_CBUFFER_TYPE;
 pub use driver_type::D3D_DRIVER_TYPE;
 pub use feature_level::D3D_FEATURE_LEVEL;
+pub use include_type::D3D_INCLUDE_TYPE;
 pub use min_precision::D3D_MIN_PRECISION;
 pub use name::D3D_NAME;
 pub use primitive::D3D_PRIMITIVE;
