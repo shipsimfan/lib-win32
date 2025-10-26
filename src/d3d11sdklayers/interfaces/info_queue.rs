@@ -8,6 +8,10 @@ use crate::{
     BOOL, HRESULT, LPCSTR, SIZE_T, UINT, UINT64,
 };
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::d3d11::ID3D11Device;
+
 com_interface!(
     /// An information-queue interface stores, retrieves, and filters debug messages. The queue
     /// consists of a message queue, an optional storage filter stack, and a optional retrieval

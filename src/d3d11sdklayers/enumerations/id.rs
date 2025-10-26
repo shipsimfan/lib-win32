@@ -1,8 +1,16 @@
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::d3d11sdklayers::{ID3D11InfoQueue, D3D11_INFO_QUEUE_FILTER};
+
+/// Debug messages for setting up an info-queue filter (see [`D3D11_INFO_QUEUE_FILTER`]); use these
+/// messages to allow or deny message categories to pass through the storage and retrieval filters.
+/// These IDs are used by methods such as [`ID3D11InfoQueue::get_message`] or
+/// [`ID3D11InfoQueue::add_message`].
 #[repr(C)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
-pub enum D3D11_Message_ID {
+pub enum D3D11_MESSAGE_ID {
     #[allow(missing_docs)]
     Unknown = 0,
 
@@ -457,7 +465,7 @@ pub enum D3D11_Message_ID {
     CreateInputLayoutOutOfMemory,
 
     #[allow(missing_docs)]
-    CreateInputLayoutTooManyELEMENTS,
+    CreateInputLayoutTooManyElementS,
 
     #[allow(missing_docs)]
     CreateInputLayoutInvalidFormat,
@@ -469,7 +477,7 @@ pub enum D3D11_Message_ID {
     CreateInputLayoutInvalidSlot,
 
     #[allow(missing_docs)]
-    CreateInputLayoutInvalidInputsLOTClass,
+    CreateInputLayoutInvalidInputSlotClass,
 
     #[allow(missing_docs)]
     CreateInputLayoutStepRateSlotClassMismatch,
@@ -487,13 +495,13 @@ pub enum D3D11_Message_ID {
     CreateInputLayoutDuplicateSemantic,
 
     #[allow(missing_docs)]
-    CreateInputLayoutUNPARsEABLEInputsignature,
+    CreateInputLayoutUnparseableInputsignature,
 
     #[allow(missing_docs)]
     CreateInputLayoutNullSemantic,
 
     #[allow(missing_docs)]
-    CreateInputLayoutMISSInGELEMENT,
+    CreateInputLayoutMissingElement,
 
     #[allow(missing_docs)]
     CreateInputLayoutNullDesc,
@@ -529,22 +537,22 @@ pub enum D3D11_Message_ID {
     CreateGeometryShaderWithStreamOutputInvalidNumEntries,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputOutputStreamsTRIDEUNUSED,
+    CreateGeometryShaderWithStreamOutputOutputStreamStrideUnused,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputUnexpectedDECL,
+    CreateGeometryShaderWithStreamOutputUnexpectedDecl,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputEXPECTEDDECL,
+    CreateGeometryShaderWithStreamOutputExpectedDecl,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputOutputSlot0EXPECTED,
+    CreateGeometryShaderWithStreamOutputOutputSlot0Expected,
 
     #[allow(missing_docs)]
     CreateGeometryShaderWithStreamOutputInvalidOutputSlot,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputOnlyOnEELEMENTPERsLOT,
+    CreateGeometryShaderWithStreamOutputOnlyOneElementPerSlot,
 
     #[allow(missing_docs)]
     CreateGeometryShaderWithStreamOutputInvalidComponentCount,
@@ -553,28 +561,28 @@ pub enum D3D11_Message_ID {
     CreateGeometryShaderWithStreamOutputInvalidStartComponentAndComponentCount,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputInvalidGAPDEFInITIOn,
+    CreateGeometryShaderWithStreamOutputInvalidGapDefinitionn,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputREPEATEDOutput,
+    CreateGeometryShaderWithStreamOutputRepeatedOutput,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputInvalidOutputStreamsTRIDE,
+    CreateGeometryShaderWithStreamOutputInvalidOutputStreamStride,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputMISSInGsemantic,
+    CreateGeometryShaderWithStreamOutputMissingsemantic,
 
     #[allow(missing_docs)]
     CreateGeometryShaderWithStreamOutputMaskMismatch,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputCANTHAVEOnlyGAPs,
+    CreateGeometryShaderWithStreamOutputCantHaveOnlyGaps,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputDECLTooCOmPLEX,
+    CreateGeometryShaderWithStreamOutputDeclTooComplex,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputMISSInGOutputSignature,
+    CreateGeometryShaderWithStreamOutputMissingOutputSignature,
 
     #[allow(missing_docs)]
     CreatePixelShaderOutOfMemory,
@@ -667,37 +675,37 @@ pub enum D3D11_Message_ID {
     CreateBlendStateNullDesc,
 
     #[allow(missing_docs)]
-    CreateSamplerstateInvalidFilter,
+    CreateSamplerStateInvalidFilter,
 
     #[allow(missing_docs)]
-    CreateSamplerstateInvalidAddressU,
+    CreateSamplerStateInvalidAddressU,
 
     #[allow(missing_docs)]
-    CreateSamplerstateInvalidAddressV,
+    CreateSamplerStateInvalidAddressV,
 
     #[allow(missing_docs)]
-    CreateSamplerstateInvalidAddressW,
+    CreateSamplerStateInvalidAddressW,
 
     #[allow(missing_docs)]
-    CreateSamplerstateInvalidMipLodBias,
+    CreateSamplerStateInvalidMipLodBias,
 
     #[allow(missing_docs)]
-    CreateSamplerstateInvalidMaxAnisotropy,
+    CreateSamplerStateInvalidMaxAnisotropy,
 
     #[allow(missing_docs)]
-    CreateSamplerstateInvalidComparisonFunc,
+    CreateSamplerStateInvalidComparisonFunc,
 
     #[allow(missing_docs)]
-    CreateSamplerstateInvalidMinLod,
+    CreateSamplerStateInvalidMinLod,
 
     #[allow(missing_docs)]
-    CreateSamplerstateInvalidMaxLod,
+    CreateSamplerStateInvalidMaxLod,
 
     #[allow(missing_docs)]
-    CreateSamplerstateTooManyObjects,
+    CreateSamplerStateTooManyObjects,
 
     #[allow(missing_docs)]
-    CreateSamplerstateNullDesc,
+    CreateSamplerStateNullDesc,
 
     #[allow(missing_docs)]
     CreateQueryOrPredicateInvalidQuery,
@@ -874,19 +882,19 @@ pub enum D3D11_Message_ID {
     UpdateSubresourceInvalidDestinationState,
 
     #[allow(missing_docs)]
-    DeviceRESoLVESubresourceDestinationInvalid,
+    DeviceResolveSubresourceDestinationInvalid,
 
     #[allow(missing_docs)]
-    DeviceRESoLVESubresourceDestinationSubresourceInvalid,
+    DeviceResolveSubresourceDestinationSubresourceInvalid,
 
     #[allow(missing_docs)]
-    DeviceRESoLVESubresourcesOURCEInvalid,
+    DeviceResolveSubresourceSourceInvalid,
 
     #[allow(missing_docs)]
-    DeviceRESoLVESubresourcesOURCESubresourceInvalid,
+    DeviceResolveSubresourceSourceSubresourceInvalid,
 
     #[allow(missing_docs)]
-    DeviceRESoLVESubresourceFormatInvalid,
+    DeviceResolveSubresourceFormatInvalid,
 
     #[allow(missing_docs)]
     BufferMapInvalidMapType,
@@ -982,70 +990,70 @@ pub enum D3D11_Message_ID {
     SetExceptionModeDeviceRemovedReturn,
 
     #[allow(missing_docs)]
-    REFSIMULATInGInFInITELYFAsTHardware,
+    RefSimulatingInfinitelyFastHardware,
 
     #[allow(missing_docs)]
-    REFThreadingMode,
+    RefThreadingMode,
 
     #[allow(missing_docs)]
-    REFUMDRIVERException,
+    RefUmDriverException,
 
     #[allow(missing_docs)]
-    REFKMDRIVERException,
+    RefKmDriverException,
 
     #[allow(missing_docs)]
-    REFHardwareException,
+    RefHardwareException,
 
     #[allow(missing_docs)]
-    REFAccessInGIndexABLETEMPOutOfRange,
+    RefAccessingIndexableTempOutOfRange,
 
     #[allow(missing_docs)]
-    REFPROBLEMPARsInGshader,
+    RefProblemParsInGShader,
 
     #[allow(missing_docs)]
-    REFOutOfMemory,
+    RefOutOfMemory,
 
     #[allow(missing_docs)]
-    REFInFO,
+    RefInFo,
 
     #[allow(missing_docs)]
-    DeviceDrawVertexPOSoVERFLOW,
+    DeviceDrawVertexPosOverflow,
 
     #[allow(missing_docs)]
-    DeviceDrawIndexEDIndexPOSoVERFLOW,
+    DeviceDrawIndexedIndexPosOverflow,
 
     #[allow(missing_docs)]
-    DeviceDrawInstanceDVertexPOSoVERFLOW,
+    DeviceDrawInstancedVertexPosOverflow,
 
     #[allow(missing_docs)]
-    DeviceDrawInstanceDInstancePOSoVERFLOW,
+    DeviceDrawInstancedInstancePosOverflow,
 
     #[allow(missing_docs)]
-    DeviceDrawIndexEDInstanceDInstancePOSoVERFLOW,
+    DeviceDrawIndexedInstancedInstancePosOverflow,
 
     #[allow(missing_docs)]
-    DeviceDrawIndexEDInstanceDIndexPOSoVERFLOW,
+    DeviceDrawIndexedInstancedIndexPosOverflow,
 
     #[allow(missing_docs)]
     DeviceDrawVertexShaderNotSet,
 
     #[allow(missing_docs)]
-    DeviceShaderLinkageSemanticNAMENotFound,
+    DeviceShaderLinkageSemanticNameNotFound,
 
     #[allow(missing_docs)]
-    DeviceShaderLinkageREGISTERIndex,
+    DeviceShaderLinkageRegisterIndex,
 
     #[allow(missing_docs)]
     DeviceShaderLinkageComponentType,
 
     #[allow(missing_docs)]
-    DeviceShaderLinkageREGISTERMask,
+    DeviceShaderLinkageRegisterMask,
 
     #[allow(missing_docs)]
     DeviceShaderLinkageSystemValue,
 
     #[allow(missing_docs)]
-    DeviceShaderLinkageNEVERWRITTENALWAYSReadS,
+    DeviceShaderLinkageNeverWrittenAlwaysReads,
 
     #[allow(missing_docs)]
     DeviceDrawVertexBufferNotSet,
@@ -1057,10 +1065,10 @@ pub enum D3D11_Message_ID {
     DeviceDrawConstantBufferNotSet,
 
     #[allow(missing_docs)]
-    DeviceDrawConstantBufferTooSMALL,
+    DeviceDrawConstantBufferTooSmall,
 
     #[allow(missing_docs)]
-    DeviceDrawSampleRNotSet,
+    DeviceDrawSamplerNotSet,
 
     #[allow(missing_docs)]
     DeviceDrawShaderResourceViewNotSet,
@@ -1069,10 +1077,10 @@ pub enum D3D11_Message_ID {
     DeviceDrawViewDimensionMismatch,
 
     #[allow(missing_docs)]
-    DeviceDrawVertexBuffersTRIDETooSMALL,
+    DeviceDrawVertexBufferStrideTooSmall,
 
     #[allow(missing_docs)]
-    DeviceDrawVertexBufferTooSMALL,
+    DeviceDrawVertexBufferTooSmall,
 
     #[allow(missing_docs)]
     DeviceDrawIndexBufferNotSet,
@@ -1081,7 +1089,7 @@ pub enum D3D11_Message_ID {
     DeviceDrawIndexBufferFormatInvalid,
 
     #[allow(missing_docs)]
-    DeviceDrawIndexBufferTooSMALL,
+    DeviceDrawIndexBufferTooSmall,
 
     #[allow(missing_docs)]
     DeviceDrawGsInputPrimitiveMismatch,
@@ -1090,13 +1098,13 @@ pub enum D3D11_Message_ID {
     DeviceDrawResourceReturnTypeMismatch,
 
     #[allow(missing_docs)]
-    DeviceDrawPOSITIOnNotPRESENT,
+    DeviceDrawPositionNotPresent,
 
     #[allow(missing_docs)]
     DeviceDrawOutputStreamNotSet,
 
     #[allow(missing_docs)]
-    DeviceDrawBOUNDResourceMapped,
+    DeviceDrawBoundResourceMapped,
 
     #[allow(missing_docs)]
     DeviceDrawInvalidPrimitiveTopology,
@@ -1114,7 +1122,7 @@ pub enum D3D11_Message_ID {
     DeviceDrawOutputStreamOffsetUnaligned,
 
     #[allow(missing_docs)]
-    DeviceDrawResourceFormatLDUnsupported,
+    DeviceDrawResourceFormatLdUnsupported,
 
     #[allow(missing_docs)]
     DeviceDrawResourceFormatSampleUnsupported,
@@ -1126,43 +1134,43 @@ pub enum D3D11_Message_ID {
     DeviceDrawResourceMultiSampleUnsupported,
 
     #[allow(missing_docs)]
-    DeviceDrawSoTargetsBOUNDWithoutSource,
+    DeviceDrawSoTargetsBoundWithoutSource,
 
     #[allow(missing_docs)]
-    DeviceDrawSoStrideLargeRTHANBuffer,
+    DeviceDrawSoStrideLargerThanBuffer,
 
     #[allow(missing_docs)]
-    DeviceDrawOmRenderTargetDOESNotSupportBlendInG,
+    DeviceDrawOmRenderTargetDoesNotSupportBlendInG,
 
     #[allow(missing_docs)]
-    DeviceDrawOmDUALSourceBlendInGCANonlyHAVERenderTarget0,
+    DeviceDrawOmDualSourceBlendingCanonlyHaveRenderTarget0,
 
     #[allow(missing_docs)]
-    DeviceRemovalProcessATFault,
+    DeviceRemovalProcessAtFault,
 
     #[allow(missing_docs)]
-    DeviceRemovalProcessPOSSIBLYATFault,
+    DeviceRemovalProcessPossiblyAtFault,
 
     #[allow(missing_docs)]
-    DeviceRemovalProcessNotATFault,
+    DeviceRemovalProcessNotAtFault,
 
     #[allow(missing_docs)]
-    DeviceOpENSharedResourceInvalidArgReturn,
+    DeviceOpenSharedResourceInvalidArgReturn,
 
     #[allow(missing_docs)]
-    DeviceOpENSharedResourceOutOfMemoryReturn,
+    DeviceOpenSharedResourceOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    DeviceOpENSharedResourceBadInterfaceReturn,
+    DeviceOpenSharedResourceBadInterfaceReturn,
 
     #[allow(missing_docs)]
     DeviceDrawViewportNotSet,
 
     #[allow(missing_docs)]
-    CreateInputLayoutTRAILInGDIGITInSemantic,
+    CreateInputLayoutTrailingDigitInSemantic,
 
     #[allow(missing_docs)]
-    CreateGeometryShaderWithStreamOutputTRAILInGDIGITInSemantic,
+    CreateGeometryShaderWithStreamOutputTrailingDigitInSemantic,
 
     #[allow(missing_docs)]
     DeviceRsSetViewportsDenormFlush,
@@ -1171,19 +1179,19 @@ pub enum D3D11_Message_ID {
     OmSetRenderTargetsInvalidView,
 
     #[allow(missing_docs)]
-    DeviceSetTEXTFilterSizeInvalidDimensions,
+    DeviceSetTextFilterSizeInvalidDimensions,
 
     #[allow(missing_docs)]
-    DeviceDrawSampleRMismatch,
+    DeviceDrawSamplerMismatch,
 
     #[allow(missing_docs)]
     CreateInputLayoutTypeMismatch,
 
     #[allow(missing_docs)]
-    BlendStateGetDescLEGACY,
+    BlendStateGetDescLegacy,
 
     #[allow(missing_docs)]
-    ShaderResourceViewGetDescLEGACY,
+    ShaderResourceViewGetDescLegacy,
 
     #[allow(missing_docs)]
     CreateQueryOutOfMemoryReturn,
@@ -1195,16 +1203,16 @@ pub enum D3D11_Message_ID {
     CreateCounterOutOfRangeCounter,
 
     #[allow(missing_docs)]
-    CreateCountersIMULTANEOUSACTIVECountersEXHAUSTED,
+    CreateCounterSimultaneousActiveCountersExhausted,
 
     #[allow(missing_docs)]
-    CreateCounterUnsupportedWELLKNoWNCounter,
+    CreateCounterUnsupportedWellKnownCounter,
 
     #[allow(missing_docs)]
     CreateCounterOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    CreateCounterNonEXCLUSIVEReturn,
+    CreateCounterNonExclusiveReturn,
 
     #[allow(missing_docs)]
     CreateCounterNullDesc,
@@ -1213,31 +1221,31 @@ pub enum D3D11_Message_ID {
     CheckCounterOutOfRangeCounter,
 
     #[allow(missing_docs)]
-    CheckCounterUnsupportedWELLKNoWNCounter,
+    CheckCounterUnsupportedWellKnownCounter,
 
     #[allow(missing_docs)]
     SetPredicationInvalidPredicateState,
 
     #[allow(missing_docs)]
-    QueryBEGInUnsupported,
+    QueryBeginUnsupported,
 
     #[allow(missing_docs)]
-    PredicateBEGInDURInGPredication,
+    PredicateBeginDuringPredication,
 
     #[allow(missing_docs)]
-    QueryBEGInDuplicate,
+    QueryBeginDuplicate,
 
     #[allow(missing_docs)]
-    QueryBEGInABAndOnInGPREVIOUSRESULTS,
+    QueryBeginAbandoningPreviousResults,
 
     #[allow(missing_docs)]
-    PredicateEndDURInGPredication,
+    PredicateEndDuringPredication,
 
     #[allow(missing_docs)]
-    QueryEndABAndOnInGPREVIOUSRESULTS,
+    QueryEndAbandoningPreviousResults,
 
     #[allow(missing_docs)]
-    QueryEndWithoutBEGIn,
+    QueryEndWithoutBegin,
 
     #[allow(missing_docs)]
     QueryGetDataInvalidDataSize,
@@ -1252,10 +1260,10 @@ pub enum D3D11_Message_ID {
     DeviceDrawPsOutputTypeMismatch,
 
     #[allow(missing_docs)]
-    DeviceDrawResourceFormatGATHERUnsupported,
+    DeviceDrawResourceFormatGatherUnsupported,
 
     #[allow(missing_docs)]
-    DeviceDrawInvalidUSEOFCENTERMultiSamplePATTERN,
+    DeviceDrawInvalidUseOfCenterMultiSamplePattern,
 
     #[allow(missing_docs)]
     DeviceIaSetVertexBuffersStrideTooLarge,
@@ -1267,7 +1275,7 @@ pub enum D3D11_Message_ID {
     CreateInputLayoutEmptyLayout,
 
     #[allow(missing_docs)]
-    DeviceDrawResourcesAMPLECountMismatch,
+    DeviceDrawResourceSampleCountMismatch,
 
     #[allow(missing_docs)]
     LiveObjectsUnmarry,
@@ -1306,7 +1314,7 @@ pub enum D3D11_Message_ID {
     LiveInputLayout,
 
     #[allow(missing_docs)]
-    LiveSampleR,
+    LiveSampler,
 
     #[allow(missing_docs)]
     LiveBlendState,
@@ -1345,13 +1353,13 @@ pub enum D3D11_Message_ID {
     CreateRasterizerStateDepthBiasClampNotSupported,
 
     #[allow(missing_docs)]
-    CreateSamplerstateNoComparisonSupport,
+    CreateSamplerStateNoComparisonSupport,
 
     #[allow(missing_docs)]
-    CreateSamplerstateExcessiveAnisotropy,
+    CreateSamplerStateExcessiveAnisotropy,
 
     #[allow(missing_docs)]
-    CreateSamplerstateBorderOutOfRange,
+    CreateSamplerStateBorderOutOfRange,
 
     #[allow(missing_docs)]
     VsSetSamplersNotSupported,
@@ -1396,7 +1404,7 @@ pub enum D3D11_Message_ID {
     DeviceRsSetScissorRectsTooManyScissors,
 
     #[allow(missing_docs)]
-    CopyResourceOnlyTexture2DWithInGPUMemory,
+    CopyResourceOnlyTexture2DWithInGpuMemory,
 
     #[allow(missing_docs)]
     CopyResourceNoTexture3DReadBack,
@@ -1408,58 +1416,58 @@ pub enum D3D11_Message_ID {
     CreateInputLayoutUnsupportedFormat,
 
     #[allow(missing_docs)]
-    CreateBlendStateNoAlphaToCOVERAGE,
+    CreateBlendStateNoAlphaToCoverage,
 
     #[allow(missing_docs)]
-    CreateRasterizerStateDepthClipEnableMUSTBETRUE,
+    CreateRasterizerStateDepthClipEnableMustBeTrue,
 
     #[allow(missing_docs)]
-    DrawIndexEDStartIndexLOCATIOnMUSTBEPOSITIVE,
+    DrawIndexedStartIndexLocationMustBePositive,
 
     #[allow(missing_docs)]
-    CreateShaderResourceViewMUSTUSELOWESTLod,
+    CreateShaderResourceViewMustUseLowestLod,
 
     #[allow(missing_docs)]
-    CreateSamplerstateMinLodMUSTNotBEFractional,
+    CreateSamplerStateMinLodMustNotBeFractional,
 
     #[allow(missing_docs)]
-    CreateSamplerstateMaxLodMUSTBEFLTMax,
+    CreateSamplerStateMaxLodMustBeFltMax,
 
     #[allow(missing_docs)]
-    CreateShaderResourceViewFIRsTArraysLICEMUSTBEZERO,
+    CreateShaderResourceViewFirstArraySliceMustBeZero,
 
     #[allow(missing_docs)]
-    CreateShaderResourceViewCUBESMUSTHAVE6SIDES,
+    CreateShaderResourceViewCubesMustHave6Sides,
 
     #[allow(missing_docs)]
     CreateResourceNotBindableAsRenderTarget,
 
     #[allow(missing_docs)]
-    CreateResourceNoDWOrDIndexBuffer,
+    CreateResourceNoDwordIndexBuffer,
 
     #[allow(missing_docs)]
-    CreateResourceMSAAPRECLUDESShaderResource,
+    CreateResourceMsaaPrecludesShaderResource,
 
     #[allow(missing_docs)]
-    CreateResourcePRESENTATIOnPRECLUDESShaderResource,
+    CreateResourcePresentationPrecludesShaderResource,
 
     #[allow(missing_docs)]
-    CreateBlendStateNoInDEPEndENTBlendENABLE,
+    CreateBlendStateNoIndependentBlendEnable,
 
     #[allow(missing_docs)]
-    CreateBlendStateNoInDEPEndENTWriteMaskS,
+    CreateBlendStateNoIndependentWriteMasks,
 
     #[allow(missing_docs)]
-    CreateResourceNoStreamOUT,
+    CreateResourceNoStreamOut,
 
     #[allow(missing_docs)]
     CreateResourceOnlyVBIBForBuffers,
 
     #[allow(missing_docs)]
-    CreateResourceNoAutoGENForVOLUMES,
+    CreateResourceNoAutoGenForVolumes,
 
     #[allow(missing_docs)]
-    CreateResourceDXGIFormatR8G8B8A8CannotBEShared,
+    CreateResourceDxgiFormatR8G8B8A8CannotBeShared,
 
     #[allow(missing_docs)]
     VsShaderResourcesNotSupported,
@@ -1468,52 +1476,52 @@ pub enum D3D11_Message_ID {
     GeometryShaderNotSupported,
 
     #[allow(missing_docs)]
-    StreamOUTNotSupported,
+    StreamOutNotSupported,
 
     #[allow(missing_docs)]
-    TEXTFilterNotSupported,
+    TextFilterNotSupported,
 
     #[allow(missing_docs)]
-    CreateBlendStateNoSEPARateAlphaBlend,
+    CreateBlendStateNoSeparateAlphaBlend,
 
     #[allow(missing_docs)]
-    CreateBlendStateNomRTBlend,
+    CreateBlendStateNoMrtBlend,
 
     #[allow(missing_docs)]
-    CreateBlendStateOpERationNotSupported,
+    CreateBlendStateOperationNotSupported,
 
     #[allow(missing_docs)]
-    CreateSamplerstateNomIRROrOnCE,
+    CreateSamplerStateNoMirrorOnce,
 
     #[allow(missing_docs)]
-    DrawInstanceDNotSupported,
+    DrawInstancedNotSupported,
 
     #[allow(missing_docs)]
-    DrawIndexEDInstanceDNotSupportedBELOW93,
+    DrawIndexedInstancedNotSupportedBelow93,
 
     #[allow(missing_docs)]
-    DrawIndexEDPointListUnsupported,
+    DrawIndexedPointListUnsupported,
 
     #[allow(missing_docs)]
-    SetBlendStateSampleMaskCannotBEZERO,
+    SetBlendStateSampleMaskCannotBeZero,
 
     #[allow(missing_docs)]
-    CreateResourceDimensionEXCEEDSFeatureLevelDEFInITIOn,
+    CreateResourceDimensionExceedsFeatureLevelDefinitionn,
 
     #[allow(missing_docs)]
     CreateResourceOnlySingleMipLevelDepthstencilSupported,
 
     #[allow(missing_docs)]
-    DeviceRsSetScissorRectsNEGATIVEScissor,
+    DeviceRsSetScissorRectsNegativeScissor,
 
     #[allow(missing_docs)]
-    SlotZEROmUSTBED3D10InputPERVertexData,
+    SlotZeroMustBeD3D10InputPerVertexData,
 
     #[allow(missing_docs)]
     CreateResourceNonPow2MipMap,
 
     #[allow(missing_docs)]
-    CreateSamplerstateBorderNotSupported,
+    CreateSamplerStateBorderNotSupported,
 
     #[allow(missing_docs)]
     OmSetRenderTargetsNoSrgbMrt,
@@ -1588,16 +1596,16 @@ pub enum D3D11_Message_ID {
     CreateGeometryShaderWithStreamOutputInvalidNumStrides,
 
     #[allow(missing_docs)]
-    DeviceHSSetShaderResourcesHazard,
+    DeviceHsSetShaderResourcesHazard,
 
     #[allow(missing_docs)]
-    DeviceHSSetConstantBuffersHazard,
+    DeviceHsSetConstantBuffersHazard,
 
     #[allow(missing_docs)]
-    HSSetShaderResourcesUnbindDeletingObject,
+    HsSetShaderResourcesUnbindDeletingObject,
 
     #[allow(missing_docs)]
-    HSSetConstantBuffersUnbindDeletingObject,
+    HsSetConstantBuffersUnbindDeletingObject,
 
     #[allow(missing_docs)]
     CreateHullShaderInvalidCall,
@@ -1615,37 +1623,37 @@ pub enum D3D11_Message_ID {
     CreateHullShaderInvalidClassLinkage,
 
     #[allow(missing_docs)]
-    DeviceHSSetShaderResourcesViewsEmpty,
+    DeviceHsSetShaderResourcesViewsEmpty,
 
     #[allow(missing_docs)]
-    HSSetConstantBuffersInvalidBuffer,
+    HsSetConstantBuffersInvalidBuffer,
 
     #[allow(missing_docs)]
-    DeviceHSSetConstantBuffersBuffersEmpty,
+    DeviceHsSetConstantBuffersBuffersEmpty,
 
     #[allow(missing_docs)]
-    DeviceHSSetSamplersSamplersEmpty,
+    DeviceHsSetSamplersSamplersEmpty,
 
     #[allow(missing_docs)]
-    DeviceHSGetShaderResourcesViewsEmpty,
+    DeviceHsGetShaderResourcesViewsEmpty,
 
     #[allow(missing_docs)]
-    DeviceHSGetConstantBuffersBuffersEmpty,
+    DeviceHsGetConstantBuffersBuffersEmpty,
 
     #[allow(missing_docs)]
-    DeviceHSGetSamplersSamplersEmpty,
+    DeviceHsGetSamplersSamplersEmpty,
 
     #[allow(missing_docs)]
-    DeviceDSSetShaderResourcesHazard,
+    DeviceDsSetShaderResourcesHazard,
 
     #[allow(missing_docs)]
-    DeviceDSSetConstantBuffersHazard,
+    DeviceDsSetConstantBuffersHazard,
 
     #[allow(missing_docs)]
-    DSSetShaderResourcesUnbindDeletingObject,
+    DsSetShaderResourcesUnbindDeletingObject,
 
     #[allow(missing_docs)]
-    DSSetConstantBuffersUnbindDeletingObject,
+    DsSetConstantBuffersUnbindDeletingObject,
 
     #[allow(missing_docs)]
     CreateDomainShaderInvalidCall,
@@ -1663,31 +1671,31 @@ pub enum D3D11_Message_ID {
     CreateDomainShaderInvalidClassLinkage,
 
     #[allow(missing_docs)]
-    DeviceDSSetShaderResourcesViewsEmpty,
+    DeviceDsSetShaderResourcesViewsEmpty,
 
     #[allow(missing_docs)]
-    DSSetConstantBuffersInvalidBuffer,
+    DsSetConstantBuffersInvalidBuffer,
 
     #[allow(missing_docs)]
-    DeviceDSSetConstantBuffersBuffersEmpty,
+    DeviceDsSetConstantBuffersBuffersEmpty,
 
     #[allow(missing_docs)]
-    DeviceDSSetSamplersSamplersEmpty,
+    DeviceDsSetSamplersSamplersEmpty,
 
     #[allow(missing_docs)]
-    DeviceDSGetShaderResourcesViewsEmpty,
+    DeviceDsGetShaderResourcesViewsEmpty,
 
     #[allow(missing_docs)]
-    DeviceDSGetConstantBuffersBuffersEmpty,
+    DeviceDsGetConstantBuffersBuffersEmpty,
 
     #[allow(missing_docs)]
-    DeviceDSGetSamplersSamplersEmpty,
+    DeviceDsGetSamplersSamplersEmpty,
 
     #[allow(missing_docs)]
-    DeviceDrawHSXOrDSMismatch,
+    DeviceDrawHsXorDsMismatch,
 
     #[allow(missing_docs)]
-    DeferredContextRemovalProcessATFault,
+    DeferredContextRemovalProcessAtFault,
 
     #[allow(missing_docs)]
     DeviceDrawIndirectInvalidArgBuffer,
@@ -1870,10 +1878,10 @@ pub enum D3D11_Message_ID {
     DestroyInputLayout,
 
     #[allow(missing_docs)]
-    CreateSampleR,
+    CreateSampler,
 
     #[allow(missing_docs)]
-    LiveSampleRWin7,
+    LiveSamplerWin7,
 
     #[allow(missing_docs)]
     DestroySampleR,
@@ -1996,13 +2004,13 @@ pub enum D3D11_Message_ID {
     DeviceSetShaderInvalidInstanceType,
 
     #[allow(missing_docs)]
-    DeviceSetShaderInvalidInstanceData,
+    DeviceSetShaderInvalidInstancedata,
 
     #[allow(missing_docs)]
-    DeviceSetShaderUnboundInstanceData,
+    DeviceSetShaderUnboundInstancedata,
 
     #[allow(missing_docs)]
-    DeviceSetShaderInstanceDataBindings,
+    DeviceSetShaderInstancedataBindings,
 
     #[allow(missing_docs)]
     DeviceCreateShaderClassLinkageFull,
@@ -2197,61 +2205,61 @@ pub enum D3D11_Message_ID {
     DeviceUnorderedAccessViewDimensionMismatch,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewAPPEndUnsupported,
+    DeviceUnorderedAccessViewAppendUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewATomICsUnsupported,
+    DeviceUnorderedAccessViewAtomicsUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewsTRUCTUREStrideMismatch,
+    DeviceUnorderedAccessViewStructureStrideMismatch,
 
     #[allow(missing_docs)]
     DeviceUnorderedAccessViewBufferTypeMismatch,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewRAWUnsupported,
+    DeviceUnorderedAccessViewRawUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewFormatLDUnsupported,
+    DeviceUnorderedAccessViewFormatLdUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewFormatSTorEUnsupported,
+    DeviceUnorderedAccessViewFormatStoreUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewATomICAddUnsupported,
+    DeviceUnorderedAccessViewAtomicAddUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewATomICBitWISEOpsUnsupported,
+    DeviceUnorderedAccessViewAtomicBitwiseOpsUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewATomICCMPsTorECMPExchangeUnsupported,
+    DeviceUnorderedAccessViewAtomicCmpStoreCmpExchangeUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewATomICExchangeUnsupported,
+    DeviceUnorderedAccessViewAtomicExchangeUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewATomICsIGNEDMInMaxUnsupported,
+    DeviceUnorderedAccessViewAtomicSignedMinMaxUnsupported,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewATomICUNSIGNEDMInMaxUnsupported,
+    DeviceUnorderedAccessViewAtomicUnsignedMinMaxUnsupported,
 
     #[allow(missing_docs)]
-    DeviceDispatchBOUNDResourceMapped,
+    DeviceDispatchBoundResourceMapped,
 
     #[allow(missing_docs)]
-    DeviceDispatchThreadGROUPCountOverflow,
+    DeviceDispatchThreadGroupCountOverflow,
 
     #[allow(missing_docs)]
-    DeviceDispatchThreadGROUPCountZERO,
+    DeviceDispatchThreadGroupCountZero,
 
     #[allow(missing_docs)]
-    DeviceShaderResourceViewsTRUCTUREStrideMismatch,
+    DeviceShaderResourceViewStructureStrideMismatch,
 
     #[allow(missing_docs)]
     DeviceShaderResourceViewBufferTypeMismatch,
 
     #[allow(missing_docs)]
-    DeviceShaderResourceViewRAWUnsupported,
+    DeviceShaderResourceViewRawUnsupported,
 
     #[allow(missing_docs)]
     DeviceDispatchUnsupported,
@@ -2290,13 +2298,13 @@ pub enum D3D11_Message_ID {
     DeviceUnorderedAccessViewCounterUnsupported,
 
     #[allow(missing_docs)]
-    REFWarning,
+    RefWarning,
 
     #[allow(missing_docs)]
-    DeviceDrawPixelShaderWithoutRTVOrDSV,
+    DeviceDrawPixelShaderWithoutRtvOrDsv,
 
     #[allow(missing_docs)]
-    ShaderABOrT,
+    ShaderAbort,
 
     #[allow(missing_docs)]
     ShaderMessage,
@@ -2305,106 +2313,106 @@ pub enum D3D11_Message_ID {
     ShaderError,
 
     #[allow(missing_docs)]
-    OffERResourcesInvalidResource,
+    OfferResourcesInvalidResource,
 
     #[allow(missing_docs)]
-    HSSetSamplersUnbindDeletingObject,
+    HsSetSamplersUnbindDeletingObject,
 
     #[allow(missing_docs)]
-    DSSetSamplersUnbindDeletingObject,
+    DsSetSamplersUnbindDeletingObject,
 
     #[allow(missing_docs)]
     CsSetSamplersUnbindDeletingObject,
 
     #[allow(missing_docs)]
-    HSSetShaderUnbindDeletingObject,
+    HsSetShaderUnbindDeletingObject,
 
     #[allow(missing_docs)]
-    DSSetShaderUnbindDeletingObject,
+    DsSetShaderUnbindDeletingObject,
 
     #[allow(missing_docs)]
     CsSetShaderUnbindDeletingObject,
 
     #[allow(missing_docs)]
-    ENQUEUESetEVENTInvalidArgReturn,
+    EnqueueSetEventInvalidArgReturn,
 
     #[allow(missing_docs)]
-    ENQUEUESetEVENToutOfMemoryReturn,
+    EnqueueSetEventoutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    ENQUEUESetEVENTAccessDENIEDReturn,
+    EnqueueSetEventAccessDeniedReturn,
 
     #[allow(missing_docs)]
-    DeviceOmSetRenderTargetsAndUnorderedAccessViewsNumUAVsInvalidRange,
+    DeviceOmSetRenderTargetsAndUnorderedAccessViewsNumUavsInvalidRange,
 
     #[allow(missing_docs)]
-    USEOFZEROrEFCountObject,
+    UseOfZeroRefCountObject,
 
     #[allow(missing_docs)]
     D3D11MessageSend,
 
     #[allow(missing_docs)]
-    D3D111MessageSStart = 0x300000,
+    D3D111MessagesStart = 0x300000,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeR,
+    CreateVideoDecoder,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrENum,
+    CreateVideoProcessorEnum,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOr,
+    CreateVideoProcessor,
 
     #[allow(missing_docs)]
-    CreateDecodeROutputView,
+    CreateDecoderOutputView,
 
     #[allow(missing_docs)]
-    CreateProcessOrInputView,
+    CreateProcessorInputView,
 
     #[allow(missing_docs)]
-    CreateProcessOrOutputView,
+    CreateProcessorOutputView,
 
     #[allow(missing_docs)]
     CreateDeviceContextState,
 
     #[allow(missing_docs)]
-    LiveVideoDecodeR,
+    LiveVideoDecoder,
 
     #[allow(missing_docs)]
-    LiveVideoProcessOrENum,
+    LiveVideoProcessorEnum,
 
     #[allow(missing_docs)]
-    LiveVideoProcessOr,
+    LiveVideoProcessor,
 
     #[allow(missing_docs)]
-    LiveDecodeROutputView,
+    LiveDecoderOutputView,
 
     #[allow(missing_docs)]
-    LiveProcessOrInputView,
+    LiveProcessorInputView,
 
     #[allow(missing_docs)]
-    LiveProcessOrOutputView,
+    LiveProcessorOutputView,
 
     #[allow(missing_docs)]
     LiveDeviceContextState,
 
     #[allow(missing_docs)]
-    DestroyVideoDecodeR,
+    DestroyVideoDecoder,
 
     #[allow(missing_docs)]
-    DestroyVideoProcessOrENum,
+    DestroyVideoProcessorEnum,
 
     #[allow(missing_docs)]
-    DestroyVideoProcessOr,
+    DestroyVideoProcessor,
 
     #[allow(missing_docs)]
-    DestroyDecodeROutputView,
+    DestroyDecoderOutputView,
 
     #[allow(missing_docs)]
-    DestroyProcessOrInputView,
+    DestroyProcessorInputView,
 
     #[allow(missing_docs)]
-    DestroyProcessOrOutputView,
+    DestroyProcessorOutputView,
 
     #[allow(missing_docs)]
     DestroyDeviceContextState,
@@ -2419,7 +2427,7 @@ pub enum D3D11_Message_ID {
     CreateDeviceContextStateFeatureLevelsNotSupported,
 
     #[allow(missing_docs)]
-    CreateDeviceContextStateInvalidREFIID,
+    CreateDeviceContextStateInvalidRefIid,
 
     #[allow(missing_docs)]
     DeviceDiscardViewInvalidView,
@@ -2431,586 +2439,586 @@ pub enum D3D11_Message_ID {
     UpdateSubresource1InvalidCopyFlags,
 
     #[allow(missing_docs)]
-    CreateRasterizerStateInvalidForCEDSampleCount,
+    CreateRasterizerStateInvalidForCedSampleCount,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutOfMemoryReturn,
+    CreateVideoDecoderOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeRNullParam,
+    CreateVideoDecoderNullParam,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeRInvalidFormat,
+    CreateVideoDecoderInvalidFormat,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeRZEROWIDTHHEIGHT,
+    CreateVideoDecoderZeroWidthHeight,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeRDRIVERInvalidBufferSize,
+    CreateVideoDecoderDriverInvalidBufferSize,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeRDRIVERInvalidBufferUsage,
+    CreateVideoDecoderDriverInvalidBufferUsage,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRPROFILECountOutOfMemory,
+    GetVideoDecoderProfileCountOutOfMemory,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRPROFILENullParam,
+    GetVideoDecoderProfileNullParam,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRPROFILEInvalidIndex,
+    GetVideoDecoderProfileInvalidIndex,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRPROFILEOutOfMemoryReturn,
+    GetVideoDecoderProfileOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    CheckVideoDecodeRFormatNullParam,
+    CheckVideoDecoderFormatNullParam,
 
     #[allow(missing_docs)]
-    CheckVideoDecodeRFormatOutOfMemoryReturn,
+    CheckVideoDecoderFormatOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRCOnFIGCountNullParam,
+    GetVideoDecoderConfigCountNullParam,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRCOnFIGCountOutOfMemoryReturn,
+    GetVideoDecoderConfigCountOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRCOnFIGNullParam,
+    GetVideoDecoderConfigNullParam,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRCOnFIGInvalidIndex,
+    GetVideoDecoderConfigInvalidIndex,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRCOnFIGOutOfMemoryReturn,
+    GetVideoDecoderConfigOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    GetDecodeRCREATIOnParamSNullParam,
+    GetDecoderCreationParamsNullParam,
 
     #[allow(missing_docs)]
-    GetDecodeRDRIVERHAndLENullParam,
+    GetDecoderDriverHandleNullParam,
 
     #[allow(missing_docs)]
-    GetDecodeRBufferNullParam,
+    GetDecoderBufferNullParam,
 
     #[allow(missing_docs)]
-    GetDecodeRBufferInvalidBuffer,
+    GetDecoderBufferInvalidBuffer,
 
     #[allow(missing_docs)]
-    GetDecodeRBufferInvalidType,
+    GetDecoderBufferInvalidType,
 
     #[allow(missing_docs)]
-    GetDecodeRBufferLOCKED,
+    GetDecoderBufferLocked,
 
     #[allow(missing_docs)]
-    RELEAsEDecodeRBufferNullParam,
+    ReleaseDecoderBufferNullParam,
 
     #[allow(missing_docs)]
-    RELEAsEDecodeRBufferInvalidType,
+    ReleaseDecoderBufferInvalidType,
 
     #[allow(missing_docs)]
-    RELEAsEDecodeRBufferNotLOCKED,
+    ReleaseDecoderBufferNotLocked,
 
     #[allow(missing_docs)]
-    DecodeRbegInFrameNullParam,
+    DecoderbegInFrameNullParam,
 
     #[allow(missing_docs)]
-    DecodeRbegInFrameHazard,
+    DecoderbegInFrameHazard,
 
     #[allow(missing_docs)]
-    DecodeREndFrameNullParam,
+    DecoderEndFrameNullParam,
 
     #[allow(missing_docs)]
-    SubMITDecodeRBuffersNullParam,
+    SubmitDecoderBuffersNullParam,
 
     #[allow(missing_docs)]
-    SubMITDecodeRBuffersInvalidType,
+    SubmitDecoderBuffersInvalidType,
 
     #[allow(missing_docs)]
-    DecodeREXTENSIOnNullParam,
+    DecoderExtensionNullParam,
 
     #[allow(missing_docs)]
-    DecodeREXTENSIOnInvalidResource,
+    DecoderExtensionInvalidResource,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrENumERATorOutOfMemoryReturn,
+    CreateVideoProcessorEnumeratorOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrENumERATorNullParam,
+    CreateVideoProcessorEnumeratorNullParam,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrENumERATorInvalidFrameFormat,
+    CreateVideoProcessorEnumeratorInvalidFrameFormat,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrENumERATorInvalidUsage,
+    CreateVideoProcessorEnumeratorInvalidUsage,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrENumERATorInvalidInputFrameRate,
+    CreateVideoProcessorEnumeratorInvalidInputFrameRate,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrENumERATorInvalidOutputFrameRate,
+    CreateVideoProcessorEnumeratorInvalidOutputFrameRate,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrENumERATorInvalidWIDTHHEIGHT,
+    CreateVideoProcessorEnumeratorInvalidWidthHeight,
 
     #[allow(missing_docs)]
-    GetVideoProcessOrCOnTENTDescNullParam,
+    GetVideoProcessorContentDescNullParam,
 
     #[allow(missing_docs)]
-    CheckVideoProcessOrFormatNullParam,
+    CheckVideoProcessorFormatNullParam,
 
     #[allow(missing_docs)]
-    GetVideoProcessOrCAPsNullParam,
+    GetVideoProcessorCapsNullParam,
 
     #[allow(missing_docs)]
-    GetVideoProcessOrRateCOnVERsIOnCAPsNullParam,
+    GetVideoProcessorRateConversionCapsNullParam,
 
     #[allow(missing_docs)]
-    GetVideoProcessOrRateCOnVERsIOnCAPsInvalidIndex,
+    GetVideoProcessorRateConversionCapsInvalidIndex,
 
     #[allow(missing_docs)]
-    GetVideoProcessOrCUSTomRateNullParam,
+    GetVideoProcessorCustomRateNullParam,
 
     #[allow(missing_docs)]
-    GetVideoProcessOrCUSTomRateInvalidIndex,
+    GetVideoProcessorCustomRateInvalidIndex,
 
     #[allow(missing_docs)]
-    GetVideoProcessOrFilterRangeNullParam,
+    GetVideoProcessorFilterRangeNullParam,
 
     #[allow(missing_docs)]
-    GetVideoProcessOrFilterRangeUnsupported,
+    GetVideoProcessorFilterRangeUnsupported,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutOfMemoryReturn,
+    CreateVideoProcessorOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrNullParam,
+    CreateVideoProcessorNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputTargetRectNullParam,
+    VideoProcessorSetOutputTargetRectNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputBackGROUNDColorNullParam,
+    VideoProcessorSetOutputBackgroundColorNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputBackGROUNDColorInvalidAlpha,
+    VideoProcessorSetOutputBackgroundColorInvalidAlpha,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputColorSpaceNullParam,
+    VideoProcessorSetOutputColorSpaceNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputAlphaFillModeNullParam,
+    VideoProcessorSetOutputAlphaFillModeNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputAlphaFillModeUnsupported,
+    VideoProcessorSetOutputAlphaFillModeUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputAlphaFillModeInvalidStream,
+    VideoProcessorSetOutputAlphaFillModeInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputAlphaFillModeInvalidFillMode,
+    VideoProcessorSetOutputAlphaFillModeInvalidFillMode,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputCOnSTRICTIOnNullParam,
+    VideoProcessorSetOutputConstrictionNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputSTEREOmODENullParam,
+    VideoProcessorSetOutputStereoModeNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputSTEREOmODEUnsupported,
+    VideoProcessorSetOutputStereoModeUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputEXTENSIOnNullParam,
+    VideoProcessorSetOutputExtensionNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputTargetRectNullParam,
+    VideoProcessorGetOutputTargetRectNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputBackGROUNDColorNullParam,
+    VideoProcessorGetOutputBackgroundColorNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputColorSpaceNullParam,
+    VideoProcessorGetOutputColorSpaceNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputAlphaFillModeNullParam,
+    VideoProcessorGetOutputAlphaFillModeNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputCOnSTRICTIOnNullParam,
+    VideoProcessorGetOutputConstrictionNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputCOnSTRICTIOnUnsupported,
+    VideoProcessorSetOutputConstrictionUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputCOnSTRICTIOnInvalidSize,
+    VideoProcessorSetOutputConstrictionInvalidSize,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputSTEREOmODENullParam,
+    VideoProcessorGetOutputStereoModeNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputEXTENSIOnNullParam,
+    VideoProcessorGetOutputExtensionNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamFrameFormatNullParam,
+    VideoProcessorSetStreamFrameFormatNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamFrameFormatInvalidFormat,
+    VideoProcessorSetStreamFrameFormatInvalidFormat,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamFrameFormatInvalidStream,
+    VideoProcessorSetStreamFrameFormatInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamColorSpaceNullParam,
+    VideoProcessorSetStreamColorSpaceNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamColorSpaceInvalidStream,
+    VideoProcessorSetStreamColorSpaceInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamOutputRateNullParam,
+    VideoProcessorSetStreamOutputRateNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamOutputRateInvalidRate,
+    VideoProcessorSetStreamOutputRateInvalidRate,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamOutputRateInvalidFlag,
+    VideoProcessorSetStreamOutputRateInvalidFlag,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamOutputRateInvalidStream,
+    VideoProcessorSetStreamOutputRateInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamsourceRectNullParam,
+    VideoProcessorSetStreamSourceRectNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamsourceRectInvalidStream,
+    VideoProcessorSetStreamSourceRectInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamsourceRectInvalidRect,
+    VideoProcessorSetStreamSourceRectInvalidRect,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamDestRectNullParam,
+    VideoProcessorSetStreamDestRectNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamDestRectInvalidStream,
+    VideoProcessorSetStreamDestRectInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamDestRectInvalidRect,
+    VideoProcessorSetStreamDestRectInvalidRect,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamAlphaNullParam,
+    VideoProcessorSetStreamAlphaNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamAlphaInvalidStream,
+    VideoProcessorSetStreamAlphaInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamAlphaInvalidAlpha,
+    VideoProcessorSetStreamAlphaInvalidAlpha,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamPaletteNullParam,
+    VideoProcessorSetStreamPaletteNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamPaletteInvalidStream,
+    VideoProcessorSetStreamPaletteInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamPaletteInvalidCount,
+    VideoProcessorSetStreamPaletteInvalidCount,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamPaletteInvalidAlpha,
+    VideoProcessorSetStreamPaletteInvalidAlpha,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamPixelAspectRationullParam,
+    VideoProcessorSetStreamPixelAspectRationullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamPixelAspectRatioInvalidStream,
+    VideoProcessorSetStreamPixelAspectRatioInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamPixelAspectRatioInvalidRatio,
+    VideoProcessorSetStreamPixelAspectRatioInvalidRatio,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamLumaKeyNullParam,
+    VideoProcessorSetStreamLumaKeyNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamLumaKeyInvalidStream,
+    VideoProcessorSetStreamLumaKeyInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamLumaKeyInvalidRange,
+    VideoProcessorSetStreamLumaKeyInvalidRange,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamLumaKeyUnsupported,
+    VideoProcessorSetStreamLumaKeyUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamStereoFormatNullParam,
+    VideoProcessorSetStreamStereoFormatNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamStereoFormatInvalidStream,
+    VideoProcessorSetStreamStereoFormatInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamStereoFormatUnsupported,
+    VideoProcessorSetStreamStereoFormatUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamStereoFormatFLIPUnsupported,
+    VideoProcessorSetStreamStereoFormatFlipUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamStereoFormatMOnoOffsetUnsupported,
+    VideoProcessorSetStreamStereoFormatMonoOffsetUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamStereoFormatFormatUnsupported,
+    VideoProcessorSetStreamStereoFormatFormatUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamStereoFormatInvalidFormat,
+    VideoProcessorSetStreamStereoFormatInvalidFormat,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamAutoProcessingModeNullParam,
+    VideoProcessorSetStreamAutoProcessingModeNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamAutoProcessingModeInvalidStream,
+    VideoProcessorSetStreamAutoProcessingModeInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamFilterNullParam,
+    VideoProcessorSetStreamFilterNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamFilterInvalidStream,
+    VideoProcessorSetStreamFilterInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamFilterInvalidFilter,
+    VideoProcessorSetStreamFilterInvalidFilter,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamFilterUnsupported,
+    VideoProcessorSetStreamFilterUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamFilterInvalidLevel,
+    VideoProcessorSetStreamFilterInvalidLevel,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamEXTENSIOnNullParam,
+    VideoProcessorSetStreamExtensionNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamEXTENSIOnInvalidStream,
+    VideoProcessorSetStreamExtensionInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamFrameFormatNullParam,
+    VideoProcessorGetStreamFrameFormatNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamColorSpaceNullParam,
+    VideoProcessorGetStreamColorSpaceNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamOutputRateNullParam,
+    VideoProcessorGetStreamOutputRateNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamsourceRectNullParam,
+    VideoProcessorGetStreamSourceRectNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamDestRectNullParam,
+    VideoProcessorGetStreamDestRectNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamAlphaNullParam,
+    VideoProcessorGetStreamAlphaNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamPaletteNullParam,
+    VideoProcessorGetStreamPaletteNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamPixelAspectRationullParam,
+    VideoProcessorGetStreamPixelAspectRationullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamLumaKeyNullParam,
+    VideoProcessorGetStreamLumaKeyNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamStereoFormatNullParam,
+    VideoProcessorGetStreamStereoFormatNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamAutoProcessingModeNullParam,
+    VideoProcessorGetStreamAutoProcessingModeNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamFilterNullParam,
+    VideoProcessorGetStreamFilterNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamEXTENSIOnNullParam,
+    VideoProcessorGetStreamExtensionNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamEXTENSIOnInvalidStream,
+    VideoProcessorGetStreamExtensionInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTNullParam,
+    VideoProcessorBltNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidStreamCount,
+    VideoProcessorBltInvalidStreamCount,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTTargetRect,
+    VideoProcessorBltTargetRect,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidOutput,
+    VideoProcessorBltInvalidOutput,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidPastFrameS,
+    VideoProcessorBltInvalidPastFrames,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidFUTUREFrameS,
+    VideoProcessorBltInvalidFutureFrames,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidSourceRect,
+    VideoProcessorBltInvalidSourceRect,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidDestRect,
+    VideoProcessorBltInvalidDestRect,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidInputResource,
+    VideoProcessorBltInvalidInputResource,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidArraySize,
+    VideoProcessorBltInvalidArraySize,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidARRAY,
+    VideoProcessorBltInvalidArray,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTRIGHTEXPECTED,
+    VideoProcessorBltRightExpected,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTRIGHTNotEXPECTED,
+    VideoProcessorBltRightNotExpected,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTSTEREOnotENABLED,
+    VideoProcessorBltStereoNotEnabled,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInvalidRIGHTResource,
+    VideoProcessorBltInvalidRightResource,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTNoSTEREOStreams,
+    VideoProcessorBltNoStereoStreams,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLTInputHazard,
+    VideoProcessorBltInputHazard,
 
     #[allow(missing_docs)]
-    VideoProcessOrBLToutputHazard,
+    VideoProcessorBltOutputHazard,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewOutOfMemoryReturn,
+    CreateVideoDecoderOutputViewOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewNullParam,
+    CreateVideoDecoderOutputViewNullParam,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewInvalidType,
+    CreateVideoDecoderOutputViewInvalidType,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewInvalidBind,
+    CreateVideoDecoderOutputViewInvalidBind,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewUnsupportedFormat,
+    CreateVideoDecoderOutputViewUnsupportedFormat,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewInvalidMip,
+    CreateVideoDecoderOutputViewInvalidMip,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewUNSupportEMip,
+    CreateVideoDecoderOutputViewUnsupportedMip,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewInvalidArraySize,
+    CreateVideoDecoderOutputViewInvalidArraySize,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewInvalidARRAY,
+    CreateVideoDecoderOutputViewInvalidArray,
 
     #[allow(missing_docs)]
-    CreateVideoDecodeROutputViewInvalidDimension,
+    CreateVideoDecoderOutputViewInvalidDimension,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewOutOfMemoryReturn,
+    CreateVideoProcessorInputViewOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewNullParam,
+    CreateVideoProcessorInputViewNullParam,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidType,
+    CreateVideoProcessorInputViewInvalidType,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidBind,
+    CreateVideoProcessorInputViewInvalidBind,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidMisc,
+    CreateVideoProcessorInputViewInvalidMisc,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidUsage,
+    CreateVideoProcessorInputViewInvalidUsage,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidFormat,
+    CreateVideoProcessorInputViewInvalidFormat,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidFOURCC,
+    CreateVideoProcessorInputViewInvalidFourCc,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidMip,
+    CreateVideoProcessorInputViewInvalidMip,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewUnsupportedMip,
+    CreateVideoProcessorInputViewUnsupportedMip,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidArraySize,
+    CreateVideoProcessorInputViewInvalidArraySize,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidARRAY,
+    CreateVideoProcessorInputViewInvalidArray,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidDimension,
+    CreateVideoProcessorInputViewInvalidDimension,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewOutOfMemoryReturn,
+    CreateVideoProcessorOutputViewOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewNullParam,
+    CreateVideoProcessorOutputViewNullParam,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewInvalidType,
+    CreateVideoProcessorOutputViewInvalidType,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewInvalidBind,
+    CreateVideoProcessorOutputViewInvalidBind,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewInvalidFormat,
+    CreateVideoProcessorOutputViewInvalidFormat,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewInvalidMip,
+    CreateVideoProcessorOutputViewInvalidMip,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewUnsupportedMip,
+    CreateVideoProcessorOutputViewUnsupportedMip,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewUnsupportedARRAY,
+    CreateVideoProcessorOutputViewUnsupportedArray,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewInvalidARRAY,
+    CreateVideoProcessorOutputViewInvalidArray,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewInvalidDimension,
+    CreateVideoProcessorOutputViewInvalidDimension,
 
     #[allow(missing_docs)]
-    DeviceDrawInvalidUSEOffOrCEDSampleCount,
+    DeviceDrawInvalidUseOffOrCedsampleCount,
 
     #[allow(missing_docs)]
-    CreateBlendStateInvalidLOGICOps,
+    CreateBlendStateInvalidLogicOps,
 
     #[allow(missing_docs)]
-    CreateShaderResourceViewInvalidDARRAYWithDecodeR,
+    CreateShaderResourceViewInvalidDArrayWithDecoder,
 
     #[allow(missing_docs)]
-    CreateUnorderedAccessViewInvalidDARRAYWithDecodeR,
+    CreateUnorderedAccessViewInvalidDArrayWithDecoder,
 
     #[allow(missing_docs)]
-    CreateRenderTargetViewInvalidDARRAYWithDecodeR,
+    CreateRenderTargetViewInvalidDArrayWithDecoder,
 
     #[allow(missing_docs)]
-    DeviceLOCKEDOUTInterface,
+    DeviceLockedOutInterface,
 
     #[allow(missing_docs)]
-    REFWarningATomICInCOnSISTENT,
+    RefWarningAtomicInconsistent,
 
     #[allow(missing_docs)]
-    REFWarningReadInGUNInitialIZEDResource,
+    RefWarningReadingUninitializedResource,
 
     #[allow(missing_docs)]
-    REFWarningRAWHazard,
+    RefWarningRawHazard,
 
     #[allow(missing_docs)]
-    REFWarningWARHazard,
+    RefWarningWarHazard,
 
     #[allow(missing_docs)]
-    REFWarningWAWHazard,
+    RefWarningWawHazard,
 
     #[allow(missing_docs)]
     CreateCryptoSessionNullParam,
@@ -3022,121 +3030,121 @@ pub enum D3D11_Message_ID {
     GetCryptoTypeNullParam,
 
     #[allow(missing_docs)]
-    GetDecodeRPROFILENullParam,
+    GetDecoderProfileNullParam,
 
     #[allow(missing_docs)]
-    GetCryptoSessionCERTIFICATESizeNullParam,
+    GetCryptoSessionCertificateSizeNullParam,
 
     #[allow(missing_docs)]
-    GetCryptoSessionCERTIFICATENullParam,
+    GetCryptoSessionCertificateNullParam,
 
     #[allow(missing_docs)]
-    GetCryptoSessionCERTIFICATEWROnGSize,
+    GetCryptoSessionCertificateWrongSize,
 
     #[allow(missing_docs)]
-    GetCryptoSessionHAndLEWROnGSize,
+    GetCryptoSessionHandleWrongSize,
 
     #[allow(missing_docs)]
-    NegotiateCRPYToSessionKeyExchangeNullParam,
+    NegotiateCryptoSessionKeyExchangeNullParam,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTUnsupported,
+    EncryptionBltUnsupported,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTNullParam,
+    EncryptionBltNullParam,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTSrcWROnGDevice,
+    EncryptionBltSrcWrongDevice,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTDstWROnGDevice,
+    EncryptionBltDstWrongDevice,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTFormatMismatch,
+    EncryptionBltFormatMismatch,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTSizeMismatch,
+    EncryptionBltSizeMismatch,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTSrcMultiSampleD,
+    EncryptionBltSrcMultiSampleD,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTDstNotSTAGInG,
+    EncryptionBltDstNotStaging,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTSrcMapped,
+    EncryptionBltSrcMapped,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTDstMapped,
+    EncryptionBltDstMapped,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTSrcOffERED,
+    EncryptionBltSrcOffered,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTDstoffERED,
+    EncryptionBltDstOffered,
 
     #[allow(missing_docs)]
-    ENCRYPTIOnBLTSrcCOnTENTUndefined,
+    EncryptionBltSrcContentUndefined,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTUnsupported,
+    DecryptionBltUnsupported,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTNullParam,
+    DecryptionBltNullParam,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTSrcWROnGDevice,
+    DecryptionBltSrcWrongDevice,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTDstWROnGDevice,
+    DecryptionBltDstWrongDevice,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTFormatMismatch,
+    DecryptionBltFormatMismatch,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTSizeMismatch,
+    DecryptionBltSizeMismatch,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTDstMultiSampleD,
+    DecryptionBltDstMultiSampleD,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTSrcNotSTAGInG,
+    DecryptionBltSrcNotStaging,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTDstNotRenderTarget,
+    DecryptionBltDstNotRenderTarget,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTSrcMapped,
+    DecryptionBltSrcMapped,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTDstMapped,
+    DecryptionBltDstMapped,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTSrcOffERED,
+    DecryptionBltSrcOffered,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTDstoffERED,
+    DecryptionBltDstOffered,
 
     #[allow(missing_docs)]
-    DECRYPTIOnBLTSrcCOnTENTUndefined,
+    DecryptionBltSrcContentUndefined,
 
     #[allow(missing_docs)]
-    StartSessionKeyREFRESHNullParam,
+    StartSessionKeyRefreshNullParam,
 
     #[allow(missing_docs)]
-    StartSessionKeyREFRESHInvalidSize,
+    StartSessionKeyRefreshInvalidSize,
 
     #[allow(missing_docs)]
-    FinishSessionKeyREFRESHNullParam,
+    FinishSessionKeyRefreshNullParam,
 
     #[allow(missing_docs)]
-    GetENCRYPTIOnBLTKeyNullParam,
+    GetEncryptionBltKeyNullParam,
 
     #[allow(missing_docs)]
-    GetENCRYPTIOnBLTKeyInvalidSize,
+    GetEncryptionBltKeyInvalidSize,
 
     #[allow(missing_docs)]
-    GetCOnTENTProtectionCAPsNullParam,
+    GetContentProtectionCapsNullParam,
 
     #[allow(missing_docs)]
     CheckCryptoKeyExchangeNullParam,
@@ -3157,19 +3165,19 @@ pub enum D3D11_Message_ID {
     CreateAuthenticatedChannelOutOfMemoryReturn,
 
     #[allow(missing_docs)]
-    GetAuthenticatedChannelCERTIFICATESizeInvalidChannel,
+    GetAuthenticatedChannelCertificateSizeInvalidChannel,
 
     #[allow(missing_docs)]
-    GetAuthenticatedChannelCERTIFICATESizeNullParam,
+    GetAuthenticatedChannelCertificateSizeNullParam,
 
     #[allow(missing_docs)]
-    GetAuthenticatedChannelCERTIFICATEInvalidChannel,
+    GetAuthenticatedChannelCertificateInvalidChannel,
 
     #[allow(missing_docs)]
-    GetAuthenticatedChannelCERTIFICATENullParam,
+    GetAuthenticatedChannelCertificateNullParam,
 
     #[allow(missing_docs)]
-    GetAuthenticatedChannelCERTIFICATEWROnGSize,
+    GetAuthenticatedChannelCertificateWrongSize,
 
     #[allow(missing_docs)]
     NegotiateAuthenticatedChannelKeyExchangeInvalidChannel,
@@ -3181,40 +3189,40 @@ pub enum D3D11_Message_ID {
     QueryAuthenticatedChannelNullParam,
 
     #[allow(missing_docs)]
-    QueryAuthenticatedChannelWROnGChannel,
+    QueryAuthenticatedChannelWrongChannel,
 
     #[allow(missing_docs)]
     QueryAuthenticatedChannelUnsupportedQuery,
 
     #[allow(missing_docs)]
-    QueryAuthenticatedChannelWROnGSize,
+    QueryAuthenticatedChannelWrongSize,
 
     #[allow(missing_docs)]
     QueryAuthenticatedChannelInvalidProcessIndex,
 
     #[allow(missing_docs)]
-    COnFIGUREAuthenticatedChannelNullParam,
+    ConfigureAuthenticatedChannelNullParam,
 
     #[allow(missing_docs)]
-    COnFIGUREAuthenticatedChannelWROnGChannel,
+    ConfigureAuthenticatedChannelWrongChannel,
 
     #[allow(missing_docs)]
-    COnFIGUREAuthenticatedChannelUnsupportedCOnFIGURE,
+    ConfigureAuthenticatedChannelUnsupportedConfigure,
 
     #[allow(missing_docs)]
-    COnFIGUREAuthenticatedChannelWROnGSize,
+    ConfigureAuthenticatedChannelWrongSize,
 
     #[allow(missing_docs)]
-    COnFIGUREAuthenticatedChannelInvalidProcessIDType,
+    ConfigureAuthenticatedChannelInvalidProcessIdType,
 
     #[allow(missing_docs)]
     VsSetConstantBuffersInvalidBufferOffsetOrCount,
 
     #[allow(missing_docs)]
-    DSSetConstantBuffersInvalidBufferOffsetOrCount,
+    DsSetConstantBuffersInvalidBufferOffsetOrCount,
 
     #[allow(missing_docs)]
-    HSSetConstantBuffersInvalidBufferOffsetOrCount,
+    HsSetConstantBuffersInvalidBufferOffsetOrCount,
 
     #[allow(missing_docs)]
     GsSetConstantBuffersInvalidBufferOffsetOrCount,
@@ -3226,118 +3234,118 @@ pub enum D3D11_Message_ID {
     CsSetConstantBuffersInvalidBufferOffsetOrCount,
 
     #[allow(missing_docs)]
-    NegotiateCRPYToSessionKeyExchangeInvalidSize,
+    NegotiateCryptoSessionKeyExchangeInvalidSize,
 
     #[allow(missing_docs)]
     NegotiateAuthenticatedChannelKeyExchangeInvalidSize,
 
     #[allow(missing_docs)]
-    OffERResourcesInvalidPRIOrITY,
+    OfferResourcesInvalidPriority,
 
     #[allow(missing_docs)]
-    GetCryptoSessionHAndLEOutOfMemory,
+    GetCryptoSessionHandleOutOfMemory,
 
     #[allow(missing_docs)]
-    ACQUIREHAndLEForCAPTURENullParam,
+    AcquireHandleForCaptureNullParam,
 
     #[allow(missing_docs)]
-    ACQUIREHAndLEForCAPTUREInvalidType,
+    AcquireHandleForCaptureInvalidType,
 
     #[allow(missing_docs)]
-    ACQUIREHAndLEForCAPTUREInvalidBind,
+    AcquireHandleForCaptureInvalidBind,
 
     #[allow(missing_docs)]
-    ACQUIREHAndLEForCAPTUREInvalidARRAY,
+    AcquireHandleForCaptureInvalidArray,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamRotationNullParam,
+    VideoProcessorSetStreamRotationNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamRotationInvalidStream,
+    VideoProcessorSetStreamRotationInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamRotationInvalid,
+    VideoProcessorSetStreamRotationInvalid,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamRotationUnsupported,
+    VideoProcessorSetStreamRotationUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamRotationNullParam,
+    VideoProcessorGetStreamRotationNullParam,
 
     #[allow(missing_docs)]
     DeviceClearViewInvalidView,
 
     #[allow(missing_docs)]
-    DeviceCreateVertexShaderDoubleEXTENSIOnSNotSupported,
+    DeviceCreateVertexShaderDoubleExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateVertexShaderShaderEXTENSIOnSNotSupported,
+    DeviceCreateVertexShaderShaderExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateHullShaderDoubleEXTENSIOnSNotSupported,
+    DeviceCreateHullShaderDoubleExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateHullShaderShaderEXTENSIOnSNotSupported,
+    DeviceCreateHullShaderShaderExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateDomainShaderDoubleEXTENSIOnSNotSupported,
+    DeviceCreateDomainShaderDoubleExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateDomainShaderShaderEXTENSIOnSNotSupported,
+    DeviceCreateDomainShaderShaderExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateGeometryShaderDoubleEXTENSIOnSNotSupported,
+    DeviceCreateGeometryShaderDoubleExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateGeometryShaderShaderEXTENSIOnSNotSupported,
+    DeviceCreateGeometryShaderShaderExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateGeometryShaderWithStreamOutputDoubleEXTENSIOnSNotSupported,
+    DeviceCreateGeometryShaderWithStreamOutputDoubleExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateGeometryShaderWithStreamOutputShaderEXTENSIOnSNotSupported,
+    DeviceCreateGeometryShaderWithStreamOutputShaderExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreatePixelShaderDoubleEXTENSIOnSNotSupported,
+    DeviceCreatePixelShaderDoubleExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreatePixelShaderShaderEXTENSIOnSNotSupported,
+    DeviceCreatePixelShaderShaderExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateComputeShaderDoubleEXTENSIOnSNotSupported,
+    DeviceCreateComputeShaderDoubleExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateComputeShaderShaderEXTENSIOnSNotSupported,
+    DeviceCreateComputeShaderShaderExtensionsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceShaderLinkageMInPRECISIOn,
+    DeviceShaderLinkageMinPrecision,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamAlphaUnsupported,
+    VideoProcessorSetStreamAlphaUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamPixelAspectRatioUnsupported,
+    VideoProcessorSetStreamPixelAspectRatioUnsupported,
 
     #[allow(missing_docs)]
-    DeviceCreateVertexShaderUAVsNotSupported,
+    DeviceCreateVertexShaderUavsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateHullShaderUAVsNotSupported,
+    DeviceCreateHullShaderUavsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateDomainShaderUAVsNotSupported,
+    DeviceCreateDomainShaderUavsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateGeometryShaderUAVsNotSupported,
+    DeviceCreateGeometryShaderUavsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateGeometryShaderWithStreamOutputUAVsNotSupported,
+    DeviceCreateGeometryShaderWithStreamOutputUavsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreatePixelShaderUAVsNotSupported,
+    DeviceCreatePixelShaderUavsNotSupported,
 
     #[allow(missing_docs)]
-    DeviceCreateComputeShaderUAVsNotSupported,
+    DeviceCreateComputeShaderUavsNotSupported,
 
     #[allow(missing_docs)]
     DeviceOmSetRenderTargetsAndUnorderedAccessViewsInvalidOffset,
@@ -3349,40 +3357,40 @@ pub enum D3D11_Message_ID {
     DeviceClearViewNotSupported,
 
     #[allow(missing_docs)]
-    SWAPDeviceContextStateNotSupported,
+    SwapDeviceContextStateNotSupported,
 
     #[allow(missing_docs)]
-    UpdateSubresourcePREFERUpdateSubresource1,
+    UpdateSubresourcePreferUpdateSubresource1,
 
     #[allow(missing_docs)]
-    GetDCInAccessIBLE,
+    GetDcInaccessible,
 
     #[allow(missing_docs)]
     DeviceClearViewInvalidRect,
 
     #[allow(missing_docs)]
-    DeviceDrawSampleMaskIGNorEDOnFL9,
+    DeviceDrawSampleMaskIgnoredOnFl9,
 
     #[allow(missing_docs)]
-    DeviceOpENSharedResource1NotSupported,
+    DeviceOpenSharedResource1NotSupported,
 
     #[allow(missing_docs)]
-    DeviceOpENSharedResourceBYNAMENotSupported,
+    DeviceOpenSharedResourceByNameNotSupported,
 
     #[allow(missing_docs)]
-    ENQUEUESetEVENTNotSupported,
+    EnqueueSetEventNotSupported,
 
     #[allow(missing_docs)]
-    OffERRELEAsENotSupported,
+    OfferReleaseNotSupported,
 
     #[allow(missing_docs)]
-    OffERResourcesInAccessIBLE,
+    OfferResourcesInaccessible,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrInputViewInvalidMSAA,
+    CreateVideoProcessorInputViewInvalidMsaa,
 
     #[allow(missing_docs)]
-    CreateVideoProcessOrOutputViewInvalidMSAA,
+    CreateVideoProcessorOutputViewInvalidMsaa,
 
     #[allow(missing_docs)]
     DeviceClearViewInvalidSourceRect,
@@ -3397,7 +3405,7 @@ pub enum D3D11_Message_ID {
     CopySubresourceRegionEmptySourceBox,
 
     #[allow(missing_docs)]
-    DeviceDrawOmRenderTargetDOESNotSupportLOGICOps,
+    DeviceDrawOmRenderTargetDoesNotSupportLogicOps,
 
     #[allow(missing_docs)]
     DeviceDrawDepthstencilViewNotSet,
@@ -3406,118 +3414,118 @@ pub enum D3D11_Message_ID {
     DeviceDrawRenderTargetViewNotSet,
 
     #[allow(missing_docs)]
-    DeviceDrawRenderTargetViewNotSetDUEToFLIPPRESENT,
+    DeviceDrawRenderTargetViewNotSetDueToFlipPresent,
 
     #[allow(missing_docs)]
-    DeviceUnorderedAccessViewNotSetDUEToFLIPPRESENT,
+    DeviceUnorderedAccessViewNotSetDueToFlipPresent,
 
     #[allow(missing_docs)]
-    GetDataForNEWHardwareKeyNullParam,
+    GetDataForNewHardwareKeyNullParam,
 
     #[allow(missing_docs)]
-    CheckCryptoSessionSTATUSNullParam,
+    CheckCryptoSessionStatusNullParam,
 
     #[allow(missing_docs)]
     GetCryptoSessionPrivateDataSizeNullParam,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRCAPsNullParam,
+    GetVideoDecoderCapsNullParam,
 
     #[allow(missing_docs)]
-    GetVideoDecodeRCAPsZEROWIDTHHEIGHT,
+    GetVideoDecoderCapsZeroWidthHeight,
 
     #[allow(missing_docs)]
-    CheckVideoDecodeRDownSAMPLInGNullParam,
+    CheckVideoDecoderDownSamplingNullParam,
 
     #[allow(missing_docs)]
-    CheckVideoDecodeRDownSAMPLInGInvalidColorSpace,
+    CheckVideoDecoderDownSamplingInvalidColorSpace,
 
     #[allow(missing_docs)]
-    CheckVideoDecodeRDownSAMPLInGZEROWIDTHHEIGHT,
+    CheckVideoDecoderDownSamplingZeroWidthHeight,
 
     #[allow(missing_docs)]
-    VideoDecodeRENABLEDownSAMPLInGNullParam,
+    VideoDecoderEnabledownSamplingNullParam,
 
     #[allow(missing_docs)]
-    VideoDecodeRENABLEDownSAMPLInGUnsupported,
+    VideoDecoderEnabledownSamplingUnsupported,
 
     #[allow(missing_docs)]
-    VideoDecodeRUpdateDownSAMPLInGNullParam,
+    VideoDecoderUpdateDownSamplingNullParam,
 
     #[allow(missing_docs)]
-    VideoDecodeRUpdateDownSAMPLInGUnsupported,
+    VideoDecoderUpdateDownSamplingUnsupported,
 
     #[allow(missing_docs)]
-    CheckVideoProcessOrFormatCOnVERsIOnNullParam,
+    CheckVideoProcessorFormatConversionNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputColorSpace1NullParam,
+    VideoProcessorSetOutputColorSpace1NullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputColorSpace1NullParam,
+    VideoProcessorGetOutputColorSpace1NullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamColorSpace1NullParam,
+    VideoProcessorSetStreamColorSpace1NullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamColorSpace1InvalidStream,
+    VideoProcessorSetStreamColorSpace1InvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamMirrorNullParam,
+    VideoProcessorSetStreamMirrorNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamMirrorInvalidStream,
+    VideoProcessorSetStreamMirrorInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamMirrorUnsupported,
+    VideoProcessorSetStreamMirrorUnsupported,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamColorSpace1NullParam,
+    VideoProcessorGetStreamColorSpace1NullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamMirrorNullParam,
+    VideoProcessorGetStreamMirrorNullParam,
 
     #[allow(missing_docs)]
-    RECOmMEndVideoDecodeRDownSAMPLInGNullParam,
+    RecommendVideoDecoderDownSamplingNullParam,
 
     #[allow(missing_docs)]
-    RECOmMEndVideoDecodeRDownSAMPLInGInvalidColorSpace,
+    RecommendVideoDecoderDownSamplingInvalidColorSpace,
 
     #[allow(missing_docs)]
-    RECOmMEndVideoDecodeRDownSAMPLInGZEROWIDTHHEIGHT,
+    RecommendVideoDecoderDownSamplingZeroWidthHeight,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputShaderUsageNullParam,
+    VideoProcessorSetOutputShaderUsageNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputShaderUsageNullParam,
+    VideoProcessorGetOutputShaderUsageNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetBEHAVIOrHInTSNullParam,
+    VideoProcessorGetBehaviorHintsNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetBEHAVIOrHInTSInvalidStreamCount,
+    VideoProcessorGetBehaviorHintsInvalidStreamCount,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetBEHAVIOrHInTSTargetRect,
+    VideoProcessorGetBehaviorHintsTargetRect,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetBEHAVIOrHInTSInvalidSourceRect,
+    VideoProcessorGetBehaviorHintsInvalidSourceRect,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetBEHAVIOrHInTSInvalidDestRect,
+    VideoProcessorGetBehaviorHintsInvalidDestRect,
 
     #[allow(missing_docs)]
     GetCryptoSessionPrivateDataSizeInvalidKeyExchangeType,
 
     #[allow(missing_docs)]
-    DeviceOpENSharedResource1AccessDENIED,
+    DeviceOpenSharedResource1AccessDenied,
 
     #[allow(missing_docs)]
     D3D111MessageSend,
 
     #[allow(missing_docs)]
-    D3D112MessageSStart,
+    D3D112MessagesStart,
 
     #[allow(missing_docs)]
     CreateBufferInvalidUsage,
@@ -3532,7 +3540,7 @@ pub enum D3D11_Message_ID {
     CreateInputLayoutLevel9StepRateNot1,
 
     #[allow(missing_docs)]
-    CreateInputLayoutLevel9InSTANCInGNotSupported,
+    CreateInputLayoutLevel9InstancingNotSupported,
 
     #[allow(missing_docs)]
     UpdateTileMappingsInvalidParameter,
@@ -3592,7 +3600,7 @@ pub enum D3D11_Message_ID {
     CreateDeviceWarning,
 
     #[allow(missing_docs)]
-    ClearUnorderedAccessViewUInTHazard,
+    ClearUnorderedAccessViewUIntHazard,
 
     #[allow(missing_docs)]
     ClearUnorderedAccessViewFloatHazard,
@@ -3622,7 +3630,7 @@ pub enum D3D11_Message_ID {
     D3D112MessageSend,
 
     #[allow(missing_docs)]
-    D3D113MessageSStart,
+    D3D113MessagesStart,
 
     #[allow(missing_docs)]
     CreateRasterizerStateInvalidConservativeRasterMode,
@@ -3643,28 +3651,28 @@ pub enum D3D11_Message_ID {
     CreateShaderResourceViewInvalidPlaneIndex,
 
     #[allow(missing_docs)]
-    CreateShaderResourceViewInvalidVideopLaneIndex,
+    CreateShaderResourceViewInvalidVideoPlaneIndex,
 
     #[allow(missing_docs)]
-    CreateShaderResourceViewAmbiguousVideopLaneIndex,
+    CreateShaderResourceViewAmbiguousVideoPlaneIndex,
 
     #[allow(missing_docs)]
     CreateRenderTargetViewInvalidPlaneIndex,
 
     #[allow(missing_docs)]
-    CreateRenderTargetViewInvalidVideopLaneIndex,
+    CreateRenderTargetViewInvalidVideoPlaneIndex,
 
     #[allow(missing_docs)]
-    CreateRenderTargetViewAmbiguousVideopLaneIndex,
+    CreateRenderTargetViewAmbiguousVideoPlaneIndex,
 
     #[allow(missing_docs)]
     CreateUnorderedAccessViewInvalidPlaneIndex,
 
     #[allow(missing_docs)]
-    CreateUnorderedAccessViewInvalidVideopLaneIndex,
+    CreateUnorderedAccessViewInvalidVideoPlaneIndex,
 
     #[allow(missing_docs)]
-    CreateUnorderedAccessViewAmbiguousVideopLaneIndex,
+    CreateUnorderedAccessViewAmbiguousVideoPlaneIndex,
 
     #[allow(missing_docs)]
     JpegDecodeInvalidScanDataOffset,
@@ -3835,79 +3843,79 @@ pub enum D3D11_Message_ID {
     DeviceSetHardwareProtectionInvalidContext,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputHdrMetadataNullParam,
+    VideoProcessorSetOutputHdrMetadataNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetOutputHdrMetadataInvalidSize,
+    VideoProcessorSetOutputHdrMetadataInvalidSize,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputHdrMetadataNullParam,
+    VideoProcessorGetOutputHdrMetadataNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetOutputHdrMetadataInvalidSize,
+    VideoProcessorGetOutputHdrMetadataInvalidSize,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamHdrMetadataNullParam,
+    VideoProcessorSetStreamHdrMetadataNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamHdrMetadataInvalidStream,
+    VideoProcessorSetStreamHdrMetadataInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrSetStreamHdrMetadataInvalidSize,
+    VideoProcessorSetStreamHdrMetadataInvalidSize,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamHdrMetadataNullParam,
+    VideoProcessorGetStreamHdrMetadataNullParam,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamHdrMetadataInvalidStream,
+    VideoProcessorGetStreamHdrMetadataInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamHdrMetadataInvalidSize,
+    VideoProcessorGetStreamHdrMetadataInvalidSize,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamFrameFormatInvalidStream,
+    VideoProcessorGetStreamFrameFormatInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamColorSpaceInvalidStream,
+    VideoProcessorGetStreamColorSpaceInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamOutputRateInvalidStream,
+    VideoProcessorGetStreamOutputRateInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamsourceRectInvalidStream,
+    VideoProcessorGetStreamSourceRectInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamDestRectInvalidStream,
+    VideoProcessorGetStreamDestRectInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamAlphaInvalidStream,
+    VideoProcessorGetStreamAlphaInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamPaletteInvalidStream,
+    VideoProcessorGetStreamPaletteInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamPixelAspectRatioInvalidStream,
+    VideoProcessorGetStreamPixelAspectRatioInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamLumaKeyInvalidStream,
+    VideoProcessorGetStreamLumaKeyInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamStereoFormatInvalidStream,
+    VideoProcessorGetStreamStereoFormatInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamAutoProcessingModeInvalidStream,
+    VideoProcessorGetStreamAutoProcessingModeInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamFilterInvalidStream,
+    VideoProcessorGetStreamFilterInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamRotationInvalidStream,
+    VideoProcessorGetStreamRotationInvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamColorSpace1InvalidStream,
+    VideoProcessorGetStreamColorSpace1InvalidStream,
 
     #[allow(missing_docs)]
-    VideoProcessOrGetStreamMirrorInvalidStream,
+    VideoProcessorGetStreamMirrorInvalidStream,
 
     #[allow(missing_docs)]
     CreateFence,
@@ -3934,7 +3942,7 @@ pub enum D3D11_Message_ID {
     D3D113MessageSend,
 
     #[allow(missing_docs)]
-    D3D115MessageSStart,
+    D3D115MessagesStart,
 
     #[allow(missing_docs)]
     NegotiateCryptoSessionKeyExchangeMtInvalidKeyExchangeType,
@@ -3943,22 +3951,22 @@ pub enum D3D11_Message_ID {
     NegotiateCryptoSessionKeyExchangeMtNotSupported,
 
     #[allow(missing_docs)]
-    DecodeRbegInFrameInvalidHistogramComponentCount,
+    DecoderbegInFrameInvalidHistogramComponentCount,
 
     #[allow(missing_docs)]
-    DecodeRbegInFrameInvalidHistogramComponent,
+    DecoderbegInFrameInvalidHistogramComponent,
 
     #[allow(missing_docs)]
-    DecodeRbegInFrameInvalidHistogramBufferSize,
+    DecoderbegInFrameInvalidHistogramBufferSize,
 
     #[allow(missing_docs)]
-    DecodeRbegInFrameInvalidHistogramBufferUsage,
+    DecoderbegInFrameInvalidHistogramBufferUsage,
 
     #[allow(missing_docs)]
-    DecodeRbegInFrameInvalidHistogramBufferMiscFlags,
+    DecoderbegInFrameInvalidHistogramBufferMiscFlags,
 
     #[allow(missing_docs)]
-    DecodeRbegInFrameInvalidHistogramBufferOffset,
+    DecoderbegInFrameInvalidHistogramBufferOffset,
 
     #[allow(missing_docs)]
     CreateTrackedWorkload,
@@ -3988,7 +3996,7 @@ pub enum D3D11_Message_ID {
     MutipleTrackedWorkloadPairs,
 
     #[allow(missing_docs)]
-    InCOmPLETETrackedWorkloadPair,
+    IncompleteTrackedWorkloadPair,
 
     #[allow(missing_docs)]
     OutOfOrderTrackedWorkloadPair,
