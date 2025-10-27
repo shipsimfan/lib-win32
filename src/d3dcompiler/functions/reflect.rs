@@ -1,8 +1,5 @@
-use crate::{HRESULT, LPCVOID, REFIID, SIZE_T};
+use crate::{d3d11shader::ID3D11ShaderReflection, HRESULT, LPCVOID, REFIID, SIZE_T};
 use std::ffi::c_void;
-
-#[cfg(feature = "d3d11")]
-use crate::d3d11shader::ID3D11ShaderReflection;
 
 #[link(name = "D3dcompiler")]
 extern "system" {

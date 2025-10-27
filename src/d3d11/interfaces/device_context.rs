@@ -23,7 +23,7 @@ use crate::d3d11_1::{ID3D11DeviceContext1, D3D11_1_UAV_SLOT_COUNT};
 use crate::d3d11shader::{
     ID3D11ShaderReflection, ID3D11ShaderReflectionConstantBuffer, ID3D11ShaderReflectionVariable,
 };
-#[cfg(feature = "d3dcompiler")]
+#[cfg(all(feature = "d3dcompiler", feature = "d3d11shader"))]
 #[allow(unused_imports)]
 use crate::d3dcompiler::D3D11Reflect;
 #[allow(unused_imports)]
