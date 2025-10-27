@@ -11,7 +11,7 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-#[cfg(feature = "d3d11")]
+#[cfg(feature = "d3d11_1")]
 use crate::d3d11_1::ID3D11Device1;
 #[allow(unused_imports)]
 #[cfg(feature = "d3dcommon")]

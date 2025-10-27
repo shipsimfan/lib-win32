@@ -12,10 +12,10 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 #[cfg(feature = "d3d11")]
-use crate::{
-    d3d11::{ID3D11Device, ID3D11Texture2D, D3D11_RESOURCE_MISC_FLAG},
-    d3d11_1::ID3D11Device1,
-};
+use crate::d3d11::{ID3D11Device, ID3D11Texture2D, D3D11_RESOURCE_MISC_FLAG};
+#[allow(unused_imports)]
+#[cfg(feature = "d3d11_1")]
+use crate::d3d11_1::ID3D11Device1;
 #[allow(unused_imports)]
 use crate::{
     dxgi::{IDXGIDevice, IDXGISurface, IDXGISurface1},
