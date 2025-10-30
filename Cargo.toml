@@ -10,7 +10,7 @@ publish = false
 
 [features]
 d3dcommon = []
-d3dcompiler = []
+d3dcompiler = ["d3dcommon"]
 
 dxgi = []
 dxgi1_2 = ["dxgi"]
