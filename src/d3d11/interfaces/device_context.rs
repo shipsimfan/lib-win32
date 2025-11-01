@@ -10,7 +10,7 @@ use crate::{
     },
     dxgi::DXGI_FORMAT,
     unknwn::{IUnknown, IUnknownTrait},
-    BOOL, FLOAT, HRESULT, INT, UINT,
+    BOOL, FLOAT, HRESULT, INT, UINT, UINT8,
 };
 use std::ffi::c_void;
 
@@ -30,9 +30,10 @@ use crate::d3dcompiler::D3D11Reflect;
 use crate::{
     d3d11::{
         D3D11CalcSubresource, ID3D11Device, D3D11_ASYNC_GETDATA_FLAG, D3D11_BIND_FLAG, D3D11_BLEND,
-        D3D11_BUFFER_DESC, D3D11_BUFFER_UAV_FLAG, D3D11_COUNTER, D3D11_DEPTH_STENCIL_DESC,
-        D3D11_INPUT_CLASSIFICATION, D3D11_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL,
-        D3D11_KEEP_UNORDERED_ACCESS_VIEWS, D3D11_MAP_FLAG, D3D11_QUERY, D3D11_RESOURCE_MISC_FLAG,
+        D3D11_BUFFER_DESC, D3D11_BUFFER_UAV_FLAG, D3D11_CLEAR_FLAG, D3D11_COUNTER,
+        D3D11_DEPTH_STENCIL_DESC, D3D11_INPUT_CLASSIFICATION,
+        D3D11_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL, D3D11_KEEP_UNORDERED_ACCESS_VIEWS,
+        D3D11_MAP_FLAG, D3D11_QUERY, D3D11_RESOURCE_MISC_FLAG,
         D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT, D3D11_VIEWPORT,
     },
     d3dcommon::D3D_FEATURE_LEVEL,
@@ -1376,7 +1377,57 @@ com_interface!(
         fn clear_render_target_view(
             &mut self,
             render_target_view: *mut ID3D11RenderTargetView,
-            color_rgba: *const FLOAT
+            color_rgba: [FLOAT; 4]
+        );
+
+        /// Clears an unordered access resource with bit-precise values.
+        ///
+        /// # Parameters
+        ///  * `unordered_access_view` - The [`ID3D11UnorderedAccessView`] to clear.
+        ///  * `values` - Values to copy to corresponding channels, see remarks.
+        ///
+        /// # Remarks
+        /// This API copies the lower `n_i` bits from each array element `i` to the corresponding
+        /// channel, where `n_i` is the number of bits in the ith channel of the resource format
+        /// (for example, [`DXGI_FORMAT::R8G8B8Float`] has 8 bits for the first 3 channels). This
+        /// works on any UAV with no format conversion. For a raw or structured buffer view, only
+        /// the first array element value is used.
+        fn clear_unordered_access_view_uint(
+            &mut self,
+            unordered_access_view: *mut ID3D11UnorderedAccessView,
+            values: [UINT; 4]
+        );
+
+        /// Clears an unordered access resource with a float value.
+        ///
+        /// # Parameters
+        ///  * `unordered_access_view` - The [`ID3D11UnorderedAccessView`] to clear.
+        ///  * `values` - Values to copy to corresponding channels, see remarks.
+        ///
+        /// # Remarks
+        /// This API works on `FLOAT`, `UNORM`, and `SNORM` unordered access views (UAVs), with
+        /// format conversion from `FLOAT` to `*NORM` where appropriate. On other UAVs, the
+        /// operation is invalid and the call will not reach the driver.
+        fn clear_unordered_access_view_float(
+            &mut self,
+            unordered_access_view: *mut ID3D11UnorderedAccessView,
+            values: [FLOAT; 4]
+        );
+
+        /// Clears the depth-stencil resource.
+        ///
+        /// # Parameters
+        ///  * `depth_stencil_view` - Pointer to the depth stencil to be cleared.
+        ///  * `clear_flags` - Identify the type of data to clear (see [`D3D11_CLEAR_FLAG`]).
+        ///  * `depth` - Clear the depth buffer with this value. This value will be clamped between
+        ///              0 and 1.
+        ///  * `stencil` - Clear the stencil buffer with this value.
+        fn clear_depth_stencil_view(
+            &mut self,
+            depth_stencil_view: *mut ID3D11DepthStencilView,
+            clear_flags: UINT,
+            depth: FLOAT,
+            stencil: UINT8
         );
     }
 );
