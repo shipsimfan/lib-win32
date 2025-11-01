@@ -20,5 +20,5 @@ pub enum D3D11_COLOR_WRITE_ENABLE {
     Alpha = 8,
 
     /// Allow data to be stored in all components.
-    All,
+    All = 15,
 }
