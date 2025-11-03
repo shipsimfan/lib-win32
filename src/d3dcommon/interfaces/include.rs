@@ -13,7 +13,7 @@ com_interface!(
     /// # Remarks
     /// To use this interface, create an interface that inherits from [`ID3DInclude`] and implement
     /// custom behavior for the methods.
-    pub abstract ID3DInclude(ID3DIncludeVTable/ID3DIncludeTrait) {
+    pub abstract ID3DInclude(ID3DIncludeVTable) {
         const IID = 0x00000000-0x0000-0x0000-0x0000-0x000000000000;
 
         /// A user-implemented method for opening and reading the contents of a shader `#include`

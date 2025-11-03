@@ -3,7 +3,7 @@
 macro_rules! com_interface {
     (
         $(#[$meta: meta])*
-        $vis: vis abstract $struct_name: ident($vtable_name: ident)$(: $first_super_type: ident($first_super_name: ident))* {
+        $vis: vis abstract $struct_name: ident($vtable_name: ident)$(: $first_super_type: ident($first_super_name: ident))*$( + $super_type: ident)* {
             const IID = $iid1: literal - $iid2: literal - $iid3: literal - $iid4: literal - $iid5: literal;
 
             $(
@@ -62,6 +62,18 @@ macro_rules! com_interface {
             };
         }
 
+        impl AsRef<$struct_name> for $struct_name {
+            fn as_ref(&self) -> &$struct_name {
+                self
+            }
+        }
+
+        impl AsMut<$struct_name> for $struct_name {
+            fn as_mut(&mut self) -> &mut $struct_name {
+                self
+            }
+        }
+
         $(
             impl std::ops::Deref for $struct_name {
                 type Target = $first_super_type;
@@ -76,6 +88,32 @@ macro_rules! com_interface {
                     unsafe { std::mem::transmute(self) }
                 }
             }
+
+            impl AsRef<$first_super_type> for $struct_name {
+                fn as_ref(&self) -> &$first_super_type {
+                    unsafe { std::mem::transmute(self) }
+                }
+            }
+
+            impl AsMut<$first_super_type> for $struct_name {
+                fn as_mut(&mut self) -> &mut $first_super_type {
+                    unsafe { std::mem::transmute(self) }
+                }
+            }
+        )*
+
+        $(
+            impl AsRef<$super_type> for $struct_name {
+                fn as_ref(&self) -> &$super_type {
+                    unsafe { std::mem::transmute(self) }
+                }
+            }
+
+            impl AsMut<$super_type> for $struct_name {
+                fn as_mut(&mut self) -> &mut $super_type {
+                    unsafe { std::mem::transmute(self) }
+                }
+            }
         )*
     };
 }
@@ -85,7 +123,7 @@ macro_rules! com_interface {
 macro_rules! immut_com_interface {
     (
         $(#[$meta: meta])*
-        $vis: vis abstract $struct_name: ident($vtable_name: ident)$(: $first_super_type: ident($first_super_name: ident))* {
+        $vis: vis abstract $struct_name: ident($vtable_name: ident)$(: $first_super_type: ident($first_super_name: ident))*$( + $super_type: ident)* {
             const IID = $iid1: literal - $iid2: literal - $iid3: literal - $iid4: literal - $iid5: literal;
 
             $(
@@ -144,6 +182,7 @@ macro_rules! immut_com_interface {
             };
         }
 
+
         $(
             impl std::ops::Deref for $struct_name {
                 type Target = $first_super_type;
@@ -155,6 +194,32 @@ macro_rules! immut_com_interface {
 
             impl std::ops::DerefMut for $struct_name {
                 fn deref_mut(&mut self) -> &mut Self::Target {
+                    unsafe { std::mem::transmute(self) }
+                }
+            }
+
+            impl AsRef<$first_super_type> for $struct_name {
+                fn as_ref(&self) -> &$first_super_type {
+                    unsafe { std::mem::transmute(self) }
+                }
+            }
+
+            impl AsMut<$first_super_type> for $struct_name {
+                fn as_mut(&mut self) -> &mut $first_super_type {
+                    unsafe { std::mem::transmute(self) }
+                }
+            }
+        )*
+
+        $(
+            impl AsRef<$super_type> for $struct_name {
+                fn as_ref(&self) -> &$super_type {
+                    unsafe { std::mem::transmute(self) }
+                }
+            }
+
+            impl AsMut<$super_type> for $struct_name {
+                fn as_mut(&mut self) -> &mut $super_type {
                     unsafe { std::mem::transmute(self) }
                 }
             }

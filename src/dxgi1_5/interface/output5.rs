@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
-    dxgi::{IDXGIObject, IDXGIObjectTrait, IDXGIOutput, IDXGIOutputTrait, DXGI_FORMAT},
-    dxgi1_2::{IDXGIOutput1, IDXGIOutput1Trait, IDXGIOutputDuplication},
-    dxgi1_3::{IDXGIOutput2, IDXGIOutput2Trait, IDXGIOutput3, IDXGIOutput3Trait},
-    dxgi1_4::{IDXGIOutput4, IDXGIOutput4Trait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIObject, IDXGIOutput, DXGI_FORMAT},
+    dxgi1_2::{IDXGIOutput1, IDXGIOutputDuplication},
+    dxgi1_3::{IDXGIOutput2, IDXGIOutput3},
+    dxgi1_4::{IDXGIOutput4},
+    unknwn::{IUnknown},
     HRESULT, UINT,
 };
 
@@ -18,14 +18,14 @@ use crate::{
 com_interface!(
     /// Represents an adapter output (such as a monitor). The [`IDXGIOutput5`] interface exposes a
     /// single method to specify a list of supported formats for fullscreen surfaces.
-    pub abstract IDXGIOutput5(IDXGIOutput5VTable/IDXGIOutput5Trait):
-        IDXGIOutput4/IDXGIOutput4Trait(output4) +
-        IDXGIOutput3/IDXGIOutput3Trait(output4.output3) +
-        IDXGIOutput2/IDXGIOutput2Trait(output4.output3.output2) +
-        IDXGIOutput1/IDXGIOutput1Trait(output4.output3.output2.output1) +
-        IDXGIOutput/IDXGIOutputTrait(output4.output3.output2.output1.output) +
-        IDXGIObject/IDXGIObjectTrait(output4.output3.output2.output1.output.object) +
-        IUnknown/IUnknownTrait(output4.output3.output2.output1.output.object.unknown) {
+    pub abstract IDXGIOutput5(IDXGIOutput5VTable):
+        IDXGIOutput4(output4) +
+        IDXGIOutput3 +
+        IDXGIOutput2 +
+        IDXGIOutput1 +
+        IDXGIOutput +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x80A07424-0xAB52-0x42EB-0x833C-0x0C42FD282D98;
 
         /// Allows specifying a list of supported formats for fullscreen surfaces that can be

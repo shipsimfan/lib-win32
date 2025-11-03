@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11DeviceChild, ID3D11DeviceChildTrait, ID3D11Resource, ID3D11ResourceTrait,
+        ID3D11DeviceChild, ID3D11Resource,
         D3D11_TEXTURE3D_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -23,10 +23,10 @@ com_interface!(
     /// [`ID3D11Device::create_render_target_view`], and
     /// [`ID3D11Device::create_depth_stencil_view`], respectively. To use the texture as an input
     /// to a shader, create a by calling [`ID3D11Device::create_shader_resource_view`].
-    pub abstract ID3D11Texture3D(ID3D11Texture3DVTable/ID3D11Texture3DTrait):
-        ID3D11Resource/ID3D11ResourceTrait(resource) +
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(resource.device_child) +
-        IUnknown/IUnknownTrait(resource.device_child.unknown) {
+    pub abstract ID3D11Texture3D(ID3D11Texture3DVTable):
+        ID3D11Resource(resource) +
+        ID3D11DeviceChild +
+        IUnknown {
         const IID = 0x037E866E-0xF56D-0x4357-0xA8AF-0x9DABBE6E250E;
 
         /// Get the properties of the texture resource.

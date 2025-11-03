@@ -1,14 +1,14 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
-        IDXGISwapChain, IDXGISwapChainTrait,
+        IDXGIDeviceSubObject, IDXGIObject,
+        IDXGISwapChain,
     },
-    dxgi1_2::{IDXGISwapChain1, IDXGISwapChain1Trait},
-    dxgi1_3::{IDXGISwapChain2, IDXGISwapChain2Trait},
-    dxgi1_4::{IDXGISwapChain3, IDXGISwapChain3Trait},
+    dxgi1_2::{IDXGISwapChain1},
+    dxgi1_3::{IDXGISwapChain2},
+    dxgi1_4::{IDXGISwapChain3},
     dxgi1_5::DXGI_HDR_METADATA_TYPE,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, UINT,
 };
 use std::ffi::c_void;
@@ -19,14 +19,14 @@ use crate::dxgi1_5::DXGI_HDR_METADATA_HDR10;
 
 com_interface!(
     /// This interface exposes a single method for setting video metadata.
-    pub abstract IDXGISwapChain4(IDXGISwapChain4VTable/IDXGISwapChain4Trait):
-        IDXGISwapChain3/IDXGISwapChain3Trait(swap_chain3) +
-        IDXGISwapChain2/IDXGISwapChain2Trait(swap_chain3.swap_chain2) +
-        IDXGISwapChain1/IDXGISwapChain1Trait(swap_chain3.swap_chain2.swap_chain1) +
-        IDXGISwapChain/IDXGISwapChainTrait(swap_chain3.swap_chain2.swap_chain1.swap_chain) +
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(swap_chain3.swap_chain2.swap_chain1.swap_chain.device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(swap_chain3.swap_chain2.swap_chain1.swap_chain.device_sub_object.object) +
-        IUnknown/IUnknownTrait(swap_chain3.swap_chain2.swap_chain1.swap_chain.device_sub_object.object.unknown) {
+    pub abstract IDXGISwapChain4(IDXGISwapChain4VTable):
+        IDXGISwapChain3(swap_chain3) +
+        IDXGISwapChain2 +
+        IDXGISwapChain1 +
+        IDXGISwapChain +
+        IDXGIDeviceSubObject +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x3D585D5A-0xBD4A-0x489E-0xB1F4-0x3DBCB6452FFB;
 
         /// This method sets High Dynamic Range (HDR) and Wide Color Gamut (WCG) header metadata.

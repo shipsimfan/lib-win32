@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    d3d11::{ID3D11DeviceChild, ID3D11DeviceChildTrait, D3D11_DEPTH_STENCIL_DESC},
-    unknwn::{IUnknown, IUnknownTrait},
+    d3d11::{ID3D11DeviceChild, D3D11_DEPTH_STENCIL_DESC},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -16,9 +16,9 @@ com_interface!(
     /// To create a depth-stencil-state object, call [`ID3D11Device::create_depth_stencil_state`].
     /// To bind the depth-stencil-state object to the output-merger stage, call
     /// [`ID3D11DeviceContext::om_set_depth_stencil_state`].
-    pub abstract ID3D11DepthStencilState(ID3D11DepthStencilStateVTable/ID3D11DepthStencilStateTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11DepthStencilState(ID3D11DepthStencilStateVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0x03823EFB-0x8D8F-0x4E1C-0x9AA2-0xF64BB2CBFDF1;
 
         /// Gets the description for depth-stencil state that you used to create the

@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11Asynchronous, ID3D11AsynchronousTrait, ID3D11DeviceChild, ID3D11DeviceChildTrait,
+        ID3D11Asynchronous, ID3D11DeviceChild,
         D3D11_QUERY_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -25,10 +25,10 @@ com_interface!(
     ///
     /// There are, however, some queries that do not require calls to Begin. For a list of possible
     /// queries see [`D3D11_QUERY`].
-    pub abstract ID3D11Query(ID3D11QueryVTable/ID3D11QueryTrait):
-        ID3D11Asynchronous/ID3D11AsynchronousTrait(asynchronous) +
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(asynchronous.device_child) +
-        IUnknown/IUnknownTrait(asynchronous.device_child.unknown) {
+    pub abstract ID3D11Query(ID3D11QueryVTable):
+        ID3D11Asynchronous(asynchronous) +
+        ID3D11DeviceChild +
+        IUnknown {
         const IID = 0xD6C00747-0x87B7-0x425E-0xB84D-0x44D108560AFD;
 
         /// Get a query description.

@@ -1,11 +1,8 @@
 use crate::{
     com_interface,
-    dxgi::{
-        IDXGIFactory, IDXGIFactory1, IDXGIFactory1Trait, IDXGIFactoryTrait, IDXGIObject,
-        IDXGIObjectTrait, IDXGIOutput,
-    },
+    dxgi::{IDXGIFactory, IDXGIFactory1, IDXGIObject, IDXGIOutput},
     dxgi1_2::{IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1, DXGI_SWAP_CHAIN_FULLSCREEN_DESC},
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::IUnknown,
     BOOL, DWORD, HANDLE, HRESULT, HWND, LUID, UINT,
 };
 
@@ -42,11 +39,11 @@ com_interface!(
     /// retrieve the factory that is used to create the device in order to create a swap chain. You
     /// can request the [`IDXGIDevice`], [`IDXGIDevice1`], or [`IDXGIDevice2`] interface from the
     /// Direct3D device and then use the [`IDXGIObject::get_parent`] method to locate the factory.
-    pub abstract IDXGIFactory2(IDXGIFactory2VTable/IDXGIFactory2Trait):
-        IDXGIFactory1/IDXGIFactory1Trait(factory1) +
-        IDXGIFactory/IDXGIFactoryTrait(factory1.factory) +
-        IDXGIObject/IDXGIObjectTrait(factory1.factory.object) +
-        IUnknown/IUnknownTrait(factory1.factory.object.unknown) {
+    pub abstract IDXGIFactory2(IDXGIFactory2VTable):
+        IDXGIFactory1(factory1) +
+        IDXGIFactory +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x50C83A1C-0xE072-0x4C48-0x87B0-0x3630FA36A6D0;
 
         /// Determines whether to use stereo mode.

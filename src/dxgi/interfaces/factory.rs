@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    dxgi::{IDXGIAdapter, IDXGIObject, IDXGIObjectTrait, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIAdapter, IDXGIObject, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC},
+    unknwn::{IUnknown},
     HMODULE, HRESULT, HWND, UINT,
 };
 
@@ -32,9 +32,9 @@ com_interface!(
     /// retrieve the factory that is used to create the device in order to create a swap chain. You
     /// can request the [`IDXGIDevice`] interface from the Direct3D device and then use the
     /// [`IDXGIObject::get_parent`] method to locate the factory.
-    pub abstract IDXGIFactory(IDXGIFactoryVTable/IDXGIFactoryTrait):
-        IDXGIObject/IDXGIObjectTrait(object) +
-        IUnknown/IUnknownTrait(object.unknown) {
+    pub abstract IDXGIFactory(IDXGIFactoryVTable):
+        IDXGIObject(object) +
+        IUnknown {
         const IID = 0x7B7166EC-0x21C7-0x44AE-0xB21A-0xC9AE321AE369;
 
         /// Enumerates the adapters (video cards).

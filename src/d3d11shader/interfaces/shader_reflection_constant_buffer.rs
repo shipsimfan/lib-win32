@@ -17,7 +17,7 @@ com_interface!(
     /// [`ID3D11ShaderReflection::get_constant_buffer_by_name`]. This isn't a COM interface, so you
     /// don't need to worry about reference counts or releasing the interface when you're done with
     /// it.
-    pub abstract ID3D11ShaderReflectionConstantBuffer(ID3D11ShaderReflectionConstantBufferVTable/ID3D11ShaderReflectionConstantBufferTrait) {
+    pub abstract ID3D11ShaderReflectionConstantBuffer(ID3D11ShaderReflectionConstantBufferVTable) {
         const IID = 0xEB62D63D-0x93DD-0x4318-0x8AE8-0xC6F83AD371B8;
 
         /// Get a constant-buffer description.

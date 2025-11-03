@@ -1,12 +1,12 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
-        IDXGISwapChain, IDXGISwapChainTrait, DXGI_COLOR_SPACE_TYPE, DXGI_FORMAT,
+        IDXGIDeviceSubObject, IDXGIObject,
+        IDXGISwapChain, DXGI_COLOR_SPACE_TYPE, DXGI_FORMAT,
     },
-    dxgi1_2::{IDXGISwapChain1, IDXGISwapChain1Trait},
-    dxgi1_3::{IDXGISwapChain2, IDXGISwapChain2Trait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi1_2::{IDXGISwapChain1},
+    dxgi1_3::{IDXGISwapChain2},
+    unknwn::{IUnknown},
     HRESULT, UINT,
 };
 
@@ -17,13 +17,13 @@ use crate::{dxgi::DXGI_SWAP_CHAIN_FLAG, dxgi1_2::IDXGIFactory2, S_OK};
 com_interface!(
     /// Extends [`IDXGISwapChain2`] with methods to support getting the index of the swap chain's
     /// current back buffer and support for color space.
-    pub abstract IDXGISwapChain3(IDXGISwapChain3VTable/IDXGISwapChain3Trait):
-        IDXGISwapChain2/IDXGISwapChain2Trait(swap_chain2) +
-        IDXGISwapChain1/IDXGISwapChain1Trait(swap_chain2.swap_chain1) +
-        IDXGISwapChain/IDXGISwapChainTrait(swap_chain2.swap_chain1.swap_chain) +
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(swap_chain2.swap_chain1.swap_chain.device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(swap_chain2.swap_chain1.swap_chain.device_sub_object.object) +
-        IUnknown/IUnknownTrait(swap_chain2.swap_chain1.swap_chain.device_sub_object.object.unknown) {
+    pub abstract IDXGISwapChain3(IDXGISwapChain3VTable):
+        IDXGISwapChain2(swap_chain2) +
+        IDXGISwapChain1 +
+        IDXGISwapChain +
+        IDXGIDeviceSubObject +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x94D99BDB-0xF1F8-0x4AB0-0xB236-0x7DA0170EDAB1;
 
         /// Gets the index of the swap chain's current back buffer.

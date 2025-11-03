@@ -1,9 +1,4 @@
-use crate::{
-    com_interface,
-    d3d11::{ID3D11DeviceChild, ID3D11DeviceChildTrait},
-    unknwn::{IUnknown, IUnknownTrait},
-    UINT,
-};
+use crate::{com_interface, d3d11::ID3D11DeviceChild, unknwn::IUnknown, UINT};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -18,9 +13,9 @@ com_interface!(
     ///  * [`ID3D11Predicate`] - Determines whether a piece of geometry should be processed or not
     ///                          depending on the results of a previous draw call.
     ///  * [`ID3D11Counter`] - Measures GPU performance.
-    pub abstract ID3D11Asynchronous(ID3D11AsynchronousVTable/ID3D11AsynchronousTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11Asynchronous(ID3D11AsynchronousVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0x4B35D0CD-0x1E15-0x4258-0x9C98-0x1B1333F6DD3B;
 
         /// Get the size of the data (in bytes) that is output when calling

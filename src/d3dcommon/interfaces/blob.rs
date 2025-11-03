@@ -1,6 +1,6 @@
 use crate::{
     com_interface,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     LPVOID, SIZE_T,
 };
 
@@ -19,8 +19,8 @@ com_interface!(
     /// Blobs can be used as a data buffer, storing vertex, adjacency, and material information
     /// during mesh optimization and loading operations. Also, these objects are used to return
     /// object code and error messages in APIs that compile vertex, geometry and pixel shaders.
-    pub abstract ID3D10Blob(ID3D10BlobVTable/ID3D10BlobTrait):
-        IUnknown/IUnknownTrait(unknown) {
+    pub abstract ID3D10Blob(ID3D10BlobVTable):
+        IUnknown(unknown) {
         const IID = 0x8BA5FB08-0x5195-0x40E2-0xAC58-0x0D989C3A0102;
 
         /// Gets a pointer to the data.

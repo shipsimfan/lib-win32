@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    dxgi::{IDXGIObject, IDXGIObjectTrait, IDXGIOutput, DXGI_ADAPTER_DESC},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIObject, IDXGIOutput, DXGI_ADAPTER_DESC},
+    unknwn::{IUnknown},
     HRESULT, LARGE_INTEGER, REFGUID, UINT,
 };
 
@@ -33,9 +33,9 @@ com_interface!(
     /// To create a software adapter, use [`IDXGIFactory::create_software_adapter`].
     ///
     /// Windows Phone 8: This API is supported.
-    pub abstract IDXGIAdapter(IDXGIAdapterVTable/IDXGIAdapterTrait):
-        IDXGIObject/IDXGIObjectTrait(object) +
-        IUnknown/IUnknownTrait(object.unknown) {
+    pub abstract IDXGIAdapter(IDXGIAdapterVTable):
+        IDXGIObject(object) +
+        IUnknown {
         const IID = 0x2411E7E1-0x12AC-0x4CCF-0xBD14-0x9798E8534DC0;
 
         /// Enumerate adapter (video card) outputs.

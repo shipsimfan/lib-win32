@@ -1,8 +1,8 @@
 use crate::{
     com_interface,
-    dxgi::{IDXGIObject, IDXGIObjectTrait, IDXGIOutput, IDXGIOutputTrait},
-    dxgi1_2::{IDXGIOutput1, IDXGIOutput1Trait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIObject, IDXGIOutput},
+    dxgi1_2::{IDXGIOutput1},
+    unknwn::{IUnknown},
     BOOL,
 };
 
@@ -23,11 +23,11 @@ com_interface!(
     /// update, use [`IDXGISwapChain::get_containing_output`]. You can then call
     /// [`IUnknown::query_interface`] from any [`IDXGIOutput`] or [`IDXGIOutput1`] object to obtain
     /// an [`IDXGIOutput2`] object.
-    pub abstract IDXGIOutput2(IDXGIOutput2VTable/IDXGIOutput2Trait):
-        IDXGIOutput1/IDXGIOutput1Trait(output1) +
-        IDXGIOutput/IDXGIOutputTrait(output1.output) +
-        IDXGIObject/IDXGIObjectTrait(output1.output.object) +
-        IUnknown/IUnknownTrait(output1.output.object.unknown) {
+    pub abstract IDXGIOutput2(IDXGIOutput2VTable):
+        IDXGIOutput1(output1) +
+        IDXGIOutput +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x595E39D1-0x2724-0x4663-0x99B1-0xDA969DE28364;
 
         /// Queries an adapter output for multiplane overlay support. If this API returns [`TRUE`],

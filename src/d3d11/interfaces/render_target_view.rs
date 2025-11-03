@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11DeviceChild, ID3D11DeviceChildTrait, ID3D11View, ID3D11ViewTrait,
+        ID3D11DeviceChild, ID3D11View,
         D3D11_RENDER_TARGET_VIEW_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -21,10 +21,10 @@ com_interface!(
     ///
     /// A render target is a resource that can be written by the output-merger stage at the end of
     /// a render pass. Each render-target should also have a corresponding depth-stencil view.
-    pub abstract ID3D11RenderTargetView(ID3D11RenderTargetViewVTable/ID3D11RenderTargetViewTrait):
-        ID3D11View/ID3D11ViewTrait(view) +
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(view.device_child) +
-        IUnknown/IUnknownTrait(view.device_child.unknown) {
+    pub abstract ID3D11RenderTargetView(ID3D11RenderTargetViewVTable):
+        ID3D11View(view) +
+        ID3D11DeviceChild +
+        IUnknown {
         const IID = 0xDFDBA067-0x0B8D-0x4865-0x875B-0xD7B4516CC164;
 
         /// Get the properties of a render target view.

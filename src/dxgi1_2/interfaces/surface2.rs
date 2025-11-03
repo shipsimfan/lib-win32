@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
-        IDXGISurface, IDXGISurface1, IDXGISurface1Trait, IDXGISurfaceTrait,
+        IDXGIDeviceSubObject, IDXGIObject,
+        IDXGISurface, IDXGISurface1,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, REFIID, UINT,
 };
 use std::ffi::c_void;
@@ -41,12 +41,12 @@ com_interface!(
     ///
     /// You can call the [`IDXGIResource1::create_subresource_surface`] method to create an
     /// [`IDXGISurface2`] interface that refers to one subresource of a stereo resource.
-    pub abstract IDXGISurface2(IDXGISurface2VTable/IDXGISurface2Trait):
-        IDXGISurface1/IDXGISurface1Trait(surface1) +
-        IDXGISurface/IDXGISurfaceTrait(surface1.surface) +
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(surface1.surface.device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(surface1.surface.device_sub_object.object) +
-        IUnknown/IUnknownTrait(surface1.surface.device_sub_object.object.unknown) {
+    pub abstract IDXGISurface2(IDXGISurface2VTable):
+        IDXGISurface1(surface1) +
+        IDXGISurface +
+        IDXGIDeviceSubObject +
+        IDXGIObject +
+        IUnknown {
         const IID = 0xABA496DD-0xB617-0x4CB8-0xA866-0xBC44D7EB1FA2;
 
         /// Gets the parent resource and subresource index that support a subresource surface.

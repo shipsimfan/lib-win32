@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
     dxgi1_3::DXGI_FRAME_STATISTICS_MEDIA,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, UINT,
 };
 
@@ -30,8 +30,8 @@ com_interface!(
     /// the refresh rate change should be kept imperceptible to the user. A best practice for
     /// keeping the refresh rate transition imperceptible is to only set the custom framerate if
     /// the app determines it can present at that rate for least 5 seconds.
-    pub abstract IDXGISwapChainMedia(IDXGISwapChainMediaVTable/IDXGISwapChainMediaTrait):
-        IUnknown/IUnknownTrait(unknown) {
+    pub abstract IDXGISwapChainMedia(IDXGISwapChainMediaVTable):
+        IUnknown(unknown) {
         const IID = 0xDD95B90B-0xF05F-0x4F6A-0xBD65-0x25BFB264BD84;
 
         /// Queries the system for a [`DXGI_FRAME_STATISTICS_MEDIA`] structure that indicates

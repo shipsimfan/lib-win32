@@ -1,6 +1,6 @@
 use crate::{
     com_interface,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, REFGUID, REFIID, UINT,
 };
 use std::ffi::c_void;
@@ -25,7 +25,7 @@ com_interface!(
     /// An [`IDXGIObject`] interface is a base interface for all DXGI objects; [`IDXGIObject`]
     /// supports associating caller-defined (private data) with an object and retrieval of an
     /// interface to the parent object.
-    pub abstract IDXGIObject(IDXGIObjectVTable/IDXGIObjectTrait): IUnknown/IUnknownTrait(unknown) {
+    pub abstract IDXGIObject(IDXGIObjectVTable): IUnknown(unknown) {
         const IID = 0xAEC22FB8-0x76F3-0x4639-0x9BE0-0x28EB43A67A2E;
 
         /// Sets application-defined data to the object and associates that data with a [`GUID`].

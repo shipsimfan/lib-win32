@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11DeviceChild, ID3D11DeviceChildTrait, ID3D11View, ID3D11ViewTrait,
+        ID3D11DeviceChild, ID3D11View,
         D3D11_SHADER_RESOURCE_VIEW_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -23,10 +23,10 @@ com_interface!(
     /// occurs by calling [`ID3D11DeviceContext::gs_set_shader_resources`],
     /// [`ID3D11DeviceContext::vs_set_shader_resources`] or
     /// [`ID3D11DeviceContext::ps_set_shader_resources`].
-    pub abstract ID3D11ShaderResourceView(ID3D11ShaderResourceViewVTable/ID3D11ShaderResourceViewTrait):
-        ID3D11View/ID3D11ViewTrait(view) +
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(view.device_child) +
-        IUnknown/IUnknownTrait(view.device_child.unknown) {
+    pub abstract ID3D11ShaderResourceView(ID3D11ShaderResourceViewVTable):
+        ID3D11View(view) +
+        ID3D11DeviceChild +
+        IUnknown {
         const IID = 0xB0E06FE0-0x8192-0x4E1A-0xB1CA-0x36D7414710B2;
 
         /// Get the shader resource view's description.

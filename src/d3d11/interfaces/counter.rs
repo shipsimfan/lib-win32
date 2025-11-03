@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11Asynchronous, ID3D11AsynchronousTrait, ID3D11DeviceChild, ID3D11DeviceChildTrait,
+        ID3D11Asynchronous, ID3D11DeviceChild,
         D3D11_COUNTER_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -31,10 +31,10 @@ com_interface!(
     /// Counters are best suited for profiling.
     ///
     /// For a list of the types of performance counters, see [`D3D11_COUNTER`].
-    pub abstract ID3D11Counter(ID3D11CounterVTable/ID3D11CounterTrait):
-        ID3D11Asynchronous/ID3D11AsynchronousTrait(asynchronous) +
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(asynchronous.device_child) +
-        IUnknown/IUnknownTrait(asynchronous.device_child.unknown) {
+    pub abstract ID3D11Counter(ID3D11CounterVTable):
+        ID3D11Asynchronous(asynchronous) +
+        ID3D11DeviceChild +
+        IUnknown {
         const IID = 0x6E8C49FB-0xA371-0x4770-0xB440-0x29086022B741;
 
         /// Get a counter description.

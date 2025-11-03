@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    d3d11::{ID3D11DeviceChild, ID3D11DeviceChildTrait, D3D11_RESOURCE_DIMENSION},
-    unknwn::{IUnknown, IUnknownTrait},
+    d3d11::{ID3D11DeviceChild, D3D11_RESOURCE_DIMENSION},
+    unknwn::{IUnknown},
     UINT,
 };
 
@@ -18,9 +18,9 @@ com_interface!(
     /// # Remarks
     /// You don't directly create a resource interface; instead, you create buffers and textures
     /// that inherit from a resource interface.
-    pub abstract ID3D11Resource(ID3D11ResourceVTable/ID3D11ResourceTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11Resource(ID3D11ResourceVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0xDC8E63F3-0xD12B-0x4952-0xB47B-0x5E45026A862D;
 
         /// Get the type of the resource.

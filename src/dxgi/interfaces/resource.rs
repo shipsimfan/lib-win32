@@ -1,9 +1,9 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait, DXGI_USAGE,
+        IDXGIDeviceSubObject, IDXGIObject, DXGI_USAGE,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HANDLE, HRESULT, UINT,
 };
 
@@ -23,10 +23,10 @@ use crate::{
 com_interface!(
     /// An [`IDXGIResource`] interface allows resource sharing and identifies the memory that a
     /// resource resides in.
-    pub abstract IDXGIResource(IDXGIResourceVTable/IDXGIResourceTrait):
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(device_sub_object.object) +
-        IUnknown/IUnknownTrait(device_sub_object.object.unknown) {
+    pub abstract IDXGIResource(IDXGIResourceVTable):
+        IDXGIDeviceSubObject(device_sub_object) +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x035F3AB4-0x482E-0x4E50-0xB41F-0x8A7F8BD8960B;
 
         /// Gets the handle to a shared resource.

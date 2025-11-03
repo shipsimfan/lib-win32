@@ -1,9 +1,9 @@
 use crate::{
     com_interface,
-    dxgi::{IDXGIObject, IDXGIObjectTrait, IDXGIOutput, IDXGIOutputTrait, DXGI_FORMAT},
-    dxgi1_2::{IDXGIOutput1, IDXGIOutput1Trait},
-    dxgi1_3::{IDXGIOutput2, IDXGIOutput2Trait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIObject, IDXGIOutput, DXGI_FORMAT},
+    dxgi1_2::{IDXGIOutput1},
+    dxgi1_3::{IDXGIOutput2},
+    unknwn::{IUnknown},
     HRESULT, UINT,
 };
 
@@ -14,12 +14,12 @@ use crate::dxgi1_3::DXGI_OVERLAY_SUPPORT_FLAG;
 com_interface!(
     /// Represents an adapter output (such as a monitor). The [`IDXGIOutput3`] interface exposes a
     /// method to check for overlay support.
-    pub abstract IDXGIOutput3(IDXGIOutput3VTable/IDXGIOutput3Trait):
-        IDXGIOutput2/IDXGIOutput2Trait(output2) +
-        IDXGIOutput1/IDXGIOutput1Trait(output2.output1) +
-        IDXGIOutput/IDXGIOutputTrait(output2.output1.output) +
-        IDXGIObject/IDXGIObjectTrait(output2.output1.output.object) +
-        IUnknown/IUnknownTrait(output2.output1.output.object.unknown) {
+    pub abstract IDXGIOutput3(IDXGIOutput3VTable):
+        IDXGIOutput2(output2) +
+        IDXGIOutput1 +
+        IDXGIOutput +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x8A6BB301-0x7E7E-0x41F4-0xA8E0-0x5B32F7F99B18;
 
         /// Checks for overlay support.

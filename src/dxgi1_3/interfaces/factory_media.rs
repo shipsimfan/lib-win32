@@ -3,7 +3,7 @@ use crate::{
     dxgi::{IDXGIOutput, IDXGIResource},
     dxgi1_2::{IDXGISwapChain1, DXGI_SWAP_CHAIN_DESC1},
     dxgi1_3::{IDXGIDecodeSwapChain, DXGI_DECODE_SWAP_CHAIN_DESC},
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HANDLE, HRESULT,
 };
 
@@ -42,8 +42,8 @@ com_interface!(
     /// can request the [`IDXGIDevice`], [`IDXGIDevice1`], [`IDXGIDevice2`], or [`IDXGIDevice3`]
     /// interface from the Direct3D device and then use the [`IDXGIObject::get_parent`] method to
     /// locate the factory.
-    pub abstract IDXGIFactoryMedia(IDXGIFactoryMediaVTable/IDXGIFactoryMediaTrait):
-        IUnknown/IUnknownTrait(unknown) {
+    pub abstract IDXGIFactoryMedia(IDXGIFactoryMediaVTable):
+        IUnknown(unknown) {
         const IID = 0x41E7D1F2-0xA591-0x4F7B-0xA2E5-0xFA9C843E1C12;
 
         /// Creates a YUV swap chain for an existing DirectComposition surface handle.

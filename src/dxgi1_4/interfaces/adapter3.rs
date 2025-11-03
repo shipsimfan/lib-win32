@@ -1,12 +1,9 @@
 use crate::{
     com_interface,
-    dxgi::{
-        IDXGIAdapter, IDXGIAdapter1, IDXGIAdapter1Trait, IDXGIAdapterTrait, IDXGIObject,
-        IDXGIObjectTrait,
-    },
-    dxgi1_2::{IDXGIAdapter2, IDXGIAdapter2Trait},
+    dxgi::{IDXGIAdapter, IDXGIAdapter1, IDXGIObject},
+    dxgi1_2::IDXGIAdapter2,
     dxgi1_4::{DXGI_MEMORY_SEGMENT_GROUP, DXGI_QUERY_VIDEO_MEMORY_INFO},
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::IUnknown,
     DWORD, HANDLE, HRESULT, UINT, UINT64,
 };
 
@@ -17,12 +14,12 @@ use crate::{CreateEvent, S_OK};
 com_interface!(
     /// This interface adds some memory residency methods, for budgeting and reserving physical
     /// memory.
-    pub abstract IDXGIAdapter3(IDXGIAdapter3VTable/IDXGIAdapter3Trait):
-        IDXGIAdapter2/IDXGIAdapter2Trait(adapter2) +
-        IDXGIAdapter1/IDXGIAdapter1Trait(adapter2.adapter1) +
-        IDXGIAdapter/IDXGIAdapterTrait(adapter2.adapter1.adapter) +
-        IDXGIObject/IDXGIObjectTrait(adapter2.adapter1.adapter.object) +
-        IUnknown/IUnknownTrait(adapter2.adapter1.adapter.object.unknown) {
+    pub abstract IDXGIAdapter3(IDXGIAdapter3VTable):
+        IDXGIAdapter2(adapter2) +
+        IDXGIAdapter1 +
+        IDXGIAdapter +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x645967A4-0x1392-0x4310-0xA798-0x8053CE3E93FD;
 
         /// Registers to receive notification of hardware content protection teardown events.

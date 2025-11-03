@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    dxgi::{IDXGIDevice, IDXGIDeviceTrait, IDXGIObject, IDXGIObjectTrait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIDevice, IDXGIObject},
+    unknwn::{IUnknown},
     HRESULT, UINT,
 };
 
@@ -35,10 +35,10 @@ com_interface!(
     /// The Direct3D create device functions return a Direct3D device object. This Direct3D device
     /// object implements the [`IUnknown`] interface. You can query this Direct3D device object for
     /// the device's corresponding [`IDXGIDevice1`] interface.
-    pub abstract IDXGIDevice1(IDXGIDevice1VTable/IDXGIDevice1Trait):
-        IDXGIDevice/IDXGIDeviceTrait(device) +
-        IDXGIObject/IDXGIObjectTrait(device.object) +
-        IUnknown/IUnknownTrait(device.object.unknown) {
+    pub abstract IDXGIDevice1(IDXGIDevice1VTable):
+        IDXGIDevice(device) +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x77DB970F-0x6276-0x48BA-0xBA28-0x070143B4392C;
 
         /// Sets the number of frames that the system is allowed to queue for rendering.

@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    d3d11::{ID3D11DeviceChild, ID3D11DeviceChildTrait, D3D11_RASTERIZER_DESC},
-    unknwn::{IUnknown, IUnknownTrait},
+    d3d11::{ID3D11DeviceChild, D3D11_RASTERIZER_DESC},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -16,9 +16,9 @@ com_interface!(
     /// To create a rasterizer-state object, call [`ID3D11Device::create_rasterizer_state`]. To
     /// bind the rasterizer-state object to the rasterizer stage, call
     /// [`ID3D11DeviceContext::rs_set_state`].
-    pub abstract ID3D11RasterizerState(ID3D11RasterizerStateVTable/ID3D11RasterizerStateTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11RasterizerState(ID3D11RasterizerStateVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0x9BB4AB81-0xAB1A-0x4D8F-0xB506-0xFC04200B6EE7;
 
         /// Gets the description for rasterizer state that you used to create the rasterizer-state

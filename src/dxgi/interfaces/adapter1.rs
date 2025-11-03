@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    dxgi::{IDXGIAdapter, IDXGIAdapterTrait, IDXGIObject, IDXGIObjectTrait, DXGI_ADAPTER_DESC1},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIAdapter, IDXGIObject, DXGI_ADAPTER_DESC1},
+    unknwn::{IUnknown},
     HRESULT,
 };
 
@@ -30,10 +30,10 @@ com_interface!(
     /// To enumerate the display sub-systems, use [`IDXGIFactory1::enum_adapters1`]. To get an
     /// interface to the adapter for a particular device, use [`IDXGIDevice::get_adapter`]. To
     /// create a software adapter, use [`IDXGIFactory::create_software_adapter`].
-    pub abstract IDXGIAdapter1(IDXGIAdapter1VTable/IDXGIAdapter1Trait):
-        IDXGIAdapter/IDXGIAdapterTrait(adapter) +
-        IDXGIObject/IDXGIObjectTrait(adapter.object) +
-        IUnknown/IUnknownTrait(adapter.object.unknown) {
+    pub abstract IDXGIAdapter1(IDXGIAdapter1VTable):
+        IDXGIAdapter(adapter) +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x29038F61-0x3839-0x4626-0x91FD-0x086879011A05;
 
         /// Gets a DXGI 1.1 description of an adapter (or video card).

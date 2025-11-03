@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    d3d11::{ID3D11ClassInstance, ID3D11DeviceChild, ID3D11DeviceChildTrait},
-    unknwn::{IUnknown, IUnknownTrait},
+    d3d11::{ID3D11ClassInstance, ID3D11DeviceChild},
+    unknwn::{IUnknown},
     HRESULT, LPCSTR, UINT,
 };
 
@@ -20,9 +20,9 @@ com_interface!(
     ///
     /// An [`ID3D11ClassLinkage`] object is created using the
     /// [`ID3D11Device::create_class_linkage`] method.
-    pub abstract ID3D11ClassLinkage(ID3D11ClassLinkageVTable/ID3D11ClassLinkageTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11ClassLinkage(ID3D11ClassLinkageVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0xDDF57CBA-0x9543-0x46E4-0xA12B-0xF207A0FE7FED;
 
         /// Gets the class-instance object that represents the specified HLSL class.

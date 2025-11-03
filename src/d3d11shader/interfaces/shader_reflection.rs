@@ -5,7 +5,7 @@ use crate::{
         D3D11_SHADER_INPUT_BIND_DESC, D3D11_SIGNATURE_PARAMETER_DESC,
     },
     d3dcommon::{D3D_FEATURE_LEVEL, D3D_PRIMITIVE},
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     BOOL, HRESULT, LPCSTR, UINT, UINT64,
 };
 
@@ -26,8 +26,8 @@ com_interface!(
     /// An [`ID3D11ShaderReflection`] interface can be retrieved for a shader by using
     /// [`D3DReflect`]. The following code illustrates retrieving a [`ID3D11ShaderReflection`] from
     /// a shader.
-    pub abstract ID3D11ShaderReflection(ID3D11ShaderReflectionVTable/ID3D11ShaderReflectionTrait):
-        IUnknown/IUnknownTrait(unknown) {
+    pub abstract ID3D11ShaderReflection(ID3D11ShaderReflectionVTable):
+        IUnknown(unknown) {
         const IID = 0x8D536CA1-0x0CCA-0x4956-0xA837-0x786963755584;
 
         /// Get a shader description.

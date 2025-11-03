@@ -1,11 +1,8 @@
 use crate::{
     com_interface,
-    dxgi::{
-        IDXGIFactory, IDXGIFactory1, IDXGIFactory1Trait, IDXGIFactoryTrait, IDXGIObject,
-        IDXGIObjectTrait,
-    },
-    dxgi1_2::{IDXGIFactory2, IDXGIFactory2Trait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIFactory, IDXGIFactory1, IDXGIObject},
+    dxgi1_2::IDXGIFactory2,
+    unknwn::IUnknown,
     UINT,
 };
 
@@ -21,12 +18,12 @@ use crate::{
 
 com_interface!(
     /// Enables creating Microsoft DirectX Graphics Infrastructure (DXGI) objects.
-    pub abstract IDXGIFactory3(IDXGIFactory3VTable/IDXGIFactory3Trait):
-        IDXGIFactory2/IDXGIFactory2Trait(factory2) +
-        IDXGIFactory1/IDXGIFactory1Trait(factory2.factory1) +
-        IDXGIFactory/IDXGIFactoryTrait(factory2.factory1.factory) +
-        IDXGIObject/IDXGIObjectTrait(factory2.factory1.factory.object) +
-        IUnknown/IUnknownTrait(factory2.factory1.factory.object.unknown) {
+    pub abstract IDXGIFactory3(IDXGIFactory3VTable):
+        IDXGIFactory2(factory2) +
+        IDXGIFactory1 +
+        IDXGIFactory +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x25483823-0xCD46-0x4C7D-0x86CA-0x47AA95B837BD;
 
         /// Gets the flags that were used when a Microsoft DirectX Graphics Infrastructure (DXGI)

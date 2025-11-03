@@ -1,14 +1,11 @@
 use crate::{
     com_interface,
-    dxgi::{
-        IDXGIFactory, IDXGIFactory1, IDXGIFactory1Trait, IDXGIFactoryTrait, IDXGIObject,
-        IDXGIObjectTrait,
-    },
-    dxgi1_2::{IDXGIFactory2, IDXGIFactory2Trait},
-    dxgi1_3::{IDXGIFactory3, IDXGIFactory3Trait},
-    dxgi1_4::{IDXGIFactory4, IDXGIFactory4Trait},
+    dxgi::{IDXGIFactory, IDXGIFactory1, IDXGIObject},
+    dxgi1_2::IDXGIFactory2,
+    dxgi1_3::IDXGIFactory3,
+    dxgi1_4::IDXGIFactory4,
     dxgi1_5::DXGI_FEATURE,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::IUnknown,
     HRESULT, UINT,
 };
 use std::ffi::c_void;
@@ -19,14 +16,14 @@ use crate::dxgi::DXGI_SWAP_CHAIN_FLAG;
 
 com_interface!(
     /// This interface enables a single method to support variable refresh rate displays.
-    pub abstract IDXGIFactory5(IDXGIFactory5VTable/IDXGIFactory5Trait):
-        IDXGIFactory4/IDXGIFactory4Trait(factory4) +
-        IDXGIFactory3/IDXGIFactory3Trait(factory4.factory3) +
-        IDXGIFactory2/IDXGIFactory2Trait(factory4.factory3.factory2) +
-        IDXGIFactory1/IDXGIFactory1Trait(factory4.factory3.factory2.factory1) +
-        IDXGIFactory/IDXGIFactoryTrait(factory4.factory3.factory2.factory1.factory) +
-        IDXGIObject/IDXGIObjectTrait(factory4.factory3.factory2.factory1.factory.object) +
-        IUnknown/IUnknownTrait(factory4.factory3.factory2.factory1.factory.object.unknown) {
+    pub abstract IDXGIFactory5(IDXGIFactory5VTable):
+        IDXGIFactory4(factory4) +
+        IDXGIFactory3 +
+        IDXGIFactory2 +
+        IDXGIFactory1 +
+        IDXGIFactory +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x7632E1F5-0xEE65-0x4DCA-0x87FD-0x84CD75F8838D;
 
         /// Used to check for hardware feature support.

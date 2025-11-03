@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    d3d11::{ID3D11DeviceChild, ID3D11DeviceChildTrait},
-    unknwn::{IUnknown, IUnknownTrait},
+    d3d11::{ID3D11DeviceChild},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -20,9 +20,9 @@ com_interface!(
     /// To create a vertex shader interface, call [`ID3D11Device::create_vertex_shader`]. Before
     /// using a vertex shader you must bind it to the device by calling
     /// [`ID3D11DeviceContext::vs_set_shader`].
-    pub abstract ID3D11VertexShader(ID3D11VertexShaderVTable/ID3D11VertexShaderTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11VertexShader(ID3D11VertexShaderVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0x3B301D64-0xD678-0x4289-0x8897-0x22F8928B72F3;
     }
 );

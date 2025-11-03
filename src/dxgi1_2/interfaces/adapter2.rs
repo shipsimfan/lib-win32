@@ -1,11 +1,8 @@
 use crate::{
     com_interface,
-    dxgi::{
-        IDXGIAdapter, IDXGIAdapter1, IDXGIAdapter1Trait, IDXGIAdapterTrait, IDXGIObject,
-        IDXGIObjectTrait,
-    },
+    dxgi::{IDXGIAdapter, IDXGIAdapter1, IDXGIObject},
     dxgi1_2::DXGI_ADAPTER_DESC2,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::IUnknown,
     HRESULT,
 };
 
@@ -35,11 +32,11 @@ com_interface!(
     /// [`IDXGIDevice::get_adapter`].
     ///
     /// To create a software adapter, use [`IDXGIFactory::create_software_adapter`].
-    pub abstract IDXGIAdapter2(IDXGIAdapter2VTable/IDXGIAdapter2Trait):
-        IDXGIAdapter1/IDXGIAdapter1Trait(adapter1) +
-        IDXGIAdapter/IDXGIAdapterTrait(adapter1.adapter) +
-        IDXGIObject/IDXGIObjectTrait(adapter1.adapter.object) +
-        IUnknown/IUnknownTrait(adapter1.adapter.object.unknown) {
+    pub abstract IDXGIAdapter2(IDXGIAdapter2VTable):
+        IDXGIAdapter1(adapter1) +
+        IDXGIAdapter +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x0AA1AE0A-0xFA0E-0x4B84-0x8644-0xE05FF8E5ACB5;
 
         /// Gets a Microsoft DirectX Graphics Infrastructure (DXGI) 1.2 description of an adapter

@@ -1,9 +1,9 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11ClassLinkage, ID3D11DeviceChild, ID3D11DeviceChildTrait, D3D11_CLASS_INSTANCE_DESC,
+        ID3D11ClassLinkage, ID3D11DeviceChild, D3D11_CLASS_INSTANCE_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     LPSTR, SIZE_T,
 };
 
@@ -18,9 +18,9 @@ com_interface!(
     /// This interface is created by calling [`ID3D11ClassLinkage::create_class_instance`]. The
     /// interface is used when binding shader resources to the pipeline using APIs such as
     /// [`ID3D11DeviceContext::vs_set_shader`].
-    pub abstract ID3D11ClassInstance(ID3D11ClassInstanceVTable/ID3D11ClassInstanceTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11ClassInstance(ID3D11ClassInstanceVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0xA6CD7FAA-0xB0B7-0x4A2F-0x9436-0x8662A65797CB;
 
         /// Gets the '`ID3D11ClassLinkage`' object associated with the current HLSL class.

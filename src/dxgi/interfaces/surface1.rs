@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
-        IDXGISurface, IDXGISurfaceTrait,
+        IDXGIDeviceSubObject, IDXGIObject,
+        IDXGISurface,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     BOOL, HDC, HRESULT, RECT,
 };
 
@@ -47,11 +47,11 @@ com_interface!(
     /// MIP-map level and does not consist of an array of textures, [`IUnknown::query_interface`]
     /// succeeds and returns a pointer to the [`IDXGISurface1`] interface pointer. Otherwise,
     /// [`IUnknown::query_interface`] fails and does not return the pointer to [`IDXGISurface1`].
-    pub abstract IDXGISurface1(IDXGISurface1VTable/IDXGISurface1Trait):
-        IDXGISurface/IDXGISurfaceTrait(surface) +
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(surface.device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(surface.device_sub_object.object) +
-        IUnknown/IUnknownTrait(surface.device_sub_object.object.unknown) {
+    pub abstract IDXGISurface1(IDXGISurface1VTable):
+        IDXGISurface(surface) +
+        IDXGIDeviceSubObject +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x4AE63092-0x6327-0x4C1B-0x80AE-0xBFE12EA32B86;
 
         /// Returns a device context (DC) that allows you to render to a Microsoft DirectX Graphics

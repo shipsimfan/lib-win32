@@ -1,12 +1,9 @@
 use crate::{
     com_interface,
-    dxgi::{
-        IDXGIFactory, IDXGIFactory1, IDXGIFactory1Trait, IDXGIFactoryTrait, IDXGIObject,
-        IDXGIObjectTrait,
-    },
-    dxgi1_2::{IDXGIFactory2, IDXGIFactory2Trait},
-    dxgi1_3::{IDXGIFactory3, IDXGIFactory3Trait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIFactory, IDXGIFactory1, IDXGIObject},
+    dxgi1_2::IDXGIFactory2,
+    dxgi1_3::IDXGIFactory3,
+    unknwn::IUnknown,
     HRESULT, LUID, REFIID,
 };
 use std::ffi::c_void;
@@ -19,13 +16,13 @@ use std::ptr::null_mut;
 
 com_interface!(
     /// Enables creating Microsoft DirectX Graphics Infrastructure (DXGI) objects.
-    pub abstract IDXGIFactory4(IDXGIFactory4VTable/IDXGIFactory4Trait):
-        IDXGIFactory3/IDXGIFactory3Trait(factory3) +
-        IDXGIFactory2/IDXGIFactory2Trait(factory3.factory2) +
-        IDXGIFactory1/IDXGIFactory1Trait(factory3.factory2.factory1) +
-        IDXGIFactory/IDXGIFactoryTrait(factory3.factory2.factory1.factory) +
-        IDXGIObject/IDXGIObjectTrait(factory3.factory2.factory1.factory.object) +
-        IUnknown/IUnknownTrait(factory3.factory2.factory1.factory.object.unknown) {
+    pub abstract IDXGIFactory4(IDXGIFactory4VTable):
+        IDXGIFactory3(factory3) +
+        IDXGIFactory2 +
+        IDXGIFactory1 +
+        IDXGIFactory +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x1BC6EA02-0xEF36-0x464F-0xBF0C-0x21CA39E5168A;
 
         /// Outputs the [`IDXGIAdapter`] for the specified LUID.

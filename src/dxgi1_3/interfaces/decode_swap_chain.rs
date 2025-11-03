@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
     dxgi1_3::DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, RECT, UINT,
 };
 
@@ -24,8 +24,8 @@ com_interface!(
     /// In clone mode, the decode swap chain is only guaranteed to be shown on the primary output.
     ///
     /// Decode swap chains cannot be used with dirty rects.
-    pub abstract IDXGIDecodeSwapChain(IDXGIDecodeSwapChainVTable/IDXGIDecodeSwapChainTrait):
-        IUnknown/IUnknownTrait(unknown) {
+    pub abstract IDXGIDecodeSwapChain(IDXGIDecodeSwapChainVTable):
+        IUnknown(unknown) {
         const IID = 0x2633066B-0x4514-0x4C7A-0x8FD8-0x12EA98059D18;
 
         /// Presents a frame on the output adapter. The frame is a subresource of the

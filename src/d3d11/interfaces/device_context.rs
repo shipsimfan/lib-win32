@@ -2,14 +2,14 @@ use crate::{
     com_interface,
     d3d11::{
         ID3D11Asynchronous, ID3D11BlendState, ID3D11Buffer, ID3D11ClassInstance,
-        ID3D11DepthStencilState, ID3D11DepthStencilView, ID3D11DeviceChild, ID3D11DeviceChildTrait,
+        ID3D11DepthStencilState, ID3D11DepthStencilView, ID3D11DeviceChild,
         ID3D11GeometryShader, ID3D11InputLayout, ID3D11PixelShader, ID3D11Predicate,
         ID3D11RasterizerState, ID3D11RenderTargetView, ID3D11Resource, ID3D11SamplerState,
         ID3D11ShaderResourceView, ID3D11UnorderedAccessView, ID3D11VertexShader, D3D11_BOX,
         D3D11_MAP, D3D11_MAPPED_SUBRESOURCE, D3D11_PRIMITIVE_TOPOLOGY, D3D11_RECT,
     },
     dxgi::DXGI_FORMAT,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     BOOL, FLOAT, HRESULT, INT, UINT, UINT8,
 };
 use std::ffi::c_void;
@@ -46,9 +46,9 @@ use std::ptr::{null, null_mut};
 com_interface!(
     /// The [`ID3D11DeviceContext`] interface represents a device context which generates rendering
     /// commands.
-    pub abstract ID3D11DeviceContext(ID3D11DeviceContextVTable/ID3D11DeviceContextTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11DeviceContext(ID3D11DeviceContextVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0xC0BFA96C-0xE089-0x44FB-0x8EAF-0x26F8796190DA;
 
         /// Sets the constant buffers used by the vertex shader pipeline stage.

@@ -1,12 +1,12 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIObject, IDXGIObjectTrait, IDXGIOutput, IDXGIOutputTrait, DXGI_COLOR_SPACE_TYPE,
+        IDXGIObject, IDXGIOutput, DXGI_COLOR_SPACE_TYPE,
         DXGI_FORMAT,
     },
-    dxgi1_2::{IDXGIOutput1, IDXGIOutput1Trait},
-    dxgi1_3::{IDXGIOutput2, IDXGIOutput2Trait, IDXGIOutput3, IDXGIOutput3Trait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi1_2::{IDXGIOutput1},
+    dxgi1_3::{IDXGIOutput2, IDXGIOutput3},
+    unknwn::{IUnknown},
     HRESULT, UINT,
 };
 
@@ -17,13 +17,13 @@ use crate::dxgi1_4::DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG;
 com_interface!(
     /// Represents an adapter output (such as a monitor). The [`IDXGIOutput4`] interface exposes a
     /// method to check for overlay color space support.
-    pub abstract IDXGIOutput4(IDXGIOutput4VTable/IDXGIOutput4Trait):
-        IDXGIOutput3/IDXGIOutput3Trait(output3) +
-        IDXGIOutput2/IDXGIOutput2Trait(output3.output2) +
-        IDXGIOutput1/IDXGIOutput1Trait(output3.output2.output1) +
-        IDXGIOutput/IDXGIOutputTrait(output3.output2.output1.output) +
-        IDXGIObject/IDXGIObjectTrait(output3.output2.output1.output.object) +
-        IUnknown/IUnknownTrait(output3.output2.output1.output.object.unknown) {
+    pub abstract IDXGIOutput4(IDXGIOutput4VTable):
+        IDXGIOutput3(output3) +
+        IDXGIOutput2 +
+        IDXGIOutput1 +
+        IDXGIOutput +
+        IDXGIObject +
+        IUnknown {
         const IID = 0xDC7DCA35-0x2196-0x414D-0x9F53-0x617884032A60;
 
         /// Checks for overlay color space support.

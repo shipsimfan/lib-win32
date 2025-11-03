@@ -12,7 +12,7 @@ use crate::{
         D3D11_TEXTURE2D_DESC, D3D11_TEXTURE3D_DESC, D3D11_UNORDERED_ACCESS_VIEW_DESC,
     },
     immut_com_interface,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, SIZE_T, UINT,
 };
 use std::ffi::c_void;
@@ -36,8 +36,8 @@ use std::ptr::{null, null_mut};
 
 immut_com_interface!(
     /// The device interface represents a virtual adapter; it is used to create resources.
-    pub abstract ID3D11Device(ID3D11DeviceVTable/ID3D11DeviceTrait):
-        IUnknown/IUnknownTrait(unknown) {
+    pub abstract ID3D11Device(ID3D11DeviceVTable):
+        IUnknown(unknown) {
         const IID = 0xDB6F6DDB-0xAC77-0x4E88-0x8253-0x819DF9BBF140;
 
         /// Creates a buffer (vertex buffer, index buffer, or shader-constant buffer).

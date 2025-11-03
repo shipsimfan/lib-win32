@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    d3d11::{ID3D11DeviceChild, ID3D11DeviceChildTrait, ID3D11Resource},
-    unknwn::{IUnknown, IUnknownTrait},
+    d3d11::{ID3D11DeviceChild, ID3D11Resource},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -24,9 +24,9 @@ com_interface!(
     ///  - To bind a render-target view or a depth-stencil view, call
     ///    [`ID3D11DeviceContext::om_set_render_targets`].
     ///  - To bind a shader resource, call [`ID3D11DeviceContext::vs_set_shader_resources`].
-    pub abstract ID3D11View(ID3D11ViewVTable/ID3D11ViewTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11View(ID3D11ViewVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0x839D1216-0xBB2E-0x412B-0xB7F4-0xA9DBEBE08ED1;
 
         /// Get the resource that is accessed through this view.

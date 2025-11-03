@@ -5,7 +5,6 @@ use std::ffi::c_void;
 #[allow(unused_imports)]
 use crate::{
     dxgi::{CreateDXGIFactory1, IDXGIFactory},
-    unknwn::IUnknownTrait,
     S_OK,
 };
 

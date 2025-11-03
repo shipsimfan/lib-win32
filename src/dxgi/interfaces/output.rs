@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIObject, IDXGIObjectTrait, IDXGISurface, DXGI_FORMAT, DXGI_FRAME_STATISTICS,
+        IDXGIObject, IDXGISurface, DXGI_FORMAT, DXGI_FRAME_STATISTICS,
         DXGI_GAMMA_CONTROL, DXGI_GAMMA_CONTROL_CAPABILITIES, DXGI_MODE_DESC, DXGI_OUTPUT_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     BOOL, HRESULT, UINT,
 };
 
@@ -23,9 +23,9 @@ use std::ptr::null_mut;
 
 com_interface!(
     /// An [`IDXGIOutput`] interface represents an adapter output (such as a monitor).
-    pub abstract IDXGIOutput(IDXGIOutputVTable/IDXGIOutputTrait):
-        IDXGIObject/IDXGIObjectTrait(object) +
-        IUnknown/IUnknownTrait(object.unknown) {
+    pub abstract IDXGIOutput(IDXGIOutputVTable):
+        IDXGIObject(object) +
+        IUnknown {
         const IID = 0xAE02EEDB-0xC735-0x4690-0x8D52-0x5A8DC20213AA;
 
         /// Get a description of the output.

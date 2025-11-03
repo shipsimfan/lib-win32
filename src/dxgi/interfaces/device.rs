@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIAdapter, IDXGIObject, IDXGIObjectTrait, IDXGISurface, DXGI_RESIDENCY,
+        IDXGIAdapter, IDXGIObject, IDXGISurface, DXGI_RESIDENCY,
         DXGI_SHARED_RESOURCE, DXGI_SURFACE_DESC, DXGI_USAGE,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, INT, UINT,
 };
 
@@ -20,9 +20,9 @@ use std::ptr::null_mut;
 com_interface!(
     /// An IDXGIDevice interface implements a derived class for DXGI objects that produce image
     /// data.
-    pub abstract IDXGIDevice(IDXGIDeviceVTable/IDXGIDeviceTrait):
-        IDXGIObject/IDXGIObjectTrait(object) +
-        IUnknown/IUnknownTrait(object.unknown) {
+    pub abstract IDXGIDevice(IDXGIDeviceVTable):
+        IDXGIObject(object) +
+        IUnknown {
         const IID = 0x54EC77FA-0x1377-0x44E6-0x8C32-0x88FD5F44C84C;
 
         /// Returns the adapter for the specified device.

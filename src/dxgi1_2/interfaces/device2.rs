@@ -1,11 +1,8 @@
 use crate::{
     com_interface,
-    dxgi::{
-        IDXGIDevice, IDXGIDevice1, IDXGIDevice1Trait, IDXGIDeviceTrait, IDXGIObject,
-        IDXGIObjectTrait, IDXGIResource,
-    },
+    dxgi::{IDXGIDevice, IDXGIDevice1, IDXGIObject, IDXGIResource},
     dxgi1_2::DXGI_OFFER_RESOURCE_PRIORITY,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::IUnknown,
     BOOL, HANDLE, HRESULT, UINT,
 };
 
@@ -31,11 +28,11 @@ com_interface!(
     /// The Direct3D create device functions return a Direct3D device object. This Direct3D device
     /// object implements the [`IUnknown`] interface. You can query this Direct3D device object for
     /// the device's corresponding [`IDXGIDevice2`] interface.
-    pub abstract IDXGIDevice2(IDXGIDevice2VTable/IDXGIDevice2Trait):
-        IDXGIDevice1/IDXGIDevice1Trait(device1) +
-        IDXGIDevice/IDXGIDeviceTrait(device1.device) +
-        IDXGIObject/IDXGIObjectTrait(device1.device.object) +
-        IUnknown/IUnknownTrait(device1.device.object.unknown) {
+    pub abstract IDXGIDevice2(IDXGIDevice2VTable):
+        IDXGIDevice1(device1) +
+        IDXGIDevice +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x05008617-0xFBFD-0x4051-0xA790-0x144884B4F6A9;
 
         /// Allows the operating system to free the video memory of resources by discarding their

@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIObject, IDXGIObjectTrait, IDXGIOutput, IDXGIOutputTrait, IDXGIResource, DXGI_FORMAT,
+        IDXGIObject, IDXGIOutput, IDXGIResource, DXGI_FORMAT,
     },
     dxgi1_2::{IDXGIOutputDuplication, DXGI_MODE_DESC1},
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, UINT,
 };
 
@@ -36,10 +36,10 @@ com_interface!(
     /// update, use [`IDXGISwapChain::get_containing_output`]. You can then call
     /// [`IUnknown::query_interface`] from any [`IDXGIOutput`] object to obtain an [`IDXGIOutput1`]
     /// object.
-    pub abstract IDXGIOutput1(IDXGIOutput1VTable/IDXGIOutput1Trait):
-        IDXGIOutput/IDXGIOutputTrait(output) +
-        IDXGIObject/IDXGIObjectTrait(output.object) +
-        IUnknown/IUnknownTrait(output.object.unknown) {
+    pub abstract IDXGIOutput1(IDXGIOutput1VTable):
+        IDXGIOutput(output) +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x00CDDEA8-0x939B-0x4B83-0xA340-0xA685226666CC;
 
         /// Gets the display modes that match the requested format and other input options.

@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    dxgi::{IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIDeviceSubObject, IDXGIObject},
+    unknwn::{IUnknown},
     DWORD, HRESULT, UINT64,
 };
 
@@ -31,10 +31,10 @@ com_interface!(
     ///
     /// For information about creating a keyed mutex, see the [`IDXGIKeyedMutex::acquire_sync`]
     /// method.
-    pub abstract IDXGIKeyedMutex(IDXGIKeyedMutexVTable/IDXGIKeyedMutexTrait):
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(device_sub_object.object) +
-        IUnknown/IUnknownTrait(device_sub_object.object.unknown) {
+    pub abstract IDXGIKeyedMutex(IDXGIKeyedMutexVTable):
+        IDXGIDeviceSubObject(device_sub_object) +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x9D8E1289-0xD7B3-0x465F-0x8126-0x250E349AF85D;
 
         /// Using a key, acquires exclusive rendering access to a shared resource.

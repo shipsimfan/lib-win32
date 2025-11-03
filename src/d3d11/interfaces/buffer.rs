@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11DeviceChild, ID3D11DeviceChildTrait, ID3D11Resource, ID3D11ResourceTrait,
+        ID3D11DeviceChild, ID3D11Resource,
         D3D11_BUFFER_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -28,10 +28,10 @@ com_interface!(
     /// Buffers can be bound to multiple pipeline stages simultaneously for reading. A buffer can
     /// also be bound to a single pipeline stage for writing; however, the same buffer cannot be
     /// bound for reading and writing simultaneously.
-    pub abstract ID3D11Buffer(ID3D11BufferVTable/ID3D11BufferTrait):
-        ID3D11Resource/ID3D11ResourceTrait(resource) +
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(resource.device_child) +
-        IUnknown/IUnknownTrait(resource.device_child.unknown) {
+    pub abstract ID3D11Buffer(ID3D11BufferVTable):
+        ID3D11Resource(resource) +
+        ID3D11DeviceChild +
+        IUnknown {
         const IID = 0x48570B85-0xD1EE-0x4FCD-0xA250-0xEB350722B037;
 
         /// Get the properties of a buffer resource.

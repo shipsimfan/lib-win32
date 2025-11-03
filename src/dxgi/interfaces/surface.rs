@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
+        IDXGIDeviceSubObject, IDXGIObject,
         DXGI_MAPPED_RECT, DXGI_SURFACE_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, UINT,
 };
 
@@ -17,10 +17,10 @@ use crate::{
 
 com_interface!(
     /// The [`IDXGISurface`] interface implements methods for image-data objects.
-    pub abstract IDXGISurface(IDXGISurfaceVTable/IDXGISurfaceTrait):
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(device_sub_object.object) +
-        IUnknown/IUnknownTrait(device_sub_object.object.unknown) {
+    pub abstract IDXGISurface(IDXGISurfaceVTable):
+        IDXGIDeviceSubObject(device_sub_object) +
+        IDXGIObject +
+        IUnknown {
         const IID = 0xCAFCB56C-0x6AC3-0x4889-0xBF47-0x9E23BBD260EC;
 
         /// Get a description of the surface.

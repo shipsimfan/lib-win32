@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    d3d11::{ID3D11DeviceChild, ID3D11DeviceChildTrait, D3D11_BLEND_DESC},
-    unknwn::{IUnknown, IUnknownTrait},
+    d3d11::{ID3D11DeviceChild, D3D11_BLEND_DESC},
+    unknwn::IUnknown,
 };
 
 // rustdoc imports
@@ -20,9 +20,9 @@ com_interface!(
     /// To create a blend-state object, call [`ID3D11Device::create_blend_state`]. To bind the
     /// blend-state object to the output-merger stage, call
     /// [`ID3D11DeviceContext::om_set_blend_state`].
-    pub abstract ID3D11BlendState(ID3D11BlendStateVTable/ID3D11BlendStateTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11BlendState(ID3D11BlendStateVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0x75B68FAA-0x347D-0x4159-0x8F45-0xA0640F01CD9A;
 
         /// Gets the description for blending state that you used to create the blend-state object.

@@ -14,7 +14,7 @@ com_interface!(
     /// To get a shader-reflection-variable interface, call a method like
     /// [`ID3D11ShaderReflection::get_variable_by_name`]. This isn't a COM interface, so you don't
     /// need to worry about reference counts or releasing the interface when you're done with it.
-    pub abstract ID3D11ShaderReflectionVariable(ID3D11ShaderReflectionVariableVTable/ID3D11ShaderReflectionVariableTrait) {
+    pub abstract ID3D11ShaderReflectionVariable(ID3D11ShaderReflectionVariableVTable) {
         const IID = 0x51F23923-0xF3E5-0x4BD1-0x91CB-0x606177D8DB4C;
 
         /// Get a shader-variable description.

@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
     d3d11::ID3D11Device,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, REFGUID, UINT,
 };
 use std::ffi::c_void;
@@ -16,8 +16,8 @@ com_interface!(
     /// # Remarks
     /// There are several types of device child interfaces, all of which inherit this interface.
     /// They include shaders, state objects, and input layouts.
-    pub abstract ID3D11DeviceChild(ID3D11DeviceChildVTable/ID3D11DeviceChildTrait):
-        IUnknown/IUnknownTrait(unknown) {
+    pub abstract ID3D11DeviceChild(ID3D11DeviceChildVTable):
+        IUnknown(unknown) {
         const IID = 0x1841E5C8-0x16B0-0x489B-0xBCC8-0x44CFB0D5DEAE;
 
         /// Get a pointer to the device that created this interface.

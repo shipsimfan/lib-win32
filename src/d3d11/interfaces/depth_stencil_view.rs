@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11DeviceChild, ID3D11DeviceChildTrait, ID3D11View, ID3D11ViewTrait,
+        ID3D11DeviceChild, ID3D11View,
         D3D11_DEPTH_STENCIL_VIEW_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -19,10 +19,10 @@ com_interface!(
     ///
     /// To bind a depth-stencil view to the pipeline, call
     /// [`ID3D11DeviceContext::om_set_render_targets`].
-    pub abstract ID3D11DepthStencilView(ID3D11DepthStencilViewVTable/ID3D11DepthStencilViewTrait):
-        ID3D11View/ID3D11ViewTrait(view) +
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(view.device_child) +
-        IUnknown/IUnknownTrait(view.device_child.unknown) {
+    pub abstract ID3D11DepthStencilView(ID3D11DepthStencilViewVTable):
+        ID3D11View(view) +
+        ID3D11DeviceChild +
+        IUnknown {
         const IID = 0x9FDAC92A-0x1876-0x48C3-0xAFAD-0x25B94F84A9B6;
 
         /// Get the depth-stencil view.

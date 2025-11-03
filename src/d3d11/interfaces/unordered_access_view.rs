@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11DeviceChild, ID3D11DeviceChildTrait, ID3D11View, ID3D11ViewTrait,
+        ID3D11DeviceChild, ID3D11View,
         D3D11_UNORDERED_ACCESS_VIEW_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -23,10 +23,10 @@ com_interface!(
     /// a compute shader; call
     /// [`ID3D11DeviceContext::om_set_render_targets_and_unordered_access_views`] to bind an
     /// unordered access view to a pixel shader.
-    pub abstract ID3D11UnorderedAccessView(ID3D11UnorderedAccessViewVTable/ID3D11UnorderedAccessViewTrait):
-        ID3D11View/ID3D11ViewTrait(view) +
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(view.device_child) +
-        IUnknown/IUnknownTrait(view.device_child.unknown) {
+    pub abstract ID3D11UnorderedAccessView(ID3D11UnorderedAccessViewVTable):
+        ID3D11View(view) +
+        ID3D11DeviceChild +
+        IUnknown {
         const IID = 0x28ACF509-0x7F5C-0x48F6-0x8611-0xF316010A6380;
 
         /// Get a description of the resource.

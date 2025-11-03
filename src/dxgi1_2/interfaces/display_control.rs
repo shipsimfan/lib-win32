@@ -1,6 +1,6 @@
 use crate::{
     com_interface,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     BOOL,
 };
 
@@ -34,8 +34,8 @@ com_interface!(
     /// applets can use the [`IDXGIFactory2::register_stereo_status_event`] or
     /// [`IDXGIFactory2::register_stereo_status_window`] method to register for notifications of
     /// all stereo configuration changes.
-    pub abstract IDXGIDisplayControl(IDXGIDisplayControlVTable/IDXGIDisplayControlTrait):
-        IUnknown/IUnknownTrait(unknown) {
+    pub abstract IDXGIDisplayControl(IDXGIDisplayControlVTable):
+        IUnknown(unknown) {
         const IID = 0xEA9DBF1A-0xC88E-0x4486-0x854A-0x98AA0138F30C;
 
         /// Retrieves a Boolean value that indicates whether the operating system's stereoscopic 3D

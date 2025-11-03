@@ -1,12 +1,12 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
-        IDXGISwapChain, IDXGISwapChainTrait,
+        IDXGIDeviceSubObject, IDXGIObject,
+        IDXGISwapChain,
     },
-    dxgi1_2::{IDXGISwapChain1, IDXGISwapChain1Trait},
+    dxgi1_2::{IDXGISwapChain1},
     dxgi1_3::DXGI_MATRIX_3X2_F,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HANDLE, HRESULT, UINT,
 };
 
@@ -27,12 +27,12 @@ com_interface!(
     /// You can create a swap chain by calling [`IDXGIFactory2::create_swap_chain_for_hwnd`],
     /// [`IDXGIFactory2::create_swap_chain_for_core_window`], or
     /// [`IDXGIFactory2::create_swap_chain_for_composition`].
-    pub abstract IDXGISwapChain2(IDXGISwapChain2VTable/IDXGISwapChain2Trait):
-        IDXGISwapChain1/IDXGISwapChain1Trait(swap_chain1) +
-        IDXGISwapChain/IDXGISwapChainTrait(swap_chain1.swap_chain) +
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(swap_chain1.swap_chain.device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(swap_chain1.swap_chain.device_sub_object.object) +
-        IUnknown/IUnknownTrait(swap_chain1.swap_chain.device_sub_object.object.unknown) {
+    pub abstract IDXGISwapChain2(IDXGISwapChain2VTable):
+        IDXGISwapChain1(swap_chain1) +
+        IDXGISwapChain +
+        IDXGIDeviceSubObject +
+        IDXGIObject +
+        IUnknown {
         const IID = 0xA8BE2AC4-0x199F-0x4946-0xB331-0x79599FB98DE7;
 
         /// Sets the source region to be used for the swap chain.

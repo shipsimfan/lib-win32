@@ -1,11 +1,11 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
-        IDXGIResource, IDXGIResourceTrait,
+        IDXGIDeviceSubObject, IDXGIObject,
+        IDXGIResource,
     },
     dxgi1_2::IDXGISurface2,
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     DWORD, HANDLE, HRESULT, LPCWSTR, SECURITY_ATTRIBUTES, UINT,
 };
 
@@ -43,11 +43,11 @@ com_interface!(
     /// Direct3D 2D texture object that you create from [`ID3D11Device::create_texture_2d`]
     /// supports [`IDXGIResource1`]. You can call [`IUnknown::query_interface`] on the 2D texture
     /// object ([`ID3D11Texture2D`]) to retrieve the [`IDXGIResource1`] interface.
-    pub abstract IDXGIResource1(IDXGIResource1VTable/IDXGIResource1Trait):
-        IDXGIResource/IDXGIResourceTrait(resource) +
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(resource.device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(resource.device_sub_object.object) +
-        IUnknown/IUnknownTrait(resource.device_sub_object.object.unknown) {
+    pub abstract IDXGIResource1(IDXGIResource1VTable):
+        IDXGIResource(resource) +
+        IDXGIDeviceSubObject +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x30961379-0x4609-0x4A41-0x998E-0x54FE567EE0C1;
 
         /// Creates a subresource surface object.

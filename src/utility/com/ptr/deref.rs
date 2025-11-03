@@ -15,26 +15,18 @@ impl<T: AsRef<IUnknown> + AsMut<IUnknown> + ComInterface> DerefMut for ComPtr<T>
     }
 }
 
-impl<T: AsRef<IUnknown> + AsMut<IUnknown> + ComInterface> AsRef<T> for ComPtr<T> {
-    fn as_ref(&self) -> &T {
-        unsafe { self.ptr.as_ref() }
-    }
-}
-
-impl<T: AsRef<IUnknown> + AsMut<IUnknown> + ComInterface> AsMut<T> for ComPtr<T> {
-    fn as_mut(&mut self) -> &mut T {
-        unsafe { self.ptr.as_mut() }
-    }
-}
-
-impl<T: AsRef<IUnknown> + AsMut<IUnknown> + ComInterface> AsRef<IUnknown> for ComPtr<T> {
-    fn as_ref(&self) -> &IUnknown {
+impl<T2, T1: AsRef<IUnknown> + AsMut<IUnknown> + AsRef<T2> + ComInterface> AsRef<T2>
+    for ComPtr<T1>
+{
+    fn as_ref(&self) -> &T2 {
         unsafe { self.ptr.as_ref() }.as_ref()
     }
 }
 
-impl<T: AsRef<IUnknown> + AsMut<IUnknown> + ComInterface> AsMut<IUnknown> for ComPtr<T> {
-    fn as_mut(&mut self) -> &mut IUnknown {
+impl<T2, T1: AsRef<IUnknown> + AsMut<IUnknown> + AsMut<T2> + ComInterface> AsMut<T2>
+    for ComPtr<T1>
+{
+    fn as_mut(&mut self) -> &mut T2 {
         unsafe { self.ptr.as_mut() }.as_mut()
     }
 }

@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     d3d11::{
-        ID3D11Asynchronous, ID3D11AsynchronousTrait, ID3D11DeviceChild, ID3D11DeviceChildTrait,
-        ID3D11Query, ID3D11QueryTrait,
+        ID3D11Asynchronous, ID3D11DeviceChild,
+        ID3D11Query,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -23,11 +23,11 @@ com_interface!(
     /// predicates. Stream-output-overflow predicates cause any geometry residing in stream-output
     /// buffers that were overflowed to not be processed. Occlusion predicates cause any geometry
     /// that did not have a single sample pass the depth/stencil tests to not be processed.
-    pub abstract ID3D11Predicate(ID3D11PredicateVTable/ID3D11PredicateTrait):
-        ID3D11Query/ID3D11QueryTrait(query) +
-        ID3D11Asynchronous/ID3D11AsynchronousTrait(query.asynchronous) +
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(query.asynchronous.device_child) +
-        IUnknown/IUnknownTrait(query.asynchronous.device_child.unknown) {
+    pub abstract ID3D11Predicate(ID3D11PredicateVTable):
+        ID3D11Query(query) +
+        ID3D11Asynchronous +
+        ID3D11DeviceChild +
+        IUnknown {
         const IID = 0x9EB576DD-0x9F77-0x4D86-0x81AA-0x8BAB5FE490E2;
     }
 );

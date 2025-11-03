@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    d3d11::{ID3D11DeviceChild, ID3D11DeviceChildTrait},
-    unknwn::{IUnknown, IUnknownTrait},
+    d3d11::{ID3D11DeviceChild},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -20,9 +20,9 @@ com_interface!(
     /// To create a compute-shader interface, call [`ID3D11Device::create_compute_shader`]. Before
     /// using a compute shader you must bind it to the device by calling
     /// [`ID3D11DeviceContext::cs_set_shader`].
-    pub abstract ID3D11ComputeShader(ID3D11ComputeShaderVTable/ID3D11ComputeShaderTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11ComputeShader(ID3D11ComputeShaderVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0x4F5B196E-0xC2BD-0x495E-0xBD01-0x1FDED38E4969;
     }
 );

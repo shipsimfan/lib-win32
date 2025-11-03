@@ -1,11 +1,11 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
-        IDXGIOutput, IDXGISwapChain, IDXGISwapChainTrait, DXGI_MODE_ROTATION, DXGI_RGBA,
+        IDXGIDeviceSubObject, IDXGIObject,
+        IDXGIOutput, IDXGISwapChain, DXGI_MODE_ROTATION, DXGI_RGBA,
     },
     dxgi1_2::{DXGI_PRESENT_PARAMETERS, DXGI_SWAP_CHAIN_DESC1, DXGI_SWAP_CHAIN_FULLSCREEN_DESC},
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     BOOL, HRESULT, HWND, REFIID, UINT,
 };
 use std::ffi::c_void;
@@ -40,11 +40,11 @@ com_interface!(
     /// that you can use to determine whether the swap chain supports "temporary mono”
     /// presentation. This type of swap chain is a stereo swap chain that can be used to present
     /// mono content.
-    pub abstract IDXGISwapChain1(IDXGISwapChain1VTable/IDXGISwapChain1Trait):
-        IDXGISwapChain/IDXGISwapChainTrait(swap_chain) +
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(swap_chain.device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(swap_chain.device_sub_object.object) +
-        IUnknown/IUnknownTrait(swap_chain.device_sub_object.object.unknown) {
+    pub abstract IDXGISwapChain1(IDXGISwapChain1VTable):
+        IDXGISwapChain(swap_chain) +
+        IDXGIDeviceSubObject +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x790A45F7-0x0D42-0x4876-0x983A-0x0A55CFE6F4AA;
 
         /// Gets a description of the swap chain.

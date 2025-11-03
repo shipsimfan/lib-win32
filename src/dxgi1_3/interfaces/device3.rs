@@ -1,11 +1,8 @@
 use crate::{
     com_interface,
-    dxgi::{
-        IDXGIDevice, IDXGIDevice1, IDXGIDevice1Trait, IDXGIDeviceTrait, IDXGIObject,
-        IDXGIObjectTrait,
-    },
-    dxgi1_2::{IDXGIDevice2, IDXGIDevice2Trait},
-    unknwn::{IUnknown, IUnknownTrait},
+    dxgi::{IDXGIDevice, IDXGIDevice1, IDXGIObject},
+    dxgi1_2::IDXGIDevice2,
+    unknwn::IUnknown,
 };
 
 // rustdoc imports
@@ -26,12 +23,12 @@ com_interface!(
     /// The Direct3D create device functions return a Direct3D device object. This Direct3D device
     /// object implements the [`IUnknown`] interface. You can query this Direct3D device object for
     /// the device's corresponding [`IDXGIDevice3`] interface.
-    pub abstract IDXGIDevice3(IDXGIDevice3VTable/IDXGIDevice3Trait):
-        IDXGIDevice2/IDXGIDevice2Trait(device2) +
-        IDXGIDevice1/IDXGIDevice1Trait(device2.device1) +
-        IDXGIDevice/IDXGIDeviceTrait(device2.device1.device) +
-        IDXGIObject/IDXGIObjectTrait(device2.device1.device.object) +
-        IUnknown/IUnknownTrait(device2.device1.device.object.unknown) {
+    pub abstract IDXGIDevice3(IDXGIDevice3VTable):
+        IDXGIDevice2(device2) +
+        IDXGIDevice1 +
+        IDXGIDevice +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x6007896C-0x3244-0x4AFD-0xBF18-0xA6D3BEDA502;
 
         /// Trims the graphics memory allocated by the [`IDXGIDevice3`] DXGI device on the app's

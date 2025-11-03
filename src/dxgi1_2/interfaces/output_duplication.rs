@@ -1,11 +1,11 @@
 use crate::{
     com_interface,
-    dxgi::{IDXGIObject, IDXGIObjectTrait, IDXGIResource, DXGI_MAPPED_RECT},
+    dxgi::{IDXGIObject, IDXGIResource, DXGI_MAPPED_RECT},
     dxgi1_2::{
         DXGI_OUTDUPL_DESC, DXGI_OUTDUPL_FRAME_INFO, DXGI_OUTDUPL_MOVE_RECT,
         DXGI_OUTDUPL_POINTER_SHAPE_INFO,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     HRESULT, RECT, UINT,
 };
 use std::ffi::c_void;
@@ -71,9 +71,9 @@ com_interface!(
     /// The desktop image is always in the [`DXGI_FORMAT::B8G8R8A8UNorm`] format.
     ///
     /// The [`IDXGIOutputDuplication`] interface does not exist for Windows Store apps.
-    pub abstract IDXGIOutputDuplication(IDXGIOutputDuplicationVTable/IDXGIOutputDuplicationTrait):
-        IDXGIObject/IDXGIObjectTrait(object) +
-        IUnknown/IUnknownTrait(object.unknown) {
+    pub abstract IDXGIOutputDuplication(IDXGIOutputDuplicationVTable):
+        IDXGIObject(object) +
+        IUnknown {
         const IID = 0x191CFAC3-0xA341-0x470D-0xB26E-0xA864F428319C;
 
         /// Retrieves a description of a duplicated output. This description specifies the

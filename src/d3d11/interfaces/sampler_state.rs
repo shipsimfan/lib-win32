@@ -1,7 +1,7 @@
 use crate::{
     com_interface,
-    d3d11::{ID3D11DeviceChild, ID3D11DeviceChildTrait, D3D11_SAMPLER_DESC},
-    unknwn::{IUnknown, IUnknownTrait},
+    d3d11::{ID3D11DeviceChild, D3D11_SAMPLER_DESC},
+    unknwn::{IUnknown},
 };
 
 // rustdoc imports
@@ -24,9 +24,9 @@ com_interface!(
     ///  - [`ID3D11DeviceContext::cs_set_samplers`]
     ///
     /// You can bind the same sampler-state object to multiple shader stages simultaneously.
-    pub abstract ID3D11SamplerState(ID3D11SamplerStateVTable/ID3D11SamplerStateTrait):
-        ID3D11DeviceChild/ID3D11DeviceChildTrait(device_child) +
-        IUnknown/IUnknownTrait(device_child.unknown) {
+    pub abstract ID3D11SamplerState(ID3D11SamplerStateVTable):
+        ID3D11DeviceChild(device_child) +
+        IUnknown {
         const IID = 0xDA6FEA51-0x564C-0x4487-0x9810-0xF0D0F9B4E3A5;
 
         /// Gets the description for sampler state that you used to create the sampler-state object.

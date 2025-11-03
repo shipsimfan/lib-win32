@@ -1,10 +1,10 @@
 use crate::{
     com_interface,
     dxgi::{
-        IDXGIDeviceSubObject, IDXGIDeviceSubObjectTrait, IDXGIObject, IDXGIObjectTrait,
+        IDXGIDeviceSubObject, IDXGIObject,
         IDXGIOutput, DXGI_FORMAT, DXGI_FRAME_STATISTICS, DXGI_MODE_DESC, DXGI_SWAP_CHAIN_DESC,
     },
-    unknwn::{IUnknown, IUnknownTrait},
+    unknwn::{IUnknown},
     BOOL, HRESULT, REFIID, UINT,
 };
 use std::ffi::c_void;
@@ -39,10 +39,10 @@ com_interface!(
     /// [`IDXGIFactory2::create_swap_chain_for_composition`]. You can also create a swap chain when
     /// you call [`D3D11CreateDeviceAndSwapChain`]; however, you can then only access the sub-set
     /// of swap-chain functionality that the [`IDXGISwapChain`] interface provides.
-    pub abstract IDXGISwapChain(IDXGISwapChainVTable/IDXGISwapChainTrait):
-        IDXGIDeviceSubObject/IDXGIDeviceSubObjectTrait(device_sub_object) +
-        IDXGIObject/IDXGIObjectTrait(device_sub_object.object) +
-        IUnknown/IUnknownTrait(device_sub_object.object.unknown) {
+    pub abstract IDXGISwapChain(IDXGISwapChainVTable):
+        IDXGIDeviceSubObject(device_sub_object) +
+        IDXGIObject +
+        IUnknown {
         const IID = 0x310D36A0-0xD2E7-0x4C0A-0xAA04-0x6A9D23B8886A;
 
         /// Presents a rendered image to the user.

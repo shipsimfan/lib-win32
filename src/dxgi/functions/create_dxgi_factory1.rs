@@ -3,7 +3,7 @@ use std::ffi::c_void;
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{dxgi::IDXGIFactory1, unknwn::IUnknownTrait, S_OK};
+use crate::{dxgi::IDXGIFactory1, S_OK};
 
 #[link(name = "DXGI")]
 extern "system" {
