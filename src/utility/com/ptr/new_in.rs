@@ -1,7 +1,7 @@
-use crate::{unknwn::IUnknownTrait, ComPtr, Error};
+use crate::{unknwn::IUnknown, ComInterface, ComPtr, Error};
 use std::ptr::null_mut;
 
-impl<T: IUnknownTrait> ComPtr<T> {
+impl<T: AsRef<IUnknown> + AsMut<IUnknown> + ComInterface> ComPtr<T> {
     /// Creates a new [`ComPtr`] by calling `f` with an uninitialized pointer which it will fill
     pub fn new_in<R, F: FnOnce(*mut *mut T) -> Result<R, Error>>(f: F) -> Result<ComPtr<T>, Error> {
         let mut ptr = null_mut();

@@ -1,7 +1,7 @@
-use crate::{unknwn::IUnknownTrait, ComPtr};
+use crate::{unknwn::IUnknown, ComInterface, ComPtr};
 
-impl<T: IUnknownTrait> Drop for ComPtr<T> {
+impl<T: AsRef<IUnknown> + AsMut<IUnknown> + ComInterface> Drop for ComPtr<T> {
     fn drop(&mut self) {
-        self.release();
+        AsMut::<IUnknown>::as_mut(self).release();
     }
 }

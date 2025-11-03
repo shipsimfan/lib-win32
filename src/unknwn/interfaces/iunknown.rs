@@ -13,7 +13,7 @@ com_interface!(
     /// `release` methods. All other COM interfaces are inherited, directly or indirectly, from
     /// [`IUnknown`]. Therefore, the three methods in [`IUnknown`] are the first entries in the
     /// vtable for every interface.
-    pub abstract IUnknown(IUnknownVTable/IUnknownTrait) {
+    pub abstract IUnknown(IUnknownVTable) {
         const IID = 0x00000000-0x0000-0x0000-0xC000-0x000000000046;
 
         /// Queries a COM object for a pointer to one of its interface; identifying the interface

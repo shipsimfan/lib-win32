@@ -3,7 +3,7 @@
 macro_rules! com_interface {
     (
         $(#[$meta: meta])*
-        $vis: vis abstract $struct_name: ident($vtable_name: ident / $trait_name: ident)$(: $first_super_type: ident/$first_super_trait: ident($first_super_name: ident))*$( + $super_type: ident/$super_trait: ident($super_name: ident$(.$super_child: ident)*))* {
+        $vis: vis abstract $struct_name: ident($vtable_name: ident)$(: $first_super_type: ident($first_super_name: ident))* {
             const IID = $iid1: literal - $iid2: literal - $iid3: literal - $iid4: literal - $iid5: literal;
 
             $(
@@ -32,25 +32,19 @@ macro_rules! com_interface {
             )*
         }
 
-        $(#[$meta])*
-        $vis trait $trait_name: $crate::utility::ComInterface $(+ $first_super_trait)* {
-            /// Get the vtable for this interface
-            fn vtable(&self) -> &$vtable_name;
+        impl $struct_name {
+            #[doc = ::std::concat!("Get the v-table for [`", ::std::stringify!($struct_name), "`]")]
+            pub fn vtable(&self) -> &$vtable_name {
+                unsafe { self.vtable.unwrap().as_ref() }
+            }
 
             $(
                 $(#[$fn_meta])*
-                fn $fn_name(&mut self, $($parameter_name: $parameter_type),*)$( -> $return_type)* {
-                    $trait_name::vtable(self).$fn_name.unwrap()(self as *mut Self as *mut _, $($parameter_name),*)
+                pub fn $fn_name(&mut self, $($parameter_name: $parameter_type),*) $(-> $return_type)* {
+                    self.vtable().$fn_name.unwrap()(self as *mut Self as *mut _, $($parameter_name),*)
                 }
             )*
         }
-
-        impl $struct_name {$(
-            $(#[$fn_meta])*
-            pub fn $fn_name(&mut self, $($parameter_name: $parameter_type),*) $(-> $return_type)* {
-                $trait_name::$fn_name(self $(, $parameter_name)*)
-            }
-        )*}
 
         impl $crate::utility::ComInterface for $struct_name {
             type VTable = $vtable_name;
@@ -68,25 +62,18 @@ macro_rules! com_interface {
             };
         }
 
-        impl $trait_name for $struct_name {
-            fn vtable(&self) -> &$vtable_name {
-                unsafe { self.vtable.unwrap().as_ref() }
-            }
-        }
-
-
         $(
-            impl $first_super_trait for $struct_name {
-                fn vtable(&self) -> &<$first_super_type as $crate::ComInterface>::VTable {
-                    &$trait_name::vtable(self).$first_super_name
+            impl std::ops::Deref for $struct_name {
+                type Target = $first_super_type;
+
+                fn deref(&self) -> &Self::Target {
+                    unsafe { std::mem::transmute(self) }
                 }
             }
-        )*
 
-        $(
-            impl $super_trait for $struct_name {
-                fn vtable(&self) -> &<$super_type as $crate::ComInterface>::VTable {
-                    &$trait_name::vtable(self).$super_name$(.$super_child)*
+            impl std::ops::DerefMut for $struct_name {
+                fn deref_mut(&mut self) -> &mut Self::Target {
+                    unsafe { std::mem::transmute(self) }
                 }
             }
         )*
@@ -98,7 +85,7 @@ macro_rules! com_interface {
 macro_rules! immut_com_interface {
     (
         $(#[$meta: meta])*
-        $vis: vis abstract $struct_name: ident($vtable_name: ident / $trait_name: ident)$(: $first_super_type: ident/$first_super_trait: ident($first_super_name: ident))*$( + $super_type: ident/$super_trait: ident($super_name: ident$(.$super_child: ident)*))* {
+        $vis: vis abstract $struct_name: ident($vtable_name: ident)$(: $first_super_type: ident($first_super_name: ident))* {
             const IID = $iid1: literal - $iid2: literal - $iid3: literal - $iid4: literal - $iid5: literal;
 
             $(
@@ -111,7 +98,7 @@ macro_rules! immut_com_interface {
         #[repr(C)]
         $vis struct $struct_name {
             /// The table with function calls for this interface
-            vtable: Option<::std::ptr::NonNull<$vtable_name>>,
+            pub vtable: Option<::std::ptr::NonNull<$vtable_name>>,
         }
 
         #[doc = ::std::concat!("Virtual function call table for [`", ::std::stringify!($struct_name), "`]")]
@@ -122,29 +109,24 @@ macro_rules! immut_com_interface {
                 pub $first_super_name: <$first_super_type as $crate::ComInterface>::VTable,
             )*
             $(
-                $fn_name: Option<extern "system" fn(this: *const $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
+                $(#[$fn_meta])*
+                pub $fn_name: Option<extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
             )*
         }
 
-        $(#[$meta])*
-        $vis trait $trait_name$(: $first_super_trait)* {
-            /// Get the vtable for this interface
-            fn vtable(&self) -> &$vtable_name;
+        impl $struct_name {
+            #[doc = ::std::concat!("Get the v-table for [`", ::std::stringify!($struct_name), "`]")]
+            pub fn vtable(&self) -> &$vtable_name {
+                unsafe { self.vtable.unwrap().as_ref() }
+            }
 
             $(
                 $(#[$fn_meta])*
-                fn $fn_name(&self, $($parameter_name: $parameter_type),*)$( -> $return_type)* {
-                    $trait_name::vtable(self).$fn_name.unwrap()(self as *const Self as *const _, $($parameter_name),*)
+                pub fn $fn_name(&self, $($parameter_name: $parameter_type),*) $(-> $return_type)* {
+                    self.vtable().$fn_name.unwrap()(self as *const Self as *mut _, $($parameter_name),*)
                 }
             )*
         }
-
-        impl $struct_name {$(
-            $(#[$fn_meta])*
-            pub fn $fn_name(&self, $($parameter_name: $parameter_type),*) $(-> $return_type)* {
-                $trait_name::$fn_name(self $(, $parameter_name)*)
-            }
-        )*}
 
         impl $crate::utility::ComInterface for $struct_name {
             type VTable = $vtable_name;
@@ -162,25 +144,18 @@ macro_rules! immut_com_interface {
             };
         }
 
-        impl $trait_name for $struct_name {
-            fn vtable(&self) -> &$vtable_name {
-                unsafe { self.vtable.unwrap().as_ref() }
-            }
-        }
-
-
         $(
-            impl $first_super_trait for $struct_name {
-                fn vtable(&self) -> &<$first_super_type as $crate::ComInterface>::VTable {
-                    &$trait_name::vtable(self).$first_super_name
+            impl std::ops::Deref for $struct_name {
+                type Target = $first_super_type;
+
+                fn deref(&self) -> &Self::Target {
+                    unsafe { std::mem::transmute(self) }
                 }
             }
-        )*
 
-        $(
-            impl $super_trait for $struct_name {
-                fn vtable(&self) -> &<$super_type as $crate::ComInterface>::VTable {
-                    &$trait_name::vtable(self).$super_name$(.$super_child)*
+            impl std::ops::DerefMut for $struct_name {
+                fn deref_mut(&mut self) -> &mut Self::Target {
+                    unsafe { std::mem::transmute(self) }
                 }
             }
         )*
