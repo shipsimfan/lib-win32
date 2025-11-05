@@ -86,11 +86,17 @@ pub type LPVOID = *mut c_void;
 /// Signed result of message processing
 pub type LRESULT = LONG_PTR;
 
+/// A pointer to a [`BYTE`]
+pub type PBYTE = *mut BYTE;
+
 /// A pointer to a [`DWORD`]
 pub type PDWORD = *mut DWORD;
 
 /// A pointer to an [`HKEY`]
 pub type PHKEY = *mut HKEY;
+
+/// A pointer to a [`UINT`].
+pub type PUINT = *mut UINT;
 
 /// A pointer to a [`ULONG`]
 pub type PULONG = *mut ULONG;
@@ -100,6 +106,9 @@ pub type UINT = c_uint;
 
 /// An unsigned [`LONG`]. The range is 0 through 4294967295 decimal.
 pub type ULONG = c_ulong;
+
+/// An unsigned [`SHORT`]. The range is 0 through 65535 decimal.
+pub type USHORT = c_ushort;
 
 /// A 16-bit unsigned integer. The range is 0 through 65535 decimal.
 pub type WORD = c_ushort;

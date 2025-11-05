@@ -2,4 +2,4 @@
 
 mod types;
 
-pub use types::DWORD;
+pub use types::{DWORD, QWORD};

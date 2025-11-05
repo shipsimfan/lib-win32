@@ -1,12 +1,12 @@
 use crate::{
-    HWND, INT_PTR, LPARAM, LRESULT, MSG, OSVERSIONINFOA, OSVERSIONINFOW, PAINTSTRUCT, UINT,
-    WNDCLASSEXW, WNDCLASSW, WPARAM,
+    HANDLE, HWND, INT_PTR, LPARAM, LRESULT, MSG, OSVERSIONINFOA, OSVERSIONINFOW, PAINTSTRUCT,
+    RAWINPUTDEVICE, RAWINPUTDEVICELIST, UINT, WNDCLASSEXW, WNDCLASSW, WPARAM,
 };
 
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    CreateDialog, DefWindowProc, DialogBox, SetWindowLong, DWL_MSGRESULT, FALSE, TRUE,
+    CreateDialog, DefWindowProc, DialogBox, SetWindowLong, DWL_MSGRESULT, FALSE, RAWINPUT, TRUE,
     WM_CHARTOITEM, WM_COMPAREITEM, WM_CTLCOLORBTN, WM_CTLCOLORDLG, WM_CTLCOLOREDIT,
     WM_CTLCOLORLISTBOX, WM_CTLCOLORSCROLLBAR, WM_CTLCOLORSTATIC, WM_INITDIALOG, WM_QUERYDRAGICON,
     WM_VKEYTOITEM,
@@ -56,6 +56,9 @@ use crate::{
 /// processed internally by the dialog box window procedure.
 pub type DLGPROC = extern "system" fn(HWND, UINT, WPARAM, LPARAM) -> INT_PTR;
 
+/// A handle to a [`RAWINPUT`].
+pub type HRAWINPUT = HANDLE;
+
 /// A pointer to a [`MSG`]
 pub type LPMSG = *mut MSG;
 
@@ -73,6 +76,15 @@ pub type LPWNDCLASSEXW = *mut WNDCLASSEXW;
 
 /// A pointer to a [`WNDCLASSW`]
 pub type LPWNDCLASSW = *mut WNDCLASSW;
+
+/// A constant pointer to a [`RAWINPUTDEVICE`]
+pub type PCRAWINPUTDEVICE = *const RAWINPUTDEVICE;
+
+/// A pointer to a [`RAWINPUT`]
+pub type PRAWINPUT = *mut RAWINPUT;
+
+/// A pointer to a [`RAWINPUTDEVICELIST`]
+pub type PRAWINPUTDEVICELIST = *mut RAWINPUTDEVICELIST;
 
 /// A callback function, which you define in your application, that processes messages sent to a
 /// window. The [`WNDPROC`] type defines a pointer to this callback function.
