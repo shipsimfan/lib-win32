@@ -2,6 +2,14 @@
 
 use crate::UINT;
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::{
+    DefWindowProc, GetRawInputData, GetRawInputDeviceInfo, RegisterRawInputDevices,
+    GET_RAWINPUT_CODE_WPARAM, GIDC_ARRIVAL, GIDC_REMOVAL, HANDLE, HRAWINPUT, RAWINPUT,
+    RIDEV_DEVNOTIFY, RIM_INPUT, RIM_INPUTSINK,
+};
+
 pub const WM_NULL: UINT = 0x0000;
 pub const WM_CREATE: UINT = 0x0001;
 pub const WM_DESTROY: UINT = 0x0002;
@@ -93,7 +101,45 @@ pub const WM_NCMBUTTONDBLCLK: UINT = 0x00A9;
 pub const WM_NCXBUTTONDOWN: UINT = 0x00AB;
 pub const WM_NCXBUTTONUP: UINT = 0x00AC;
 pub const WM_NCXBUTTONDBLCLK: UINT = 0x00AD;
+
+/// Sent to the window that registered to receive raw input.
+///
+/// Raw input notifications are available only after the application calls
+/// [`RegisterRawInputDevices`] with [`RIDEV_DEVNOTIFY`] flag.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - This parameter can be one of the following values:
+///    * [`GIDC_ARRIVAL`] - A new device has been added to the system. You can call
+///                         [`GetRawInputDeviceInfo`] to get more information regarding the device.
+///    * [`GIDC_REMOVAL`] - A device has been removed from the system.
+///  * `l_param` - The [`HANDLE`] to the raw input device.
+///
+/// # Return Value
+/// If an application processes this message, it should return zero.
 pub const WM_INPUT_DEVICE_CHANGE: UINT = 0x00FE;
+
+/// Sent to the window that is getting raw input.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - The input code. Use [`GET_RAWINPUT_CODE_WPARAM`] macro to get the value. Can be
+///                one of the following values:
+///    * [`RIM_INPUT`] - Input occurred while the application was in the foreground. The
+///                      application must call [`DefWindowProc`] so the system can perform cleanup.
+///    * [`RIM_INPUTSINK`] - Input occurred while the application was not in the foreground.
+///  * `l_param` - A [`HRAWINPUT`] handle to the [`RAWINPUT`] structure that contains the raw input
+///                from the device. To get the raw data, use this handle in the call to
+///                [`GetRawInputData`].
+///
+/// # Return Value
+/// If an application processes this message, it should return zero.
+///
+/// # Remarks
+/// Raw input is available only when the application calls [`RegisterRawInputDevices`] with valid
+/// device specifications.
 pub const WM_INPUT: UINT = 0x00FF;
 pub const WM_KEYFIRST: UINT = 0x0100;
 pub const WM_KEYDOWN: UINT = 0x0100;

@@ -83,6 +83,9 @@ pub type PCRAWINPUTDEVICE = *const RAWINPUTDEVICE;
 /// A pointer to a [`RAWINPUT`]
 pub type PRAWINPUT = *mut RAWINPUT;
 
+/// A pointer to a [`RAWINPUTDEVICE`]
+pub type PRAWINPUTDEVICE = *mut RAWINPUTDEVICE;
+
 /// A pointer to a [`RAWINPUTDEVICELIST`]
 pub type PRAWINPUTDEVICELIST = *mut RAWINPUTDEVICELIST;
 

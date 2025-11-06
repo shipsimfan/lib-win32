@@ -38,23 +38,24 @@ pub use constants::*;
 pub use functions::{
     AdjustWindowRect, AdjustWindowRectEx, AllowSetForegroundWindow, BeginPaint, CallWindowProc,
     CallWindowProcA, CallWindowProcW, CreateDialogParam, CreateDialogParamA, CreateDialogParamW,
-    CreateWindowEx, CreateWindowExA, CreateWindowExW, DefWindowProc, DefWindowProcA,
-    DefWindowProcW, DestroyWindow, DialogBoxParam, DialogBoxParamA, DialogBoxParamW,
-    DispatchMessage, DispatchMessageA, DispatchMessageW, EnableWindow, EndDialog, EndPaint,
-    GetClassInfo, GetClassInfoA, GetClassInfoEx, GetClassInfoExA, GetClassInfoExW, GetClassInfoW,
-    GetClientRect, GetRawInputBuffer, GetRawInputData, GetRawInputDeviceInfo,
-    GetRawInputDeviceInfoA, GetRawInputDeviceInfoW, GetRawInputDeviceList, GetSubMenu,
-    GetVersionEx, GetVersionExA, GetVersionExW, GetWindowLong, GetWindowLongA, GetWindowLongPtr,
-    GetWindowLongPtrA, GetWindowLongPtrW, GetWindowLongW, IsDialogMessage, IsDialogMessageA,
-    IsDialogMessageW, LockSetForegroundWindow, MapWindowPoints, MessageBox, MessageBoxA,
-    MessageBoxEx, MessageBoxExA, MessageBoxExW, MessageBoxW, PeekMessage, PeekMessageA,
-    PeekMessageW, PostQuitMessage, RegisterClass, RegisterClassA, RegisterClassEx,
-    RegisterClassExA, RegisterClassExW, RegisterClassW, RegisterRawInputDevices, ScrollWindowEx,
-    SetActiveWindow, SetForegroundWindow, SetLastErrorEx, SetParent, SetWindowDisplayAffinity,
-    SetWindowLong, SetWindowLongA, SetWindowLongPtr, SetWindowLongPtrA, SetWindowLongPtrW,
-    SetWindowLongW, SetWindowPos, SetWindowText, SetWindowTextA, SetWindowTextW, ShowWindow,
-    SystemParametersInfo, SystemParametersInfoA, SystemParametersInfoForDpi, SystemParametersInfoW,
-    TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW,
+    CreateWindowEx, CreateWindowExA, CreateWindowExW, DefRawInputProc, DefWindowProc,
+    DefWindowProcA, DefWindowProcW, DestroyWindow, DialogBoxParam, DialogBoxParamA,
+    DialogBoxParamW, DispatchMessage, DispatchMessageA, DispatchMessageW, EnableWindow, EndDialog,
+    EndPaint, GetClassInfo, GetClassInfoA, GetClassInfoEx, GetClassInfoExA, GetClassInfoExW,
+    GetClassInfoW, GetClientRect, GetRawInputBuffer, GetRawInputData, GetRawInputDeviceInfo,
+    GetRawInputDeviceInfoA, GetRawInputDeviceInfoW, GetRawInputDeviceList,
+    GetRegisteredRawInputDevices, GetSubMenu, GetVersionEx, GetVersionExA, GetVersionExW,
+    GetWindowLong, GetWindowLongA, GetWindowLongPtr, GetWindowLongPtrA, GetWindowLongPtrW,
+    GetWindowLongW, IsDialogMessage, IsDialogMessageA, IsDialogMessageW, LockSetForegroundWindow,
+    MapWindowPoints, MessageBox, MessageBoxA, MessageBoxEx, MessageBoxExA, MessageBoxExW,
+    MessageBoxW, PeekMessage, PeekMessageA, PeekMessageW, PostQuitMessage, RegisterClass,
+    RegisterClassA, RegisterClassEx, RegisterClassExA, RegisterClassExW, RegisterClassW,
+    RegisterRawInputDevices, ScrollWindowEx, SetActiveWindow, SetForegroundWindow, SetLastErrorEx,
+    SetParent, SetWindowDisplayAffinity, SetWindowLong, SetWindowLongA, SetWindowLongPtr,
+    SetWindowLongPtrA, SetWindowLongPtrW, SetWindowLongW, SetWindowPos, SetWindowText,
+    SetWindowTextA, SetWindowTextW, ShowWindow, SystemParametersInfo, SystemParametersInfoA,
+    SystemParametersInfoForDpi, SystemParametersInfoW, TranslateMessage, UnregisterClass,
+    UnregisterClassA, UnregisterClassW,
 };
 pub use macros::{CreateDialog, CreateWindow, DialogBox, MAKEINTRESOURCE};
 pub use structures::{
@@ -69,5 +70,5 @@ pub use structures::{
 };
 pub use types::{
     DLGPROC, HRAWINPUT, LPMSG, LPOSVERSIONINFOA, LPOSVERSIONINFOW, LPPAINTSTRUCT, LPWNDCLASSEXW,
-    LPWNDCLASSW, PCRAWINPUTDEVICE, PRAWINPUT, PRAWINPUTDEVICELIST, WNDPROC,
+    LPWNDCLASSW, PCRAWINPUTDEVICE, PRAWINPUT, PRAWINPUTDEVICE, PRAWINPUTDEVICELIST, WNDPROC,
 };

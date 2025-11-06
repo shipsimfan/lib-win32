@@ -56,7 +56,7 @@ extern "system" {
     ///
     /// If you use [`SetWindowLong`] with the [`GWL_WNDPROC`] index to replace the window
     /// procedure, the window procedure must conform to the guidelines specified in the description
-    /// of the `window_proc` callback function.
+    /// of the `wnd_proc` callback function.
     ///
     /// If you use [`SetWindowLong`] with the [`DWL_MSGRESULT`] index to set the return value for a
     /// message processed by a dialog procedure, you should return [`TRUE`] directly afterward.

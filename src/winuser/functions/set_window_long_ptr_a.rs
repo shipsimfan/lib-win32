@@ -51,7 +51,7 @@ extern "system" {
     ///
     /// If you use [`SetWindowLongPtr`] with the [`GWLP_WNDPROC`] index to replace the window
     /// procedure, the window procedure must conform to the guidelines specified in the description
-    /// of the [`WindowProc`] callback function.
+    /// of the `wnd_proc` callback function.
     ///
     /// If you use [`SetWindowLongPtr`] with the [`DWLP_MSGRESULT`] index to set the return value
     /// for a message processed by a dialog box procedure, the dialog box procedure should return
