@@ -5,15 +5,132 @@ use crate::UINT;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    DefWindowProc, GetRawInputData, GetRawInputDeviceInfo, RegisterRawInputDevices,
-    GET_RAWINPUT_CODE_WPARAM, GIDC_ARRIVAL, GIDC_REMOVAL, HANDLE, HRAWINPUT, RAWINPUT,
-    RIDEV_DEVNOTIFY, RIM_INPUT, RIM_INPUTSINK,
+    CreateWindow, CreateWindowEx, DefWindowProc, GetRawInputData, GetRawInputDeviceInfo,
+    RegisterRawInputDevices, SetWindowPos, CREATESTRUCT, GET_RAWINPUT_CODE_WPARAM, GIDC_ARRIVAL,
+    GIDC_REMOVAL, HANDLE, HRAWINPUT, MAKEPOINTS, POINTS, RAWINPUT, RIDEV_DEVNOTIFY, RIM_INPUT,
+    RIM_INPUTSINK, WINDOWPOS,
 };
+#[allow(unused_imports)]
+use std::ptr::null_mut;
 
+/// Performs no operation. An application sends the [`WM_NULL`] message if it wants to post a
+/// message that the recipient window will ignore.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - This parameter is not used.
+///  * `l_param` - This parameter is not used.
+///
+/// # Return Value
+/// An application returns zero if it processes this message.
+///
+/// # Remarks
+/// For example, if an application has installed a [`WH_GETMESSAGE`] hook and wants to prevent a
+/// message from being processed, the [`GetMsgProc`] callback function can change the message
+/// number to [`WM_NULL`] so the recipient will ignore it.
+///
+/// As another example, an application can check if a window is responding to messages by sending
+/// the [`WM_NULL`] message with the [`SendMessageTimeout`] function.
 pub const WM_NULL: UINT = 0x0000;
+
+/// Sent when an application requests that a window be created by calling the [`CreateWindowEx`] or
+/// [`CreateWindow`] function. (The message is sent before the function returns.) The window
+/// procedure of the new window receives this message after the window is created, but before the
+/// window becomes visible.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - This parameter is not used.
+///  * `l_param` - A pointer to a [`CREATESTRUCT`] structure that contains information about the
+///                window being created.
+///
+/// # Return Value
+/// If an application processes this message, it should return zero to continue creation of the
+/// window. If the application returns –1, the window is destroyed and the [`CreateWindowEx`] or
+/// [`CreateWindow`] function returns a [`null_mut`] handle.
 pub const WM_CREATE: UINT = 0x0001;
+
+/// Sent when a window is being destroyed. It is sent to the window procedure of the window being
+/// destroyed after the window is removed from the screen.
+///
+/// This message is sent first to the window being destroyed and then to the child windows (if any)
+/// as they are destroyed. During the processing of the message, it can be assumed that all child
+/// windows still exist.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - This parameter is not used.
+///  * `l_param` - This parameter is not used.
+///
+/// # Return Value
+/// If an application processes this message, it should return zero.
+///
+/// # Remarks
+/// If the window being destroyed is part of the clipboard viewer chain (set by calling the
+/// [`SetClipboardViewer`] function), the window must remove itself from the chain by processing
+/// the [`ChangeClipboardChain`] function before returning from the [`WM_DESTROY`] message.
 pub const WM_DESTROY: UINT = 0x0002;
+
+/// Sent after a window has been moved.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - This parameter is not used.
+///  * `l_param` - The x and y coordinates of the upper-left corner of the client area of the
+///                window. The low-order word contains the x-coordinate while the high-order word
+///                contains the y coordinate.
+///
+/// # Return Value
+/// If an application processes this message, it should return zero.
+///
+/// # Remarks
+/// The parameters are given in screen coordinates for overlapped and pop-up windows and in
+/// parent-client coordinates for child windows.
+///
+/// You can also use the [`MAKEPOINTS`] macro to convert the `l_param` parameter to a [`POINTS`]
+/// structure.
+///
+/// The [`DefWindowProc`] function sends the [`WM_SIZE`] and [`WM_MOVE`] messages when it processes
+/// the [`WM_WINDOWPOSCHANGED`] message. The [`WM_SIZE`] and [`WM_MOVE`] messages are not sent if
+/// an application handles the [`WM_WINDOWPOSCHANGED`] message without calling [`DefWindowProc`].
 pub const WM_MOVE: UINT = 0x0003;
+
+/// Sent to a window after its size has changed.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - The type of resizing requested. This parameter can be one of the following
+///                values:
+///    * [`SIZE_MAXHIDE`] - Message is sent to all pop-up windows when some other window is
+///                         maximized.
+///    * [`SIZE_MAXIMIZED`] - The window has been maximized.
+///    * [`SIZE_MAXSHOW`] - Message is sent to all pop-up windows when some other window has been
+///                         restored to its former size.
+///    * [`SIZE_MINIMIZED`] - The window has been minimized.
+///    * [`SIZE_RESTORED`] - The window has been resized, but neither the [`SIZE_MINIMIZED`] nor
+///                          [`SIZE_MAXIMIZED`] value applies.
+///  * `l_param` - The low-order word of `l_param` specifies the new width of the client area. The
+///                high-order word of `l_param` specifies the new height of the client area.
+///
+/// # Return Value
+/// If an application processes this message, it should return zero.
+///
+/// # Remarks
+/// If the [`SetScrollPos`] or [`MoveWindow`] function is called for a child window as a result of
+/// the [`WM_SIZE`] message, the `redraw` or `repaint` parameter should be nonzero to cause the
+/// window to be repainted.
+///
+/// Although the width and height of a window are 32-bit values, the `l_param` parameter contains
+/// only the low-order 16 bits of each.
+///
+/// The [`DefWindowProc`] function sends the [`WM_SIZE`] and [`WM_MOVE`] messages when it processes
+/// the [`WM_WINDOWPOSCHANGED`] message. The [`WM_SIZE`] and [`WM_MOVE`] messages are not sent if
+/// an application handles the [`WM_WINDOWPOSCHANGED`] message without calling [`DefWindowProc`].
 pub const WM_SIZE: UINT = 0x0005;
 pub const WM_ACTIVATE: UINT = 0x0006;
 pub const WM_SETFOCUS: UINT = 0x0007;
@@ -63,6 +180,26 @@ pub const WM_GETOBJECT: UINT = 0x003D;
 pub const WM_COMPACTING: UINT = 0x0041;
 pub const WM_COMMNOTIFY: UINT = 0x0044; /* no longer suported */
 pub const WM_WINDOWPOSCHANGING: UINT = 0x0046;
+
+/// Sent to a window whose size, position, or place in the Z order has changed as a result of a
+/// call to the [`SetWindowPos`] function or another window-management function.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - This parameter is not used.
+///  * `l_param` - A pointer to a [`WINDOWPOS`] structure that contains information about the
+///                window's new size and position.
+///
+/// # Return Value
+/// If an application processes this message, it should return zero.
+///
+/// # Remarks
+/// By default, the [`DefWindowProc`] function sends the [`WM_SIZE`] and [`WM_MOVE`] messages to
+/// the window. The [`WM_SIZE`] and [`WM_MOVE`] messages are not sent if an application handles the
+/// [`WM_WINDOWPOSCHANGED`] message without calling [`DefWindowProc`]. It is more efficient to
+/// perform any move or size change processing during the [`WM_WINDOWPOSCHANGED`] message without
+/// calling [`DefWindowProc`].
 pub const WM_WINDOWPOSCHANGED: UINT = 0x0047;
 pub const WM_POWER: UINT = 0x0048;
 pub const WM_COPYDATA: UINT = 0x004A;
