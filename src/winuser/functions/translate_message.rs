@@ -3,8 +3,8 @@ use crate::{BOOL, MSG};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    IsDialogMessage, PeekMessage, WM_CHAR, WM_DEADCHAR, WM_KEYDOWN, WM_KEYUP, WM_SYSCHAR,
-    WM_SYSDEADCHAR, WM_SYSKEYDOWN, WM_SYSKEYUP,
+    GetMessage, IsDialogMessage, PeekMessage, WM_CHAR, WM_DEADCHAR, WM_KEYDOWN, WM_KEYUP,
+    WM_SYSCHAR, WM_SYSDEADCHAR, WM_SYSKEYDOWN, WM_SYSKEYUP,
 };
 
 #[link(name = "User32")]

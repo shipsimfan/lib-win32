@@ -3,8 +3,8 @@ use crate::UINT;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    PeekMessage, WM_HOTKEY, WM_KEYDOWN, WM_KEYUP, WM_LBUTTONUP, WM_MOUSEMOVE, WM_PAINT,
-    WM_RBUTTONDOWN, WM_SYSKEYDOWN, WM_SYSKEYUP, WM_TIMER,
+    GetMessage, PeekMessage, PostMessage, WM_HOTKEY, WM_KEYDOWN, WM_KEYUP, WM_LBUTTONUP,
+    WM_MOUSEMOVE, WM_PAINT, WM_RBUTTONDOWN, WM_SYSKEYDOWN, WM_SYSKEYUP, WM_TIMER,
 };
 
 /// A [`WM_KEYUP`], [`WM_KEYDOWN`], [`WM_SYSKEYUP`], or [`WM_SYSKEYDOWN`] message is in the queue.

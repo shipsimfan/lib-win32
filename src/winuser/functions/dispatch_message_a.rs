@@ -2,7 +2,7 @@ use crate::{LRESULT, MSG};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{IsDialogMessage, WM_TIMER};
+use crate::{GetMessage, IsDialogMessage, WM_TIMER};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
