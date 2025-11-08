@@ -90,5 +90,5 @@ extern "system" {
     /// it, resize it, or even close the application. However, these are the only actions available
     /// because the application is actually not responding. When in the debugger mode, the system
     /// does not generate a ghost window.
-    pub fn GetMessage(msg: LPMSG, wnd: HWND, msg_filter_min: UINT, msg_filter_max: UINT) -> BOOL;
+    pub fn GetMessageA(msg: LPMSG, wnd: HWND, msg_filter_min: UINT, msg_filter_max: UINT) -> BOOL;
 }
