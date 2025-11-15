@@ -101,6 +101,9 @@ pub type PUINT = *mut UINT;
 /// A pointer to a [`ULONG`]
 pub type PULONG = *mut ULONG;
 
+/// A pointer to a [`ULONGLONG`].
+pub type PULONGLONG = *mut ULONGLONG;
+
 /// An unsigned [`CHAR`].
 pub type UCHAR = c_uchar;
 
@@ -109,6 +112,9 @@ pub type UINT = c_uint;
 
 /// An unsigned [`LONG`]. The range is 0 through 4294967295 decimal.
 pub type ULONG = c_ulong;
+
+/// A 64-bit unsigned integer. The range is 0 through 18446744073709551615 decimal.
+pub type ULONGLONG = u64;
 
 /// An unsigned [`SHORT`]. The range is 0 through 65535 decimal.
 pub type USHORT = c_ushort;
