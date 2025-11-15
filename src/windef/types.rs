@@ -3,7 +3,7 @@ use std::ffi::{c_float, c_int, c_uchar, c_uint, c_ulong, c_ushort, c_void};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{FALSE, LONG, TRUE};
+use crate::{CHAR, FALSE, LONG, TRUE};
 
 #[allow(missing_docs)]
 pub type ATOM = WORD;
@@ -100,6 +100,9 @@ pub type PUINT = *mut UINT;
 
 /// A pointer to a [`ULONG`]
 pub type PULONG = *mut ULONG;
+
+/// An unsigned [`CHAR`].
+pub type UCHAR = c_uchar;
 
 /// An unsigned [`INT`]. The range is 0 through 4294967295 decimal.
 pub type UINT = c_uint;

@@ -38,10 +38,12 @@ pub mod dxgi1_5;
 #[cfg(feature = "dxgi_debug")]
 pub mod dxgi_debug;
 pub mod ktmw32;
+pub mod ntddk;
 pub mod shlwapi;
 pub mod string;
 pub mod strsafe;
 pub mod unknwn;
+pub mod wdm;
 pub mod winsock2;
 
 // Headers automatically included with `Windows.h`
