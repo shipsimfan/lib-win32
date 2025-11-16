@@ -35,8 +35,8 @@ pub mod dxgi1_3;
 pub mod dxgi1_4;
 #[cfg(feature = "dxgi1_5")]
 pub mod dxgi1_5;
-#[cfg(feature = "dxgi_debug")]
-pub mod dxgi_debug;
+#[cfg(feature = "dxgidebug")]
+pub mod dxgidebug;
 pub mod ktmw32;
 pub mod ntddk;
 pub mod shlwapi;
