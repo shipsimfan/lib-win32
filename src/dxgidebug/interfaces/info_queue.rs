@@ -11,7 +11,7 @@ use crate::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{dxgidebug::DXGIGetDebugInterface, FALSE, S_OK, TRUE};
+use crate::{FALSE, S_OK, TRUE};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
