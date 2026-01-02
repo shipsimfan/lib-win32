@@ -37,9 +37,9 @@ mod types;
 pub use constants::*;
 pub use functions::{
     AdjustWindowRect, AdjustWindowRectEx, AllowSetForegroundWindow, BeginPaint, CallWindowProc,
-    CallWindowProcA, CallWindowProcW, CreateDialogParam, CreateDialogParamA, CreateDialogParamW,
-    CreateWindowEx, CreateWindowExA, CreateWindowExW, DefRawInputProc, DefWindowProc,
-    DefWindowProcA, DefWindowProcW, DestroyWindow, DialogBoxParam, DialogBoxParamA,
+    CallWindowProcA, CallWindowProcW, ClipCursor, CreateDialogParam, CreateDialogParamA,
+    CreateDialogParamW, CreateWindowEx, CreateWindowExA, CreateWindowExW, DefRawInputProc,
+    DefWindowProc, DefWindowProcA, DefWindowProcW, DestroyWindow, DialogBoxParam, DialogBoxParamA,
     DialogBoxParamW, DispatchMessage, DispatchMessageA, DispatchMessageW, EnableWindow, EndDialog,
     EndPaint, GetClassInfo, GetClassInfoA, GetClassInfoEx, GetClassInfoExA, GetClassInfoExW,
     GetClassInfoW, GetClientRect, GetMessage, GetMessageA, GetMessageW, GetRawInputBuffer,
