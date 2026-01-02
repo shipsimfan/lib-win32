@@ -32,6 +32,7 @@ mod system_parameter_infos;
 mod wheel_delta;
 mod window_display_affinities;
 mod window_properties;
+mod window_sizes;
 mod window_styles;
 
 pub use arrange_directions::*;
@@ -68,4 +69,5 @@ pub use system_parameter_infos::*;
 pub use wheel_delta::*;
 pub use window_display_affinities::*;
 pub use window_properties::*;
+pub use window_sizes::*;
 pub use window_styles::*;

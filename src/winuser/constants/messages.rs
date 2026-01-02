@@ -8,7 +8,8 @@ use crate::{
     CreateWindow, CreateWindowEx, DefWindowProc, GetRawInputData, GetRawInputDeviceInfo,
     RegisterRawInputDevices, SetWindowPos, CREATESTRUCT, GET_RAWINPUT_CODE_WPARAM, GIDC_ARRIVAL,
     GIDC_REMOVAL, HANDLE, HRAWINPUT, MAKEPOINTS, POINTS, RAWINPUT, RIDEV_DEVNOTIFY, RIM_INPUT,
-    RIM_INPUTSINK, WINDOWPOS,
+    RIM_INPUTSINK, SIZE_MAXHIDE, SIZE_MAXIMIZED, SIZE_MAXSHOW, SIZE_MINIMIZED, SIZE_RESTORED,
+    WINDOWPOS,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
