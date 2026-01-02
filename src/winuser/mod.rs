@@ -56,7 +56,7 @@ pub use functions::{
     SetWindowLong, SetWindowLongA, SetWindowLongPtr, SetWindowLongPtrA, SetWindowLongPtrW,
     SetWindowLongW, SetWindowPos, SetWindowText, SetWindowTextA, SetWindowTextW, ShowWindow,
     SystemParametersInfo, SystemParametersInfoA, SystemParametersInfoForDpi, SystemParametersInfoW,
-    TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW,
+    TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW, WaitMessage,
 };
 pub use macros::{CreateDialog, CreateWindow, DialogBox, MAKEINTRESOURCE};
 pub use structures::{

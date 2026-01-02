@@ -80,6 +80,7 @@ mod system_parameters_info_w;
 mod translate_message;
 mod unregister_class_a;
 mod unregister_class_w;
+mod wait_function;
 
 pub use adjust_window_rect::AdjustWindowRect;
 pub use adjust_window_rect_ex::AdjustWindowRectEx;
@@ -167,3 +168,4 @@ pub use system_parameters_info_w::{
 pub use translate_message::TranslateMessage;
 pub use unregister_class_a::UnregisterClassA;
 pub use unregister_class_w::{UnregisterClassW, UnregisterClassW as UnregisterClass};
+pub use wait_function::WaitMessage;
