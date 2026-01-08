@@ -36,6 +36,10 @@ pub type LONG_PTR = i64;
 #[allow(non_camel_case_types)]
 pub type LONG_PTR = std::ffi::c_long;
 
+/// A pointer to a [`DWORD_PTR`]
+#[allow(non_camel_case_types)]
+pub type PDWORD_PTR = *mut DWORD_PTR;
+
 /// A pointer to a [`ULONG_PTR`]
 #[allow(non_camel_case_types)]
 pub type PULONG_PTR = *mut ULONG_PTR;

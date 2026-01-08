@@ -63,6 +63,7 @@ mod register_class_ex_w;
 mod register_class_w;
 mod register_raw_input_devices;
 mod scroll_window_ex;
+mod send_message_timeout_w;
 mod set_active_window;
 mod set_foreground_window;
 mod set_last_error_ex;
@@ -151,6 +152,7 @@ pub use register_class_ex_w::{RegisterClassExW, RegisterClassExW as RegisterClas
 pub use register_class_w::{RegisterClassW, RegisterClassW as RegisterClass};
 pub use register_raw_input_devices::RegisterRawInputDevices;
 pub use scroll_window_ex::ScrollWindowEx;
+pub use send_message_timeout_w::{SendMessageTimeoutW, SendMessageTimeoutW as SendMessageTimeout};
 pub use set_active_window::SetActiveWindow;
 pub use set_foreground_window::SetForegroundWindow;
 pub use set_last_error_ex::SetLastErrorEx;

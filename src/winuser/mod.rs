@@ -52,12 +52,12 @@ pub use functions::{
     PeekMessageA, PeekMessageW, PostMessage, PostMessageA, PostMessageW, PostQuitMessage,
     PostThreadMessage, PostThreadMessageA, PostThreadMessageW, RegisterClass, RegisterClassA,
     RegisterClassEx, RegisterClassExA, RegisterClassExW, RegisterClassW, RegisterRawInputDevices,
-    ScrollWindowEx, SetActiveWindow, SetForegroundWindow, SetLastErrorEx, SetParent,
-    SetWindowDisplayAffinity, SetWindowLong, SetWindowLongA, SetWindowLongPtr, SetWindowLongPtrA,
-    SetWindowLongPtrW, SetWindowLongW, SetWindowPos, SetWindowText, SetWindowTextA, SetWindowTextW,
-    ShowWindow, SystemParametersInfo, SystemParametersInfoA, SystemParametersInfoForDpi,
-    SystemParametersInfoW, TranslateMessage, UnregisterClass, UnregisterClassA, UnregisterClassW,
-    WaitMessage,
+    ScrollWindowEx, SendMessageTimeout, SendMessageTimeoutW, SetActiveWindow, SetForegroundWindow,
+    SetLastErrorEx, SetParent, SetWindowDisplayAffinity, SetWindowLong, SetWindowLongA,
+    SetWindowLongPtr, SetWindowLongPtrA, SetWindowLongPtrW, SetWindowLongW, SetWindowPos,
+    SetWindowText, SetWindowTextA, SetWindowTextW, ShowWindow, SystemParametersInfo,
+    SystemParametersInfoA, SystemParametersInfoForDpi, SystemParametersInfoW, TranslateMessage,
+    UnregisterClass, UnregisterClassA, UnregisterClassW, WaitMessage,
 };
 pub use macros::{CreateDialog, CreateWindow, DialogBox, MAKEINTRESOURCE};
 pub use structures::{
