@@ -1,3 +1,5 @@
 mod query_performance_counter;
+mod query_performance_frequency;
 
 pub use query_performance_counter::QueryPerformanceCounter;
+pub use query_performance_frequency::QueryPerformanceFrequency;

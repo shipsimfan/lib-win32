@@ -4,4 +4,6 @@ mod constants;
 mod functions;
 
 pub use constants::*;
-pub use functions::GetStdHandle;
+pub use functions::{
+    ExpandEnvironmentStrings, ExpandEnvironmentStringsA, ExpandEnvironmentStringsW, GetStdHandle,
+};

@@ -4,7 +4,7 @@ use crate::{
         D3D11_INFO_QUEUE_FILTER, D3D11_MESSAGE, D3D11_MESSAGE_CATEGORY, D3D11_MESSAGE_ID,
         D3D11_MESSAGE_SEVERITY,
     },
-    unknwn::{IUnknown},
+    unknwn::IUnknown,
     BOOL, HRESULT, LPCSTR, SIZE_T, UINT, UINT64,
 };
 
@@ -22,8 +22,7 @@ com_interface!(
     /// # Remarks
     /// To get this interface, turn on debug layer and use [`IUnknown::query_interface`] from the
     /// [`ID3D11Device`].
-    pub abstract ID3D11InfoQueue(ID3D11InfoQueueVTable):
-        IUnknown(unknown) {
+    pub abstract ID3D11InfoQueue(ID3D11InfoQueueVTable): IUnknown(unknown) {
         const IID = 0x6543DBB6-0x1B48-0x42F5-0xAB82-0xE97EC74326F6;
 
         /// Set the maximum number of messages that can be added to the message queue.

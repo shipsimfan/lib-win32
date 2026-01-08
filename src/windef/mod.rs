@@ -12,9 +12,5 @@ mod structures;
 mod types;
 
 pub use constants::*;
-pub use structures::{POINT, POINTL, POINTS, RECT};
-pub use types::{
-    ATOM, BOOL, BYTE, FLOAT, HBRUSH, HCURSOR, HDC, HGLOBAL, HICON, HINSTANCE, HKEY, HLOCAL, HMENU,
-    HMODULE, HMONITOR, HRGN, HWND, INT, LPARAM, LPBYTE, LPCVOID, LPDWORD, LPINT, LPPOINT, LPRECT,
-    LPVOID, LRESULT, PBYTE, PDWORD, PHKEY, PUINT, PULONG, UINT, ULONG, USHORT, WORD, WPARAM,
-};
+pub use structures::*;
+pub use types::*;

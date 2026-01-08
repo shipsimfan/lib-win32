@@ -1,0 +1,5 @@
+mod info_queue_message_category;
+mod info_queue_message_severity;
+
+pub use info_queue_message_category::DXGI_INFO_QUEUE_MESSAGE_CATEGORY;
+pub use info_queue_message_severity::DXGI_INFO_QUEUE_MESSAGE_SEVERITY;

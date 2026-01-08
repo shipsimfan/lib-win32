@@ -2,4 +2,4 @@
 
 mod functions;
 
-pub use functions::QueryPerformanceCounter;
+pub use functions::{QueryPerformanceCounter, QueryPerformanceFrequency};

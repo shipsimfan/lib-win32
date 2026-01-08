@@ -1,4 +1,5 @@
 use crate::{DWORD, DWORD_PTR, LPVOID, WORD};
+use std::ptr::null_mut;
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -59,6 +60,23 @@ pub struct SYSTEM_INFO {
     pub processor_revision: WORD,
 }
 
+impl Default for SYSTEM_INFO {
+    fn default() -> Self {
+        SYSTEM_INFO {
+            u: SYSTEM_INFO_UNION::default(),
+            page_size: 0,
+            minimum_application_address: null_mut(),
+            maximum_application_address: null_mut(),
+            active_processor_mask: 0,
+            number_of_processors: 0,
+            processor_type: 0,
+            allocation_granularity: 0,
+            processor_level: 0,
+            processor_revision: 0,
+        }
+    }
+}
+
 #[allow(missing_docs)]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -70,6 +88,12 @@ pub union SYSTEM_INFO_UNION {
 
     #[allow(missing_docs)]
     pub p: SYSTEM_INFO_PROCESSOR_ARCHITECTURE,
+}
+
+impl Default for SYSTEM_INFO_UNION {
+    fn default() -> Self {
+        SYSTEM_INFO_UNION { oem_id: 0 }
+    }
 }
 
 #[allow(missing_docs)]
@@ -89,4 +113,13 @@ pub struct SYSTEM_INFO_PROCESSOR_ARCHITECTURE {
 
     /// This member is reserved for future use.
     pub reserved: WORD,
+}
+
+impl Default for SYSTEM_INFO_PROCESSOR_ARCHITECTURE {
+    fn default() -> Self {
+        SYSTEM_INFO_PROCESSOR_ARCHITECTURE {
+            processor_architecture: 0,
+            reserved: 0,
+        }
+    }
 }

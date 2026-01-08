@@ -35,13 +35,15 @@ pub mod dxgi1_3;
 pub mod dxgi1_4;
 #[cfg(feature = "dxgi1_5")]
 pub mod dxgi1_5;
-#[cfg(feature = "dxgi_debug")]
-pub mod dxgi_debug;
+#[cfg(feature = "dxgidebug")]
+pub mod dxgidebug;
 pub mod ktmw32;
+pub mod ntddk;
 pub mod shlwapi;
 pub mod string;
 pub mod strsafe;
 pub mod unknwn;
+pub mod wdm;
 pub mod winsock2;
 
 // Headers automatically included with `Windows.h`
@@ -62,6 +64,7 @@ pub mod memoryapi;
 pub mod ntddmou;
 pub mod ntdef;
 pub mod processenv;
+pub mod processthreadsapi;
 pub mod profileapi;
 pub mod synchapi;
 pub mod sysinfoapi;
@@ -94,6 +97,7 @@ pub use memoryapi::*;
 pub use ntddmou::*;
 pub use ntdef::*;
 pub use processenv::*;
+pub use processthreadsapi::*;
 pub use profileapi::*;
 pub use shlwapi::*;
 pub use synchapi::*;
