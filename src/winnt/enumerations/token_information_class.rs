@@ -17,7 +17,7 @@ use std::ptr::null_mut;
 #[non_exhaustive]
 pub enum TOKEN_INFORMATION_CLASS {
     /// The buffer receives a [`TOKEN_USER`] structure that contains the user account of the token.
-    TokenUser,
+    TokenUser = 1,
 
     /// The buffer receives a [`TOKEN_GROUPS`] structure that contains the group accounts
     /// associated with the token.
