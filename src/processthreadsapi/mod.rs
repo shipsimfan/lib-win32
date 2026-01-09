@@ -2,4 +2,4 @@
 
 mod functions;
 
-pub use functions::GetCurrentThreadId;
+pub use functions::{GetCurrentProcess, GetCurrentThreadId, OpenProcessToken};

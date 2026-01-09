@@ -46,6 +46,9 @@ pub type LPWSTR = *mut WCHAR;
 /// A pointer to an [`ACL`]
 pub type PACL = *mut ACL;
 
+/// A pointer to a [`HANDLE`]
+pub type PHANDLE = *mut HANDLE;
+
 /// A pointer to a [`SECURITY_DESCRIPTOR`] structure
 #[allow(non_camel_case_types)]
 pub type PSECURITY_DESCRIPTOR = *mut SECURITY_DESCRIPTOR;

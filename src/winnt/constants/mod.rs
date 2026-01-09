@@ -16,6 +16,7 @@ mod standard_rights;
 mod sub_languages;
 mod suites;
 mod timer_access_rights;
+mod token_access_rights;
 mod value_types;
 
 pub use acl_revision::*;
@@ -36,4 +37,5 @@ pub use standard_rights::*;
 pub use sub_languages::*;
 pub use suites::*;
 pub use timer_access_rights::*;
+pub use token_access_rights::*;
 pub use value_types::*;
