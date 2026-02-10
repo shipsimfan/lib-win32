@@ -65,6 +65,9 @@ pub type LPARAM = LONG_PTR;
 /// A pointer to a [`BYTE`]
 pub type LPBYTE = *mut BYTE;
 
+/// A pointer to a constant [`RECT`]
+pub type LPCRECT = *const RECT;
+
 /// A pointer to a constant of any type
 pub type LPCVOID = *const c_void;
 

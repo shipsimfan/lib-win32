@@ -21,6 +21,7 @@ mod dispatch_message_w;
 mod enable_window;
 mod end_dialog;
 mod end_paint;
+mod enum_display_monitors;
 mod get_class_info_a;
 mod get_class_info_ex_a;
 mod get_class_info_ex_w;
@@ -108,6 +109,7 @@ pub use dispatch_message_w::{DispatchMessageW, DispatchMessageW as DispatchMessa
 pub use enable_window::EnableWindow;
 pub use end_dialog::EndDialog;
 pub use end_paint::EndPaint;
+pub use enum_display_monitors::EnumDisplayMonitors;
 pub use get_class_info_a::GetClassInfoA;
 pub use get_class_info_ex_a::GetClassInfoExA;
 pub use get_class_info_ex_w::{GetClassInfoExW, GetClassInfoExW as GetClassInfoEx};
