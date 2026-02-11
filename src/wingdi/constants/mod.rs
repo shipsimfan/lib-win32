@@ -5,6 +5,7 @@ mod font_pitches;
 mod font_qualities;
 mod font_weights;
 mod logical_font_face_size;
+mod name_sizes;
 mod output_precisions;
 
 pub use charsets::*;
@@ -14,4 +15,5 @@ pub use font_pitches::*;
 pub use font_qualities::*;
 pub use font_weights::*;
 pub use logical_font_face_size::*;
+pub use name_sizes::*;
 pub use output_precisions::*;
