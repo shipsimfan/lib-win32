@@ -1,4 +1,5 @@
 use crate::{CCHDEVICENAME, MONITORINFO, WCHAR};
+use std::ops::{Deref, DerefMut};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -32,5 +33,19 @@ impl Default for MONITORINFOEXW {
             },
             device: [0; CCHDEVICENAME],
         }
+    }
+}
+
+impl Deref for MONITORINFOEXW {
+    type Target = MONITORINFO;
+
+    fn deref(&self) -> &Self::Target {
+        &self.info
+    }
+}
+
+impl DerefMut for MONITORINFOEXW {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.info
     }
 }

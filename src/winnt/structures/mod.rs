@@ -8,7 +8,7 @@ mod sid_identifier_authority;
 mod token_elevation;
 
 pub use acl::ACL;
-pub use large_integer::{LARGE_INTEGER, LARGE_INTEGER_DUMMY};
+pub use large_integer::{LARGE_INTEGER, LARGE_INTEGER_STRUCT};
 pub use mem_address_requirements::MEM_ADDRESS_REQUIREMENTS;
 pub use mem_extended_parameter::{MEM_EXTENDED_PARAMETER, MEM_EXTENDED_PARAMETER_UNION};
 pub use security_descriptor::SECURITY_DESCRIPTOR;

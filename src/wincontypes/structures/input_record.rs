@@ -2,6 +2,7 @@ use crate::{
     FOCUS_EVENT_RECORD, KEY_EVENT_RECORD, MENU_EVENT_RECORD, MOUSE_EVENT_RECORD,
     WINDOW_BUFFER_SIZE_RECORD, WORD,
 };
+use std::ops::{Deref, DerefMut};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -35,6 +36,20 @@ pub struct INPUT_RECORD {
     /// The event information. The format of this member depends on the event type specified by the
     /// `event_type` member.
     pub event: INPUT_RECORD_UNION,
+}
+
+impl Deref for INPUT_RECORD {
+    type Target = INPUT_RECORD_UNION;
+
+    fn deref(&self) -> &Self::Target {
+        &self.event
+    }
+}
+
+impl DerefMut for INPUT_RECORD {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.event
+    }
 }
 
 #[repr(C)]

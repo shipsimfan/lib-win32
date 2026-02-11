@@ -1,4 +1,5 @@
 use crate::{DWORD, HANDLE, PVOID, ULONG_PTR};
+use std::ops::{Deref, DerefMut};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -46,7 +47,7 @@ pub struct OVERLAPPED {
     pub internal_high: ULONG_PTR,
 
     #[allow(missing_docs)]
-    pub union: OVERLAPPED_UNION,
+    pub dummy: OVERLAPPED_UNION,
 
     /// A handle to the event that will be set to a signaled state by the system when the operation
     /// has completed. The user must initialize this member either to zero or a valid event handle
@@ -66,22 +67,50 @@ pub struct OVERLAPPED {
     pub event: HANDLE,
 }
 
+impl Deref for OVERLAPPED {
+    type Target = OVERLAPPED_UNION;
+
+    fn deref(&self) -> &Self::Target {
+        &self.dummy
+    }
+}
+
+impl DerefMut for OVERLAPPED {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.dummy
+    }
+}
+
 #[repr(C)]
 #[derive(Clone, Copy)]
 #[allow(missing_docs)]
 pub union OVERLAPPED_UNION {
     #[allow(missing_docs)]
-    pub r#struct: OVERLAPPED_UNION_STRUCT,
+    pub dummy: OVERLAPPED_STRUCT,
 
     /// Reserved for system use; do not use after initialization to zero.
     pub pointer: PVOID,
+}
+
+impl Deref for OVERLAPPED_UNION {
+    type Target = OVERLAPPED_STRUCT;
+
+    fn deref(&self) -> &Self::Target {
+        unsafe { &self.dummy }
+    }
+}
+
+impl DerefMut for OVERLAPPED_UNION {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        unsafe { &mut self.dummy }
+    }
 }
 
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
 #[allow(non_camel_case_types)]
 #[allow(missing_docs)]
-pub struct OVERLAPPED_UNION_STRUCT {
+pub struct OVERLAPPED_STRUCT {
     /// The low-order portion of the file position at which to start the I/O request, as specified
     /// by the user.
     ///

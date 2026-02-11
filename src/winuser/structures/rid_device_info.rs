@@ -1,4 +1,5 @@
 use crate::{DWORD, RID_DEVICE_INFO_HID, RID_DEVICE_INFO_KEYBOARD, RID_DEVICE_INFO_MOUSE};
+use std::ops::{Deref, DerefMut};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -19,7 +20,7 @@ pub struct RID_DEVICE_INFO {
     pub r#type: DWORD,
 
     #[allow(missing_docs)]
-    pub u: RID_DEVICE_INFO_UNION,
+    pub dummy: RID_DEVICE_INFO_UNION,
 }
 
 impl Default for RID_DEVICE_INFO {
@@ -27,8 +28,22 @@ impl Default for RID_DEVICE_INFO {
         RID_DEVICE_INFO {
             size: 0,
             r#type: 0,
-            u: RID_DEVICE_INFO_UNION::default(),
+            dummy: RID_DEVICE_INFO_UNION::default(),
         }
+    }
+}
+
+impl Deref for RID_DEVICE_INFO {
+    type Target = RID_DEVICE_INFO_UNION;
+
+    fn deref(&self) -> &Self::Target {
+        &self.dummy
+    }
+}
+
+impl DerefMut for RID_DEVICE_INFO {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.dummy
     }
 }
 

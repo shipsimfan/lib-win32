@@ -8,6 +8,6 @@ mod system_time;
 pub use comm_timeouts::COMMTIMEOUTS;
 pub use dcb::DCB;
 pub use file_time::FILETIME;
-pub use overlapped::{OVERLAPPED, OVERLAPPED_UNION, OVERLAPPED_UNION_STRUCT};
+pub use overlapped::{OVERLAPPED, OVERLAPPED_STRUCT, OVERLAPPED_UNION};
 pub use security_attributes::SECURITY_ATTRIBUTES;
 pub use system_time::SYSTEMTIME;

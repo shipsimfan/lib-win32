@@ -1,4 +1,5 @@
 use crate::{RAWHID, RAWINPUTHEADER, RAWKEYBOARD, RAWMOUSE};
+use std::ops::{Deref, DerefMut};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -28,22 +29,36 @@ pub struct RAWINPUT {
     pub header: RAWINPUTHEADER,
 
     #[allow(missing_docs)]
-    pub data: RAWINPUTUNION,
+    pub data: RAWINPUT_UNION,
 }
 
 impl Default for RAWINPUT {
     fn default() -> Self {
         RAWINPUT {
             header: RAWINPUTHEADER::default(),
-            data: RAWINPUTUNION::default(),
+            data: RAWINPUT_UNION::default(),
         }
+    }
+}
+
+impl Deref for RAWINPUT {
+    type Target = RAWINPUT_UNION;
+
+    fn deref(&self) -> &Self::Target {
+        &self.data
+    }
+}
+
+impl DerefMut for RAWINPUT {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.data
     }
 }
 
 /// Union of input device types for [`RAWINPUT`]
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub union RAWINPUTUNION {
+pub union RAWINPUT_UNION {
     /// If the data comes from a mouse, this is the raw input data.
     pub mouse: RAWMOUSE,
 
@@ -54,9 +69,9 @@ pub union RAWINPUTUNION {
     pub hid: RAWHID,
 }
 
-impl Default for RAWINPUTUNION {
+impl Default for RAWINPUT_UNION {
     fn default() -> Self {
-        RAWINPUTUNION {
+        RAWINPUT_UNION {
             mouse: RAWMOUSE::default(),
         }
     }

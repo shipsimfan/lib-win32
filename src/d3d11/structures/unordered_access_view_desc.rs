@@ -5,6 +5,7 @@ use crate::{
     },
     dxgi::DXGI_FORMAT,
 };
+use std::ops::{Deref, DerefMut};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -37,6 +38,20 @@ impl Default for D3D11_UNORDERED_ACCESS_VIEW_DESC {
             view_dimension: D3D11_UAV_DIMENSION::Unknown,
             u: D3D11_UNORDERED_ACCESS_VIEW_DESC_UNION::default(),
         }
+    }
+}
+
+impl Deref for D3D11_UNORDERED_ACCESS_VIEW_DESC {
+    type Target = D3D11_UNORDERED_ACCESS_VIEW_DESC_UNION;
+
+    fn deref(&self) -> &Self::Target {
+        &self.u
+    }
+}
+
+impl DerefMut for D3D11_UNORDERED_ACCESS_VIEW_DESC {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.u
     }
 }
 

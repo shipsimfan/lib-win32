@@ -29,7 +29,7 @@ pub use functions::{
     LocalReAlloc, LocalSize, LocalUnlock, SetCommState, SetCommTimeouts,
 };
 pub use structures::{
-    COMMTIMEOUTS, DCB, FILETIME, OVERLAPPED, OVERLAPPED_UNION, OVERLAPPED_UNION_STRUCT,
+    COMMTIMEOUTS, DCB, FILETIME, OVERLAPPED, OVERLAPPED_STRUCT, OVERLAPPED_UNION,
     SECURITY_ATTRIBUTES, SYSTEMTIME,
 };
 pub use types::{

@@ -54,12 +54,12 @@ pub use os_version_info_ex_w::{OSVERSIONINFOEXW, OSVERSIONINFOEXW as OSVERSIONIN
 pub use os_version_info_w::{OSVERSIONINFOW as OSVERSIONINFO, OSVERSIONINFOW};
 pub use paint_struct::PAINTSTRUCT;
 pub use raw_hid::RAWHID;
-pub use raw_input::{RAWINPUT, RAWINPUTUNION};
+pub use raw_input::{RAWINPUT, RAWINPUT_UNION};
 pub use raw_input_device::RAWINPUTDEVICE;
 pub use raw_input_device_list::RAWINPUTDEVICELIST;
 pub use raw_input_header::RAWINPUTHEADER;
 pub use raw_keyboard::RAWKEYBOARD;
-pub use raw_mouse::{RAWMOUSE, RAWMOUSEUNION, RAWMOUSEUNIONSTRUCT};
+pub use raw_mouse::{RAWMOUSE, RAWMOUSE_STRUCT, RAWMOUSE_UNION};
 pub use rid_device_info::{RID_DEVICE_INFO, RID_DEVICE_INFO_UNION};
 pub use rid_device_info_hid::RID_DEVICE_INFO_HID;
 pub use rid_device_info_keyboard::RID_DEVICE_INFO_KEYBOARD;

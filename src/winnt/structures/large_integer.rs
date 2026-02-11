@@ -1,5 +1,8 @@
 use crate::{DWORD, LONG, LONGLONG};
-use std::fmt::{Debug, Display};
+use std::{
+    fmt::{Debug, Display},
+    ops::{Deref, DerefMut},
+};
 
 /// Represents a 64-bit signed integer value.
 #[repr(C)]
@@ -7,27 +10,29 @@ use std::fmt::{Debug, Display};
 #[allow(non_camel_case_types)]
 pub union LARGE_INTEGER {
     #[allow(missing_docs)]
-    pub u: LARGE_INTEGER_DUMMY,
+    pub u: LARGE_INTEGER_STRUCT,
 
     /// A signed 64-bit integer.
     pub quad_part: LONGLONG,
 }
 
-#[repr(C)]
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
-#[allow(non_camel_case_types)]
-#[allow(missing_docs)]
-pub struct LARGE_INTEGER_DUMMY {
-    #[allow(missing_docs)]
-    pub low_part: DWORD,
-
-    #[allow(missing_docs)]
-    pub high_part: LONG,
-}
-
 impl Default for LARGE_INTEGER {
     fn default() -> Self {
         LARGE_INTEGER { quad_part: 0 }
+    }
+}
+
+impl Deref for LARGE_INTEGER {
+    type Target = LARGE_INTEGER_STRUCT;
+
+    fn deref(&self) -> &Self::Target {
+        unsafe { &self.u }
+    }
+}
+
+impl DerefMut for LARGE_INTEGER {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        unsafe { &mut self.u }
     }
 }
 
@@ -61,4 +66,16 @@ impl Ord for LARGE_INTEGER {
     fn cmp(&self, other: &Self) -> std::cmp::Ordering {
         unsafe { self.quad_part.cmp(&other.quad_part) }
     }
+}
+
+#[repr(C)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+#[allow(non_camel_case_types)]
+#[allow(missing_docs)]
+pub struct LARGE_INTEGER_STRUCT {
+    #[allow(missing_docs)]
+    pub low_part: DWORD,
+
+    #[allow(missing_docs)]
+    pub high_part: LONG,
 }

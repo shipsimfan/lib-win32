@@ -1,4 +1,4 @@
-use std::ffi::{c_uchar, c_ushort};
+use std::ffi::{c_int, c_schar, c_short, c_uchar, c_uint, c_ushort};
 
 /// A 64-bit unsigned integer.
 pub type DWORD64 = u64;
@@ -8,6 +8,18 @@ pub type DWORD64 = u64;
 /// extended to 64 bits in 64-bit Windows.)
 #[allow(non_camel_case_types)]
 pub type DWORD_PTR = ULONG_PTR;
+
+/// An 8-bit signed integer.
+pub type INT8 = c_schar;
+
+/// A 16-bit signed integer.
+pub type INT16 = c_short;
+
+/// A 32-bit signed integer. The range is -2147483648 through 2147483647 decimal.
+pub type INT32 = c_int;
+
+/// A 64-bit signed integer. The range is -9223372036854775808 through 9223372036854775807 decimal.
+pub type INT64 = i64;
 
 /// A signed integer type for pointer precision. Use when casting a pointer to an integer to
 /// perform pointer arithmetic.
@@ -54,6 +66,9 @@ pub type UINT8 = c_uchar;
 
 /// An unsigned [`INT16`]
 pub type UINT16 = c_ushort;
+
+/// An unsigned [`INT32`]. The range is 0 through 4294967295 decimal.
+pub type UINT32 = c_uint;
 
 /// An unsigned [`INT64`]. The range is 0 through 18446744073709551615 decimal.
 pub type UINT64 = u64;

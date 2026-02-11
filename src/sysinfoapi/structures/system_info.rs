@@ -1,5 +1,8 @@
 use crate::{DWORD, DWORD_PTR, LPVOID, WORD};
-use std::ptr::null_mut;
+use std::{
+    ops::{Deref, DerefMut},
+    ptr::null_mut,
+};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -17,7 +20,7 @@ use crate::{
 #[allow(non_camel_case_types)]
 pub struct SYSTEM_INFO {
     #[allow(missing_docs)]
-    pub u: SYSTEM_INFO_UNION,
+    pub dummy: SYSTEM_INFO_UNION,
 
     /// The page size and the granularity of page protection and commitment. This is the page size
     /// used by the [`VirtualAlloc`] function.
@@ -63,7 +66,7 @@ pub struct SYSTEM_INFO {
 impl Default for SYSTEM_INFO {
     fn default() -> Self {
         SYSTEM_INFO {
-            u: SYSTEM_INFO_UNION::default(),
+            dummy: SYSTEM_INFO_UNION::default(),
             page_size: 0,
             minimum_application_address: null_mut(),
             maximum_application_address: null_mut(),
@@ -77,6 +80,20 @@ impl Default for SYSTEM_INFO {
     }
 }
 
+impl Deref for SYSTEM_INFO {
+    type Target = SYSTEM_INFO_UNION;
+
+    fn deref(&self) -> &Self::Target {
+        &self.dummy
+    }
+}
+
+impl DerefMut for SYSTEM_INFO {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.dummy
+    }
+}
+
 #[allow(missing_docs)]
 #[repr(C)]
 #[derive(Clone, Copy)]
@@ -87,7 +104,7 @@ pub union SYSTEM_INFO_UNION {
     pub oem_id: DWORD,
 
     #[allow(missing_docs)]
-    pub p: SYSTEM_INFO_PROCESSOR_ARCHITECTURE,
+    pub dummy: SYSTEM_INFO_STRUCT,
 }
 
 impl Default for SYSTEM_INFO_UNION {
@@ -96,11 +113,25 @@ impl Default for SYSTEM_INFO_UNION {
     }
 }
 
+impl Deref for SYSTEM_INFO_UNION {
+    type Target = SYSTEM_INFO_STRUCT;
+
+    fn deref(&self) -> &Self::Target {
+        unsafe { &self.dummy }
+    }
+}
+
+impl DerefMut for SYSTEM_INFO_UNION {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        unsafe { &mut self.dummy }
+    }
+}
+
 #[allow(missing_docs)]
 #[repr(C)]
 #[derive(Clone, Copy)]
 #[allow(non_camel_case_types)]
-pub struct SYSTEM_INFO_PROCESSOR_ARCHITECTURE {
+pub struct SYSTEM_INFO_STRUCT {
     /// The processor architecture of the installed operating system. This member can be one of the
     /// following values:
     ///  * [`PROCESSOR_ARCHITECTURE_AMD64`] - x64 (AMD or Intel)
@@ -115,9 +146,9 @@ pub struct SYSTEM_INFO_PROCESSOR_ARCHITECTURE {
     pub reserved: WORD,
 }
 
-impl Default for SYSTEM_INFO_PROCESSOR_ARCHITECTURE {
+impl Default for SYSTEM_INFO_STRUCT {
     fn default() -> Self {
-        SYSTEM_INFO_PROCESSOR_ARCHITECTURE {
+        SYSTEM_INFO_STRUCT {
             processor_architecture: 0,
             reserved: 0,
         }

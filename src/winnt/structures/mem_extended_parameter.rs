@@ -1,4 +1,5 @@
 use crate::{DWORD, DWORD64, HANDLE, PVOID, SIZE_T};
+use std::ops::{Deref, DerefMut};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -27,7 +28,21 @@ pub struct MEM_EXTENDED_PARAMETER {
     pub r#type: DWORD64,
 
     #[allow(missing_docs)]
-    pub u: MEM_EXTENDED_PARAMETER_UNION,
+    pub dummy: MEM_EXTENDED_PARAMETER_UNION,
+}
+
+impl Deref for MEM_EXTENDED_PARAMETER {
+    type Target = MEM_EXTENDED_PARAMETER_UNION;
+
+    fn deref(&self) -> &Self::Target {
+        &self.dummy
+    }
+}
+
+impl DerefMut for MEM_EXTENDED_PARAMETER {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.dummy
+    }
 }
 
 #[allow(missing_docs)]

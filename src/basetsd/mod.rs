@@ -3,7 +3,4 @@
 
 mod types;
 
-pub use types::{
-    DWORD64, DWORD_PTR, INT_PTR, LONG64, LONG_PTR, PDWORD_PTR, PULONG_PTR, SIZE_T, UINT16, UINT64,
-    UINT8, UINT_PTR, ULONG64, ULONG_PTR,
-};
+pub use types::*;

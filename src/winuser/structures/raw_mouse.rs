@@ -1,4 +1,5 @@
 use crate::{LONG, ULONG, USHORT};
+use std::ops::{Deref, DerefMut};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -68,7 +69,7 @@ pub struct RAWMOUSE {
     pub flags: USHORT,
 
     #[allow(missing_docs)]
-    pub u: RAWMOUSEUNION,
+    pub dummy: RAWMOUSE_UNION,
 
     /// The raw state of the mouse buttons. The Win32 subsystem does not use this member.
     pub raw_buttons: ULONG,
@@ -89,7 +90,7 @@ impl Default for RAWMOUSE {
     fn default() -> Self {
         RAWMOUSE {
             flags: 0,
-            u: RAWMOUSEUNION::default(),
+            dummy: RAWMOUSE_UNION::default(),
             raw_buttons: 0,
             last_x: 0,
             last_y: 0,
@@ -98,27 +99,55 @@ impl Default for RAWMOUSE {
     }
 }
 
+impl Deref for RAWMOUSE {
+    type Target = RAWMOUSE_UNION;
+
+    fn deref(&self) -> &Self::Target {
+        &self.dummy
+    }
+}
+
+impl DerefMut for RAWMOUSE {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.dummy
+    }
+}
+
 /// Union for [`RAWMOUSE`]
 #[repr(C)]
 #[derive(Clone, Copy)]
-pub union RAWMOUSEUNION {
+pub union RAWMOUSE_UNION {
     /// Reserved.
     pub buttons: ULONG,
 
     #[allow(missing_docs)]
-    pub s: RAWMOUSEUNIONSTRUCT,
+    pub dummy: RAWMOUSE_STRUCT,
 }
 
-impl Default for RAWMOUSEUNION {
+impl Default for RAWMOUSE_UNION {
     fn default() -> Self {
-        RAWMOUSEUNION { buttons: 0 }
+        RAWMOUSE_UNION { buttons: 0 }
+    }
+}
+
+impl Deref for RAWMOUSE_UNION {
+    type Target = RAWMOUSE_STRUCT;
+
+    fn deref(&self) -> &Self::Target {
+        unsafe { &self.dummy }
+    }
+}
+
+impl DerefMut for RAWMOUSE_UNION {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        unsafe { &mut self.dummy }
     }
 }
 
 /// Struct for [`RAWMOUSEUNION`]
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
-pub struct RAWMOUSEUNIONSTRUCT {
+pub struct RAWMOUSE_STRUCT {
     /// The transition state of the mouse buttons. This member can be one or more of the following
     /// values:
     ///  * [`RI_MOUSE_BUTTON_1_DOWN`] or [`RI_MOUSE_LEFT_BUTTON_DOWN`] - Left button changed to
@@ -149,9 +178,9 @@ pub struct RAWMOUSEUNIONSTRUCT {
     pub button_data: USHORT,
 }
 
-impl Default for RAWMOUSEUNIONSTRUCT {
+impl Default for RAWMOUSE_STRUCT {
     fn default() -> Self {
-        RAWMOUSEUNIONSTRUCT {
+        RAWMOUSE_STRUCT {
             button_flags: 0,
             button_data: 0,
         }
