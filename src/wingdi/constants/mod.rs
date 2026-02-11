@@ -1,5 +1,6 @@
 mod charsets;
 mod clip_precisions;
+mod display_device_flags;
 mod font_families;
 mod font_pitches;
 mod font_qualities;
@@ -10,6 +11,7 @@ mod output_precisions;
 
 pub use charsets::*;
 pub use clip_precisions::*;
+pub use display_device_flags::*;
 pub use font_families::*;
 pub use font_pitches::*;
 pub use font_qualities::*;

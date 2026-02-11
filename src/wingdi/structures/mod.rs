@@ -12,6 +12,8 @@ mod display_config_target_device_name_flags;
 mod display_config_target_mode;
 mod display_config_target_preferred_mode;
 mod display_config_video_signal_info;
+mod display_device_a;
+mod display_device_w;
 mod log_font_a;
 mod log_font_w;
 
@@ -38,5 +40,7 @@ pub use display_config_video_signal_info::{
     DISPLAYCONFIG_VIDEO_SIGNAL_INFO, DISPLAYCONFIG_VIDEO_SIGNAL_INFO_STRUCT,
     DISPLAYCONFIG_VIDEO_SIGNAL_INFO_UNION,
 };
+pub use display_device_a::DISPLAY_DEVICEA;
+pub use display_device_w::{DISPLAY_DEVICEW, DISPLAY_DEVICEW as DISPLAY_DEVICE};
 pub use log_font_a::LOGFONTA;
 pub use log_font_w::{LOGFONTW, LOGFONTW as LOGFONT};
