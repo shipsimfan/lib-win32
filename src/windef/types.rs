@@ -14,6 +14,10 @@ pub type BOOL = c_int;
 /// A byte (8 bits)
 pub type BYTE = c_uchar;
 
+/// Identifies the awareness context for a window.
+#[allow(non_camel_case_types)]
+pub type DPI_AWARENESS_CONTEXT = HANDLE;
+
 /// A floating-point variable.
 pub type FLOAT = c_float;
 

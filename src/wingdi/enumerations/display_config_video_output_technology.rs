@@ -76,10 +76,5 @@ pub enum DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY {
 
     /// Indicates that the video output device connects internally to a display device (for
     /// example, the internal connection in a laptop computer).
-    Internal = 0x80000000,
-
-    /// Forces this enumeration to compile to 32 bits in size. Without this value, some compilers
-    /// would allow this enumeration to compile to a size other than 32 bits. You should not use
-    /// this value.
-    ForceUint32 = 0xFFFFFFFF,
+    Internal = 0x80000000u32 as std::ffi::c_int as isize,
 }
