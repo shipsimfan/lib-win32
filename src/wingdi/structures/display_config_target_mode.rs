@@ -2,7 +2,7 @@ use crate::DISPLAYCONFIG_VIDEO_SIGNAL_INFO;
 
 /// The [`DISPLAYCONFIG_TARGET_MODE`] structure describes a display path target mode.
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct DISPLAYCONFIG_TARGET_MODE {
     /// A [`DISPLAYCONFIG_VIDEO_SIGNAL_INFO`] structure that contains a detailed description of the
     /// current target mode.

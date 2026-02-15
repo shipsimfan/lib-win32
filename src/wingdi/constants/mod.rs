@@ -1,5 +1,8 @@
 mod charsets;
 mod clip_precisions;
+mod display_config_paths;
+mod display_config_source_flags;
+mod display_config_target_flags;
 mod display_device_flags;
 mod font_families;
 mod font_pitches;
@@ -8,9 +11,13 @@ mod font_weights;
 mod logical_font_face_size;
 mod name_sizes;
 mod output_precisions;
+mod query_display_config_flags;
 
 pub use charsets::*;
 pub use clip_precisions::*;
+pub use display_config_paths::*;
+pub use display_config_source_flags::*;
+pub use display_config_target_flags::*;
 pub use display_device_flags::*;
 pub use font_families::*;
 pub use font_pitches::*;
@@ -19,3 +26,4 @@ pub use font_weights::*;
 pub use logical_font_face_size::*;
 pub use name_sizes::*;
 pub use output_precisions::*;
+pub use query_display_config_flags::*;

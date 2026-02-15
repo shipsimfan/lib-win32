@@ -1,7 +1,17 @@
 mod display_config_device_info_type;
+mod display_config_mode_info_type;
+mod display_config_pixel_format;
+mod display_config_rotation;
+mod display_config_scaling;
 mod display_config_scanline_ordering;
+mod display_config_topology_id;
 mod display_config_video_output_technology;
 
 pub use display_config_device_info_type::DISPLAYCONFIG_DEVICE_INFO_TYPE;
+pub use display_config_mode_info_type::DISPLAYCONFIG_MODE_INFO_TYPE;
+pub use display_config_pixel_format::DISPLAYCONFIG_PIXELFORMAT;
+pub use display_config_rotation::DISPLAYCONFIG_ROTATION;
+pub use display_config_scaling::DISPLAYCONFIG_SCALING;
 pub use display_config_scanline_ordering::DISPLAYCONFIG_SCANLINE_ORDERING;
+pub use display_config_topology_id::DISPLAYCONFIG_TOPOLOGY_ID;
 pub use display_config_video_output_technology::DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY;

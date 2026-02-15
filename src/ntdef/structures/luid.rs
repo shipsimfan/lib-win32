@@ -3,7 +3,7 @@ use crate::{LONG, ULONG};
 /// The [`LUID`] structure is an opaque structure that specifies an identifier that is guaranteed
 /// to be unique on the local machine.
 #[repr(C)]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Copy)]
 pub struct LUID {
     #[allow(missing_docs)]
     pub low_part: ULONG,

@@ -6,7 +6,7 @@ use std::ops::{Deref, DerefMut};
 /// The [`DISPLAYCONFIG_VIDEO_SIGNAL_INFO`] structure contains information about the video signal
 /// for a display.
 #[repr(C)]
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 pub struct DISPLAYCONFIG_VIDEO_SIGNAL_INFO {
     /// The pixel clock rate.
     pub pixel_rate: UINT64,
