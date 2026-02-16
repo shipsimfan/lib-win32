@@ -1,3 +1,4 @@
+mod dev_mode_w;
 mod display_config_2d_region;
 mod display_config_adapter_name;
 mod display_config_desktop_image_info;
@@ -23,6 +24,10 @@ mod display_device_w;
 mod log_font_a;
 mod log_font_w;
 
+pub use dev_mode_w::{
+    DEVMODEW as DEVMODE, DEVMODEW, DEVMODEW_STRUCT, DEVMODEW_STRUCT2, DEVMODEW_UNION,
+    DEVMODEW_UNION2,
+};
 pub use display_config_2d_region::DISPLAYCONFIG_2DREGION;
 pub use display_config_adapter_name::DISPLAYCONFIG_ADAPTER_NAME;
 pub use display_config_desktop_image_info::DISPLAYCONFIG_DESKTOP_IMAGE_INFO;

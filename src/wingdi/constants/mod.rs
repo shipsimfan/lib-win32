@@ -1,5 +1,10 @@
 mod charsets;
 mod clip_precisions;
+mod dev_mode_collate_flags;
+mod dev_mode_color_flags;
+mod dev_mode_field_bits;
+mod dev_mode_nup_flags;
+mod dev_mode_spec_version;
 mod display_config_paths;
 mod display_config_source_flags;
 mod display_config_target_flags;
@@ -15,6 +20,11 @@ mod query_display_config_flags;
 
 pub use charsets::*;
 pub use clip_precisions::*;
+pub use dev_mode_collate_flags::*;
+pub use dev_mode_color_flags::*;
+pub use dev_mode_field_bits::*;
+pub use dev_mode_nup_flags::*;
+pub use dev_mode_spec_version::*;
 pub use display_config_paths::*;
 pub use display_config_source_flags::*;
 pub use display_config_target_flags::*;

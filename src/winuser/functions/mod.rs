@@ -26,6 +26,7 @@ mod end_paint;
 mod enum_display_devices_a;
 mod enum_display_devices_w;
 mod enum_display_monitors;
+mod enum_display_settings_ex_w;
 mod get_class_info_a;
 mod get_class_info_ex_a;
 mod get_class_info_ex_w;
@@ -123,6 +124,9 @@ pub use end_paint::EndPaint;
 pub use enum_display_devices_a::EnumDisplayDevicesA;
 pub use enum_display_devices_w::{EnumDisplayDevicesW, EnumDisplayDevicesW as EnumDisplayDevices};
 pub use enum_display_monitors::EnumDisplayMonitors;
+pub use enum_display_settings_ex_w::{
+    EnumDisplaySettingsExW, EnumDisplaySettingsExW as EnumDisplaySettingsEx,
+};
 pub use get_class_info_a::GetClassInfoA;
 pub use get_class_info_ex_a::GetClassInfoExA;
 pub use get_class_info_ex_w::{GetClassInfoExW, GetClassInfoExW as GetClassInfoEx};
