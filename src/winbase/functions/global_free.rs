@@ -9,7 +9,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Frees the specified global memory object and invalidates its handle.
     ///
     /// # Parameters

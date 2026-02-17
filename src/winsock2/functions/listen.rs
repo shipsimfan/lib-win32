@@ -9,7 +9,7 @@ use crate::{
 };
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`listen`] function places a socket in a state in which it is listening for an incoming
     /// connection.
     ///

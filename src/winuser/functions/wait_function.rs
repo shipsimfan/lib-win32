@@ -5,7 +5,7 @@ use crate::BOOL;
 use crate::{GetLastError, GetMessage, PeekMessage, WaitForMultipleObjectsEx};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Blocks thread execution until the thread needs to process a new message. The new message
     /// could be an input message, a queued message, or a non-queued message.
     ///

@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Sets the current process to a specified dots per inch (dpi) awareness context. The DPI
     /// awareness contexts are from the [`DPI_AWARENESS_CONTEXT`] value.
     ///

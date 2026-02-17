@@ -10,7 +10,7 @@ use crate::{
 };
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Writes all the attributes of the specified open registry key into the registry.
     ///
     /// # Parameters

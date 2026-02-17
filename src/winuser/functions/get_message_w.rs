@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves a message from the calling thread's message queue. The function dispatches
     /// incoming sent messages until a posted message is available for retrieval.
     ///

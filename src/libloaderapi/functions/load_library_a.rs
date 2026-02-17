@@ -7,7 +7,7 @@ use crate::{FreeLibrary, GetLastError, GetProcAddress, LoadLibrary, LoadLibraryE
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Loads the specified module into the address space of the calling process. The specified
     /// module may cause other modules to be loaded.
     ///

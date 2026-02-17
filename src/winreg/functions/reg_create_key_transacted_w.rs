@@ -17,7 +17,7 @@ use crate::{
 use std::ptr::{null, null_mut};
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates the specified registry key and associates it with a transaction. If the key already
     /// exists, the function opens it. Note that key names are not case sensitive.
     ///

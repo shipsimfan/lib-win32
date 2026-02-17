@@ -5,7 +5,7 @@ use crate::{HMODULE, LPCSTR};
 use crate::{GetLastError, LoadLibrary, LoadLibraryEx};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the address of an exported function (also known as a procedure) or variable from
     /// the specified dynamic-link library (DLL).
     ///
@@ -41,5 +41,5 @@ extern "system" {
     /// If the .def file does not number the functions consecutively from 1 to N (where N is the
     /// number of exported functions), an error can occur where GetProcAddress returns an invalid,
     /// non-NULL address, even though there is no function with the specified ordinal.
-    pub fn GetProcAddress(module: HMODULE, proc_name: LPCSTR) -> Option<extern "system" fn()>;
+    pub fn GetProcAddress(module: HMODULE, proc_name: LPCSTR) -> Option<unsafe extern "system" fn()>;
 }

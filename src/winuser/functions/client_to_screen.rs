@@ -5,7 +5,7 @@ use crate::{BOOL, HWND, LPPOINT};
 use crate::POINT;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`ClientToScreen`] function converts the client-area coordinates of a specified point
     /// to screen coordinates.
     ///

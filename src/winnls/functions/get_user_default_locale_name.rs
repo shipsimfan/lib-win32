@@ -8,7 +8,7 @@ use crate::{GetLastError, ERROR_INSUFFICIENT_BUFFER, LOCALE_NAME_MAX_LENGTH};
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the user default locale name.
     ///
     /// # Parameters

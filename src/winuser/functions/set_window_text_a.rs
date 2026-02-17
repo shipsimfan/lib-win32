@@ -5,7 +5,7 @@ use crate::{BOOL, HWND, LPCSTR};
 use crate::{GetLastError, SetWindowText, WM_SETTEXT, WS_CAPTION};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Changes the text of the specified window's title bar (if it has one). If the specified
     /// window is a control, the text of the control is changed. However, [`SetWindowText`] cannot
     /// change the text of a control in another application.

@@ -5,7 +5,7 @@ use crate::DWORD;
 use crate::{FormatMessage, SetLastError, HRESULT, HRESULT_FROM_WIN32};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the calling thread's last-error code value. The last-error code is maintained on
     /// a per-thread basis. Multiple threads do not overwrite each other's last-error code.
     ///

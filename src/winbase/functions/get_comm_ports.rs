@@ -5,7 +5,7 @@ use crate::{PULONG, ULONG};
 use crate::{ERROR_FILE_NOT_FOUND, ERROR_MORE_DATA, ERROR_SUCCESS};
 
 #[link(name = "OneCore")]
-extern "system" {
+unsafe extern "system" {
     /// Gets an array that contains the well-formed COM ports.
     ///
     /// This function obtains the COM port numbers from the `HKLM\Hardware\DeviceMap\SERIALCOMM`

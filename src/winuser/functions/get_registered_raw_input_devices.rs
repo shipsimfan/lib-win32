@@ -9,7 +9,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the information about the raw input devices for the current application.
     ///
     /// # Parameters

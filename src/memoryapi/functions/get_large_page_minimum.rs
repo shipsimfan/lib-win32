@@ -1,7 +1,7 @@
 use crate::SIZE_T;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the minimum size of a large page.
     ///
     /// # Return Value

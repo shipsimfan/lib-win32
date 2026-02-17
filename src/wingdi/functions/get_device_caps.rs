@@ -23,7 +23,7 @@ use crate::{
 };
 
 #[link(name = "Gdi32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`GetDeviceCaps`] function retrieves device-specific information for the specified
     /// device.
     ///

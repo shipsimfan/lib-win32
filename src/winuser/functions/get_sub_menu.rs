@@ -6,7 +6,7 @@ use std::ffi::c_int;
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves a handle to the drop-down menu or submenu activated by the specified menu item.
     ///
     /// # Parameters

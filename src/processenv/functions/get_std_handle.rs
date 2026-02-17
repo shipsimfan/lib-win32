@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves a handle to the specified standard device (standard input, standard output, or
     /// standard error).
     ///

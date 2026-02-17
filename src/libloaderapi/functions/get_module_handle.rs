@@ -7,7 +7,7 @@ use crate::{FreeLibrary, GetLastError, GetModuleHandle, LoadLibraryEx};
 use std::ptr::null;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves a module handle for the specified module. The module must have been loaded by the
     /// calling process.
     ///

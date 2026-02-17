@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Establishes a connection to a predefined registry key on another computer.
     ///
     /// # Parameters

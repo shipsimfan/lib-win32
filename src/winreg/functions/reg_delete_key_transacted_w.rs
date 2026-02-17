@@ -12,7 +12,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Deletes a subkey and its values from the specified platform-specific view of the registry
     /// as a transacted operation. Note that key names are not case sensitive.
     ///

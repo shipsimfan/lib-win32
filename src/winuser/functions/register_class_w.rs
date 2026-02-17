@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Registers a window class for subsequent use in calls to the [`CreateWindow`] or
     /// [`CreateWindowEx`] function.
     ///

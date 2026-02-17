@@ -5,7 +5,7 @@ use crate::{BOOL, CHAR_INFO, COORD, HANDLE, PSMALL_RECT};
 use crate::{GetConsoleScreenBufferInfo, GetLastError, GENERIC_WRITE, SMALL_RECT};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Writes character and color attribute data to a specified rectangular block of character
     /// cells in a console screen buffer. The data to be written is taken from a correspondingly
     /// sized rectangular block at a specified location in the source buffer.

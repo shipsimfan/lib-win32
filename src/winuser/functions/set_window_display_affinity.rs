@@ -5,7 +5,7 @@ use crate::{BOOL, DWORD, HWND};
 use crate::{GetLastError, FALSE, TRUE, WDA_EXCLUDEFROMCAPTURE, WDA_MONITOR, WDA_NONE};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Specifies where the content of the window can be displayed.
     ///
     /// # Parameters

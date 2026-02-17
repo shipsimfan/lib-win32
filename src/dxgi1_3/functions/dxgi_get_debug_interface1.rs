@@ -9,7 +9,7 @@ use crate::dxgidebug::IDXGIInfoQueue;
 use crate::{E_NOINTERFACE, GUID, S_OK};
 
 #[link(name = "DXGI")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves an interface that Windows Store apps use for debugging the Microsoft DirectX
     /// Graphics Infrastructure (DXGI).
     ///

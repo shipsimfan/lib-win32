@@ -5,7 +5,7 @@ use crate::{INT, LRESULT, PRAWINPUT, UINT};
 use crate::{DefWindowProcA, DefWindowProcW, RAWINPUTHEADER};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Unlike [`DefWindowProcA`] and [`DefWindowProcW`], this function doesn't do any processing.
     ///
     /// [`DefRawInputProc`] only checks whether `size_header`'s value corresponds to the expected

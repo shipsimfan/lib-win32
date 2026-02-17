@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves a handle to the [`HKEY_CURRENT_USER`] key for the user the current thread is
     /// impersonating.
     ///

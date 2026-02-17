@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`DisplayConfigGetDeviceInfo`] function retrieves display configuration information
     /// about the device.
     ///

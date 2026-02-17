@@ -12,7 +12,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Enumerates the values for the specified open registry key. The function copies one indexed
     /// value name and data block for the key each time it is called.
     ///

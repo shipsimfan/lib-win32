@@ -5,7 +5,7 @@ use crate::{BOOL, HANDLE, PCONSOLE_SCREEN_BUFFER_INFO};
 use crate::{GetLastError, CONSOLE_SCREEN_BUFFER_INFO, GENERIC_READ};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves information about the specified console screen buffer.
     ///
     /// # Parameters

@@ -11,7 +11,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates, displays, and operates a message box. The message box contains an
     /// application-defined message and title, plus any combination of predefined icons and push
     /// buttons. The buttons are in the language of the system user interface.

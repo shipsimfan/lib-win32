@@ -7,7 +7,7 @@ use crate::{GetLastError, LocalAlloc, LMEM_MODIFY, LMEM_MOVEABLE, LMEM_ZEROINIT}
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Changes the size or the attributes of a specified local memory object. The size can
     /// increase or decrease.
     ///

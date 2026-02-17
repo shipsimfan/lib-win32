@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the value of one of the system-wide parameters, taking into account the provided
     /// DPI value.
     ///

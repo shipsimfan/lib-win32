@@ -5,7 +5,7 @@ use crate::{BOOL, HANDLE, LPDCB};
 use crate::{CreateFile, GetLastError, DCB};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the current control settings for a specified communications device.
     ///
     /// # Parameters

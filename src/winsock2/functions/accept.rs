@@ -8,7 +8,7 @@ use crate::winsock2::{WSAEventSelect, WSAGetLastError, INVALID_SOCKET, SOCK_STRE
 use std::ptr::null_mut;
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`accept`] function permits an incoming connection attempt on a socket.
     ///
     /// # Parameters

@@ -5,7 +5,7 @@ use crate::LPFILETIME;
 use crate::FILETIME;
 
 #[link(name = "Kernel32")]
-extern "C" {
+unsafe extern "C" {
     /// Retrieves the current system date and time. The information is in Coordinated Universal
     /// Time (UTC) format.
     ///

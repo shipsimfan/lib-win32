@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`EnumDisplayDevices`] function lets you obtain information about the display devices
     /// in the current session.
     ///

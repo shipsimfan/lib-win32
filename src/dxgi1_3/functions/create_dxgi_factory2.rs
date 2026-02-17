@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "DXGI")]
-extern "system" {
+unsafe extern "system" {
     /// Creates a DXGI 1.3 factory that you can use to generate other DXGI objects.
     ///
     /// In Windows 8, any DXGI factory created while `DXGIDebug.dll` was present on the system

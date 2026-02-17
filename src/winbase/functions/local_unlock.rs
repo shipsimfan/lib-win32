@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Decrements the lock count associated with a memory object that was allocated with
     /// [`LMEM_MOVEABLE`]. This function has no effect on memory objects allocated with
     /// [`LMEM_FIXED`].

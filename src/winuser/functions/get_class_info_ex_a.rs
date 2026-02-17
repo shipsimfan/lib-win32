@@ -7,7 +7,7 @@ use crate::{GetClassInfo, GetLastError, RegisterClass, RegisterClassEx, WNDCLASS
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves information about a window class, including a handle to the small icon associated
     /// with the window class. The [`GetClassInfo`] function does not retrieve a handle to the
     /// small icon.

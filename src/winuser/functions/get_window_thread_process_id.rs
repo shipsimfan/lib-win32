@@ -7,7 +7,7 @@ use crate::GetLastError;
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the identifier of the thread that created the specified window and, optionally,
     /// the identifier of the process that created the window.
     ///

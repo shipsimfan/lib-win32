@@ -5,7 +5,7 @@ use crate::{BOOL, HMONITOR, LPMONITORINFO};
 use crate::{GetMonitorInfo, MONITORINFO, MONITORINFOEX};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`GetMonitorInfo`] function retrieves information about a display monitor.
     ///
     /// # Parameters

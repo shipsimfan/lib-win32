@@ -5,7 +5,7 @@ use crate::{BOOL, HWND, LPRECT};
 use crate::{GetLastError, RECT};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the coordinates of a window's client area. The client coordinates specify the
     /// upper-left and lower-right corners of the client area. Because client coordinates are
     /// relative to the upper-left corner of a window's client area, the coordinates of the

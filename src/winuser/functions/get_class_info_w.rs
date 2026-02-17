@@ -7,7 +7,7 @@ use crate::{GetLastError, RegisterClass, RegisterClassEx, WNDCLASS};
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves information about a window class.
     ///
     /// # Parameters

@@ -17,7 +17,7 @@ use crate::{
 use std::ptr::{null, null_mut};
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the type and data for the specified registry value
     ///
     /// # Parameters

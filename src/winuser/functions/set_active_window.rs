@@ -7,7 +7,7 @@ use crate::GetLastError;
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Activates a window. The window must be attached to the calling thread's message queue.
     ///
     /// # Parameters

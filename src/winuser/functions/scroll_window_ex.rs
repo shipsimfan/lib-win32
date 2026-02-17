@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::{null, null_mut};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`ScrollWindowEx`] function scrolls the contents of the specified window's client area.
     ///
     /// # Parameters

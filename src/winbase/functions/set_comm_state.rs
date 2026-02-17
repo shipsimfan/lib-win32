@@ -5,7 +5,7 @@ use crate::{BOOL, HANDLE, LPDCB};
 use crate::{CreateFile, GetCommState, GetLastError, DCB};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Configures a communications device according to the specifications in a device-control
     /// block (a [`DCB`] structure). The function reinitializes all hardware and control settings,
     /// but it does not empty output or input queues.

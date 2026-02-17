@@ -1,7 +1,7 @@
 use crate::UINT;
 
 #[link(name = "D3D11")]
-extern "system" {
+unsafe extern "system" {
     /// Calculates a subresource index for a texture.
     ///
     /// # Parameters

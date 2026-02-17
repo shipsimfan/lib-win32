@@ -7,7 +7,7 @@ use crate::{GetLastError, GlobalAlloc, GlobalLock, GMEM_MODIFY, GMEM_MOVEABLE, G
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Changes the size or attributes of a specified global memory object. The size can increase
     /// or decrease.
     ///

@@ -5,7 +5,7 @@ use crate::{HWND, LPARAM, LRESULT, UINT, WPARAM};
 use crate::DefWindowProc;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Calls the default window procedure to provide default processing for any window messages
     /// that an application does not process. This function ensures that every message is
     /// processed. [`DefWindowProc`] is called with the same parameters received by the window

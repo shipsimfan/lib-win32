@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Enables the specified process to set the foreground window using the
     /// [`SetForegroundWindow`] function. The calling process must already be able to set the
     /// foreground window.

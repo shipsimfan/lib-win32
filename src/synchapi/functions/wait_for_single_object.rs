@@ -5,7 +5,7 @@ use crate::{DWORD, HANDLE};
 use crate::{GetLastError, INFINITE, WAIT_ABANDONED, WAIT_FAILED, WAIT_OBJECT_0, WAIT_TIMEOUT};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Waits until the specified object is in the signaled state or the time-out interval elapses.
     ///
     /// To enter an alertable wait state, use the [`WaitForSingleObjectEx`] function. To wait for

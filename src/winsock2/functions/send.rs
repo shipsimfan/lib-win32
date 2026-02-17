@@ -12,7 +12,7 @@ use crate::{
 };
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`send`] function sends data on a connected socket.
     ///
     /// # Parameters

@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Sends the specified message to one or more windows.
     ///
     /// # Parameters

@@ -9,7 +9,7 @@ use crate::{
 use std::ffi::c_int;
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`bind`] function associates a local address with a socket
     ///
     /// # Parameters

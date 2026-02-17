@@ -5,7 +5,7 @@ use crate::{BOOL, HWND};
 use crate::{CreateWindow, CreateWindowEx, FALSE, TRUE, WM_CANCELMODE, WM_ENABLE, WS_DISABLED};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Enables or disables mouse and keyboard input to the specified window or control. When input
     /// is disabled, the window does not receive input such as mouse clicks and key presses. When
     /// input is enabled, the window receives all input.

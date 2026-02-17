@@ -9,7 +9,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Allocates a block of memory from a heap. The allocated memory is not movable.
     ///
     /// # Parameters

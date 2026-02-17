@@ -6,7 +6,7 @@ use std::ffi::c_void;
 use crate::{dxgi::IDXGIFactory1, S_OK};
 
 #[link(name = "DXGI")]
-extern "system" {
+unsafe extern "system" {
     /// Creates a DXGI 1.1 factory that you can use to generate other DXGI objects.
     ///
     /// # Parameters

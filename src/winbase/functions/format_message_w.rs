@@ -11,7 +11,7 @@ use crate::{
 };
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Formats a message string.
     ///
     /// The function requires a message definition as input. The message

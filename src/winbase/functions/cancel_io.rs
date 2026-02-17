@@ -5,7 +5,7 @@ use crate::{BOOL, HANDLE};
 use crate::{GetLastError, ERROR_OPERATION_ABORTED, FILE_FLAG_OVERLAPPED};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Cancels all pending input and output (I/O) operations that are issued by the calling thread
     /// for the specified file. The function does not cancel I/O operations that other threads
     /// issue for a file handle.

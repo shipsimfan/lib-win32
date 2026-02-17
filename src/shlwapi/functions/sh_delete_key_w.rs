@@ -9,7 +9,7 @@ use crate::{
 };
 
 #[link(name = "Shlwapi")]
-extern "system" {
+unsafe extern "system" {
     /// Deletes a subkey and all its descendants. This function removes the key and all the key's
     /// values from the registry.
     ///

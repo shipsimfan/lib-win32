@@ -7,7 +7,7 @@ use crate::{GetRawInputBuffer, DWORD, RAWINPUT, RAWINPUTHEADER, RID_HEADER, RID_
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the raw input from the specified device.
     ///
     /// # Parameters

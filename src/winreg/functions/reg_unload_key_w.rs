@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Unloads the specified registry key and its subkeys from the registry.
     ///
     /// Applications that back up or restore system state including system files and registry hives

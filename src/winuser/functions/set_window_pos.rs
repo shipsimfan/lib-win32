@@ -12,7 +12,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Changes the size, position, and Z order of a child, pop-up, or top-level window. These
     /// windows are ordered according to their appearance on the screen. The topmost window
     /// receives the highest rank and is the first window in the Z order.

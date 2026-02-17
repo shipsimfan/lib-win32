@@ -3,14 +3,14 @@ use crate::{BOOL, PHANDLER_ROUTINE};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    CreateWindowEx, GetLastError, SetConsoleMode, ENABLE_PROCESSED_INPUT, FALSE, TRUE,
+    CreateWindowEx, ENABLE_PROCESSED_INPUT, FALSE, GetLastError, SetConsoleMode, TRUE,
     WM_ENDSESSION, WM_QUERYENDSESSION,
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Adds or removes an application-defined handler routine function from the list of handler
     /// functions for the calling process.
     ///

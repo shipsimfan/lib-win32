@@ -1,7 +1,7 @@
 use std::ffi::c_int;
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`WSAGetLastError`] function returns the error status for the last Windows Sockets
     /// operation that failed.
     ///

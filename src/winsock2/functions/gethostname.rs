@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`gethostname`] function retrieves the standard host name for the local computer.
     ///
     /// # Parameters

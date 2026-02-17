@@ -12,7 +12,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Sets the data for the specified value in the specified registry key and subkey.
     ///
     /// # Parameters

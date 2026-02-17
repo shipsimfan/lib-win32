@@ -5,7 +5,7 @@ use crate::{HWND, LPARAM, LRESULT, UINT, WNDPROC, WPARAM};
 use crate::{CallWindowProc, GetWindowLong, SetWindowLong, DWL_DLGPROC, GWL_WNDPROC};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Passes message information to the specified window procedure.
     ///
     /// # Parameters

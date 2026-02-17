@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves information about the specified local memory object.
     ///
     /// # Parameters

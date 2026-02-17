@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::{null, null_mut};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates or opens a waitable timer object.
     ///
     /// To specify an access mask for the object, use the [`CreateWaitableTimerEx`] function.

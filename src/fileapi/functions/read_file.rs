@@ -12,7 +12,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Reads data from the specified file or input/output (I/O) device. Reads occur at the
     /// position specified by the file pointer if supported by the device.
     ///

@@ -5,7 +5,7 @@ use crate::{BOOL, HANDLE};
 use crate::{GetLastError, RegCloseKey, ERROR_INVALID_HANDLE};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Closes an open object handle.
     ///
     /// # Parameters

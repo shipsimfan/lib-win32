@@ -5,7 +5,7 @@ use crate::HANDLE;
 use crate::CloseHandle;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves a pseudo handle for the current process.
     ///
     /// # Return Value

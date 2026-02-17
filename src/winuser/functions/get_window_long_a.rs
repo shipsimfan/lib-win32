@@ -10,7 +10,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves information about the specified window. The function also retrieves the 32-bit
     /// ([`DWORD`]) value at the specified offset into the extra window memory.
     ///

@@ -12,7 +12,7 @@ use crate::{
 };
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`recv`] function receives data from a connected socket or a bound connectionless
     /// socket.
     ///

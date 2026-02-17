@@ -12,7 +12,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Deletes the subkeys and values of the specified key recursively.
     ///
     /// # Parameters

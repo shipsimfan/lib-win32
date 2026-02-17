@@ -47,7 +47,7 @@ pub type LPWSAOVERLAPPED = *mut WSAOVERLAPPED;
 ///  * `flags` - Flags associated with the call.
 #[allow(non_camel_case_types)]
 pub type LPWSAOVERLAPPED_COMPLETION_ROUTINE =
-    extern "system" fn(error: DWORD, transferred: DWORD, overlapped: LPWSAOVERLAPPED, flags: DWORD);
+    unsafe extern "system" fn(error: DWORD, transferred: DWORD, overlapped: LPWSAOVERLAPPED, flags: DWORD);
 
 /// A pointer to a [`WSAPROTOCOL_INFOW`] structure
 #[allow(non_camel_case_types)]

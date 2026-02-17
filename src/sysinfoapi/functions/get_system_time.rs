@@ -7,7 +7,7 @@ use crate::{GetLocalTime, SYSTEMTIME};
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "C" {
+unsafe extern "C" {
     /// Retrieves the current system date and time in Coordinated Universal Time (UTC) format.
     ///
     /// To retrieve the current system date and time in local time, use the [`GetLocalTime`]

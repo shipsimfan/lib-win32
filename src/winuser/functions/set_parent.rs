@@ -7,7 +7,7 @@ use crate::{GetLastError, HWND_MESSAGE, WM_CHANGEUISTATE, WM_UPDATEUISTATE, WS_C
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Changes the parent window of the specified child window.
     ///
     /// # Parameters

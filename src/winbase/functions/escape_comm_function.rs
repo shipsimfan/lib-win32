@@ -7,7 +7,7 @@ use crate::{
 };
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Directs the specified communications device to perform an extended function.
     ///
     /// # Parameters

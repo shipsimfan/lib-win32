@@ -1,7 +1,7 @@
 use crate::DWORD;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the thread identifier of the calling thread.
     ///
     /// # Return Value

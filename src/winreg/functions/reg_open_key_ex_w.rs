@@ -12,7 +12,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Opens the specified registry key. Note that key names are not case sensitive.
     ///
     /// To perform transacted registry operations on a key, call the [`RegOpenKeyTransacted`]

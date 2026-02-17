@@ -11,7 +11,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`WSAEventSelect`] function specifies an event object to be associated with the
     /// specified set of `FD_XXX` network events.
     ///

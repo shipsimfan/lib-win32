@@ -5,7 +5,7 @@ use crate::{BOOL, DWORD, HANDLE};
 use crate::{ReadFile, WriteFile, GENERIC_READ};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Sets the input mode of a console's input buffer or the output mode of a console screen
     /// buffer.
     ///

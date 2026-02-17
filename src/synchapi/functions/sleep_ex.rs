@@ -5,7 +5,7 @@ use crate::{BOOL, DWORD};
 use crate::{FALSE, INFINITE, TRUE, WAIT_IO_COMPLETION};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Suspends the current thread until the specified condition is met. Execution resumes when
     /// one of the following occurs:
     ///  - An I/O completion callback function is called.

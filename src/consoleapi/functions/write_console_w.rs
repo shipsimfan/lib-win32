@@ -3,13 +3,13 @@ use crate::{BOOL, DWORD, HANDLE, LPDWORD, LPVOID, WCHAR};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    GetLastError, SetConsoleMode, WriteConsole, WriteFile, ERROR_NOT_ENOUGH_MEMORY, GENERIC_WRITE,
+    ERROR_NOT_ENOUGH_MEMORY, GENERIC_WRITE, GetLastError, SetConsoleMode, WriteConsole, WriteFile,
 };
 #[allow(unused_imports)]
 use std::{ffi::c_char, ptr::null_mut};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Writes a character string to a console screen buffer beginning at the current cursor
     /// location.
     ///

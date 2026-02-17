@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Translates virtual-key messages into character messages. The character messages are posted
     /// to the calling thread's message queue, to be read the next time the thread calls the
     /// [`GetMessage`] or [`PeekMessage`] function.

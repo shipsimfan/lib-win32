@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Flushes the buffers of a specified file and causes all buffered data to be written to a
     /// file.
     ///

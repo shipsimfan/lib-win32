@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves or sets the value of one of the system-wide parameters. This function can also
     /// update the user profile while setting a parameter.
     ///

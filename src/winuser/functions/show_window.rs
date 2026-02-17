@@ -10,7 +10,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Sets the specified window's show state.
     ///
     /// # Parameters

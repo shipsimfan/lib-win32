@@ -5,7 +5,7 @@ use crate::DWORD;
 use crate::{GetLastError, SetLastError};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Sets the last-error code.
     ///
     /// Currently, this function is identical to the [`SetLastError`] function. The second

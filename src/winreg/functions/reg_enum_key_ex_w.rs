@@ -12,7 +12,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Enumerates the subkeys of the specified open registry key. The function retrieves
     /// information about one subkey each time it is called.
     ///

@@ -5,7 +5,7 @@ use crate::{BOOL, DWORD, LPRECT};
 use crate::{CreateWindowEx, GetLastError, RECT, WS_HSCROLL, WS_OVERLAPPED, WS_VSCROLL};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Calculates the required size of the window rectangle, based on the desired size of the
     /// client rectangle. The window rectangle can then be passed to the [`CreateWindowEx`]
     /// function to create a window whose client area is the desired size.

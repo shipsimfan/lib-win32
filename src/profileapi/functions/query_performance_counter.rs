@@ -5,7 +5,7 @@ use crate::{BOOL, LARGE_INTEGER};
 use crate::GetLastError;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the current value of the performance counter, which is a high resolution (<1us)
     /// time stamp that can be used for time-interval measurements.
     ///

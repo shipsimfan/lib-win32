@@ -6,7 +6,7 @@ use std::ffi::c_int;
 use crate::{winsock2::WSAGetLastError, WSAECONNRESET, WSAENOTSOCK, WSAEWOULDBLOCK};
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`closesocket`] function closes an existing socket.
     ///
     /// # Parameters

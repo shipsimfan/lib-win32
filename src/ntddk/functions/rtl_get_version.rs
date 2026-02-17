@@ -1,7 +1,7 @@
 use crate::{wdm::PRTL_OSVERSIONINFOW, NTSTATUS};
 
 #[link(name = "Ntdll")]
-extern "system" {
+unsafe extern "system" {
     /// Gets version information about the currently running operating system.
     ///
     /// # Parameters

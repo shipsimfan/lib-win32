@@ -5,7 +5,7 @@ use crate::{BOOL, HWND, PAINTSTRUCT};
 use crate::BeginPaint;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`EndPaint`] function marks the end of painting in the specified window. This function
     /// is required for each call to the [`BeginPaint`] function, but only after painting is
     /// complete.

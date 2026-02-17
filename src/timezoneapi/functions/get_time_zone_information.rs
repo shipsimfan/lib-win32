@@ -5,7 +5,7 @@ use crate::{DWORD, LPTIME_ZONE_INFORMATION};
 use crate::{GetLastError, TIME_ZONE_INFORMATION};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the current time zone settings. These settings control the translations between
     /// Coordinated Universal Time (UTC) and local time.
     ///

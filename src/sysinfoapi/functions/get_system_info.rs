@@ -5,7 +5,7 @@ use crate::LPSYSTEM_INFO;
 use crate::SYSTEM_INFO;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves information about the current system.
     ///
     /// To retrieve accurate information for an application running on WOW64, call the

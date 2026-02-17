@@ -7,7 +7,7 @@ use crate::{
 };
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`RegSetKeySecurity`] function sets the security of an open registry key.
     ///
     /// # Parameters

@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Determines whether a message is intended for the specified dialog box and, if it is,
     /// processes the message.
     ///

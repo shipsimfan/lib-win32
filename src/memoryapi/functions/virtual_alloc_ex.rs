@@ -13,7 +13,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Reserves, commits, or changes the state of a region of memory within the virtual address
     /// space of a specified process. The function initializes the memory it allocates to zero.
     ///

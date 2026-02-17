@@ -6,7 +6,7 @@ use std::ffi::c_int;
 use crate::winsock2::{WSAGetLastError, SOCKET_ERROR};
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`getsockname`] function retrieves the local name for a socket.
     ///
     /// # Parameters

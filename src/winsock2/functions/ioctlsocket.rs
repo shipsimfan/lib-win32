@@ -6,7 +6,7 @@ use std::ffi::{c_int, c_long, c_ulong};
 use crate::winsock2::{WSAGetLastError, SOCKET_ERROR};
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`ioctlsocket`] function controls the I/O mode of a socket.
     ///
     /// # Parameters

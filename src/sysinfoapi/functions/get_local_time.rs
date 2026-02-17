@@ -5,7 +5,7 @@ use crate::LPSYSTEMTIME;
 use crate::{GetSystemTime, SYSTEMTIME};
 
 #[link(name = "Kernel32")]
-extern "C" {
+unsafe extern "C" {
     /// Retrieves the current local date and time.
     ///
     /// To retrieve the current date and time in Coordinated Universal Time (UTC) format, use the

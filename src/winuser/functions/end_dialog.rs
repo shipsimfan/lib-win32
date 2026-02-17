@@ -5,7 +5,7 @@ use crate::{BOOL, HWND, INT_PTR};
 use crate::{DialogBox, DialogBoxParam, GetLastError, WM_INITDIALOG};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Destroys a modal dialog box, causing the system to end any processing for the dialog box.
     ///
     /// # Parameters

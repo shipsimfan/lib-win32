@@ -5,7 +5,7 @@ use crate::{BOOL, HANDLE};
 use crate::{CreateEvent, GetLastError, SetEvent};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Sets the specified event object to the nonsignaled state.
     ///
     /// # Parameters

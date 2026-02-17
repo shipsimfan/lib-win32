@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Activates the specified waitable timer. When the due time arrives, the timer is signaled
     /// and the thread that set the timer calls the optional completion routine.
     ///

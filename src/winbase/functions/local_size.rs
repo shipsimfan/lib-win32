@@ -5,7 +5,7 @@ use crate::{HLOCAL, SIZE_T};
 use crate::{GetLastError, LocalAlloc, LocalFlags, LocalHandle, LocalReAlloc};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the current size of the specified local memory object, in bytes.
     ///
     /// # Parameters

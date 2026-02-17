@@ -5,7 +5,7 @@ use crate::{BOOL, HANDLE};
 use crate::{CreateWaitableTimer, GetLastError, SetWaitableTimer, TIMER_MODIFY_STATE};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Sets the specified waitable timer to the inactive state.
     ///
     /// # Parameters

@@ -7,7 +7,7 @@ use crate::RECT;
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`EnumDisplayMonitors`] function enumerates display monitors (including invisible
     /// pseudo-monitors associated with the mirroring drivers) that intersect a region formed by
     /// the intersection of a specified clipping rectangle and the visible region of a device

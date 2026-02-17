@@ -16,7 +16,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The socket function creates a socket that is bound to a specific transport service provider.
     ///
     /// # Parameters

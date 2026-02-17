@@ -17,7 +17,7 @@ use crate::winsock2::{
 use std::ptr::null_mut;
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`WSARecv`] function receives data from a connected socket or a bound connectionless
     /// socket.
     ///

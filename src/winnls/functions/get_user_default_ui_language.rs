@@ -1,7 +1,7 @@
 use crate::LANGID;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Returns the language identifier for the user UI language for the current user. If the
     /// current user has not set a language, [`GetUserDefaultUILanguage`] returns the preferred
     /// language set for the system. If there is no preferred language set for the system, then the

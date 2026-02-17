@@ -28,7 +28,7 @@ macro_rules! com_interface {
             )*
             $(
                 $(#[$fn_meta])*
-                pub $fn_name: Option<extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
+                pub $fn_name: Option<unsafe extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
             )*
         }
 
@@ -40,8 +40,8 @@ macro_rules! com_interface {
 
             $(
                 $(#[$fn_meta])*
-                pub fn $fn_name(&mut self, $($parameter_name: $parameter_type),*) $(-> $return_type)* {
-                    self.vtable().$fn_name.unwrap()(self as *mut Self as *mut _, $($parameter_name),*)
+                pub unsafe fn $fn_name(&mut self, $($parameter_name: $parameter_type),*) $(-> $return_type)* {
+                    unsafe { self.vtable().$fn_name.unwrap()(self as *mut Self as *mut _, $($parameter_name),*) }
                 }
             )*
         }
@@ -148,7 +148,7 @@ macro_rules! immut_com_interface {
             )*
             $(
                 $(#[$fn_meta])*
-                pub $fn_name: Option<extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
+                pub $fn_name: Option<unsafe extern "system" fn(this: *mut $struct_name, $($parameter_name: $parameter_type),*)$( -> $return_type)*>,
             )*
         }
 
@@ -160,8 +160,8 @@ macro_rules! immut_com_interface {
 
             $(
                 $(#[$fn_meta])*
-                pub fn $fn_name(&self, $($parameter_name: $parameter_type),*) $(-> $return_type)* {
-                    self.vtable().$fn_name.unwrap()(self as *const Self as *mut _, $($parameter_name),*)
+                pub unsafe fn $fn_name(&self, $($parameter_name: $parameter_type),*) $(-> $return_type)* {
+                    unsafe { self.vtable().$fn_name.unwrap()(self as *const Self as *mut _, $($parameter_name),*) }
                 }
             )*
         }

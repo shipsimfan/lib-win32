@@ -11,7 +11,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Maps a view of a file or a pagefile-backed section into the address space of the specified
     /// process.
     ///

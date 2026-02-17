@@ -5,7 +5,7 @@ use crate::{BOOL, HANDLE, LPCOMMTIMEOUTS};
 use crate::{CreateFile, GetLastError, COMMTIMEOUTS};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Sets the time-out parameters for all read and write operations on a specified
     /// communications device.
     ///

@@ -2,10 +2,10 @@ use crate::{BOOL, DWORD, HANDLE, LPDWORD, PINPUT_RECORD};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, GENERIC_READ, INPUT_RECORD};
+use crate::{GENERIC_READ, GetLastError, INPUT_RECORD};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Reads data from a console input buffer and removes it from the buffer.
     ///
     /// # Parameters

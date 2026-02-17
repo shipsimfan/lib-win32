@@ -9,7 +9,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Ole32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates and default-initializes a single object of the class associated with a specified
     /// [`CLSID`].
     ///

@@ -7,7 +7,7 @@ use crate::{GetMessage, IsDialogMessage, WM_TIMER};
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Dispatches a message to a window procedure. It is typically used to dispatch a message
     /// retrieved by the [`GetMessage`] function.
     ///

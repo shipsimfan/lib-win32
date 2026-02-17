@@ -1,7 +1,7 @@
 use crate::{d3dcommon::ID3DBlob, HRESULT, SIZE_T};
 
 #[link(name = "D3dcompiler")]
-extern "system" {
+unsafe extern "system" {
     /// Creates a buffer.
     ///
     /// # Parameters

@@ -5,7 +5,7 @@ use crate::{HGLOBAL, SIZE_T};
 use crate::{GetLastError, GlobalAlloc, GlobalFlags, GlobalReAlloc};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the current size of the specified global memory object, in bytes.
     ///
     /// # Parameters

@@ -9,7 +9,7 @@ use crate::{
 };
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Reads the registry information in a specified file and copies it over the specified key.
     /// This registry information may be in the form of a key and multiple levels of subkeys.
     ///

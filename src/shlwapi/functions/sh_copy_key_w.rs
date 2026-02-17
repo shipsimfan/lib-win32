@@ -7,7 +7,7 @@ use crate::{
 };
 
 #[link(name = "Shlwapi")]
-extern "system" {
+unsafe extern "system" {
     /// Recursively copies the subkeys and values of the source subkey to the destination key.
     /// [`SHCopyKey`] does not copy the security attributes of the keys.
     ///

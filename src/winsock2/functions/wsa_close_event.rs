@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`WSACloseEvent`] function closes an open event object handle.
     ///
     /// # Parameters

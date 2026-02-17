@@ -5,7 +5,7 @@ use std::ffi::c_int;
 use crate::winsock2::{closesocket, WSAGetLastError, WSAStartup, SOCKET_ERROR};
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The WSACleanup function terminates use of the Winsock 2 DLL.
     ///
     /// # Return Value

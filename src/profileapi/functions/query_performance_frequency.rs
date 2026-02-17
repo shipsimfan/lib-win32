@@ -5,7 +5,7 @@ use crate::{BOOL, LARGE_INTEGER};
 use crate::GetLastError;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the frequency of the performance counter. The frequency of the performance
     /// counter is fixed at system boot and is consistent across all processors. Therefore, the
     /// frequency need only be queried upon application initialization, and the result can be

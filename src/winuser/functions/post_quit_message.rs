@@ -5,7 +5,7 @@ use std::ffi::c_int;
 use crate::{WM_DESTROY, WM_QUIT};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Indicates to the system that a thread has made a request to terminate (quit). It is
     /// typically used in response to a [`WM_DESTROY`] message.
     ///

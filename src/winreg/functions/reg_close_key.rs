@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Closes a handle to the specified registry key.
     ///
     /// # Parameters

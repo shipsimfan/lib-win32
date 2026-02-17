@@ -24,7 +24,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "D3D11")]
-extern "system" {
+unsafe extern "system" {
     /// Creates a device that represents the display adapter and a swap chain used for rendering.
     ///
     /// # Parameters

@@ -8,7 +8,7 @@ use crate::{SetLastError, POINT, RECT, WS_EX_LAYOUTRTL};
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`MapWindowPoints`] function converts (maps) a set of points from a coordinate space
     /// relative to one window to a coordinate space relative to another window.
     ///

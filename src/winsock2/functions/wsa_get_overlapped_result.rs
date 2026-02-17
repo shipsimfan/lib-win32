@@ -13,7 +13,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`WSAGetOverlappedResult`] function retrieves the results of an overlapped operation on
     /// the specified socket.
     ///

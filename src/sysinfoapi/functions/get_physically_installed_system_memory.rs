@@ -2,12 +2,12 @@ use crate::{BOOL, PULONGLONG};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetLastError, ERROR_INVALID_DATA, ERROR_INVALID_PARAMETER, FALSE, TRUE};
+use crate::{ERROR_INVALID_DATA, ERROR_INVALID_PARAMETER, FALSE, GetLastError, TRUE};
 #[allow(unused_imports)]
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "C" {
+unsafe extern "C" {
     /// Retrieves the amount of RAM that is physically installed on the computer.
     ///
     /// # Parameters

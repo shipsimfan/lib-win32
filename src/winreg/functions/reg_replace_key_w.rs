@@ -11,7 +11,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Replaces the file backing a registry key and all its subkeys with another file, so that
     /// when the system is next started, the key and subkeys will have the values stored in the new
     /// file.

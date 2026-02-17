@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Copies the specified registry key, along with its values and subkeys, to the specified
     /// destination key.
     ///

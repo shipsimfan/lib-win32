@@ -9,7 +9,7 @@ use crate::{
 };
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Loads the specified registry hive as an application hive.
     ///
     /// # Parameters

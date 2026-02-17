@@ -1,24 +1,22 @@
 use crate::{
-    c_size_t,
+    DWORD, HRESULT, c_size_t,
     strsafe::{STRSAFE_LPCWSTR, STRSAFE_LPWSTR},
-    DWORD, HRESULT,
 };
 
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    strsafe::{
-        StringCchPrintf, StringCchPrintfEx, STRSAFE_E_INSUFFICIENT_BUFFER,
-        STRSAFE_E_INVALID_PARAMETER, STRSAFE_FILL_BEHIND_NULL, STRSAFE_FILL_ON_FAILURE,
-        STRSAFE_IGNORE_NULLS, STRSAFE_MAX_CCH, STRSAFE_NO_TRUNCATION, STRSAFE_NULL_ON_FAILURE,
-        S_OK,
-    },
     FAILED, SUCCEEDED,
+    strsafe::{
+        S_OK, STRSAFE_E_INSUFFICIENT_BUFFER, STRSAFE_E_INVALID_PARAMETER, STRSAFE_FILL_BEHIND_NULL,
+        STRSAFE_FILL_ON_FAILURE, STRSAFE_IGNORE_NULLS, STRSAFE_MAX_CCH, STRSAFE_NO_TRUNCATION,
+        STRSAFE_NULL_ON_FAILURE, StringCchPrintf, StringCchPrintfEx,
+    },
 };
 #[allow(unused_imports)]
 use std::ptr::{null, null_mut};
 
-extern "C" {
+unsafe extern "C" {
     /// Writes formatted data to the specified string. The size of the destination buffer is
     /// provided to the function to ensure that it does not write past the end of this buffer.
     ///

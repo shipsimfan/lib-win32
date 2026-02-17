@@ -10,7 +10,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Changes an attribute of the specified window. The function also sets a value at the
     /// specified offset in the extra window memory.
     ///

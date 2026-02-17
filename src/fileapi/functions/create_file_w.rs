@@ -21,7 +21,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates or opens a file or I/O device. The most commonly used I/O devices are as follows:
     /// file, file stream, directory, physical disk, volume, console buffer, tape drive,
     /// communications resource, mailslot, and pipe. The function returns a handle that can be used

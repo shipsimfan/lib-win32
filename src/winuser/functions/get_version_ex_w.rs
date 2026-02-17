@@ -5,7 +5,7 @@ use crate::{BOOL, LPOSVERSIONINFOW};
 use crate::{GetLastError, GetVersionEx, OSVERSIONINFOEXW, OSVERSIONINFOW};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// With the release of Windows 8.1, the behavior of the [`GetVersionEx`] API has changed in
     /// the value it will return for the operating system version. The value returned by the
     /// [`GetVersionEx`] function now depends on how the application is manifested.

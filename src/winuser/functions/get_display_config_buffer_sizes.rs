@@ -7,7 +7,7 @@ use crate::{QueryDisplayConfig, QDC_ALL_PATHS, QDC_DATABASE_CURRENT, QDC_ONLY_AC
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`GetDisplayConfigBufferSizes`] function retrieves the size of the buffers that are
     /// required to call the [`QueryDisplayConfig`] function.
     ///

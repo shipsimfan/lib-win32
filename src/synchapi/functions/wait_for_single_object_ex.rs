@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Waits until the specified object is in the signaled state, an I/O completion routine or
     /// asynchronous procedure call (APC) is queued to the thread, or the time-out interval
     /// elapses.

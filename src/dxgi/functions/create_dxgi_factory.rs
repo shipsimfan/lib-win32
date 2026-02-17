@@ -9,7 +9,7 @@ use crate::{
 };
 
 #[link(name = "DXGI")]
-extern "system" {
+unsafe extern "system" {
     /// Creates a DXGI 1.0 factory that you can use to generate other DXGI objects.
     ///
     /// # Parameters

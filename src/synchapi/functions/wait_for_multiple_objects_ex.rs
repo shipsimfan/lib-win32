@@ -5,7 +5,7 @@ use crate::{BOOL, DWORD, HANDLE};
 use crate::{GetLastError, FALSE, INFINITE, SYNCHRONIZE, TRUE};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Waits until one or all of the specified objects are in the signaled state, an I/O
     /// completion routine or asynchronous procedure call (APC) is queued to the thread, or the
     /// time-out interval elapses.

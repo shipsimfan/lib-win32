@@ -5,7 +5,7 @@ use crate::{BOOL, DWORD, HANDLE, PHANDLE};
 use crate::{CloseHandle, GetLastError};
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`OpenProcessToken`] function opens the access token associated with a process.
     ///
     /// # Parameters

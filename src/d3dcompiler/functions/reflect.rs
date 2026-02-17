@@ -2,7 +2,7 @@ use crate::{d3d11shader::ID3D11ShaderReflection, HRESULT, LPCVOID, REFIID, SIZE_
 use std::ffi::c_void;
 
 #[link(name = "D3dcompiler")]
-extern "system" {
+unsafe extern "system" {
     /// Gets a pointer to a reflection interface.
     ///
     /// # Parameters

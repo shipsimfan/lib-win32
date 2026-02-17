@@ -7,7 +7,7 @@ use crate::{CloseHandle, GetLastError, INFINITE, INVALID_HANDLE_VALUE, SECURITY_
 use std::ptr::null_mut;
 
 #[link(name = "KtmW32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates a new transaction object.
     ///
     /// # Parameters

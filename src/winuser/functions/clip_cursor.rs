@@ -7,7 +7,7 @@ use crate::GetLastError;
 use std::ptr::null;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Confines the cursor to a rectangular area on the screen. If a subsequent cursor position
     /// (set by the [`SetCursorPos`] function or the mouse) lies outside the rectangle, the system
     /// automatically adjusts the position to keep the cursor inside the rectangular area.

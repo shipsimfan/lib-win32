@@ -9,7 +9,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Attempts to dequeue an I/O completion packet from the specified I/O completion port. If
     /// there is no completion packet queued, the function waits for a pending I/O operation
     /// associated with the completion port to complete.

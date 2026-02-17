@@ -11,7 +11,7 @@ use crate::{
 use std::ptr::null;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Deletes a subkey and its values. Note that key names are not case sensitive.
     ///
     /// 64-bit Windows: On WOW64, 32-bit applications view a registry tree that is separate from

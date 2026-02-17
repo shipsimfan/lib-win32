@@ -12,7 +12,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Writes data to the specified file or input/output (I/O) device.
     ///
     /// This function is designed for both synchronous and asynchronous operation. For a similar

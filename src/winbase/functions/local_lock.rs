@@ -7,7 +7,7 @@ use crate::{GetLastError, LocalAlloc, LocalReAlloc, LocalUnlock, LMEM_FIXED};
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Locks a local memory object and returns a pointer to the first byte of the object's memory
     /// block.
     ///

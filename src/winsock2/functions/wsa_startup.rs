@@ -6,7 +6,7 @@ use std::ffi::c_int;
 use crate::winsock2::{WSAGetLastError, WSADATA};
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`WSAStartup`] function initiates use of the Winsock DLL by a process.
     ///
     /// # Parameters

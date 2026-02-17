@@ -5,7 +5,7 @@ use crate::{BOOL, UINT};
 use crate::{GetLastError, SetForegroundWindow, LSFW_LOCK, LSFW_UNLOCK};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The foreground process can call the [`LockSetForegroundWindow`] function to disable calls
     /// to the [`SetForegroundWindow`] function.
     ///

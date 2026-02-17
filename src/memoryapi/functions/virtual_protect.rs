@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Changes the protection on a region of committed pages in the virtual address space of the
     /// calling process.
     ///

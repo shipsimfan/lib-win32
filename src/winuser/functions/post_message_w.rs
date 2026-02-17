@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Places (posts) a message in the message queue associated with the thread that created the
     /// specified window and returns without waiting for the thread to process the message.
     ///

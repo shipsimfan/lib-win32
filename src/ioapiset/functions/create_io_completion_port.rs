@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates an input/output (I/O) completion port and associates it with a specified file
     /// handle, or creates an I/O completion port that is not yet associated with a file handle,
     /// allowing association at a later time.

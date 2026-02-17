@@ -5,7 +5,7 @@ use crate::{BOOL, DWORD, HANDLE, LPOVERLAPPED, ULONG_PTR};
 use crate::{GetLastError, GetQueuedCompletionStatus, OVERLAPPED};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Posts an I/O completion packet to an I/O completion port.
     ///
     /// # Parameters

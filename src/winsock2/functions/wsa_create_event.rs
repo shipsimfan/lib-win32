@@ -5,7 +5,7 @@ use crate::winsock2::WSAEVENT;
 use crate::winsock2::{WSAGetLastError, WSA_INVALID_EVENT};
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`WSACreateEvent`] function creates a new event object.
     ///
     /// # Return Value

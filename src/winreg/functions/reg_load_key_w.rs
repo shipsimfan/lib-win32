@@ -9,7 +9,7 @@ use crate::{
 };
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates a subkey under [`HKEY_USERS`] or [`HKEY_LOCAL_MACHINE`] and loads the data from the
     /// specified registry hive into that subkey.
     ///

@@ -1,6 +1,6 @@
 use crate::c_size_t;
 
-extern "C" {
+unsafe extern "C" {
     /// Gets the length of a string, by using the current locale
     ///
     /// # Parameters

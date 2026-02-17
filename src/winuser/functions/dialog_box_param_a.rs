@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates a modal dialog box from a dialog box template resource. Before displaying the
     /// dialog box, the function passes an application-defined value to the dialog box procedure as
     /// the `l_param` parameter of the [`WM_INITDIALOG`] message. An application can use this value

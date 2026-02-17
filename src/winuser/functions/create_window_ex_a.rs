@@ -13,7 +13,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates an overlapped, pop-up, or child window with an extended window style; otherwise,
     /// this function is identical to the [`CreateWindow`] function.
     ///

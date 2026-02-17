@@ -18,7 +18,7 @@ use crate::winsock2::{
 use std::ptr::null_mut;
 
 #[link(name = "Ws2_32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`WSASocket`] function creates a socket that is bound to a specific transport-service provider.
     ///
     ///

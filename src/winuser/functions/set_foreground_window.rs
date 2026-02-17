@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Brings the thread that created the specified window into the foreground and activates the
     /// window. Keyboard input is directed to the window, and various visual cues are changed for
     /// the user. The system assigns a slightly higher priority to the thread that created the

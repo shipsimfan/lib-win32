@@ -5,7 +5,7 @@ use crate::{BOOL, HINSTANCE, LPCSTR};
 use crate::{GetLastError, RegisterClass, RegisterClassEx};
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// Unregisters a window class, freeing the memory required for the class.
     ///
     /// # Parameters

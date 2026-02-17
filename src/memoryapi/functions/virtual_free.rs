@@ -8,7 +8,7 @@ use crate::{
 };
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Releases, decommits, or releases and decommits a region of pages within the virtual address
     /// space of the calling process.
     ///

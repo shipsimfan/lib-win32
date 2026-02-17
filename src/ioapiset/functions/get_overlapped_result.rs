@@ -10,7 +10,7 @@ use crate::{
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the results of an overlapped operation on the specified file, named pipe, or
     /// communications device. To specify a timeout interval or wait on an alertable thread, use
     /// [`GetOverlappedResultEx`].

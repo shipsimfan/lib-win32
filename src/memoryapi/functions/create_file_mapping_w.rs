@@ -14,7 +14,7 @@ use crate::{
 use std::ptr::{null, null_mut};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Creates or opens a named or unnamed file mapping object for a specified file.
     ///
     /// To specify the NUMA node for the physical memory, see [`CreateFileMappingNuma`].

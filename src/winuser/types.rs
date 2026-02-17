@@ -7,8 +7,8 @@ use crate::{
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    CreateDialog, DefWindowProc, DialogBox, EnumDisplayMonitors, SetWindowLong, DWL_MSGRESULT,
-    FALSE, RAWINPUT, RECT, TRUE, WM_CHARTOITEM, WM_COMPAREITEM, WM_CTLCOLORBTN, WM_CTLCOLORDLG,
+    CreateDialog, DWL_MSGRESULT, DefWindowProc, DialogBox, EnumDisplayMonitors, FALSE, RAWINPUT,
+    RECT, SetWindowLong, TRUE, WM_CHARTOITEM, WM_COMPAREITEM, WM_CTLCOLORBTN, WM_CTLCOLORDLG,
     WM_CTLCOLOREDIT, WM_CTLCOLORLISTBOX, WM_CTLCOLORSCROLLBAR, WM_CTLCOLORSTATIC, WM_INITDIALOG,
     WM_QUERYDRAGICON, WM_VKEYTOITEM,
 };
@@ -57,7 +57,7 @@ use std::ptr::null_mut;
 /// box template. Although the dialog box procedure is similar to a window procedure, it must not
 /// call the [`DefWindowProc`] function to process unwanted messages. Unwanted messages are
 /// processed internally by the dialog box window procedure.
-pub type DLGPROC = extern "system" fn(HWND, UINT, WPARAM, LPARAM) -> INT_PTR;
+pub type DLGPROC = unsafe extern "system" fn(HWND, UINT, WPARAM, LPARAM) -> INT_PTR;
 
 /// A handle to a [`RAWINPUT`].
 pub type HRAWINPUT = HANDLE;

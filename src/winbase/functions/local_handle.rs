@@ -7,7 +7,7 @@ use crate::{GetLastError, LocalAlloc, LocalLock, LMEM_MOVEABLE};
 use std::ptr::null_mut;
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Retrieves the handle associated with the specified pointer to a local memory object.
     ///
     /// # Parameters

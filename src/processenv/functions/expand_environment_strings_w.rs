@@ -5,7 +5,7 @@ use crate::{DWORD, LPCWSTR, LPWSTR};
 use crate::{GetLastError, TCHAR};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Expands environment-variable strings and replaces them with the values defined for the
     /// current user.
     ///

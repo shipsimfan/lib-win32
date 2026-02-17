@@ -5,7 +5,7 @@ use crate::{BOOL, HMODULE};
 use crate::{GetLastError, LoadLibrary, LoadLibraryEx};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Frees the loaded dynamic-link library (DLL) module and, if necessary, decrements its
     /// reference count. When the reference count reaches zero, the module is unloaded from the
     /// address space of the calling process and the handle is no longer valid.

@@ -7,7 +7,7 @@ use crate::{EndPaint, PAINTSTRUCT, WM_ERASEBKGND, WM_PAINT};
 use std::ptr::null_mut;
 
 #[link(name = "User32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`BeginPaint`] function prepares the specified window for painting and fills a
     /// [`PAINTSTRUCT`] structure with information about the painting.
     ///

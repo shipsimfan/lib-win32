@@ -5,7 +5,7 @@ use crate::DWORD;
 use crate::{GetLastError, SetLastErrorEx};
 
 #[link(name = "Kernel32")]
-extern "system" {
+unsafe extern "system" {
     /// Sets the last-error code for the calling thread.
     ///
     /// # Parameters

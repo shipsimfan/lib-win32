@@ -10,7 +10,7 @@ use crate::d3dcompiler::D3D_COMPILE_STANDARD_FILE_INCLUDE;
 use std::ptr::{null, null_mut};
 
 #[link(name = "D3dcompiler")]
-extern "system" {
+unsafe extern "system" {
     /// Compile HLSL code or an effect file into bytecode for a given target.
     ///
     /// # Parameters

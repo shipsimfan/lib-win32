@@ -1,7 +1,7 @@
 use crate::{d3dcommon::ID3DBlob, HRESULT, LPCVOID, SIZE_T};
 
 #[link(name = "D3dcompiler")]
-extern "system" {
+unsafe extern "system" {
     /// Gets the output signature from a compilation result.
     ///
     /// # Parameters

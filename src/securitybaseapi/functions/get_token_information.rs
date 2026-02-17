@@ -7,7 +7,7 @@ use crate::{GetLastError, TOKEN_QUERY, TOKEN_QUERY_SOURCE};
 use std::ptr::null_mut;
 
 #[link(name = "Advapi32")]
-extern "system" {
+unsafe extern "system" {
     /// The [`GetTokenInformation`] function retrieves a specified type of information about an
     /// access token. The calling process must have appropriate access rights to obtain the
     /// information.
