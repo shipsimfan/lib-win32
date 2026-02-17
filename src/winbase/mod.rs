@@ -18,6 +18,7 @@
 
 mod constants;
 mod functions;
+mod macros;
 mod structures;
 mod types;
 
