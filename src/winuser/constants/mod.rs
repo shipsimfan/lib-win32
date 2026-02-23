@@ -1,4 +1,6 @@
 mod arrange_directions;
+mod change_display_settings_flags;
+mod change_display_settings_returns;
 mod class_styles;
 mod colors;
 mod command_ids;
@@ -40,6 +42,8 @@ mod window_sizes;
 mod window_styles;
 
 pub use arrange_directions::*;
+pub use change_display_settings_flags::*;
+pub use change_display_settings_returns::*;
 pub use class_styles::*;
 pub use colors::*;
 pub use command_ids::*;

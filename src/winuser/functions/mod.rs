@@ -4,6 +4,7 @@ mod allow_set_foreground_window;
 mod begin_paint;
 mod call_window_proc_a;
 mod call_window_proc_w;
+mod change_display_settings_ex_w;
 mod client_to_screen;
 mod clip_cursor;
 mod create_dialog_param_a;
@@ -103,6 +104,9 @@ pub use allow_set_foreground_window::AllowSetForegroundWindow;
 pub use begin_paint::BeginPaint;
 pub use call_window_proc_a::CallWindowProcA;
 pub use call_window_proc_w::{CallWindowProcW, CallWindowProcW as CallWindowProc};
+pub use change_display_settings_ex_w::{
+    ChangeDisplaySettingsExW, ChangeDisplaySettingsExW as ChangeDisplaySettingsEx,
+};
 pub use client_to_screen::ClientToScreen;
 pub use clip_cursor::ClipCursor;
 pub use create_dialog_param_a::CreateDialogParamA;
