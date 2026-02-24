@@ -25,6 +25,7 @@ pub mod d3d11shader;
 pub mod d3dcommon;
 #[cfg(feature = "d3dcompiler")]
 pub mod d3dcompiler;
+pub mod dbt;
 #[cfg(feature = "dxgi")]
 pub mod dxgi;
 #[cfg(feature = "dxgi1_2")]

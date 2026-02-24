@@ -1,6 +1,6 @@
 use crate::{
     BOOL, HANDLE, HDC, HMONITOR, HWND, INT_PTR, LPARAM, LPRECT, LRESULT, MONITORINFO, MSG,
-    OSVERSIONINFOA, OSVERSIONINFOW, PAINTSTRUCT, RAWINPUTDEVICE, RAWINPUTDEVICELIST, UINT,
+    OSVERSIONINFOA, OSVERSIONINFOW, PAINTSTRUCT, PVOID, RAWINPUTDEVICE, RAWINPUTDEVICELIST, UINT,
     WNDCLASSEXW, WNDCLASSW, WPARAM,
 };
 
@@ -58,6 +58,9 @@ use std::ptr::null_mut;
 /// call the [`DefWindowProc`] function to process unwanted messages. Unwanted messages are
 /// processed internally by the dialog box window procedure.
 pub type DLGPROC = unsafe extern "system" fn(HWND, UINT, WPARAM, LPARAM) -> INT_PTR;
+
+#[allow(missing_docs)]
+pub type HDEVNOTIFY = PVOID;
 
 /// A handle to a [`RAWINPUT`].
 pub type HRAWINPUT = HANDLE;

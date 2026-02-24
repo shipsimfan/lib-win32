@@ -73,6 +73,8 @@ mod register_class_a;
 mod register_class_ex_a;
 mod register_class_ex_w;
 mod register_class_w;
+mod register_device_notification_a;
+mod register_device_notification_w;
 mod register_raw_input_devices;
 mod scroll_window_ex;
 mod send_message_timeout_w;
@@ -179,6 +181,10 @@ pub use register_class_a::RegisterClassA;
 pub use register_class_ex_a::RegisterClassExA;
 pub use register_class_ex_w::{RegisterClassExW, RegisterClassExW as RegisterClassEx};
 pub use register_class_w::{RegisterClassW, RegisterClassW as RegisterClass};
+pub use register_device_notification_a::RegisterDeviceNotificationA;
+pub use register_device_notification_w::{
+    RegisterDeviceNotificationW, RegisterDeviceNotificationW as RegisterDeviceNotification,
+};
 pub use register_raw_input_devices::RegisterRawInputDevices;
 pub use scroll_window_ex::ScrollWindowEx;
 pub use send_message_timeout_w::{SendMessageTimeoutW, SendMessageTimeoutW as SendMessageTimeout};

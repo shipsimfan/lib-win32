@@ -5,11 +5,18 @@ use crate::UINT;
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    CreateWindow, CreateWindowEx, DefWindowProc, GetRawInputData, GetRawInputDeviceInfo,
-    RegisterRawInputDevices, SetWindowPos, CREATESTRUCT, GET_RAWINPUT_CODE_WPARAM, GIDC_ARRIVAL,
-    GIDC_REMOVAL, HANDLE, HRAWINPUT, MAKEPOINTS, POINTS, RAWINPUT, RIDEV_DEVNOTIFY, RIM_INPUT,
-    RIM_INPUTSINK, SIZE_MAXHIDE, SIZE_MAXIMIZED, SIZE_MAXSHOW, SIZE_MINIMIZED, SIZE_RESTORED,
-    WINDOWPOS,
+    BROADCAST_QUERY_DENY, CREATESTRUCT, CreateWindow, CreateWindowEx, DefWindowProc,
+    GET_RAWINPUT_CODE_WPARAM, GIDC_ARRIVAL, GIDC_REMOVAL, GetMessage, GetRawInputData,
+    GetRawInputDeviceInfo, HANDLE, HRAWINPUT, MAKEPOINTS, MINMAXINFO, POINTS, PeekMessage,
+    PostMessage, PostQuitMessage, RAWINPUT, RECT, RIDEV_DEVNOTIFY, RIM_INPUT, RIM_INPUTSINK,
+    RegisterRawInputDevices, SIZE_MAXHIDE, SIZE_MAXIMIZED, SIZE_MAXSHOW, SIZE_MINIMIZED,
+    SIZE_RESTORED, SetWindowPos, TRUE, USER_DEFAULT_SCREEN_DPI, WINDOWPOS,
+    dbt::{
+        DBT_CONFIGCHANGECANCELED, DBT_CONFIGCHANGED, DBT_CUSTOMEVENT, DBT_DEVICEARRIVAL,
+        DBT_DEVICEQUERYREMOVE, DBT_DEVICEQUERYREMOVEFAILED, DBT_DEVICEREMOVECOMPLETE,
+        DBT_DEVICEREMOVEPENDING, DBT_DEVICETYPESPECIFIC, DBT_DEVNODES_CHANGED,
+        DBT_QUERYCHANGECONFIG, DBT_USERDEFINED,
+    },
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;
@@ -142,10 +149,40 @@ pub const WM_SETTEXT: UINT = 0x000C;
 pub const WM_GETTEXT: UINT = 0x000D;
 pub const WM_GETTEXTLENGTH: UINT = 0x000E;
 pub const WM_PAINT: UINT = 0x000F;
+
+/// Sent as a signal that a window or an application should terminate.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - This parameter is not used.
+///  * `l_param` - This parameter is not used.
+///
+/// # Return Value
+/// If an application processes this message, it should return zero.
 pub const WM_CLOSE: UINT = 0x0010;
 pub const WM_QUERYENDSESSION: UINT = 0x0011;
 pub const WM_QUERYOPEN: UINT = 0x0013;
 pub const WM_ENDSESSION: UINT = 0x0016;
+
+/// Indicates a request to terminate an application, and is generated when the application calls
+/// the [`PostQuitMessage`] function. This message causes the [`GetMessage`] function to return zero.
+///
+/// # Parameters
+///  * `w_param` - The exit code given in the [`PostQuitMessage`] function.
+///  * `l_param` - This parameter is not used.
+///
+/// # Return Value
+/// This message does not have a return value because it causes the message loop to terminate
+/// before the message is sent to the application's window procedure.
+///
+/// # Remarks
+/// The [`WM_QUIT`] message is not associated with a window and therefore will never be received
+/// through a window's window procedure. It is retrieved only by the [`GetMessage`] or
+/// [`PeekMessage`] functions.
+///
+/// Do not post the [`WM_QUIT`] message using the [`PostMessage`] function; use
+/// [`PostQuitMessage`].
 pub const WM_QUIT: UINT = 0x0012;
 pub const WM_ERASEBKGND: UINT = 0x0014;
 pub const WM_SYSCOLORCHANGE: UINT = 0x0015;
@@ -161,6 +198,26 @@ pub const WM_SETCURSOR: UINT = 0x0020;
 pub const WM_MOUSEACTIVATE: UINT = 0x0021;
 pub const WM_CHILDACTIVATE: UINT = 0x0022;
 pub const WM_QUEUESYNC: UINT = 0x0023;
+
+/// Sent to a window when the size or position of the window is about to change. An application can
+/// use this message to override the window's default maximized size and position, or its default
+/// minimum or maximum tracking size.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - This parameter is not used.
+///  * `l_param` - A pointer to a [`MINMAXINFO`] structure that contains the default maximized
+///                position and dimensions, and the default minimum and maximum tracking sizes. An
+///                application can override the defaults by setting the members of this structure.
+///
+/// # Return Value
+/// If an application processes this message, it should return zero.
+///
+/// # Remarks
+/// The maximum tracking size is the largest window size that can be produced by using the borders
+/// to size the window. The minimum tracking size is the smallest window size that can be produced
+/// by using the borders to size the window.
 pub const WM_GETMINMAXINFO: UINT = 0x0024;
 pub const WM_PAINTICON: UINT = 0x0026;
 pub const WM_ICONERASEBKGND: UINT = 0x0027;
@@ -215,6 +272,19 @@ pub const WM_NOTIFYFORMAT: UINT = 0x0055;
 pub const WM_CONTEXTMENU: UINT = 0x007B;
 pub const WM_STYLECHANGING: UINT = 0x007C;
 pub const WM_STYLECHANGED: UINT = 0x007D;
+
+/// The [`WM_DISPLAYCHANGE`] message is sent to all windows when the display resolution has
+/// changed.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `w_param` - The new image depth of the display, in bits per pixel.
+///  * `l_param` - The low-order word specifies the horizontal resolution of the screen. The
+///                high-order word specifies the vertical resolution of the screen
+///
+/// # Remarks
+/// This message is only sent to top-level windows. For all other windows it is posted.
 pub const WM_DISPLAYCHANGE: UINT = 0x007E;
 pub const WM_GETICON: UINT = 0x007F;
 pub const WM_SETICON: UINT = 0x0080;
@@ -347,6 +417,45 @@ pub const WM_SIZING: UINT = 0x0214;
 pub const WM_CAPTURECHANGED: UINT = 0x0215;
 pub const WM_MOVING: UINT = 0x0216;
 pub const WM_POWERBROADCAST: UINT = 0x0218;
+
+/// Notifies an application of a change to the hardware configuration of a device or the computer.
+///
+/// A window receives this message through its `wnd_proc` function.
+///
+/// # Parameters
+///  * `wnd` - A handle to the window.
+///  * `msg` - The [`WM_DEVICECHANGE`] identifier.
+///  * `w_param` - The event that has occurred. This parameter can be one of the following values:
+///    * [`DBT_DEVNODES_CHANGED`] - A device has been added to or removed from the system.
+///    * [`DBT_QUERYCHANGECONFIG`] - Permission is requested to change the current configuration
+///                                  (dock or undock).
+///    * [`DBT_CONFIGCHANGED`] - The current configuration has changed, due to a dock or undock.
+///    * [`DBT_CONFIGCHANGECANCELED`] - A request to change the current configuration (dock or
+///                                     undock) has been canceled.
+///    * [`DBT_DEVICEARRIVAL`] - A device or piece of media has been inserted and is now available.
+///    * [`DBT_DEVICEQUERYREMOVE`] - Permission is requested to remove a device or piece of media.
+///                                  Any application can deny this request and cancel the removal.
+///    * [`DBT_DEVICEQUERYREMOVEFAILED`] - A request to remove a device or piece of media has been
+///                                        canceled.
+///    * [`DBT_DEVICEREMOVEPENDING`] - A device or piece of media is about to be removed. Cannot be
+///                                    denied.
+///    * [`DBT_DEVICEREMOVECOMPLETE`] - A device or piece of media has been removed.
+///    * [`DBT_DEVICETYPESPECIFIC`] - A device-specific event has occurred.
+///    * [`DBT_CUSTOMEVENT`] - A custom event has occurred.
+///    * [`DBT_USERDEFINED`] - The meaning of this message is user-defined.
+///  * `l_param` - A pointer to a structure that contains event-specific data. Its format depends
+///                on the value of the wParam parameter.
+///
+/// # Return Value
+/// Return [`TRUE`] to grant the request.
+///
+/// Return [`BROADCAST_QUERY_DENY`] to deny the request.
+///
+/// # Remarks
+/// For devices that offer software-controllable features, such as ejection and locking, the system
+/// typically sends a [`DBT_DEVICEREMOVEPENDING`] message to let applications and device drivers
+/// end their use of the device gracefully. If the system forcibly removes a device, it may not
+/// send a [`DBT_DEVICEQUERYREMOVE`] message before doing so.
 pub const WM_DEVICECHANGE: UINT = 0x0219;
 pub const WM_MDICREATE: UINT = 0x0220;
 pub const WM_MDIDESTROY: UINT = 0x0221;
@@ -397,8 +506,53 @@ pub const WM_MOUSELEAVE: UINT = 0x02A3;
 pub const WM_NCMOUSEHOVER: UINT = 0x02A0;
 pub const WM_NCMOUSELEAVE: UINT = 0x02A2;
 pub const WM_WTSSESSION_CHANGE: UINT = 0x02B1;
-pub const WM_TABLET_FIRST: UINT = 0x02c0;
-pub const WM_TABLET_LAST: UINT = 0x02df;
+pub const WM_TABLET_FIRST: UINT = 0x02C0;
+pub const WM_TABLET_LAST: UINT = 0x02DF;
+
+/// Sent when the effective dots per inch (dpi) for a window has changed. The DPI is the scale
+/// factor for a window. There are multiple events that can cause the DPI to change. The following
+/// list indicates the possible causes for the change in DPI.
+///  - The window is moved to a new monitor that has a different DPI.
+///  - The DPI of the monitor hosting the window changes.
+///
+/// The current DPI for a window always equals the last DPI sent by [`WM_DPICHANGED`]. This is the
+/// scale factor that the window should be scaling to for threads that are aware of DPI changes.
+///
+/// # Parameters
+///  * `w_param` - The [`HIWORD`] of the `w_param` contains the Y-axis value of the new dpi of the
+///                window. The [`LOWORD`] of the `w_param` contains the X-axis value of the new DPI
+///                of the window. For example, 96, 120, 144, or 192. The values of the X-axis and
+///                the Y-axis are identical for Windows apps.
+///  * `l_param` - A pointer to a [`RECT`] structure that provides a suggested size and position of
+///                the current window scaled for the new DPI. The expectation is that apps will
+///                reposition and resize windows based on the suggestions provided by `l_param`
+///                when handling this message.
+///
+/// # Return Value
+/// If an application processes this message, it should return zero.
+///
+/// # Remarks
+/// This message is only relevant for [`PROCESS_PER_MONITOR_DPI_AWARE`] applications or
+/// [`DPI_AWARENESS_PER_MONITOR_AWARE`] threads. It may be received on certain DPI changes if your
+/// top-level window or process is running as DPI unaware or system DPI aware, but in those
+/// situations it can be safely ignored. For more information about the different types of
+/// awareness, see [`PROCESS_DPI_AWARENESS`] and [`DPI_AWARENESS`]. Older versions of Windows
+/// required DPI awareness to be tied at the level of an application. Those apps use
+/// [`PROCESS_DPI_AWARENESS`]. Currently, DPI awareness is tied to threads and individual windows
+/// rather than the entire application. These apps use [`DPI_AWARENESS`].
+///
+/// You only need to use either the X-axis or the Y-axis value when scaling your application since
+/// they are the same.
+///
+/// In order to handle this message correctly, you will need to resize and reposition your window
+/// based on the suggestions provided by `l_param` and using [`SetWindowPos`]. If you do not do
+/// this, your window will grow or shrink with respect to everything else on the new monitor. For
+/// example, if a user is using multiple monitors and drags your window from a 96 DPI monitor to a
+/// 192 DPI monitor, your window will appear to be half as large with respect to other items on the
+/// 192 DPI monitor.
+///
+/// The base value of DPI is defined as [`USER_DEFAULT_SCREEN_DPI`] which is set to 96. To determine
+/// the scaling factor for a monitor, take the DPI value and divide by [`USER_DEFAULT_SCREEN_DPI`].
 pub const WM_DPICHANGED: UINT = 0x02E0;
 pub const WM_DPICHANGED_BEFOREPARENT: UINT = 0x02E2;
 pub const WM_DPICHANGED_AFTERPARENT: UINT = 0x02E3;
