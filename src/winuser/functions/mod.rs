@@ -34,6 +34,7 @@ mod get_class_info_ex_w;
 mod get_class_info_w;
 mod get_client_rect;
 mod get_display_config_buffer_sizes;
+mod get_dpi_for_window;
 mod get_message_a;
 mod get_message_w;
 mod get_monitor_info_a;
@@ -141,6 +142,7 @@ pub use get_class_info_ex_w::{GetClassInfoExW, GetClassInfoExW as GetClassInfoEx
 pub use get_class_info_w::{GetClassInfoW, GetClassInfoW as GetClassInfo};
 pub use get_client_rect::GetClientRect;
 pub use get_display_config_buffer_sizes::GetDisplayConfigBufferSizes;
+pub use get_dpi_for_window::GetDpiForWindow;
 pub use get_message_a::GetMessageA;
 pub use get_message_w::{GetMessageW, GetMessageW as GetMessage};
 pub use get_monitor_info_a::GetMonitorInfoA;
