@@ -7,6 +7,7 @@
 #![warn(rustdoc::broken_intra_doc_links)]
 
 // Header not automatically included with `Windows.h`
+pub mod conio;
 #[cfg(feature = "d3d10")]
 pub mod d3d10;
 #[cfg(feature = "d3d11")]
@@ -52,6 +53,7 @@ pub mod basetsd;
 pub mod combaseapi;
 pub mod consoleapi;
 pub mod consoleapi2;
+pub mod corecrt;
 pub mod errhandlingapi;
 pub mod fileapi;
 pub mod guiddef;
@@ -87,6 +89,7 @@ pub use basetsd::*;
 pub use combaseapi::*;
 pub use consoleapi::*;
 pub use consoleapi2::*;
+pub use corecrt::*;
 pub use errhandlingapi::*;
 pub use fileapi::*;
 pub use guiddef::*;
