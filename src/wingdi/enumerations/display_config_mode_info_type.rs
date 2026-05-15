@@ -5,7 +5,7 @@ use crate::{DISPLAYCONFIG_DESKTOP_IMAGE_INFO, DISPLAYCONFIG_MODE_INFO};
 /// The [`DISPLAYCONFIG_MODE_INFO_TYPE`] enumeration specifies that the information that is
 /// contained within the [`DISPLAYCONFIG_MODE_INFO`] structure is either source or target mode.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum DISPLAYCONFIG_MODE_INFO_TYPE {

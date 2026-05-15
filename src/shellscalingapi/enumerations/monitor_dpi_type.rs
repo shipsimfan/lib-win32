@@ -3,7 +3,7 @@
 /// # Remarks
 /// All of these settings are affected by the [`PROCESS_DPI_AWARENESS`] of your application
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum MONITOR_DPI_TYPE {

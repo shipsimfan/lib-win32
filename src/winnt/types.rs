@@ -59,6 +59,9 @@ pub type PSID = *mut SID;
 /// A pointer to any type
 pub type PVOID = *mut c_void;
 
+/// A pointer to a null-terminated string of 16-bit Unicode characters.
+pub type PWSTR = *mut WCHAR;
+
 /// The [`SECURITY_DESCRIPTOR_CONTROL`] data type is a set of bit flags that qualify the meaning of
 /// a security descriptor or its components. Each security descriptor has a `control` member that
 /// stores the [`SECURITY_DESCRIPTOR_CONTROL`] bits.

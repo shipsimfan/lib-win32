@@ -1,6 +1,6 @@
 /// The [`DISPLAYCONFIG_ROTATION`] enumeration specifies the clockwise rotation of the display.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum DISPLAYCONFIG_ROTATION {

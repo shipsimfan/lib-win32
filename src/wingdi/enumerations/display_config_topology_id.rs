@@ -1,6 +1,6 @@
 /// The [`DISPLAYCONFIG_TOPOLOGY_ID`] enumeration specifies the type of display topology.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum DISPLAYCONFIG_TOPOLOGY_ID {

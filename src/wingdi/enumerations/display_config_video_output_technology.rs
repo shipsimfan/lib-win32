@@ -11,7 +11,7 @@
 ///
 /// An embedded display port or UDI is also known as an integrated display port or UDI.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY {

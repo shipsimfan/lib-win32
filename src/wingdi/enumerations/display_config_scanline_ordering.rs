@@ -1,7 +1,7 @@
 /// The [`DISPLAYCONFIG_SCANLINE_ORDERING`] enumeration specifies the method that the display uses
 /// to create an image on a screen.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum DISPLAYCONFIG_SCANLINE_ORDERING {

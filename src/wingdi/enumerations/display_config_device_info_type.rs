@@ -1,18 +1,18 @@
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    DisplayConfigGetDeviceInfo, DisplayConfigSetDeviceInfo, DISPLAYCONFIG_ADAPTER_NAME,
-    DISPLAYCONFIG_SDR_WHITE_LEVEL, DISPLAYCONFIG_SET_TARGET_PERSISTENCE,
-    DISPLAYCONFIG_SOURCE_DEVICE_NAME, DISPLAYCONFIG_SUPPORT_VIRTUAL_RESOLUTION,
-    DISPLAYCONFIG_TARGET_BASE_TYPE, DISPLAYCONFIG_TARGET_DEVICE_NAME,
-    DISPLAYCONFIG_TARGET_PREFERRED_MODE,
+    DISPLAYCONFIG_ADAPTER_NAME, DISPLAYCONFIG_SDR_WHITE_LEVEL,
+    DISPLAYCONFIG_SET_TARGET_PERSISTENCE, DISPLAYCONFIG_SOURCE_DEVICE_NAME,
+    DISPLAYCONFIG_SUPPORT_VIRTUAL_RESOLUTION, DISPLAYCONFIG_TARGET_BASE_TYPE,
+    DISPLAYCONFIG_TARGET_DEVICE_NAME, DISPLAYCONFIG_TARGET_PREFERRED_MODE,
+    DisplayConfigGetDeviceInfo, DisplayConfigSetDeviceInfo,
 };
 
 /// The [`DISPLAYCONFIG_DEVICE_INFO_TYPE`] enumeration specifies the type of display device info to
 /// configure or obtain through the [`DisplayConfigSetDeviceInfo`] or
 /// [`DisplayConfigGetDeviceInfo`] function.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum DISPLAYCONFIG_DEVICE_INFO_TYPE {

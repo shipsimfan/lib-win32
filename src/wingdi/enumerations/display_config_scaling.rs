@@ -1,7 +1,7 @@
 /// The [`DISPLAYCONFIG_SCALING`] enumeration specifies the scaling transformation applied to
 /// content displayed on a video present network (VidPN) present path.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum DISPLAYCONFIG_SCALING {

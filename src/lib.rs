@@ -39,9 +39,12 @@ pub mod dxgi1_4;
 pub mod dxgi1_5;
 #[cfg(feature = "dxgidebug")]
 pub mod dxgidebug;
+pub mod knownfolders;
 pub mod ktmw32;
 pub mod ntddk;
+pub mod shlobj_core;
 pub mod shlwapi;
+pub mod shtypes;
 pub mod string;
 pub mod strsafe;
 pub mod unknwn;

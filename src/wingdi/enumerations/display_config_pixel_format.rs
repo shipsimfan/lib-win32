@@ -5,7 +5,7 @@ use crate::QueryDisplayConfig;
 /// The [`DISPLAYCONFIG_PIXELFORMAT`] enumeration specifies pixel format in various bits per pixel
 /// (BPP) values.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum DISPLAYCONFIG_PIXELFORMAT {

@@ -12,7 +12,7 @@ use std::ptr::null_mut;
 ///
 /// The [`SetTokenInformation`] function uses these values to set the token information.
 #[repr(C)]
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum TOKEN_INFORMATION_CLASS {
