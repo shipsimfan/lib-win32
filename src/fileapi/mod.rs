@@ -6,4 +6,4 @@ mod constants;
 mod functions;
 
 pub use constants::*;
-pub use functions::{CreateFile, CreateFileW, FlushFileBuffers, ReadFile, WriteFile};
+pub use functions::*;
