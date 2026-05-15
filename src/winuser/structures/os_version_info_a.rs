@@ -2,7 +2,7 @@ use crate::{CHAR, DWORD};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::{GetVersionEx, OSVERSIONINFOEX};
+use crate::{GetVersionEx, OSVERSIONINFOEX, VER_PLATFORM_WIN32_NT};
 
 /// Contains operating system version information. The information includes major and minor version
 /// numbers, a build number, a platform identifier, and descriptive text about the operating

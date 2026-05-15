@@ -4,13 +4,13 @@ use std::ops::{Deref, DerefMut};
 // rustdoc imports
 #[allow(unused_imports)]
 use crate::{
-    SystemParametersInfo, MOUSE_ATTRIBUTES_CHANGED, MOUSE_MOVE_ABSOLUTE, MOUSE_MOVE_NOCOALESCE,
-    MOUSE_MOVE_RELATIVE, MOUSE_VIRTUAL_DESKTOP, RI_MOUSE_BUTTON_1_DOWN, RI_MOUSE_BUTTON_1_UP,
-    RI_MOUSE_BUTTON_2_DOWN, RI_MOUSE_BUTTON_2_UP, RI_MOUSE_BUTTON_3_DOWN, RI_MOUSE_BUTTON_3_UP,
-    RI_MOUSE_BUTTON_4_DOWN, RI_MOUSE_BUTTON_4_UP, RI_MOUSE_BUTTON_5_DOWN, RI_MOUSE_BUTTON_5_UP,
-    RI_MOUSE_HWHEEL, RI_MOUSE_LEFT_BUTTON_DOWN, RI_MOUSE_LEFT_BUTTON_UP,
-    RI_MOUSE_MIDDLE_BUTTON_DOWN, RI_MOUSE_MIDDLE_BUTTON_UP, RI_MOUSE_RIGHT_BUTTON_DOWN,
-    RI_MOUSE_RIGHT_BUTTON_UP, RI_MOUSE_WHEEL, SPI_GETWHEELSCROLLCHARS, SPI_GETWHEELSCROLLLINES,
+    MOUSE_ATTRIBUTES_CHANGED, MOUSE_MOVE_ABSOLUTE, MOUSE_MOVE_NOCOALESCE, MOUSE_MOVE_RELATIVE,
+    MOUSE_VIRTUAL_DESKTOP, RI_MOUSE_BUTTON_1_DOWN, RI_MOUSE_BUTTON_1_UP, RI_MOUSE_BUTTON_2_DOWN,
+    RI_MOUSE_BUTTON_2_UP, RI_MOUSE_BUTTON_3_DOWN, RI_MOUSE_BUTTON_3_UP, RI_MOUSE_BUTTON_4_DOWN,
+    RI_MOUSE_BUTTON_4_UP, RI_MOUSE_BUTTON_5_DOWN, RI_MOUSE_BUTTON_5_UP, RI_MOUSE_HWHEEL,
+    RI_MOUSE_LEFT_BUTTON_DOWN, RI_MOUSE_LEFT_BUTTON_UP, RI_MOUSE_MIDDLE_BUTTON_DOWN,
+    RI_MOUSE_MIDDLE_BUTTON_UP, RI_MOUSE_RIGHT_BUTTON_DOWN, RI_MOUSE_RIGHT_BUTTON_UP,
+    RI_MOUSE_WHEEL, SPI_GETWHEELSCROLLCHARS, SPI_GETWHEELSCROLLLINES, SystemParametersInfo,
     WHEEL_DELTA, WM_MOUSEMOVE,
 };
 
@@ -60,7 +60,7 @@ pub struct RAWMOUSE {
     /// The mouse state. This member can be any reasonable combination of the following:
     ///  * [`MOUSE_MOVE_RELATIVE`] - Mouse movement data is relative to the last mouse position.
     ///  * [`MOUSE_MOVE_ABSOLUTE`] - Mouse movement data is based on absolute position.
-    ///  * [`MOUSE_MOVE_VIRTUAL_DESKTOP`] - Mouse coordinates are mapped to the virtual desktop
+    ///  * [`MOUSE_VIRTUAL_DESKTOP`] - Mouse coordinates are mapped to the virtual desktop
     ///                                     (for a multiple monitor system).
     ///  * [`MOUSE_ATTRIBUTES_CHANGED`] - Mouse attributes changed; application needs to query the
     ///                                   mouse attributes.
@@ -144,7 +144,7 @@ impl DerefMut for RAWMOUSE_UNION {
     }
 }
 
-/// Struct for [`RAWMOUSEUNION`]
+/// Struct for [`RAWMOUSE_UNION`]
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
 pub struct RAWMOUSE_STRUCT {

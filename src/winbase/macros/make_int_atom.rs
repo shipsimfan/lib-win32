@@ -10,9 +10,9 @@ use crate::LPTSTR;
 ///          integer atom or a string atom.
 ///
 /// # Remarks
-/// Although the return value of the [`MAKEINTATOM`] macro is cast as an [`LPTSTR`] value, it
-/// cannot be used as a string pointer except when it is passed to atom-management functions that
-/// require an [`LPTSTR`] argument.
+/// Although the return value of the [`crate::MAKEINTATOM`] macro is cast as an [`LPTSTR`] value,
+/// it cannot be used as a string pointer except when it is passed to atom-management functions
+/// that require an [`LPTSTR`] argument.
 #[macro_export]
 macro_rules! MAKEINTATOM {
     ($i: expr) => {

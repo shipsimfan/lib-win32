@@ -2,8 +2,8 @@
 #[allow(unused_imports)]
 use crate::POINTS;
 
-/// The [`MAKEPOINTS`] macro converts a value that contains the x- and y-coordinates of a point
-/// into a [`POINTS`] structure.
+/// The [`crate::MAKEPOINTS`] macro converts a value that contains the x- and y-coordinates of a
+/// point into a [`POINTS`] structure.
 ///
 /// # Parameters
 ///  * `l` - The coordinates of a point. The x-coordinate is in the low-order word, and the

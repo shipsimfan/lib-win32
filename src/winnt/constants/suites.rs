@@ -44,3 +44,7 @@ pub const VER_SUITE_COMPUTE_SERVER: USHORT = 0x00004000;
 
 /// Windows Home Server is installed.
 pub const VER_SUITE_WH_SERVER: USHORT = 0x00008000;
+
+///  AppServer mode is enabled.
+#[allow(overflowing_literals)]
+pub const VER_SUITE_MULTIUSERTS: USHORT = 0x00020000;

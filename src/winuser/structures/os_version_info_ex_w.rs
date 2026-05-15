@@ -2,7 +2,14 @@ use crate::{BYTE, DWORD, WCHAR, WORD};
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::GetVersionEx;
+use crate::{
+    GetVersionEx, VER_NT_DOMAIN_CONTROLLER, VER_NT_SERVER, VER_NT_WORKSTATION,
+    VER_PLATFORM_WIN32_NT, VER_SUITE_BACKOFFICE, VER_SUITE_BLADE, VER_SUITE_COMPUTE_SERVER,
+    VER_SUITE_DATACENTER, VER_SUITE_EMBEDDEDNT, VER_SUITE_ENTERPRISE, VER_SUITE_MULTIUSERTS,
+    VER_SUITE_PERSONAL, VER_SUITE_SINGLEUSERTS, VER_SUITE_SMALLBUSINESS,
+    VER_SUITE_SMALLBUSINESS_RESTRICTED, VER_SUITE_STORAGE_SERVER, VER_SUITE_TERMINAL,
+    VER_SUITE_WH_SERVER,
+};
 
 /// Contains operating system version information. The information includes major and minor version
 /// numbers, a build number, a platform identifier, and information about product suites and the
